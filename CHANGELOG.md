@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-04-22 (afternoon)
+
+- Power Apps sidebar is now functional — clicking any of the six apps swaps the main canvas and the right rail. Added `paApp()` switcher alongside `ppTab()`.
+- Built five additional MSDCR-branded canvases, each completing its own use case end-to-end: Resident Grievance Intake (UC3), Public Records Request Intake (UC3), Reentry Intake Assessment (UC4), Classification Review Intake (UC6, Foundry-evaluated, human-approval-gated), Visitation Exception Approval (UC2, Warden-facing, three-way decision).
+- Each canvas carries the same enterprise stamp-head (MSDCR seal, application stepper, status chip), OFFICIAL USE watermark, and a per-app right rail with app-specific connectors + Dataverse preview.
+
 ## 2026-04-22
 
 - Bundled the M365 PNG logos (copilot, outlook, teams, word, excel, powerpoint, onedrive, m365) so app icons render on the deployed site — earlier deploy was index-only.

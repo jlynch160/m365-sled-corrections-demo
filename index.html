@@ -4922,6 +4922,227 @@ body.dark .fa-flowrow-name, body.dark .fa-main-head h2 { color: #f0f0f0; }
   content: '\2713'; color: #107c10; font-weight: 700; flex-shrink: 0;
 }
 
+/* ============ POWER APPS — multi-canvas switcher (v2) ============ */
+.pa-canvas-wrap { display: none; }
+.pa-canvas-wrap.tab-active { display: block; }
+.pa-rail-panel { display: none; }
+.pa-rail-panel.tab-active { display: block; }
+
+/* variant status chips */
+.pa-stamp-chip.neutral { color: var(--gray-160); background: #f5f2f5; border-color: #d9cfd9; }
+.pa-stamp-chip.neutral::before { background: #742774; animation: none; }
+.pa-stamp-chip.amber { color: #8a5c00; background: #fbf3dc; border-color: #e7cf94; }
+.pa-stamp-chip.amber::before { background: #d8930a; }
+.pa-stamp-chip.approval { background: #fdecea; color: #b02a1b; border: 1px solid #f5c6c0; font-weight: 700; }
+.pa-stamp-chip.approval::before { background: #b02a1b; animation: msdcrPulse 2s ease-in-out infinite; }
+.pa-stamp-chip.tier { background: #eef4fb; color: var(--msu-navy); border-color: #c2d4e6; }
+.pa-stamp-chip.tier::before { background: var(--msu-navy); animation: none; }
+.pa-stamp-chip.clock { background: #fbf5eb; color: #8a5c00; border-color: #e7cf94; }
+.pa-stamp-chip.clock::before { background: #d8930a; animation: none; }
+.pa-stamp-chip.release { background: #eef8f1; color: #0d6b2a; border-color: #b8e0c2; }
+.pa-stamp-chip.release::before { background: #107c10; animation: none; }
+
+/* approval submit button */
+.pa-submit-btn.approval {
+  background: linear-gradient(135deg, #b02a1b 0%, #742023 100%);
+  box-shadow: 0 1px 3px rgba(176,42,27,0.3);
+}
+.pa-submit-btn.approval[disabled],
+.pa-submit-btn.approval.is-disabled {
+  opacity: 0.6; cursor: not-allowed;
+  background: linear-gradient(135deg, #b8b8b8, #8f8f8f);
+  box-shadow: none;
+}
+
+/* three-way Warden decision row */
+.pa-decision-row {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;
+  margin-bottom: 12px;
+}
+.pa-decision-btn {
+  padding: 12px 10px; border-radius: 6px; font-family: inherit;
+  font-size: 12.5px; font-weight: 700; letter-spacing: 0.3px;
+  cursor: pointer; border: 1px solid transparent;
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+}
+.pa-decision-btn .sub { font-size: 9.5px; font-weight: 500; opacity: 0.85; letter-spacing: 0.2px; }
+.pa-decision-btn.approve { background: var(--msu-navy); color: #fff; border-color: #002a4c; }
+.pa-decision-btn.approve:hover { box-shadow: 0 0 0 3px rgba(200,165,91,0.4); }
+.pa-decision-btn.conditions { background: var(--msu-gold); color: var(--msu-navy); border-color: #b8942a; }
+.pa-decision-btn.deny { background: #fdecea; color: #b02a1b; border-color: #f5c6c0; }
+
+/* Copilot-purple informational card (agent handoff / suggestion) */
+.pa-agent-card {
+  background: linear-gradient(135deg, rgba(116,65,232,0.07), rgba(168,74,185,0.04));
+  border: 1px solid #c7a8f0;
+  border-left: 3px solid #7441e8;
+  border-radius: 8px;
+  padding: 12px 14px; margin: 10px 0 4px;
+}
+.pa-agent-card-head {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 11.5px; font-weight: 700; color: #4a1fa0;
+  margin-bottom: 6px; letter-spacing: 0.2px;
+}
+.pa-agent-card-head::before {
+  content: '\2728'; font-size: 11px;
+}
+.pa-agent-card-body { font-size: 12px; color: var(--gray-160); line-height: 1.55; }
+.pa-agent-card-body strong { color: #4a1fa0; }
+.pa-agent-card .pa-agent-pill {
+  display: inline-block; padding: 2px 8px; border-radius: 10px;
+  background: #eadcff; color: #4a1fa0; border: 1px solid #c7a8f0;
+  font-size: 10px; font-weight: 700; margin-top: 6px; margin-right: 4px;
+  text-transform: uppercase; letter-spacing: 0.3px;
+}
+
+/* Foundry-evaluation card (magenta, distinct from Copilot purple) */
+.pa-foundry-card {
+  background: linear-gradient(135deg, rgba(168,37,116,0.08), rgba(107,26,82,0.04));
+  border: 1px solid rgba(168,37,116,0.35);
+  border-left: 3px solid #a82574;
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin: 10px 0 4px;
+}
+.pa-foundry-head {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 11.5px; font-weight: 700; color: #a82574;
+  letter-spacing: 0.2px; margin-bottom: 8px;
+}
+.pa-foundry-head::before {
+  content: 'F'; display: inline-block; width: 16px; height: 16px; border-radius: 4px;
+  background: linear-gradient(135deg, #a82574, #6b1a52); color: #fff;
+  font-family: Georgia, serif; font-size: 10px; font-weight: 700;
+  text-align: center; line-height: 16px; margin-right: 6px;
+}
+.pa-foundry-nums {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+  margin-bottom: 6px;
+}
+.pa-foundry-num {
+  background: #fff; border: 1px solid #f2bdd9; border-radius: 6px;
+  padding: 7px 9px; text-align: center;
+}
+.pa-foundry-num .n { font-size: 17px; font-weight: 700; color: #a82574; font-family: Georgia, serif; letter-spacing: 0.3px; }
+.pa-foundry-num .l { font-size: 9.5px; color: var(--gray-130); text-transform: uppercase; letter-spacing: 0.3px; margin-top: 1px; }
+.pa-foundry-note { font-size: 11px; color: var(--gray-160); font-style: italic; line-height: 1.5; }
+.pa-foundry-chip {
+  display: inline-block; margin-top: 8px;
+  padding: 2px 9px; border-radius: 10px;
+  background: #fde7f4; color: #a8156c; border: 1px solid #f2bdd9;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.3px;
+}
+
+/* approval gate block (classification) */
+.pa-approval-gate {
+  background: linear-gradient(135deg, #fff5f4, #fde8e5);
+  border: 1.5px solid #f5c6c0;
+  border-left: 4px solid #b02a1b;
+  border-radius: 8px;
+  padding: 12px 14px; margin-top: 10px;
+}
+.pa-approval-gate .gate-head {
+  font-size: 11.5px; font-weight: 800; color: #b02a1b;
+  text-transform: uppercase; letter-spacing: 0.8px;
+  margin-bottom: 6px;
+  display: flex; align-items: center; gap: 6px;
+}
+.pa-approval-gate .gate-head::before {
+  content: '!'; display: inline-flex; align-items: center; justify-content: center;
+  width: 15px; height: 15px; border-radius: 50%;
+  background: #b02a1b; color: #fff; font-family: Georgia, serif; font-size: 11px; font-weight: 700;
+}
+.pa-approval-gate .gate-row {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 8px;
+}
+.pa-approval-gate .pa-dropdown.pending {
+  background: #faf5f4; color: var(--gray-130); border-color: #e7c6c0;
+  flex: 1; min-width: 240px;
+}
+
+/* auto-checked records checklist */
+.pa-autolist {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+  margin: 4px 0 10px;
+}
+.pa-autolist-row {
+  display: flex; align-items: center; gap: 8px;
+  padding: 7px 10px; border-radius: 5px;
+  background: #f8fbff; border: 1px solid #c2d4e6;
+  font-size: 11.5px; color: var(--gray-160);
+}
+.pa-autolist-row .chk {
+  width: 14px; height: 14px; border-radius: 3px; background: var(--msu-teal);
+  color: #fff; font-size: 10px; font-weight: 700;
+  display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.pa-autolist-row .src { color: var(--gray-130); font-size: 10px; margin-left: auto; font-style: italic; }
+
+/* 3-level needs-assessment pill row */
+.pa-needs { display: grid; grid-template-columns: 1fr auto; gap: 6px 12px; align-items: center; margin-top: 4px; }
+.pa-needs-label { font-size: 12px; color: var(--gray-160); }
+.pa-needs-pills { display: inline-flex; gap: 4px; }
+.pa-needs-pills .np {
+  font-size: 9.5px; font-weight: 700; letter-spacing: 0.3px;
+  padding: 3px 9px; border-radius: 10px;
+  background: #f3f2f1; color: var(--gray-130); border: 1px solid var(--gray-40);
+  text-transform: uppercase; cursor: default;
+}
+.pa-needs-pills .np.sel-none { background: #eef8f1; color: #0d6b2a; border-color: #b8e0c2; }
+.pa-needs-pills .np.sel-mod { background: #fbf3dc; color: #8a5c00; border-color: #e7cf94; }
+.pa-needs-pills .np.sel-high { background: #fdecea; color: #b02a1b; border-color: #f5c6c0; }
+
+/* narrative / readonly info card */
+.pa-info-card {
+  background: #f8fbff;
+  border: 1px solid #c2d4e6;
+  border-left: 3px solid var(--msu-teal);
+  border-radius: 6px;
+  padding: 10px 12px; margin-bottom: 10px;
+  font-size: 12px; color: var(--gray-160); line-height: 1.55;
+}
+.pa-info-card strong { color: var(--msu-navy); }
+
+/* clock block for PRR */
+.pa-clock-block {
+  background: linear-gradient(135deg, #fbf3dc, #fdf8e9);
+  border: 1px solid #e7cf94;
+  border-left: 4px solid #d8930a;
+  border-radius: 6px;
+  padding: 10px 14px; margin-top: 8px;
+  font-size: 11.5px; color: var(--gray-160);
+}
+.pa-clock-block strong { color: #8a5c00; font-family: "Cascadia Mono", Consolas, monospace; }
+.pa-clock-bar {
+  height: 6px; background: #f3e6b8; border-radius: 3px; margin: 6px 0 2px; overflow: hidden;
+}
+.pa-clock-bar .fill { display: block; height: 100%; background: linear-gradient(90deg, #d8930a, #a87308); width: 60%; }
+
+/* exception context card — Warden side */
+.pa-xcard {
+  background: #fff; border: 1px solid var(--gray-30);
+  border-left: 3px solid var(--msu-navy);
+  border-radius: 8px;
+  padding: 12px 14px; margin-bottom: 10px;
+  font-size: 12px; color: var(--gray-160); line-height: 1.55;
+}
+.pa-xcard h5 {
+  font-size: 11px; font-weight: 700; color: var(--msu-navy);
+  text-transform: uppercase; letter-spacing: 0.6px;
+  margin-bottom: 6px;
+}
+.pa-xdoclist { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 2px; }
+.pa-xdoclist .pa-filechip { font-size: 11px; }
+
+/* Foundry connector pill (magenta) */
+.pa-conn-pill.foundry { background: #fde7f4; color: #a8156c; border: 1px solid #f2bdd9; padding: 2px 8px; border-radius: 10px; }
+.pa-conn-pill.cc { background: #eef4fb; color: var(--msu-navy); border: 1px solid #c2d4e6; padding: 2px 8px; border-radius: 10px; }
+.pa-conn-ico.msdcr-foundry { background: linear-gradient(135deg, #a82574, #6b1a52); }
+.pa-conn-ico.msdcr-purview { background: linear-gradient(135deg, #0078d4, #004c88); }
+.pa-conn-ico.msdcr-cc { background: #003865; }
+.pa-conn-ico.msdcr-pp { background: #0b6e86; }
+
 /* ============ PP ENTERPRISE POLISH (v2) ============ */
 .pp-govbar {
   background: #fff; color: var(--gray-160);
@@ -7752,43 +7973,43 @@ body.dark .pp-activity-title { color: #f0f0f0; }
           <p>Environment: MSDCR-Prod · 6 apps</p>
         </div>
         <div class="pa-applist">
-          <div class="pa-approw active">
-            <div class="pa-approw-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l9 5v10l-9 5-9-5V7l9-5z"/></svg></div>
+          <div class="pa-approw active" onclick="paApp(this, 'visitation')">
+            <div class="pa-approw-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg></div>
             <div class="pa-approw-meta">
               <div class="pa-approw-name">Visitation Application Intake</div>
               <div class="pa-approw-sub"><span class="pa-approw-kind">Form</span> · 4 min ago</div>
             </div>
           </div>
-          <div class="pa-approw">
-            <div class="pa-approw-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l9 5v10l-9 5-9-5V7l9-5z"/></svg></div>
+          <div class="pa-approw" onclick="paApp(this, 'grievance')">
+            <div class="pa-approw-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/><path d="M12 8v4"/><circle cx="12" cy="15.5" r="0.8" fill="#fff"/></svg></div>
             <div class="pa-approw-meta">
               <div class="pa-approw-name">Resident Grievance Intake</div>
               <div class="pa-approw-sub"><span class="pa-approw-kind">Form</span> · 2 hours ago</div>
             </div>
           </div>
-          <div class="pa-approw">
-            <div class="pa-approw-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l9 5v10l-9 5-9-5V7l9-5z"/></svg></div>
+          <div class="pa-approw" onclick="paApp(this, 'prr')">
+            <div class="pa-approw-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13,2 13,9 20,9"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="14" y2="17"/></svg></div>
             <div class="pa-approw-meta">
               <div class="pa-approw-name">Public Records Request Intake</div>
               <div class="pa-approw-sub"><span class="pa-approw-kind">Form</span> · Yesterday</div>
             </div>
           </div>
-          <div class="pa-approw">
-            <div class="pa-approw-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l9 5v10l-9 5-9-5V7l9-5z"/></svg></div>
+          <div class="pa-approw" onclick="paApp(this, 'reentry')">
+            <div class="pa-approw-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,17 8,12 12,15 21,6"/><polyline points="15,6 21,6 21,12"/></svg></div>
             <div class="pa-approw-meta">
               <div class="pa-approw-name">Reentry Intake Assessment</div>
               <div class="pa-approw-sub"><span class="pa-approw-kind">Canvas app</span> · 3 days ago</div>
             </div>
           </div>
-          <div class="pa-approw">
-            <div class="pa-approw-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l9 5v10l-9 5-9-5V7l9-5z"/></svg></div>
+          <div class="pa-approw" onclick="paApp(this, 'classification')">
+            <div class="pa-approw-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="18" rx="2"/><path d="M9 4V2h6v2"/><polyline points="8,12 11,15 16,9"/></svg></div>
             <div class="pa-approw-meta">
               <div class="pa-approw-name">Classification Review Intake</div>
               <div class="pa-approw-sub"><span class="pa-approw-kind">Form</span> · 5 days ago</div>
             </div>
           </div>
-          <div class="pa-approw">
-            <div class="pa-approw-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l9 5v10l-9 5-9-5V7l9-5z"/></svg></div>
+          <div class="pa-approw" onclick="paApp(this, 'exception')">
+            <div class="pa-approw-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5"/><polyline points="8,9 11,12 15,7"/><path d="M8 14l-2 8 6-3 6 3-2-8"/></svg></div>
             <div class="pa-approw-meta">
               <div class="pa-approw-name">Visitation Exception Approval</div>
               <div class="pa-approw-sub"><span class="pa-approw-kind">Canvas · Warden-facing</span> · 1 week ago</div>
@@ -7797,6 +8018,10 @@ body.dark .pp-activity-title { color: #f0f0f0; }
         </div>
       </div>
       <div class="pa-main">
+        <!-- ============================================================ -->
+        <!-- CANVAS A · Visitation Application Intake (the original hero) -->
+        <!-- ============================================================ -->
+        <div class="pa-canvas-wrap tab-active" data-pa-app="visitation">
         <!-- Stamp head: seal + identity + 4-step stepper + status/ADA -->
         <div class="pa-stamp-head">
           <div class="pa-stamp-id">
@@ -8029,8 +8254,949 @@ body.dark .pp-activity-title { color: #f0f0f0; }
           </div>
           <div class="pa-ds-chip" style="margin-top:10px;"><span class="dot"></span>Connected &middot; Dataverse: msdcr_visitor_applications &middot; Connector: Microsoft Dataverse</div>
         </div>
+        </div><!-- /pa-canvas-wrap visitation -->
+
+        <!-- ============================================================ -->
+        <!-- CANVAS B · Resident Grievance Intake (UC3) -->
+        <!-- ============================================================ -->
+        <div class="pa-canvas-wrap" data-pa-app="grievance">
+          <div class="pa-stamp-head">
+            <div class="pa-stamp-id">
+              <svg class="pa-stamp-seal" viewBox="0 0 100 100"><use href="#msdcrSeal"/></svg>
+              <div>
+                <div class="pa-stamp-t">Resident Grievance Intake &middot; v3.1</div>
+                <div class="pa-stamp-s">Power Apps &middot; MSDCR Case Management &middot; v3.1</div>
+                <div class="pa-stamp-m">Environment: MSDCR-Prod &middot; Dataverse: msdcr_grievances &middot; Audit-logged</div>
+              </div>
+            </div>
+            <div class="pa-stamp-stepper">
+              <div class="pa-step cur"><div class="pa-step-dot">1</div>Intake</div>
+              <div class="pa-step-bar"></div>
+              <div class="pa-step"><div class="pa-step-dot">2</div>Tier classification</div>
+              <div class="pa-step-bar"></div>
+              <div class="pa-step"><div class="pa-step-dot">3</div>Coordinator review</div>
+              <div class="pa-step-bar"></div>
+              <div class="pa-step"><div class="pa-step-dot">4</div>Resolved</div>
+            </div>
+            <div class="pa-stamp-right">
+              <span class="pa-stamp-chip">Draft &middot; auto-saved 10:12</span>
+              <span class="pa-stamp-chip tier">Tier: 30-day</span>
+            </div>
+          </div>
+
+          <div class="msdcr-crumb">
+            <div class="msdcr-crumb-path">
+              <strong>MSDCR Case Management</strong><span class="sep">&rsaquo;</span>Grievances<span class="sep">&rsaquo;</span>New Case <span class="id">#MSDCR-G-2026-044210</span>
+            </div>
+            <div class="msdcr-crumb-right">
+              <span class="pa-copilot-chip msdcr-upgrade">
+                <svg class="cp-sparkle" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2l1.7 5.3L19 9l-5.3 1.7L12 16l-1.7-5.3L5 9l5.3-1.7L12 2zm7 10l.9 2.6L22 15l-2.1.4L19 18l-.9-2.6L16 15l2.1-.4L19 12z"/></svg>
+                Grievance &amp; PRR Router can tier-classify this
+              </span>
+            </div>
+          </div>
+
+          <div class="pa-canvas msdcr-form" style="margin-top:14px;">
+            <div class="pa-layout-grid">
+              <div>
+                <div class="pa-section">
+                  <h4>Grievance details</h4>
+                  <div class="pa-section-sub">Auto-stamped case number; submitter choice drives routing pathway.</div>
+                </div>
+                <div class="pa-row2">
+                  <div class="pa-field with-check">
+                    <label class="pa-field-label">Case number<span class="req">*</span></label>
+                    <input class="pa-input msdcr filled" value="MSDCR-G-2026-044210" readonly/>
+                    <svg class="pa-field-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="5,12 10,17 19,7"/></svg>
+                  </div>
+                  <div class="pa-field with-check">
+                    <label class="pa-field-label">Submitted by<span class="req">*</span></label>
+                    <div class="pa-dropdown msdcr">Resident</div>
+                    <svg class="pa-field-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="5,12 10,17 19,7"/></svg>
+                  </div>
+                </div>
+                <div class="pa-row2">
+                  <div class="pa-field with-check">
+                    <label class="pa-field-label">Resident ID<span class="req">*</span></label>
+                    <input class="pa-input msdcr filled" value="R-2026-038842 &middot; Washington, K." readonly/>
+                    <svg class="pa-field-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="5,12 10,17 19,7"/></svg>
+                  </div>
+                  <div class="pa-field with-check">
+                    <label class="pa-field-label">Incident date<span class="req">*</span></label>
+                    <input class="pa-input msdcr filled" value="2026-04-18" readonly/>
+                    <svg class="pa-field-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="5,12 10,17 19,7"/></svg>
+                  </div>
+                </div>
+                <div class="pa-row2">
+                  <div class="pa-field with-check">
+                    <label class="pa-field-label">Facility unit<span class="req">*</span></label>
+                    <input class="pa-input msdcr filled" value="Complex 3, Unit 7A" readonly/>
+                    <svg class="pa-field-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="5,12 10,17 19,7"/></svg>
+                  </div>
+                  <div class="pa-field with-check">
+                    <label class="pa-field-label">Grievance type<span class="req">*</span></label>
+                    <div class="pa-dropdown msdcr">Medical</div>
+                    <svg class="pa-field-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="5,12 10,17 19,7"/></svg>
+                  </div>
+                </div>
+
+                <div class="pa-section" style="margin-top:22px;">
+                  <h4>Narrative</h4>
+                  <div class="pa-section-sub">Plain-language description of the incident and relief sought.</div>
+                </div>
+                <div class="pa-field">
+                  <textarea class="pa-input msdcr filled" style="min-height:88px;" readonly>On 2026-04-18 I was scheduled for my 10:00 AM medication administration and diabetes check at the Unit 7A clinic. I reported at 09:55 and was told by staff that the clinic was short-staffed and I would be rescheduled. I was not seen that day and my next scheduled check is not until 2026-04-25. I am asking for immediate medical follow-up and a written explanation.</textarea>
+                </div>
+
+                <div class="pa-section" style="margin-top:22px;">
+                  <h4>Supporting attachments</h4>
+                  <div class="pa-section-sub">Auto-scanned for PII by Microsoft Purview before routing.</div>
+                </div>
+                <div class="pa-field" style="display:flex; gap:10px; flex-wrap:wrap;">
+                  <div class="pa-filechip">medical-log-04-18.pdf &middot; 182 KB</div>
+                  <div class="pa-filechip">photo-medication-record.jpg &middot; 1.1 MB</div>
+                </div>
+
+                <div class="pa-section" style="margin-top:22px;">
+                  <h4>Agent handoff</h4>
+                  <div class="pa-section-sub">Copilot Studio agent proposes tier + routing; human coordinator confirms.</div>
+                </div>
+                <div class="pa-agent-card">
+                  <div class="pa-agent-card-head">Grievance &amp; PRR Router &middot; suggestion</div>
+                  <div class="pa-agent-card-body">
+                    <strong>Tier = 30-day</strong> (medical but non-life-threatening &middot; prior similar: 2). Confidence <strong>96%</strong>. Routing to: <strong>Unit 7A Coordinator</strong> + <strong>Medical Services ombudsman</strong>.
+                    <div style="margin-top:4px;">
+                      <span class="pa-agent-pill">Copilot Studio-built</span>
+                      <span class="pa-agent-pill">Foundry-evaluated 94.8% policy match</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="pa-section" style="margin-top:22px;">
+                  <h4>Consent &amp; routing</h4>
+                  <div class="pa-section-sub">Policy 6.02 acknowledged; medical review consent required for triage.</div>
+                </div>
+                <div class="pa-field">
+                  <label class="pa-check"><span class="pa-box" style="background:var(--msu-navy);border-color:var(--msu-navy);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:10px;">&#10003;</span>I acknowledge MSDCR Grievance Policy 6.02 and the non-retaliation clause</label>
+                </div>
+                <div class="pa-field">
+                  <label class="pa-check"><span class="pa-box" style="background:var(--msu-navy);border-color:var(--msu-navy);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:10px;">&#10003;</span>I consent to medical record review for grievance triage (HIPAA release)</label>
+                </div>
+                <div class="pa-field">
+                  <label class="pa-field-label">Signed by staff on duty</label>
+                  <div class="pa-signature-block">
+                    <div class="pa-signature-line">
+                      <span class="pa-signature-cursive">Officer D. Marquez</span>
+                      <span class="pa-signature-date">2026-04-19 &middot; 10:12 MST</span>
+                    </div>
+                    <div class="pa-signature-meta">
+                      <svg class="lock-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
+                      <span>Hash: SHA-256 77&hellip;1b2</span>
+                      <span>&middot;</span>
+                      <span>Witnessed intake &middot; Entra</span>
+                      <span>&middot;</span>
+                      <span>Badge #4821</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pa-context-col">
+                <div class="pa-context-card">
+                  <h5>Resident context <span class="ctx-badge">Dataverse</span></h5>
+                  <div class="pa-ctx-match">
+                    <span class="ctx-match-hit">Matched to R-2026-038842</span>
+                    <span class="ctx-match-sub">Washington, K. &middot; Complex 3, Unit 7A</span>
+                    <span class="ctx-match-sub">Medical flags: Diabetes Type II · Hypertension</span>
+                    <span class="ctx-match-sub">Prior grievances (12 mo): 2 medical &middot; 0 unresolved</span>
+                  </div>
+                </div>
+                <div class="pa-context-card">
+                  <h5>SLA timer preview</h5>
+                  <ul class="pa-ctx-list">
+                    <li class="ok"><span class="ci"></span>Tier 30-day &middot; response due 2026-05-18</li>
+                    <li class="ok"><span class="ci"></span>Coordinator acknowledgement: 48 hours</li>
+                    <li class="warn"><span class="ci"></span>Medical sub-track: 10-day flag set</li>
+                  </ul>
+                </div>
+                <div class="pa-context-card">
+                  <h5>Relevant policy <span class="ctx-badge">Policy Copilot</span></h5>
+                  <div class="pa-ctx-policy-item">Grievance Policy 6.02 &mdash; Filing &amp; response tiers</div>
+                  <div class="pa-ctx-policy-item">DOP 704 &sect;3 &mdash; Medical escalation procedures</div>
+                  <div class="pa-ctx-policy-item">MSDCR 1.15 &mdash; Non-retaliation</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="pa-submit-row msdcr">
+              <button class="pa-submit-btn msdcr-secondary">Save as draft</button>
+              <button class="pa-submit-btn msdcr-primary">File grievance &middot; lock case #</button>
+              <div class="pa-submit-note">Routes to: <strong>Unit 7A Coordinator</strong><br/>SLA: 30 days (medical sub-track 10 days)</div>
+            </div>
+
+            <div class="pa-after-submit">
+              <strong>After submission</strong><span class="arr">&rarr;</span>Grievance &amp; PRR Router assigns tier<span class="arr">&rarr;</span>Power Automate: Grievance SLA Escalation starts 30-day timer<span class="arr">&rarr;</span>Unit Coordinator + Ombudsman notified in Teams<span class="arr">&rarr;</span>Case visible on <code style="font-family:'Cascadia Mono',Consolas,monospace;color:#742774;">family.msdcr.gov/grievance/status</code>
+            </div>
+
+            <div class="msdcr-audit-footer">
+              <span class="purview-ico">P</span>
+              <span class="af-seg">Field-level audit: <strong>9 changes captured</strong></span>
+              <span class="af-sep">&middot;</span>
+              <span class="af-seg">PII redaction: enabled</span>
+              <span class="af-sep">&middot;</span>
+              <span class="af-seg">Retention: 7 years (DOP 603)</span>
+              <span class="af-sep">&middot;</span>
+              <span class="af-seg">Audit sink: Microsoft Purview</span>
+              <span class="af-sep">&middot;</span>
+              <span class="af-seg">Ref: <strong>MSDCR-G-2026-044210</strong></span>
+            </div>
+            <div class="pa-ds-chip" style="margin-top:10px;"><span class="dot"></span>Connected &middot; Dataverse: msdcr_grievances &middot; Connector: Microsoft Dataverse</div>
+          </div>
+        </div><!-- /pa-canvas-wrap grievance -->
+
+        <!-- ============================================================ -->
+        <!-- CANVAS C · Public Records Request Intake (UC3) -->
+        <!-- ============================================================ -->
+        <div class="pa-canvas-wrap" data-pa-app="prr">
+          <div class="pa-stamp-head">
+            <div class="pa-stamp-id">
+              <svg class="pa-stamp-seal" viewBox="0 0 100 100"><use href="#msdcrSeal"/></svg>
+              <div>
+                <div class="pa-stamp-t">Public Records Request Intake &middot; v2.0</div>
+                <div class="pa-stamp-s">Power Apps &middot; MSDCR Records Office</div>
+                <div class="pa-stamp-m">Dataverse: msdcr_public_records &middot; Audit + redaction pipeline</div>
+              </div>
+            </div>
+            <div class="pa-stamp-stepper">
+              <div class="pa-step cur"><div class="pa-step-dot">1</div>Intake</div>
+              <div class="pa-step-bar"></div>
+              <div class="pa-step"><div class="pa-step-dot">2</div>Scope + fee</div>
+              <div class="pa-step-bar"></div>
+              <div class="pa-step"><div class="pa-step-dot">3</div>Legal review</div>
+              <div class="pa-step-bar"></div>
+              <div class="pa-step"><div class="pa-step-dot">4</div>Fulfillment</div>
+              <div class="pa-step-bar"></div>
+              <div class="pa-step"><div class="pa-step-dot">5</div>Released</div>
+            </div>
+            <div class="pa-stamp-right">
+              <span class="pa-stamp-chip">Draft &middot; 10:18</span>
+              <span class="pa-stamp-chip clock">10-day statutory clock</span>
+            </div>
+          </div>
+
+          <div class="msdcr-crumb">
+            <div class="msdcr-crumb-path">
+              <strong>MSDCR Records Office</strong><span class="sep">&rsaquo;</span>Public Records<span class="sep">&rsaquo;</span>New Request <span class="id">#MSDCR-P-2026-0411007</span>
+            </div>
+            <div class="msdcr-crumb-right">
+              <span class="pa-copilot-chip msdcr-upgrade">
+                <svg class="cp-sparkle" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2l1.7 5.3L19 9l-5.3 1.7L12 16l-1.7-5.3L5 9l5.3-1.7L12 2zm7 10l.9 2.6L22 15l-2.1.4L19 18l-.9-2.6L16 15l2.1-.4L19 12z"/></svg>
+                Records Request Desk will pre-scan for PII &amp; CJIS
+              </span>
+            </div>
+          </div>
+
+          <div class="pa-canvas msdcr-form" style="margin-top:14px;">
+            <div class="pa-layout-grid">
+              <div>
+                <div class="pa-section">
+                  <h4>Requester details</h4>
+                  <div class="pa-section-sub">Identity verified via Microsoft Entra External ID (one-time verification for public portal).</div>
+                </div>
+                <div class="pa-row2">
+                  <div class="pa-field with-check">
+                    <label class="pa-field-label">Full name<span class="req">*</span></label>
+                    <input class="pa-input msdcr filled" value="Martinez, Daniela" readonly/>
+                    <svg class="pa-field-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="5,12 10,17 19,7"/></svg>
+                  </div>
+                  <div class="pa-field with-check">
+                    <label class="pa-field-label">Organization</label>
+                    <input class="pa-input msdcr filled" value="Meridian Free Press" readonly/>
+                    <svg class="pa-field-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="5,12 10,17 19,7"/></svg>
+                  </div>
+                </div>
+                <div class="pa-row2">
+                  <div class="pa-field with-check">
+                    <label class="pa-field-label">Email<span class="req">*</span></label>
+                    <input class="pa-input msdcr filled" value="d.martinez@meridianfreepress.org" readonly/>
+                    <svg class="pa-field-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="5,12 10,17 19,7"/></svg>
+                  </div>
+                  <div class="pa-field with-check">
+                    <label class="pa-field-label">Phone</label>
+                    <input class="pa-input msdcr filled" value="(555) 802-6601" readonly/>
+                    <svg class="pa-field-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="5,12 10,17 19,7"/></svg>
+                  </div>
+                </div>
+                <div class="pa-field with-check">
+                  <label class="pa-field-label">Requester type<span class="req">*</span></label>
+                  <div class="pa-dropdown msdcr">Journalist</div>
+                  <svg class="pa-field-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="5,12 10,17 19,7"/></svg>
+                </div>
+
+                <div class="pa-section" style="margin-top:22px;">
+                  <h4>Request scope</h4>
+                  <div class="pa-section-sub">Scope defines the fee estimate, redaction surface, and 10-day statutory clock.</div>
+                </div>
+                <div class="pa-field with-check">
+                  <label class="pa-field-label">Records category<span class="req">*</span></label>
+                  <div class="pa-dropdown msdcr">Incident reports</div>
+                  <svg class="pa-field-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="5,12 10,17 19,7"/></svg>
+                </div>
+                <div class="pa-row2">
+                  <div class="pa-field">
+                    <label class="pa-field-label">Date range &mdash; start<span class="req">*</span></label>
+                    <input class="pa-input msdcr filled" value="2026-01-01" readonly/>
+                  </div>
+                  <div class="pa-field">
+                    <label class="pa-field-label">Date range &mdash; end<span class="req">*</span></label>
+                    <input class="pa-input msdcr filled" value="2026-03-31" readonly/>
+                  </div>
+                </div>
+                <div class="pa-field with-check">
+                  <label class="pa-field-label">Subject line<span class="req">*</span></label>
+                  <input class="pa-input msdcr filled" value="Q1 use-of-force incident reports &mdash; Complex 4" readonly/>
+                  <svg class="pa-field-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="5,12 10,17 19,7"/></svg>
+                </div>
+                <div class="pa-field">
+                  <label class="pa-check"><span class="pa-box" style="background:var(--msu-navy);border-color:var(--msu-navy);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:10px;">&#10003;</span>I agree to a fee estimate for records over 500 pages</label>
+                </div>
+
+                <div class="pa-section" style="margin-top:22px;">
+                  <h4>Redaction pre-screen</h4>
+                  <div class="pa-section-sub">Administrative pre-scan only; Legal Office performs statutory review before release.</div>
+                </div>
+                <div class="pa-agent-card">
+                  <div class="pa-agent-card-head">Records Request Desk &middot; pre-screen</div>
+                  <div class="pa-agent-card-body">
+                    Will pre-scan for <strong>resident PII</strong>, <strong>medical PII</strong>, and <strong>CJIS-protected</strong> data. Legal review occurs before release. Nothing is released by the agent; the agent never writes out public records.
+                    <div style="margin-top:4px;">
+                      <span class="pa-agent-pill">Copilot Studio</span>
+                      <span class="pa-agent-pill">Administrative only</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="pa-section" style="margin-top:22px;">
+                  <h4>Delivery method</h4>
+                  <div class="pa-section-sub">Secure portal is default for journalism &amp; legal requesters.</div>
+                </div>
+                <div class="pa-field">
+                  <div class="pa-radio-group">
+                    <span class="pa-radio"><span class="pa-dot"></span>Encrypted email</span>
+                    <span class="pa-radio sel"><span class="pa-dot"></span>Secure portal download</span>
+                    <span class="pa-radio"><span class="pa-dot"></span>Physical mail</span>
+                  </div>
+                </div>
+
+                <div class="pa-section" style="margin-top:22px;">
+                  <h4>Statutory clock</h4>
+                  <div class="pa-section-sub">Auto-extension available with written notice per MSDCR 9.01.</div>
+                </div>
+                <div class="pa-clock-block">
+                  Case <strong>#MSDCR-P-2026-0411007</strong> &middot; Filed 2026-04-11 &middot; <strong>Day 6 of 10</strong> statutory days &middot; Auto-extend available with written notice
+                  <div class="pa-clock-bar"><span class="fill"></span></div>
+                </div>
+              </div>
+
+              <div class="pa-context-col">
+                <div class="pa-context-card">
+                  <h5>Request routing <span class="ctx-badge">Dataverse</span></h5>
+                  <div class="pa-ctx-match">
+                    <span class="ctx-match-hit">New record &middot; MSDCR-P-&hellip;1007</span>
+                    <span class="ctx-match-sub">Assigned: <strong>A. Okoye</strong> &middot; Records Coordinator</span>
+                    <span class="ctx-match-sub">Est. page volume: 420 (below fee threshold)</span>
+                    <span class="ctx-match-sub">Prior requests by requester: 3 (all fulfilled)</span>
+                  </div>
+                </div>
+                <div class="pa-context-card">
+                  <h5>Redaction signal</h5>
+                  <ul class="pa-ctx-list">
+                    <li class="warn"><span class="ci"></span>3 matches: Resident PII likely in narrative fields</li>
+                    <li class="warn"><span class="ci"></span>1 match: CJIS criminal history reference</li>
+                    <li class="ok"><span class="ci"></span>No medical PII detected in Q1 dataset</li>
+                  </ul>
+                </div>
+                <div class="pa-context-card">
+                  <h5>Relevant policy <span class="ctx-badge">Policy Copilot</span></h5>
+                  <div class="pa-ctx-policy-item">MSDCR 9.01 &mdash; Public records procedure</div>
+                  <div class="pa-ctx-policy-item">Meridian PRA Statute &sect;552 &mdash; 10-day response</div>
+                  <div class="pa-ctx-policy-item">CJIS 5.9 &mdash; Criminal history limits</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="pa-submit-row msdcr">
+              <button class="pa-submit-btn msdcr-secondary">Save as draft</button>
+              <button class="pa-submit-btn msdcr-primary">Route to Records Office</button>
+              <div class="pa-submit-note">Routes to: <strong>A. Okoye</strong><br/>SLA: 10 statutory days</div>
+            </div>
+
+            <div class="pa-after-submit">
+              <strong>After submission</strong><span class="arr">&rarr;</span>Records Request Desk pre-screens PII/CJIS<span class="arr">&rarr;</span>Power Automate: PRR Intake Router assigns to Records Office coordinator<span class="arr">&rarr;</span>Legal review flagged if protected-class data present<span class="arr">&rarr;</span>Delivery via <code style="font-family:'Cascadia Mono',Consolas,monospace;color:#742774;">family.msdcr.gov</code> secure portal
+            </div>
+
+            <div class="msdcr-audit-footer">
+              <span class="purview-ico">P</span>
+              <span class="af-seg">Field-level audit: <strong>11 changes captured</strong></span>
+              <span class="af-sep">&middot;</span>
+              <span class="af-seg">PII redaction: enabled</span>
+              <span class="af-sep">&middot;</span>
+              <span class="af-seg">Retention: 10 years (DOP 605)</span>
+              <span class="af-sep">&middot;</span>
+              <span class="af-seg">Audit sink: Microsoft Purview</span>
+              <span class="af-sep">&middot;</span>
+              <span class="af-seg">Ref: <strong>MSDCR-P-2026-0411007</strong></span>
+            </div>
+            <div class="pa-ds-chip" style="margin-top:10px;"><span class="dot"></span>Connected &middot; Dataverse: msdcr_public_records &middot; Connector: Microsoft Dataverse</div>
+          </div>
+        </div><!-- /pa-canvas-wrap prr -->
+
+        <!-- ============================================================ -->
+        <!-- CANVAS D · Reentry Intake Assessment (UC4) -->
+        <!-- ============================================================ -->
+        <div class="pa-canvas-wrap" data-pa-app="reentry">
+          <div class="pa-stamp-head">
+            <div class="pa-stamp-id">
+              <svg class="pa-stamp-seal" viewBox="0 0 100 100"><use href="#msdcrSeal"/></svg>
+              <div>
+                <div class="pa-stamp-t">Reentry Intake Assessment &middot; v4.2</div>
+                <div class="pa-stamp-s">Power Apps &middot; MSDCR Reentry &amp; Programs &middot; canvas app</div>
+                <div class="pa-stamp-m">Dataverse: msdcr_reentry_assessments &middot; integrates with MCRP partner intake</div>
+              </div>
+            </div>
+            <div class="pa-stamp-stepper">
+              <div class="pa-step cur"><div class="pa-step-dot">1</div>Assessment</div>
+              <div class="pa-step-bar"></div>
+              <div class="pa-step"><div class="pa-step-dot">2</div>Program match</div>
+              <div class="pa-step-bar"></div>
+              <div class="pa-step"><div class="pa-step-dot">3</div>Coordinator approval</div>
+              <div class="pa-step-bar"></div>
+              <div class="pa-step"><div class="pa-step-dot">4</div>Enrollment</div>
+              <div class="pa-step-bar"></div>
+              <div class="pa-step"><div class="pa-step-dot">5</div>Release planning</div>
+            </div>
+            <div class="pa-stamp-right">
+              <span class="pa-stamp-chip">Draft &middot; 10:25</span>
+              <span class="pa-stamp-chip release">Release in 48 days</span>
+            </div>
+          </div>
+
+          <div class="msdcr-crumb">
+            <div class="msdcr-crumb-path">
+              <strong>MSDCR Reentry</strong><span class="sep">&rsaquo;</span>Assessments<span class="sep">&rsaquo;</span>Resident Hernandez, M. <span class="id">#MSDCR-R-2026-018372</span>
+            </div>
+            <div class="msdcr-crumb-right">
+              <span class="pa-copilot-chip msdcr-upgrade">
+                <svg class="cp-sparkle" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2l1.7 5.3L19 9l-5.3 1.7L12 16l-1.7-5.3L5 9l5.3-1.7L12 2zm7 10l.9 2.6L22 15l-2.1.4L19 18l-.9-2.6L16 15l2.1-.4L19 12z"/></svg>
+                Reentry Program Match has 3 placement suggestions
+              </span>
+            </div>
+          </div>
+
+          <div class="pa-canvas msdcr-form" style="margin-top:14px;">
+            <div class="pa-layout-grid">
+              <div>
+                <div class="pa-section">
+                  <h4>Resident context</h4>
+                  <div class="pa-section-sub">Pulled from CorrectionsCore; housing and parole officer assignments are required before coordinator review.</div>
+                </div>
+                <div class="pa-row2">
+                  <div class="pa-field with-check">
+                    <label class="pa-field-label">Resident ID<span class="req">*</span></label>
+                    <input class="pa-input msdcr filled" value="R-2025-029184 &middot; Hernandez, Manuel" readonly/>
+                    <svg class="pa-field-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="5,12 10,17 19,7"/></svg>
+                  </div>
+                  <div class="pa-field with-check">
+                    <label class="pa-field-label">Projected release date<span class="req">*</span></label>
+                    <input class="pa-input msdcr filled" value="2026-06-09" readonly/>
+                    <svg class="pa-field-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="5,12 10,17 19,7"/></svg>
+                  </div>
+                </div>
+                <div class="pa-row2">
+                  <div class="pa-field">
+                    <label class="pa-field-label">Housing plan status<span class="req">*</span></label>
+                    <div class="pa-dropdown msdcr" style="background:#fbf3dc;border-color:#e7cf94;color:#8a5c00;">Pending</div>
+                    <span class="pa-advisory">Pending status blocks coordinator approval step; Program Match will propose housing.</span>
+                  </div>
+                  <div class="pa-field with-check">
+                    <label class="pa-field-label">Parole officer assigned<span class="req">*</span></label>
+                    <div class="pa-dropdown msdcr">Ofc. Teresa Lang &middot; MCRP District 3</div>
+                    <svg class="pa-field-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="5,12 10,17 19,7"/></svg>
+                  </div>
+                </div>
+
+                <div class="pa-section" style="margin-top:22px;">
+                  <h4>Needs assessment</h4>
+                  <div class="pa-section-sub">Coordinator-reviewed. Needs drive Program Match scoring.</div>
+                </div>
+                <div class="pa-needs">
+                  <span class="pa-needs-label">Housing</span>
+                  <span class="pa-needs-pills"><span class="np">None</span><span class="np">Moderate</span><span class="np sel-high">High</span></span>
+                  <span class="pa-needs-label">Employment readiness</span>
+                  <span class="pa-needs-pills"><span class="np">None</span><span class="np sel-mod">Moderate</span><span class="np">High</span></span>
+                  <span class="pa-needs-label">Mental health</span>
+                  <span class="pa-needs-pills"><span class="np">None</span><span class="np sel-mod">Moderate</span><span class="np">High</span></span>
+                  <span class="pa-needs-label">Substance-use support</span>
+                  <span class="pa-needs-pills"><span class="np">None</span><span class="np">Moderate</span><span class="np sel-high">High</span></span>
+                  <span class="pa-needs-label">Education / GED</span>
+                  <span class="pa-needs-pills"><span class="np sel-none">None</span><span class="np">Moderate</span><span class="np">High</span></span>
+                  <span class="pa-needs-label">Family reunification support</span>
+                  <span class="pa-needs-pills"><span class="np">None</span><span class="np sel-mod">Moderate</span><span class="np">High</span></span>
+                  <span class="pa-needs-label">Transportation</span>
+                  <span class="pa-needs-pills"><span class="np">None</span><span class="np sel-mod">Moderate</span><span class="np">High</span></span>
+                  <span class="pa-needs-label">ID replacement</span>
+                  <span class="pa-needs-pills"><span class="np">None</span><span class="np sel-mod">Moderate</span><span class="np">High</span></span>
+                </div>
+
+                <div class="pa-section" style="margin-top:22px;">
+                  <h4>Program match suggestions</h4>
+                  <div class="pa-section-sub">Ranked by fit score; final enrollment requires coordinator approval.</div>
+                </div>
+                <div class="pa-agent-card">
+                  <div class="pa-agent-card-head">Reentry Program Match &middot; top suggestions</div>
+                  <div class="pa-agent-card-body">
+                    <div><strong>1 &middot; Housing</strong> &mdash; Pathway House (2 open beds, 12 mi from MCRP)</div>
+                    <div><strong>2 &middot; Employment</strong> &mdash; Welders Guild apprenticeship (cohort May 12, 94% completion)</div>
+                    <div><strong>3 &middot; MH</strong> &mdash; Group CBT weekly, Thursdays</div>
+                    <div style="margin-top:4px;">
+                      <span class="pa-agent-pill">Copilot Studio</span>
+                      <span class="pa-agent-pill">Foundry eval 94.1% placement accuracy</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="pa-section" style="margin-top:22px;">
+                  <h4>Risk / protective factors</h4>
+                  <div class="pa-section-sub">Static only &mdash; officer confirms. Agent cannot modify risk flags.</div>
+                </div>
+                <div class="pa-info-card">
+                  <div><strong>Protective</strong>: Family engagement &mdash; <strong>yes</strong> (weekly visits confirmed)</div>
+                  <div><strong>Risk</strong>: Prior SUD history &mdash; <strong>yes</strong> (meets Pathway House eligibility)</div>
+                  <div><strong>Housing stability (pre-incarceration)</strong>: Moderate (12 mo stable, then lapse)</div>
+                </div>
+
+                <div class="pa-section" style="margin-top:22px;">
+                  <h4>Coordinator review</h4>
+                  <div class="pa-section-sub">Reviewer: Alex Rivera &middot; next scheduled review 2026-05-06.</div>
+                </div>
+                <div class="pa-field">
+                  <label class="pa-field-label">Coordinator signature</label>
+                  <div class="pa-signature-block">
+                    <div class="pa-signature-line">
+                      <span class="pa-signature-cursive">Alex Rivera</span>
+                      <span class="pa-signature-date">2026-04-22 &middot; 10:25 MST</span>
+                    </div>
+                    <div class="pa-signature-meta">
+                      <svg class="lock-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
+                      <span>Hash: SHA-256 8c&hellip;4f1</span>
+                      <span>&middot;</span>
+                      <span>Signed in Power Apps (Entra)</span>
+                      <span>&middot;</span>
+                      <span>Next review: 2026-05-06</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pa-context-col">
+                <div class="pa-context-card">
+                  <h5>MCRP capacity <span class="ctx-badge">Partner</span></h5>
+                  <div class="pa-ctx-match">
+                    <span class="ctx-match-hit">District 3 &middot; 14 open placements</span>
+                    <span class="ctx-match-sub">Pathway House: 2 beds &middot; 4 on waitlist</span>
+                    <span class="ctx-match-sub">Welders Guild cohort: 3 seats remaining</span>
+                    <span class="ctx-match-sub">Transportation voucher pool: OK</span>
+                  </div>
+                </div>
+                <div class="pa-context-card">
+                  <h5>Enrollment gating</h5>
+                  <ul class="pa-ctx-list">
+                    <li class="ok"><span class="ci"></span>Needs assessment complete</li>
+                    <li class="warn"><span class="ci"></span>Housing plan pending (blocks coordinator)</li>
+                    <li class="ok"><span class="ci"></span>PO assigned &middot; eligibility confirmed</li>
+                  </ul>
+                </div>
+                <div class="pa-context-card">
+                  <h5>Relevant policy <span class="ctx-badge">Policy Copilot</span></h5>
+                  <div class="pa-ctx-policy-item">DOP 820 &mdash; Reentry program match criteria</div>
+                  <div class="pa-ctx-policy-item">MSDCR 7.12 &mdash; Pre-release planning</div>
+                  <div class="pa-ctx-policy-item">MCRP MOU &sect;4 &mdash; Partner intake</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="pa-submit-row msdcr">
+              <button class="pa-submit-btn msdcr-secondary">Save as draft</button>
+              <button class="pa-submit-btn msdcr-primary">Send to coordinator for approval</button>
+              <div class="pa-submit-note">Routes to: <strong>A. Rivera</strong><br/>SLA: 5 business days</div>
+            </div>
+
+            <div class="pa-after-submit">
+              <strong>After submission</strong><span class="arr">&rarr;</span>Reentry Program Match scores program fit<span class="arr">&rarr;</span>Power Automate: Reentry Program Match Notifier pings MCRP coordinators<span class="arr">&rarr;</span>Coordinator approves<span class="arr">&rarr;</span>Enrollment confirmations<span class="arr">&rarr;</span>Release-planning letter drafted in Word
+            </div>
+
+            <div class="msdcr-audit-footer">
+              <span class="purview-ico">P</span>
+              <span class="af-seg">Field-level audit: <strong>22 changes captured</strong></span>
+              <span class="af-sep">&middot;</span>
+              <span class="af-seg">PII redaction: enabled</span>
+              <span class="af-sep">&middot;</span>
+              <span class="af-seg">Retention: 5 years (DOP 820)</span>
+              <span class="af-sep">&middot;</span>
+              <span class="af-seg">Audit sink: Microsoft Purview</span>
+              <span class="af-sep">&middot;</span>
+              <span class="af-seg">Ref: <strong>MSDCR-R-2026-018372</strong></span>
+            </div>
+            <div class="pa-ds-chip" style="margin-top:10px;"><span class="dot"></span>Connected &middot; Dataverse: msdcr_reentry_assessments &middot; Connector: Microsoft Dataverse + CorrectionsCore</div>
+          </div>
+        </div><!-- /pa-canvas-wrap reentry -->
+
+        <!-- ============================================================ -->
+        <!-- CANVAS E · Classification Review Intake (UC6) -->
+        <!-- ============================================================ -->
+        <div class="pa-canvas-wrap" data-pa-app="classification">
+          <div class="pa-stamp-head">
+            <div class="pa-stamp-id">
+              <svg class="pa-stamp-seal" viewBox="0 0 100 100"><use href="#msdcrSeal"/></svg>
+              <div>
+                <div class="pa-stamp-t">Classification Review Intake &middot; v5.0</div>
+                <div class="pa-stamp-s">Power Apps &middot; MSDCR Classification &middot; Foundry-evaluated</div>
+                <div class="pa-stamp-m">Dataverse: msdcr_classification_reviews &middot; Foundry evaluation spine &middot; Human approval required</div>
+              </div>
+            </div>
+            <div class="pa-stamp-stepper">
+              <div class="pa-step cur"><div class="pa-step-dot">1</div>Intake</div>
+              <div class="pa-step-bar"></div>
+              <div class="pa-step"><div class="pa-step-dot">2</div>Packet assembly</div>
+              <div class="pa-step-bar"></div>
+              <div class="pa-step"><div class="pa-step-dot">3</div>Foundry eval</div>
+              <div class="pa-step-bar"></div>
+              <div class="pa-step"><div class="pa-step-dot">4</div>Officer approval</div>
+              <div class="pa-step-bar"></div>
+              <div class="pa-step"><div class="pa-step-dot">5</div>Hearing docket</div>
+            </div>
+            <div class="pa-stamp-right">
+              <span class="pa-stamp-chip">Draft &middot; 10:32</span>
+              <span class="pa-stamp-chip approval">Human approval required</span>
+            </div>
+          </div>
+
+          <div class="msdcr-crumb">
+            <div class="msdcr-crumb-path">
+              <strong>MSDCR Classification</strong><span class="sep">&rsaquo;</span>Reviews<span class="sep">&rsaquo;</span>Resident Patel, J. <span class="id">#MSDCR-C-2026-018372</span>
+            </div>
+            <div class="msdcr-crumb-right">
+              <span class="pa-copilot-chip msdcr-upgrade">
+                <svg class="cp-sparkle" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2l1.7 5.3L19 9l-5.3 1.7L12 16l-1.7-5.3L5 9l5.3-1.7L12 2zm7 10l.9 2.6L22 15l-2.1.4L19 18l-.9-2.6L16 15l2.1-.4L19 12z"/></svg>
+                Classification Packet Prep is assembling
+              </span>
+            </div>
+          </div>
+
+          <div class="pa-canvas msdcr-form" style="margin-top:14px;">
+            <div class="pa-layout-grid">
+              <div>
+                <div class="pa-section">
+                  <h4>Resident</h4>
+                  <div class="pa-section-sub">Read-only identity &amp; custody facts. Sourced from CorrectionsCore.</div>
+                </div>
+                <div class="pa-row2">
+                  <div class="pa-field with-check">
+                    <label class="pa-field-label">Resident ID<span class="req">*</span></label>
+                    <input class="pa-input msdcr filled" value="R-2024-018372 &middot; Patel, J." readonly/>
+                    <svg class="pa-field-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="5,12 10,17 19,7"/></svg>
+                  </div>
+                  <div class="pa-field with-check">
+                    <label class="pa-field-label">Current classification</label>
+                    <input class="pa-input msdcr filled" value="Medium (level 3)" readonly/>
+                    <svg class="pa-field-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="5,12 10,17 19,7"/></svg>
+                  </div>
+                </div>
+                <div class="pa-row2">
+                  <div class="pa-field with-check">
+                    <label class="pa-field-label">Housing</label>
+                    <input class="pa-input msdcr filled" value="Complex 2, Unit 4B" readonly/>
+                    <svg class="pa-field-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="5,12 10,17 19,7"/></svg>
+                  </div>
+                  <div class="pa-field with-check">
+                    <label class="pa-field-label">Time to release</label>
+                    <input class="pa-input msdcr filled" value="48 days" readonly/>
+                    <svg class="pa-field-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="5,12 10,17 19,7"/></svg>
+                  </div>
+                </div>
+
+                <div class="pa-section" style="margin-top:22px;">
+                  <h4>Trigger for review</h4>
+                  <div class="pa-section-sub">Determines packet scope and Foundry evaluation rubric.</div>
+                </div>
+                <div class="pa-field with-check">
+                  <label class="pa-field-label">Trigger type<span class="req">*</span></label>
+                  <div class="pa-dropdown msdcr">Pre-release</div>
+                  <svg class="pa-field-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="5,12 10,17 19,7"/></svg>
+                </div>
+
+                <div class="pa-section" style="margin-top:22px;">
+                  <h4>Supporting records &mdash; auto-assembled</h4>
+                  <div class="pa-section-sub">Auto-included from CorrectionsCore &middot; officer may toggle individual items.</div>
+                </div>
+                <div class="pa-autolist">
+                  <div class="pa-autolist-row"><span class="chk">&#10003;</span>Disciplinary history &middot; last 12 mo<span class="src">CorrectionsCore</span></div>
+                  <div class="pa-autolist-row"><span class="chk">&#10003;</span>Program completion certificates<span class="src">CorrectionsCore</span></div>
+                  <div class="pa-autolist-row"><span class="chk">&#10003;</span>Housing assignment history<span class="src">CorrectionsCore</span></div>
+                  <div class="pa-autolist-row"><span class="chk">&#10003;</span>Medical admin notes<span class="src">Dataverse</span></div>
+                  <div class="pa-autolist-row"><span class="chk">&#10003;</span>Visitation log<span class="src">msdcr_visitor_applications</span></div>
+                  <div class="pa-autolist-row"><span class="chk">&#10003;</span>Previous classification recommendations<span class="src">CorrectionsCore</span></div>
+                </div>
+
+                <div class="pa-section" style="margin-top:22px;">
+                  <h4>Packet evaluation</h4>
+                  <div class="pa-section-sub">Foundry benchmarks every assembled packet before it reaches the officer.</div>
+                </div>
+                <div class="pa-foundry-card">
+                  <div class="pa-foundry-head">Classification Packet Prep &middot; Foundry evaluation</div>
+                  <div class="pa-foundry-nums">
+                    <div class="pa-foundry-num"><div class="n">98.2%</div><div class="l">Policy-ground match</div></div>
+                    <div class="pa-foundry-num"><div class="n">0.3%</div><div class="l">Hallucination rate</div></div>
+                    <div class="pa-foundry-num"><div class="n">100%</div><div class="l">Citation-verified</div></div>
+                  </div>
+                  <div class="pa-foundry-note">Packets below 95% policy-ground match route for supervisor review before officer approval.</div>
+                  <span class="pa-foundry-chip">Packet #7 of 7 on Thursday's docket</span>
+                </div>
+
+                <div class="pa-section" style="margin-top:22px;">
+                  <h4>Approval gate</h4>
+                  <div class="pa-section-sub">Human sign-off is a hard gate &mdash; no packet reaches the hearing docket without it.</div>
+                </div>
+                <div class="pa-approval-gate">
+                  <div class="gate-head">No packet is submitted to hearing without officer approval</div>
+                  <div style="font-size:11.5px; color:var(--gray-160); line-height:1.5;">The agent can assemble and evaluate. Only the named Classification Officer can route to the hearing docket.</div>
+                  <div class="gate-row">
+                    <div class="pa-dropdown pending">Classification Officer &middot; T. Reilly <span style="margin-left:auto;font-size:10px;color:#b02a1b;font-weight:700;">PENDING</span></div>
+                    <button class="pa-submit-btn approval is-disabled" disabled>Approve &amp; route to hearing</button>
+                  </div>
+                  <div style="margin-top:8px; font-size:10.5px; color:var(--gray-130); font-style:italic;">Pending Foundry eval + officer sign-off</div>
+                </div>
+              </div>
+
+              <div class="pa-context-col">
+                <div class="pa-context-card">
+                  <h5>Docket <span class="ctx-badge">Hearings</span></h5>
+                  <div class="pa-ctx-match">
+                    <span class="ctx-match-hit">Thursday 2026-04-23 &middot; 7 packets</span>
+                    <span class="ctx-match-sub">Chair: Officer T. Reilly</span>
+                    <span class="ctx-match-sub">Location: Central Admin &middot; Hearing Room B</span>
+                    <span class="ctx-match-sub">This packet queue position: <strong>#7</strong></span>
+                  </div>
+                </div>
+                <div class="pa-context-card">
+                  <h5>Compliance signals</h5>
+                  <ul class="pa-ctx-list">
+                    <li class="ok"><span class="ci"></span>Foundry policy-ground match 98.2% (pass &ge; 95%)</li>
+                    <li class="ok"><span class="ci"></span>Citation-verified 100%</li>
+                    <li class="warn"><span class="ci"></span>Officer sign-off outstanding</li>
+                  </ul>
+                </div>
+                <div class="pa-context-card">
+                  <h5>Relevant policy <span class="ctx-badge">Policy Copilot</span></h5>
+                  <div class="pa-ctx-policy-item">DOP 501 &mdash; Classification review triggers</div>
+                  <div class="pa-ctx-policy-item">DOP 504 &mdash; Packet composition &amp; citation</div>
+                  <div class="pa-ctx-policy-item">MSDCR Policy Manual rev 2026R1</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="pa-submit-row msdcr">
+              <button class="pa-submit-btn msdcr-secondary">Save draft</button>
+              <button class="pa-submit-btn approval is-disabled" disabled>Approve &amp; route &mdash; awaiting officer</button>
+              <div class="pa-submit-note">Approver: <strong>Officer T. Reilly</strong><br/>Gate: Foundry eval + sign-off</div>
+            </div>
+
+            <div class="pa-after-submit">
+              <strong>After officer approval</strong><span class="arr">&rarr;</span>Classification Packet Prep assembles from CorrectionsCore<span class="arr">&rarr;</span>Microsoft Foundry evaluates against MSDCR Policy Manual rev 2026R1<span class="arr">&rarr;</span>Classification Officer reviews and signs<span class="arr">&rarr;</span>Added to Thursday hearing docket<span class="arr">&rarr;</span>Purview audit log
+            </div>
+
+            <div class="msdcr-audit-footer">
+              <span class="purview-ico">P</span>
+              <span class="af-seg">Field-level audit: <strong>18 changes captured</strong></span>
+              <span class="af-sep">&middot;</span>
+              <span class="af-seg">PII redaction: enabled</span>
+              <span class="af-sep">&middot;</span>
+              <span class="af-seg">Retention: 10 years (DOP 504)</span>
+              <span class="af-sep">&middot;</span>
+              <span class="af-seg">Audit sink: Microsoft Purview + Foundry eval log</span>
+              <span class="af-sep">&middot;</span>
+              <span class="af-seg">Ref: <strong>MSDCR-C-2026-018372</strong></span>
+            </div>
+            <div class="pa-ds-chip" style="margin-top:10px;"><span class="dot"></span>Connected &middot; Dataverse: msdcr_classification_reviews &middot; Foundry eval spine</div>
+          </div>
+        </div><!-- /pa-canvas-wrap classification -->
+
+        <!-- ============================================================ -->
+        <!-- CANVAS F · Visitation Exception Approval (UC2 · Warden) -->
+        <!-- ============================================================ -->
+        <div class="pa-canvas-wrap" data-pa-app="exception">
+          <div class="pa-stamp-head">
+            <div class="pa-stamp-id">
+              <svg class="pa-stamp-seal" viewBox="0 0 100 100"><use href="#msdcrSeal"/></svg>
+              <div>
+                <div class="pa-stamp-t">Visitation Exception Approval &middot; v1.4</div>
+                <div class="pa-stamp-s">Power Apps &middot; Warden Review &middot; MSDCR &middot; canvas app (Warden-facing)</div>
+                <div class="pa-stamp-m">Dataverse: msdcr_visitation_exceptions &middot; Routed by Visitation Front Door agent</div>
+              </div>
+            </div>
+            <div class="pa-stamp-stepper">
+              <div class="pa-step done"><div class="pa-step-dot">&#10003;</div>Front Door triage</div>
+              <div class="pa-step-bar done"></div>
+              <div class="pa-step done"><div class="pa-step-dot">&#10003;</div>Coordinator</div>
+              <div class="pa-step-bar done"></div>
+              <div class="pa-step cur"><div class="pa-step-dot">3</div>Warden review</div>
+              <div class="pa-step-bar"></div>
+              <div class="pa-step"><div class="pa-step-dot">4</div>Decision logged</div>
+            </div>
+            <div class="pa-stamp-right">
+              <span class="pa-stamp-chip neutral">Pending &middot; Warden Reilly</span>
+              <span class="pa-stamp-chip amber">2 pending &gt;48h</span>
+            </div>
+          </div>
+
+          <div class="msdcr-crumb">
+            <div class="msdcr-crumb-path">
+              <strong>Warden Review Queue</strong><span class="sep">&rsaquo;</span>Visitation Exceptions<span class="sep">&rsaquo;</span>Patel, J. <span class="id">#MSDCR-X-2026-044219</span>
+            </div>
+            <div class="msdcr-crumb-right">
+              <span class="pa-copilot-chip msdcr-upgrade">
+                <svg class="cp-sparkle" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2l1.7 5.3L19 9l-5.3 1.7L12 16l-1.7-5.3L5 9l5.3-1.7L12 2zm7 10l.9 2.6L22 15l-2.1.4L19 18l-.9-2.6L16 15l2.1-.4L19 12z"/></svg>
+                Front Door pre-triaged &middot; Coordinator concurs
+              </span>
+            </div>
+          </div>
+
+          <div class="pa-canvas msdcr-form" style="margin-top:14px;">
+            <div class="pa-layout-grid">
+              <div>
+                <div class="pa-section">
+                  <h4>Exception context</h4>
+                  <div class="pa-section-sub">Summary of the request and the applicable policy rule the exception is against.</div>
+                </div>
+                <div class="pa-xcard">
+                  <h5>Request summary</h5>
+                  Family member <strong>Jessica Huang</strong> requests video-visit eligibility for resident <strong>J. Patel</strong> following his 2026-04-19 medical admin flag. Standard rule: <strong>30-day post-medical cooldown</strong>. Exception reason cited: &ldquo;pre-release reintegration plan calls for increased family contact per Reentry Program Match.&rdquo;
+                </div>
+
+                <div class="pa-section" style="margin-top:22px;">
+                  <h4>Agent assessment</h4>
+                  <div class="pa-section-sub">Policy-grounded reasoning &middot; cross-checked against the resident's reentry plan.</div>
+                </div>
+                <div class="pa-agent-card">
+                  <div class="pa-agent-card-head">Visitation Front Door &middot; assessment</div>
+                  <div class="pa-agent-card-body">
+                    Eligible for video visit under <strong>policy 4.07</strong> exception clause (medical cooldown waiver for pre-release). Cross-check with <strong>Reentry Program Match</strong>: <strong>YES</strong> &middot; active pre-release reintegration plan on file. Recommendation: <strong>approve with 15-minute limit</strong>.
+                    <div style="margin-top:4px;">
+                      <span class="pa-agent-pill">Copilot Studio</span>
+                      <span class="pa-agent-pill">Cross-agent check: Reentry Program Match</span>
+                      <span class="pa-agent-pill">Policy-ground 97.4%</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="pa-section" style="margin-top:22px;">
+                  <h4>Supporting documents</h4>
+                  <div class="pa-section-sub">Click-through (read-only) for Warden reference during decision.</div>
+                </div>
+                <div class="pa-xdoclist">
+                  <div class="pa-filechip">Policy 4.07 &mdash; medical cooldown exceptions</div>
+                  <div class="pa-filechip">Reentry plan #MSDCR-R-2026-018372</div>
+                  <div class="pa-filechip">Prior visit history &middot; 12 video visits, 0 incidents</div>
+                </div>
+
+                <div class="pa-section" style="margin-top:22px;">
+                  <h4>Warden decision</h4>
+                  <div class="pa-section-sub">Your decision is final and logs to the applicant's portal record in real time.</div>
+                </div>
+                <div class="pa-decision-row">
+                  <button class="pa-decision-btn approve">Approve<span class="sub">Per Front Door recommendation</span></button>
+                  <button class="pa-decision-btn conditions">Approve with conditions<span class="sub">e.g. 15-min cap</span></button>
+                  <button class="pa-decision-btn deny">Deny<span class="sub">Rationale required</span></button>
+                </div>
+                <div class="pa-field">
+                  <label class="pa-field-label">Decision rationale <span style="color:var(--gray-130); font-weight:500; font-size:10.5px;">(required if Deny)</span></label>
+                  <textarea class="pa-input msdcr" style="min-height:66px;" placeholder="Type your rationale. Decision rationale is included in the applicant letter and the Purview audit record."></textarea>
+                </div>
+                <div class="pa-field">
+                  <label class="pa-field-label">Warden signature</label>
+                  <div class="pa-signature-block">
+                    <div class="pa-signature-line">
+                      <span class="pa-signature-cursive">Warden T. Reilly</span>
+                      <span class="pa-signature-date">2026-04-22 &middot; 10:38 MST</span>
+                    </div>
+                    <div class="pa-signature-meta">
+                      <svg class="lock-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
+                      <span>Hash: SHA-256 a0&hellip;7cc</span>
+                      <span>&middot;</span>
+                      <span>Signed in Power Apps (Entra)</span>
+                      <span>&middot;</span>
+                      <span>Badge #W-0011</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pa-context-col">
+                <div class="pa-context-card">
+                  <h5>Applicant context <span class="ctx-badge">Portal</span></h5>
+                  <div class="pa-ctx-match">
+                    <span class="ctx-match-hit">Jessica Huang &middot; verified portal user</span>
+                    <span class="ctx-match-sub">Relationship: Spouse</span>
+                    <span class="ctx-match-sub">Background check: current (3/22/2026)</span>
+                    <span class="ctx-match-sub">Status: awaiting Warden decision since 2026-04-21 09:47</span>
+                  </div>
+                </div>
+                <div class="pa-context-card">
+                  <h5>Cross-agent signals</h5>
+                  <ul class="pa-ctx-list">
+                    <li class="ok"><span class="ci"></span>Reentry Program Match: active plan on file</li>
+                    <li class="ok"><span class="ci"></span>Front Door: eligible under 4.07 waiver</li>
+                    <li class="ok"><span class="ci"></span>Visit history: 12 video &middot; 0 incidents</li>
+                  </ul>
+                </div>
+                <div class="pa-context-card">
+                  <h5>Relevant policy <span class="ctx-badge">Policy Copilot</span></h5>
+                  <div class="pa-ctx-policy-item">DOP 911 &sect;2.4 &mdash; Video-visit eligibility</div>
+                  <div class="pa-ctx-policy-item">MSDCR 4.07 &mdash; Medical cooldown exceptions</div>
+                  <div class="pa-ctx-policy-item">MSDCR 7.12 &mdash; Pre-release family contact</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="pa-submit-row msdcr">
+              <button class="pa-submit-btn msdcr-secondary">Defer &middot; request more info</button>
+              <button class="pa-submit-btn msdcr-primary">Log decision &middot; notify applicant</button>
+              <div class="pa-submit-note">Notifies: <strong>applicant + coordinator</strong><br/>Audit: Purview &middot; Dataverse</div>
+            </div>
+
+            <div class="pa-after-submit">
+              <strong>After decision</strong><span class="arr">&rarr;</span>Visitation Front Door pre-triaged<span class="arr">&rarr;</span>Coordinator recommended<span class="arr">&rarr;</span>Warden decides<span class="arr">&rarr;</span>Power Automate: Visitation Exception Routing logs decision and notifies applicant via <code style="font-family:'Cascadia Mono',Consolas,monospace;color:#742774;">family.msdcr.gov</code><span class="arr">&rarr;</span>Case visible to family member in &quot;Your recent activity&quot;
+            </div>
+
+            <div class="msdcr-audit-footer">
+              <span class="purview-ico">P</span>
+              <span class="af-seg">Field-level audit: <strong>6 changes captured</strong></span>
+              <span class="af-sep">&middot;</span>
+              <span class="af-seg">PII redaction: enabled</span>
+              <span class="af-sep">&middot;</span>
+              <span class="af-seg">Retention: 7 years (DOP 603)</span>
+              <span class="af-sep">&middot;</span>
+              <span class="af-seg">Audit sink: Microsoft Purview</span>
+              <span class="af-sep">&middot;</span>
+              <span class="af-seg">Ref: <strong>MSDCR-X-2026-044219</strong></span>
+            </div>
+            <div class="pa-ds-chip" style="margin-top:10px;"><span class="dot"></span>Connected &middot; Dataverse: msdcr_visitation_exceptions &middot; Front Door agent routed</div>
+          </div>
+        </div><!-- /pa-canvas-wrap exception -->
       </div>
       <div class="pa-rail">
+        <!-- RAIL · Visitation -->
+        <div class="pa-rail-panel tab-active" data-pa-rail="visitation">
         <div class="pa-rail-h">Connections</div>
         <div class="pa-conn">
           <div class="pa-conn-ico msdcr-dv">
@@ -8099,6 +9265,307 @@ body.dark .pp-activity-title { color: #f0f0f0; }
             <li>Geography: US Gov Cloud (GCC High)</li>
           </ul>
         </div>
+        </div><!-- /pa-rail-panel visitation -->
+
+        <!-- RAIL · Grievance -->
+        <div class="pa-rail-panel" data-pa-rail="grievance">
+          <div class="pa-rail-h">Connections</div>
+          <div class="pa-conn">
+            <div class="pa-conn-ico msdcr-dv"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5zm0 2.2L19 8v1.1l-7 3.9-7-3.9V8l7-3.8zM5 10.7l6 3.4v6.5l-6-3.4v-6.5zm8 3.4l6-3.4v6.5l-6 3.4v-6.5z"/></svg></div>
+            <div class="pa-conn-name"><strong>Dataverse</strong><span>msdcr_grievances</span></div>
+            <span class="pa-conn-pill ok">Connected</span>
+          </div>
+          <div class="pa-conn">
+            <div class="pa-conn-ico msdcr-dv"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5zm0 2.2L19 8v1.1l-7 3.9-7-3.9V8l7-3.8zM5 10.7l6 3.4v6.5l-6-3.4v-6.5zm8 3.4l6-3.4v6.5l-6 3.4v-6.5z"/></svg></div>
+            <div class="pa-conn-name"><strong>Dataverse</strong><span>msdcr_residents</span></div>
+            <span class="pa-conn-pill ok">Connected</span>
+          </div>
+          <div class="pa-conn">
+            <div class="pa-conn-ico msdcr-sp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9l-6-6z"/><polyline points="14,3 14,9 20,9"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg></div>
+            <div class="pa-conn-name"><strong>SharePoint</strong><span>Policy Manual library</span></div>
+            <span class="pa-conn-pill ok">Connected</span>
+          </div>
+          <div class="pa-conn">
+            <div class="pa-conn-ico msdcr-cs"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2L12 2zm7 12l1 3 3 1-3 1-1 3-1-3-3-1 3-1 1-3z"/></svg></div>
+            <div class="pa-conn-name"><strong>Copilot Studio</strong><span>Grievance &amp; PRR Router</span></div>
+            <span class="pa-conn-pill studio">Studio</span>
+          </div>
+          <div class="pa-conn">
+            <div class="pa-conn-ico msdcr-pa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12a7 7 0 0112-5"/><polyline points="16,4 17,7 14,8"/><path d="M19 12a7 7 0 01-12 5"/><polyline points="8,20 7,17 10,16"/></svg></div>
+            <div class="pa-conn-name"><strong>Power Automate</strong><span>Grievance SLA Escalation</span></div>
+            <span class="pa-conn-pill automate">Automate</span>
+          </div>
+          <div class="pa-conn">
+            <div class="pa-conn-ico msdcr-ms"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="8.5" height="8.5" fill="#f25022"/><rect x="12.5" y="3" width="8.5" height="8.5" fill="#7fba00"/><rect x="3" y="12.5" width="8.5" height="8.5" fill="#00a4ef"/><rect x="12.5" y="12.5" width="8.5" height="8.5" fill="#ffb900"/></svg></div>
+            <div class="pa-conn-name"><strong>M365 Graph</strong><span>Mail.Send</span></div>
+            <span class="pa-conn-pill blue">Connected</span>
+          </div>
+
+          <div class="pa-rail-h" style="margin-top:16px;">Data preview</div>
+          <div class="pa-dv-preview">
+            <div class="pa-dv-preview-head">msdcr_grievances<span class="dv-rows">1,214 rows &middot; 10 min ago</span></div>
+            <table class="pa-dv-tbl">
+              <thead><tr><th>id</th><th>resident</th><th>tier</th><th>status</th></tr></thead>
+              <tbody>
+                <tr class="dv-row-current"><td class="dv-id">G-&hellip;4210</td><td>Washington, K.</td><td class="dv-status dv-s-draft">30-day</td><td>Draft</td></tr>
+                <tr><td class="dv-id">G-&hellip;4209</td><td>Alvarez, D.</td><td class="dv-status dv-s-review">Emergency</td><td>Routed</td></tr>
+                <tr><td class="dv-id">G-&hellip;4208</td><td>Brooks, S.</td><td class="dv-status dv-s-ok">30-day</td><td>Resolved</td></tr>
+                <tr><td class="dv-id">G-&hellip;4207</td><td>Chen, Y.</td><td class="dv-status dv-s-review">15-day</td><td>In review</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="pa-rail-h" style="margin-top:16px;">Security &amp; audit</div>
+          <div class="pa-security">
+            <h5>Governance</h5>
+            <ul>
+              <li>Azure Entra ID &middot; Conditional Access enforced</li>
+              <li>PII column masking on ID number, phone</li>
+              <li>Audit log streams to Microsoft Purview</li>
+              <li>Geography: US Gov Cloud (GCC High)</li>
+            </ul>
+          </div>
+        </div><!-- /pa-rail-panel grievance -->
+
+        <!-- RAIL · PRR -->
+        <div class="pa-rail-panel" data-pa-rail="prr">
+          <div class="pa-rail-h">Connections</div>
+          <div class="pa-conn">
+            <div class="pa-conn-ico msdcr-dv"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5zm0 2.2L19 8v1.1l-7 3.9-7-3.9V8l7-3.8zM5 10.7l6 3.4v6.5l-6-3.4v-6.5zm8 3.4l6-3.4v6.5l-6 3.4v-6.5z"/></svg></div>
+            <div class="pa-conn-name"><strong>Dataverse</strong><span>msdcr_public_records</span></div>
+            <span class="pa-conn-pill ok">Connected</span>
+          </div>
+          <div class="pa-conn">
+            <div class="pa-conn-ico msdcr-sp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9l-6-6z"/><polyline points="14,3 14,9 20,9"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg></div>
+            <div class="pa-conn-name"><strong>SharePoint</strong><span>Records Office library</span></div>
+            <span class="pa-conn-pill ok">Connected</span>
+          </div>
+          <div class="pa-conn">
+            <div class="pa-conn-ico msdcr-cs"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2L12 2zm7 12l1 3 3 1-3 1-1 3-1-3-3-1 3-1 1-3z"/></svg></div>
+            <div class="pa-conn-name"><strong>Copilot Studio</strong><span>Records Request Desk</span></div>
+            <span class="pa-conn-pill studio">Studio</span>
+          </div>
+          <div class="pa-conn">
+            <div class="pa-conn-ico msdcr-pa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12a7 7 0 0112-5"/><polyline points="16,4 17,7 14,8"/><path d="M19 12a7 7 0 01-12 5"/><polyline points="8,20 7,17 10,16"/></svg></div>
+            <div class="pa-conn-name"><strong>Power Automate</strong><span>PRR Intake Router</span></div>
+            <span class="pa-conn-pill automate">Automate</span>
+          </div>
+          <div class="pa-conn">
+            <div class="pa-conn-ico msdcr-purview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/><polyline points="8,12 11,15 16,9"/></svg></div>
+            <div class="pa-conn-name"><strong>Microsoft Purview</strong><span>DLP &middot; redaction pipeline</span></div>
+            <span class="pa-conn-pill blue">Connected</span>
+          </div>
+          <div class="pa-conn">
+            <div class="pa-conn-ico msdcr-ms"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="8.5" height="8.5" fill="#f25022"/><rect x="12.5" y="3" width="8.5" height="8.5" fill="#7fba00"/><rect x="3" y="12.5" width="8.5" height="8.5" fill="#00a4ef"/><rect x="12.5" y="12.5" width="8.5" height="8.5" fill="#ffb900"/></svg></div>
+            <div class="pa-conn-name"><strong>M365 Graph</strong><span>Mail.Send</span></div>
+            <span class="pa-conn-pill blue">Connected</span>
+          </div>
+
+          <div class="pa-rail-h" style="margin-top:16px;">Data preview</div>
+          <div class="pa-dv-preview">
+            <div class="pa-dv-preview-head">msdcr_public_records<span class="dv-rows">482 rows &middot; 1 min ago</span></div>
+            <table class="pa-dv-tbl">
+              <thead><tr><th>id</th><th>requester</th><th>day</th><th>status</th></tr></thead>
+              <tbody>
+                <tr class="dv-row-current"><td class="dv-id">P-&hellip;1007</td><td>Martinez, D.</td><td>6/10</td><td class="dv-status dv-s-draft">Intake</td></tr>
+                <tr><td class="dv-id">P-&hellip;1006</td><td>Kaur, R.</td><td>2/10</td><td class="dv-status dv-s-review">Scoping</td></tr>
+                <tr><td class="dv-id">P-&hellip;1005</td><td>Nguyen, T.</td><td>9/10</td><td class="dv-status dv-s-review">Legal</td></tr>
+                <tr><td class="dv-id">P-&hellip;1004</td><td>Park, J.</td><td>10/10</td><td class="dv-status dv-s-ok">Released</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="pa-rail-h" style="margin-top:16px;">Security &amp; audit</div>
+          <div class="pa-security">
+            <h5>Governance</h5>
+            <ul>
+              <li>Azure Entra ID &middot; Conditional Access enforced</li>
+              <li>PII column masking on ID number, phone</li>
+              <li>Audit log streams to Microsoft Purview</li>
+              <li>Geography: US Gov Cloud (GCC High)</li>
+            </ul>
+          </div>
+        </div><!-- /pa-rail-panel prr -->
+
+        <!-- RAIL · Reentry -->
+        <div class="pa-rail-panel" data-pa-rail="reentry">
+          <div class="pa-rail-h">Connections</div>
+          <div class="pa-conn">
+            <div class="pa-conn-ico msdcr-dv"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5zm0 2.2L19 8v1.1l-7 3.9-7-3.9V8l7-3.8zM5 10.7l6 3.4v6.5l-6-3.4v-6.5zm8 3.4l6-3.4v6.5l-6 3.4v-6.5z"/></svg></div>
+            <div class="pa-conn-name"><strong>Dataverse</strong><span>msdcr_reentry_assessments</span></div>
+            <span class="pa-conn-pill ok">Connected</span>
+          </div>
+          <div class="pa-conn">
+            <div class="pa-conn-ico msdcr-dv"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5zm0 2.2L19 8v1.1l-7 3.9-7-3.9V8l7-3.8zM5 10.7l6 3.4v6.5l-6-3.4v-6.5zm8 3.4l6-3.4v6.5l-6 3.4v-6.5z"/></svg></div>
+            <div class="pa-conn-name"><strong>Dataverse</strong><span>msdcr_programs</span></div>
+            <span class="pa-conn-pill ok">Connected</span>
+          </div>
+          <div class="pa-conn">
+            <div class="pa-conn-ico msdcr-sp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9l-6-6z"/><polyline points="14,3 14,9 20,9"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg></div>
+            <div class="pa-conn-name"><strong>SharePoint</strong><span>MCRP Partner Library</span></div>
+            <span class="pa-conn-pill ok">Connected</span>
+          </div>
+          <div class="pa-conn">
+            <div class="pa-conn-ico msdcr-cs"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2L12 2zm7 12l1 3 3 1-3 1-1 3-1-3-3-1 3-1 1-3z"/></svg></div>
+            <div class="pa-conn-name"><strong>Copilot Studio</strong><span>Reentry Program Match</span></div>
+            <span class="pa-conn-pill studio">Studio</span>
+          </div>
+          <div class="pa-conn">
+            <div class="pa-conn-ico msdcr-pa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12a7 7 0 0112-5"/><polyline points="16,4 17,7 14,8"/><path d="M19 12a7 7 0 01-12 5"/><polyline points="8,20 7,17 10,16"/></svg></div>
+            <div class="pa-conn-name"><strong>Power Automate</strong><span>Reentry Program Match Notifier</span></div>
+            <span class="pa-conn-pill automate">Automate</span>
+          </div>
+          <div class="pa-conn">
+            <div class="pa-conn-ico msdcr-cc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 10h18"/><path d="M10 3v18"/></svg></div>
+            <div class="pa-conn-name"><strong>CorrectionsCore</strong><span>Partner intake connector</span></div>
+            <span class="pa-conn-pill cc">Partner</span>
+          </div>
+
+          <div class="pa-rail-h" style="margin-top:16px;">Data preview</div>
+          <div class="pa-dv-preview">
+            <div class="pa-dv-preview-head">msdcr_reentry_assessments<span class="dv-rows">612 rows &middot; 2 min ago</span></div>
+            <table class="pa-dv-tbl">
+              <thead><tr><th>id</th><th>resident</th><th>release</th><th>status</th></tr></thead>
+              <tbody>
+                <tr class="dv-row-current"><td class="dv-id">R-&hellip;8372</td><td>Hernandez, M.</td><td>48d</td><td class="dv-status dv-s-draft">Assess</td></tr>
+                <tr><td class="dv-id">R-&hellip;8370</td><td>Jones, P.</td><td>76d</td><td class="dv-status dv-s-review">Match</td></tr>
+                <tr><td class="dv-id">R-&hellip;8368</td><td>Khan, L.</td><td>22d</td><td class="dv-status dv-s-ok">Enrolled</td></tr>
+                <tr><td class="dv-id">R-&hellip;8366</td><td>Lee, Q.</td><td>11d</td><td class="dv-status dv-s-ok">Enrolled</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="pa-rail-h" style="margin-top:16px;">Security &amp; audit</div>
+          <div class="pa-security">
+            <h5>Governance</h5>
+            <ul>
+              <li>Azure Entra ID &middot; Conditional Access enforced</li>
+              <li>PII column masking on ID number, phone</li>
+              <li>Audit log streams to Microsoft Purview</li>
+              <li>Geography: US Gov Cloud (GCC High)</li>
+            </ul>
+          </div>
+        </div><!-- /pa-rail-panel reentry -->
+
+        <!-- RAIL · Classification -->
+        <div class="pa-rail-panel" data-pa-rail="classification">
+          <div class="pa-rail-h">Connections</div>
+          <div class="pa-conn">
+            <div class="pa-conn-ico msdcr-dv"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5zm0 2.2L19 8v1.1l-7 3.9-7-3.9V8l7-3.8zM5 10.7l6 3.4v6.5l-6-3.4v-6.5zm8 3.4l6-3.4v6.5l-6 3.4v-6.5z"/></svg></div>
+            <div class="pa-conn-name"><strong>Dataverse</strong><span>msdcr_classification_reviews</span></div>
+            <span class="pa-conn-pill ok">Connected</span>
+          </div>
+          <div class="pa-conn">
+            <div class="pa-conn-ico msdcr-cc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 10h18"/><path d="M10 3v18"/></svg></div>
+            <div class="pa-conn-name"><strong>CorrectionsCore</strong><span>Disciplinary + program history</span></div>
+            <span class="pa-conn-pill cc">Partner</span>
+          </div>
+          <div class="pa-conn">
+            <div class="pa-conn-ico msdcr-cs"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2L12 2zm7 12l1 3 3 1-3 1-1 3-1-3-3-1 3-1 1-3z"/></svg></div>
+            <div class="pa-conn-name"><strong>Copilot Studio</strong><span>Classification Packet Prep</span></div>
+            <span class="pa-conn-pill studio">Studio</span>
+          </div>
+          <div class="pa-conn">
+            <div class="pa-conn-ico msdcr-foundry"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg></div>
+            <div class="pa-conn-name"><strong>Microsoft Foundry</strong><span>Evaluation spine</span></div>
+            <span class="pa-conn-pill foundry">Foundry</span>
+          </div>
+          <div class="pa-conn">
+            <div class="pa-conn-ico msdcr-pa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12a7 7 0 0112-5"/><polyline points="16,4 17,7 14,8"/><path d="M19 12a7 7 0 01-12 5"/><polyline points="8,20 7,17 10,16"/></svg></div>
+            <div class="pa-conn-name"><strong>Power Automate</strong><span>Classification Packet Approval Notifier</span></div>
+            <span class="pa-conn-pill automate">Automate</span>
+          </div>
+          <div class="pa-conn">
+            <div class="pa-conn-ico msdcr-purview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/><polyline points="8,12 11,15 16,9"/></svg></div>
+            <div class="pa-conn-name"><strong>Microsoft Purview</strong><span>Audit + Foundry eval log</span></div>
+            <span class="pa-conn-pill blue">Connected</span>
+          </div>
+
+          <div class="pa-rail-h" style="margin-top:16px;">Data preview</div>
+          <div class="pa-dv-preview">
+            <div class="pa-dv-preview-head">msdcr_classification_reviews<span class="dv-rows">2,091 rows &middot; 30s ago</span></div>
+            <table class="pa-dv-tbl">
+              <thead><tr><th>id</th><th>resident</th><th>trigger</th><th>status</th></tr></thead>
+              <tbody>
+                <tr class="dv-row-current"><td class="dv-id">C-&hellip;8372</td><td>Patel, J.</td><td>Pre-release</td><td class="dv-status dv-s-draft">Intake</td></tr>
+                <tr><td class="dv-id">C-&hellip;8371</td><td>Okafor, M.</td><td>Annual</td><td class="dv-status dv-s-review">Eval</td></tr>
+                <tr><td class="dv-id">C-&hellip;8370</td><td>Nguyen, T.</td><td>Incident</td><td class="dv-status dv-s-review">Approval</td></tr>
+                <tr><td class="dv-id">C-&hellip;8369</td><td>Ramirez, L.</td><td>Program</td><td class="dv-status dv-s-ok">Docketed</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="pa-rail-h" style="margin-top:16px;">Security &amp; audit</div>
+          <div class="pa-security">
+            <h5>Governance</h5>
+            <ul>
+              <li>Azure Entra ID &middot; Conditional Access enforced</li>
+              <li>PII column masking on ID number, phone</li>
+              <li>Audit log streams to Microsoft Purview</li>
+              <li>Geography: US Gov Cloud (GCC High)</li>
+            </ul>
+          </div>
+        </div><!-- /pa-rail-panel classification -->
+
+        <!-- RAIL · Exception -->
+        <div class="pa-rail-panel" data-pa-rail="exception">
+          <div class="pa-rail-h">Connections</div>
+          <div class="pa-conn">
+            <div class="pa-conn-ico msdcr-dv"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5zm0 2.2L19 8v1.1l-7 3.9-7-3.9V8l7-3.8zM5 10.7l6 3.4v6.5l-6-3.4v-6.5zm8 3.4l6-3.4v6.5l-6 3.4v-6.5z"/></svg></div>
+            <div class="pa-conn-name"><strong>Dataverse</strong><span>msdcr_visitation_exceptions</span></div>
+            <span class="pa-conn-pill ok">Connected</span>
+          </div>
+          <div class="pa-conn">
+            <div class="pa-conn-ico msdcr-cs"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2L12 2zm7 12l1 3 3 1-3 1-1 3-1-3-3-1 3-1 1-3z"/></svg></div>
+            <div class="pa-conn-name"><strong>Copilot Studio</strong><span>Visitation Front Door</span></div>
+            <span class="pa-conn-pill studio">Studio</span>
+          </div>
+          <div class="pa-conn">
+            <div class="pa-conn-ico msdcr-cs"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2L12 2zm7 12l1 3 3 1-3 1-1 3-1-3-3-1 3-1 1-3z"/></svg></div>
+            <div class="pa-conn-name"><strong>Copilot Studio</strong><span>Reentry Program Match &middot; cross-check</span></div>
+            <span class="pa-conn-pill studio">Studio</span>
+          </div>
+          <div class="pa-conn">
+            <div class="pa-conn-ico msdcr-pa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12a7 7 0 0112-5"/><polyline points="16,4 17,7 14,8"/><path d="M19 12a7 7 0 01-12 5"/><polyline points="8,20 7,17 10,16"/></svg></div>
+            <div class="pa-conn-name"><strong>Power Automate</strong><span>Visitation Exception Routing</span></div>
+            <span class="pa-conn-pill automate">Automate</span>
+          </div>
+          <div class="pa-conn">
+            <div class="pa-conn-ico msdcr-ms"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="8.5" height="8.5" fill="#f25022"/><rect x="12.5" y="3" width="8.5" height="8.5" fill="#7fba00"/><rect x="3" y="12.5" width="8.5" height="8.5" fill="#00a4ef"/><rect x="12.5" y="12.5" width="8.5" height="8.5" fill="#ffb900"/></svg></div>
+            <div class="pa-conn-name"><strong>M365 Graph</strong><span>Mail.Send</span></div>
+            <span class="pa-conn-pill blue">Connected</span>
+          </div>
+          <div class="pa-conn">
+            <div class="pa-conn-ico msdcr-pp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg></div>
+            <div class="pa-conn-name"><strong>Power Pages</strong><span>family.msdcr.gov portal</span></div>
+            <span class="pa-conn-pill ok">Connected</span>
+          </div>
+
+          <div class="pa-rail-h" style="margin-top:16px;">Data preview</div>
+          <div class="pa-dv-preview">
+            <div class="pa-dv-preview-head">msdcr_visitation_exceptions<span class="dv-rows">88 rows &middot; 1 min ago</span></div>
+            <table class="pa-dv-tbl">
+              <thead><tr><th>id</th><th>resident</th><th>age</th><th>status</th></tr></thead>
+              <tbody>
+                <tr class="dv-row-current"><td class="dv-id">X-&hellip;4219</td><td>Patel, J.</td><td>24h</td><td class="dv-status dv-s-draft">Warden</td></tr>
+                <tr><td class="dv-id">X-&hellip;4218</td><td>Ali, H.</td><td>51h</td><td class="dv-status dv-s-review">Warden</td></tr>
+                <tr><td class="dv-id">X-&hellip;4217</td><td>Brown, A.</td><td>56h</td><td class="dv-status dv-s-review">Warden</td></tr>
+                <tr><td class="dv-id">X-&hellip;4216</td><td>Diaz, F.</td><td>5d</td><td class="dv-status dv-s-ok">Approved</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="pa-rail-h" style="margin-top:16px;">Security &amp; audit</div>
+          <div class="pa-security">
+            <h5>Governance</h5>
+            <ul>
+              <li>Azure Entra ID &middot; Conditional Access enforced</li>
+              <li>PII column masking on ID number, phone</li>
+              <li>Audit log streams to Microsoft Purview</li>
+              <li>Geography: US Gov Cloud (GCC High)</li>
+            </ul>
+          </div>
+        </div><!-- /pa-rail-panel exception -->
       </div>
     </div>
   </div>
@@ -9383,6 +10850,26 @@ function ppTab(el, key) {
   });
   const panels = document.querySelector('#app-powerpages .pp-panels');
   if (panels) panels.scrollTop = 0;
+}
+
+// Power Apps canvas + rail switcher
+function paApp(el, key) {
+  // sidebar row active-state
+  document.querySelectorAll('#app-powerapps .pa-approw').forEach(r => r.classList.remove('active'));
+  if (el) el.classList.add('active');
+  // canvas wrap show/hide
+  document.querySelectorAll('#app-powerapps .pa-canvas-wrap').forEach(w => {
+    w.classList.toggle('tab-active', w.getAttribute('data-pa-app') === key);
+  });
+  // rail panel show/hide
+  document.querySelectorAll('#app-powerapps .pa-rail-panel').forEach(p => {
+    p.classList.toggle('tab-active', p.getAttribute('data-pa-rail') === key);
+  });
+  // reset scroll
+  const main = document.querySelector('#app-powerapps .pa-main');
+  if (main) main.scrollTop = 0;
+  const rail = document.querySelector('#app-powerapps .pa-rail');
+  if (rail) rail.scrollTop = 0;
 }
 
 // Agent 365 live-feed animator. Prepends a new activity row every 3–5s while the view is active.
