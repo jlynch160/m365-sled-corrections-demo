@@ -5375,6 +5375,110 @@ body.dark .pp-ref-strip { background: #2a241a; border-color: #554a32; color: #c0
 body.dark .pp-activity-card { background: #252525; border-color: #333; color: #e0e0e0; }
 body.dark .pp-activity-title { color: #f0f0f0; }
 
+/* ============ POWER PAGES — TAB PANEL POLISH ============ */
+.pp-tab-head {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  padding: 4px 4px 18px; border-bottom: 1px solid var(--gray-30);
+  margin-bottom: 18px; gap: 16px; flex-wrap: wrap;
+}
+.pp-tab-title {
+  font-size: 20px; font-weight: 700; color: var(--msu-navy); letter-spacing: -0.2px;
+}
+.pp-tab-sub { font-size: 12px; color: var(--gray-130); margin-top: 4px; }
+.pp-tab-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.pp-search-inline {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: #fff; border: 1px solid var(--gray-40); border-radius: 6px;
+  padding: 6px 10px; color: var(--gray-130);
+}
+.pp-search-inline input {
+  border: none; background: transparent; outline: none; font: inherit;
+  font-size: 12px; color: var(--gray-160); width: 140px;
+}
+.pp-btn-ghost, .pp-btn-primary {
+  font-family: inherit; font-size: 12px; font-weight: 600;
+  padding: 7px 14px; border-radius: 6px; cursor: pointer;
+  border: 1px solid var(--gray-40); background: #fff; color: var(--gray-160);
+}
+.pp-btn-ghost:hover { background: var(--gray-20); }
+.pp-btn-primary {
+  background: var(--msu-navy); color: #fff; border-color: var(--msu-navy);
+}
+.pp-btn-primary:hover { background: #002d52; }
+.pp-tab-card {
+  background: #fff; border: 1px solid var(--gray-30); border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  overflow: hidden;
+}
+.pp-tab-minis {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 14px;
+}
+.pp-tab-mini {
+  background: #fff; border: 1px solid var(--gray-30); border-radius: 8px;
+  padding: 12px 14px;
+  border-left: 3px solid var(--msu-gold);
+}
+.pp-tab-mini-k { font-size: 10.5px; color: var(--gray-130); text-transform: uppercase; letter-spacing: 0.4px; font-weight: 700; }
+.pp-tab-mini-v { font-size: 18px; color: var(--msu-navy); font-weight: 700; margin-top: 4px; }
+.pp-tab-splitcards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+.pp-tab-subcard { padding: 16px 18px; }
+.pp-subcard-title {
+  font-size: 13px; font-weight: 700; color: var(--msu-navy);
+  padding-bottom: 8px; margin-bottom: 12px;
+  border-bottom: 1px solid var(--gray-30);
+}
+.pp-subcard-ol { font-size: 12.5px; color: var(--gray-160); line-height: 1.75; padding-left: 20px; }
+.pp-subcard-ol li { margin-bottom: 2px; }
+.pp-recent-list { display: flex; flex-direction: column; gap: 8px; }
+.pp-recent-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 8px 10px; background: var(--gray-20); border-radius: 6px;
+  font-size: 12px;
+}
+.pp-recent-row strong { display: block; color: var(--msu-navy); }
+.pp-recent-row span { font-size: 11px; color: var(--gray-130); }
+.pp-recent-t { font-size: 11px; color: var(--gray-130); font-variant-numeric: tabular-nums; }
+.pp-bar-list { display: flex; flex-direction: column; gap: 10px; font-size: 12.5px; }
+.pp-bar-row {
+  display: grid; grid-template-columns: 160px 1fr 56px;
+  align-items: center; gap: 10px;
+}
+.pp-bar-row > span:first-child {
+  color: var(--msu-navy); font-weight: 600;
+  font-family: "Cascadia Mono", Consolas, monospace; font-size: 11.5px;
+}
+.pp-bar {
+  height: 8px; background: var(--gray-20); border-radius: 4px; overflow: hidden;
+}
+.pp-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #1e7a3c 0%, #3ea558 100%);
+  border-radius: 4px;
+}
+.pp-bar-n { text-align: right; color: var(--gray-130); font-variant-numeric: tabular-nums; font-weight: 600; }
+.pp-donut-wrap { display: flex; align-items: center; gap: 18px; }
+.pp-donut { width: 108px; height: 108px; flex-shrink: 0; }
+.pp-donut-legend { font-size: 12px; color: var(--gray-160); display: flex; flex-direction: column; gap: 6px; }
+.pp-donut-legend .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
+.pp-exec { font-size: 13px; color: var(--gray-160); line-height: 1.65; }
+.pp-exec strong { color: var(--msu-navy); }
+.pp-settings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.pp-set-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 0; border-bottom: 1px solid var(--gray-20);
+  font-size: 12.5px;
+}
+.pp-set-row:last-child { border-bottom: none; }
+.pp-set-row span { color: var(--gray-130); }
+.pp-set-row strong { color: var(--msu-navy); font-weight: 600; text-align: right; }
+body.dark .pp-tab-title { color: #cfe0f5; }
+body.dark .pp-tab-head { border-color: #333; }
+body.dark .pp-tab-card, body.dark .pp-tab-mini { background: #252525; border-color: #333; color: #e0e0e0; }
+body.dark .pp-btn-ghost { background: #252525; color: #e0e0e0; border-color: #3a3a3a; }
+body.dark .pp-recent-row { background: #2a2a2a; }
+body.dark .pp-subcard-title, body.dark .pp-tab-mini-v, body.dark .pp-set-row strong { color: #cfe0f5; }
+body.dark .pp-bar { background: #333; }
+
 </style>
 </head>
 <body>
@@ -10090,37 +10194,98 @@ body.dark .pp-activity-title { color: #f0f0f0; }
         </div>
         <!-- Pages -->
         <div class="pp-panel" data-pp-pane="pages">
-          <div class="pp-pagelist">
-            <div class="pp-plrow head"><div>Page</div><div>Template</div><div>Status</div><div>Last edited</div></div>
-            <div class="pp-plrow"><div>/ (Home)</div><div>Landing</div><div class="pub">● Published</div><div>3 days ago · S. Chen</div></div>
-            <div class="pp-plrow"><div>/schedule-visit</div><div>Form + chat</div><div class="pub">● Published</div><div>1 day ago · M. Gutierrez</div></div>
-            <div class="pp-plrow"><div>/records-request</div><div>Form</div><div class="pub">● Published</div><div>5 days ago · Records Office</div></div>
-            <div class="pp-plrow"><div>/grievance/file</div><div>Authenticated form</div><div class="pub">● Published</div><div>1 week ago · S. Chen</div></div>
-            <div class="pp-plrow"><div>/grievance/status</div><div>Lookup</div><div class="pub">● Published</div><div>1 week ago · S. Chen</div></div>
-            <div class="pp-plrow"><div>/faq</div><div>Content</div><div class="pub">● Published</div><div>2 weeks ago · Comms</div></div>
-            <div class="pp-plrow"><div>/facilities</div><div>Directory</div><div class="pub">● Published</div><div>2 weeks ago · Comms</div></div>
-            <div class="pp-plrow"><div>/reentry-resources</div><div>Content</div><div class="pub">● Published</div><div>3 weeks ago · L. Thomas</div></div>
-            <div class="pp-plrow"><div>/contact</div><div>Content</div><div class="pub">● Published</div><div>1 month ago · Comms</div></div>
-            <div class="pp-plrow"><div>/visits/video-kiosk-guide</div><div>Content</div><div class="draft">◐ Draft</div><div>Today · M. Gutierrez</div></div>
+          <div class="pp-tab-head">
+            <div>
+              <div class="pp-tab-title">Site pages</div>
+              <div class="pp-tab-sub">10 pages · 9 published · 1 draft · site family.msdcr.gov</div>
+            </div>
+            <div class="pp-tab-actions">
+              <div class="pp-search-inline"><svg viewBox="0 0 16 16" width="12" height="12" fill="currentColor"><path d="M7 12.5a5.5 5.5 0 110-11 5.5 5.5 0 010 11zm4-1.5l3.5 3.5" stroke="currentColor" fill="none" stroke-width="1.5"/></svg><input placeholder="Search pages" readonly/></div>
+              <button class="pp-btn-ghost">Filter · Status</button>
+              <button class="pp-btn-primary">+ New page</button>
+            </div>
+          </div>
+          <div class="pp-tab-card">
+            <div class="pp-pagelist">
+              <div class="pp-plrow head"><div>Page</div><div>Template</div><div>Status</div><div>Last edited</div></div>
+              <div class="pp-plrow"><div>/ (Home)</div><div>Landing</div><div class="pub">● Published</div><div>3 days ago · A. Rivera</div></div>
+              <div class="pp-plrow"><div>/schedule-visit</div><div>Form + chat</div><div class="pub">● Published</div><div>1 day ago · M. Gutierrez</div></div>
+              <div class="pp-plrow"><div>/records-request</div><div>Form</div><div class="pub">● Published</div><div>5 days ago · Records Office</div></div>
+              <div class="pp-plrow"><div>/grievance/file</div><div>Authenticated form</div><div class="pub">● Published</div><div>1 week ago · A. Rivera</div></div>
+              <div class="pp-plrow"><div>/grievance/status</div><div>Lookup</div><div class="pub">● Published</div><div>1 week ago · A. Rivera</div></div>
+              <div class="pp-plrow"><div>/faq</div><div>Content</div><div class="pub">● Published</div><div>2 weeks ago · Comms</div></div>
+              <div class="pp-plrow"><div>/facilities</div><div>Directory</div><div class="pub">● Published</div><div>2 weeks ago · Comms</div></div>
+              <div class="pp-plrow"><div>/reentry-resources</div><div>Content</div><div class="pub">● Published</div><div>3 weeks ago · L. Thomas</div></div>
+              <div class="pp-plrow"><div>/contact</div><div>Content</div><div class="pub">● Published</div><div>1 month ago · Comms</div></div>
+              <div class="pp-plrow"><div>/visits/video-kiosk-guide</div><div>Content</div><div class="draft">◐ Draft</div><div>Today · M. Gutierrez</div></div>
+            </div>
+          </div>
+          <div class="pp-tab-minis">
+            <div class="pp-tab-mini"><div class="pp-tab-mini-k">Total sessions (30d)</div><div class="pp-tab-mini-v">12,487</div></div>
+            <div class="pp-tab-mini"><div class="pp-tab-mini-k">Most-visited page</div><div class="pp-tab-mini-v">/schedule-visit</div></div>
+            <div class="pp-tab-mini"><div class="pp-tab-mini-k">Avg time-to-publish</div><div class="pp-tab-mini-v">18 min</div></div>
+            <div class="pp-tab-mini"><div class="pp-tab-mini-k">Pending review</div><div class="pp-tab-mini-v">1 draft</div></div>
           </div>
         </div>
         <!-- Visitors & roles -->
         <div class="pp-panel" data-pp-pane="roles">
-          <div class="pp-roletable">
-            <h3 style="font-size:14px;margin-bottom:10px;">External identity roles</h3>
-            <table>
-              <thead><tr><th>Role</th><th>Authentication</th><th>Access scope</th></tr></thead>
-              <tbody>
-                <tr><td><strong>Anonymous visitor</strong></td><td>None</td><td>Public FAQ, facility map, contact form</td></tr>
-                <tr><td><strong>Authenticated family member</strong></td><td>Entra External ID · email OTP</td><td>Schedule visits, file grievances on behalf of resident, view status</td></tr>
-                <tr><td><strong>Resident advocate</strong></td><td>Entra External ID · vouched</td><td>Grievance follow-up, PRR, caseload lookups</td></tr>
-                <tr><td><strong>Legal representative</strong></td><td>Entra External ID · bar-verified</td><td>PRR, attorney-client communications channel</td></tr>
-              </tbody>
-            </table>
+          <div class="pp-tab-head">
+            <div>
+              <div class="pp-tab-title">External identity &amp; access</div>
+              <div class="pp-tab-sub">Microsoft Entra External ID · email OTP, vouched, and bar-verified flows</div>
+            </div>
+            <div class="pp-tab-actions">
+              <button class="pp-btn-ghost">Export CSV</button>
+              <button class="pp-btn-primary">+ Invite role</button>
+            </div>
+          </div>
+          <div class="pp-tab-card">
+            <div class="pp-roletable">
+              <table>
+                <thead><tr><th>Role</th><th>Authentication</th><th>Access scope</th><th>Active users</th><th>Sign-ins · 30d</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Anonymous visitor</strong></td><td>None</td><td>Public FAQ, facility map, contact form</td><td>—</td><td>9,143</td></tr>
+                  <tr><td><strong>Authenticated family member</strong></td><td>Entra External ID · email OTP</td><td>Schedule visits, file grievances on behalf of resident, view status</td><td>2,841</td><td>3,112</td></tr>
+                  <tr><td><strong>Resident advocate</strong></td><td>Entra External ID · vouched</td><td>Grievance follow-up, PRR, caseload lookups</td><td>184</td><td>227</td></tr>
+                  <tr><td><strong>Legal representative</strong></td><td>Entra External ID · bar-verified</td><td>PRR, attorney-client communications channel</td><td>63</td><td>88</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="pp-tab-splitcards">
+            <div class="pp-tab-card pp-tab-subcard">
+              <div class="pp-subcard-title">Authentication flow</div>
+              <ol class="pp-subcard-ol">
+                <li>Visitor enters email on family.msdcr.gov</li>
+                <li>Entra External ID sends 6-digit OTP (5-min TTL)</li>
+                <li>Session-bound tokens; PII field-masking from Dataverse</li>
+                <li>Audit event posts to Microsoft Purview on every sign-in</li>
+              </ol>
+            </div>
+            <div class="pp-tab-card pp-tab-subcard">
+              <div class="pp-subcard-title">Recent sign-ins</div>
+              <div class="pp-recent-list">
+                <div class="pp-recent-row"><div><strong>Jessica Huang</strong><span>Family member · email OTP</span></div><div class="pp-recent-t">4 min ago</div></div>
+                <div class="pp-recent-row"><div><strong>Daniela Martinez</strong><span>Journalist · vouched</span></div><div class="pp-recent-t">23 min ago</div></div>
+                <div class="pp-recent-row"><div><strong>Hon. P. Keller (Defender)</strong><span>Legal · bar-verified</span></div><div class="pp-recent-t">1 h ago</div></div>
+                <div class="pp-recent-row"><div><strong>Anonymous · IP 73.82.14.x</strong><span>Public visitor · no auth</span></div><div class="pp-recent-t">2 h ago</div></div>
+              </div>
+            </div>
           </div>
         </div>
         <!-- Analytics -->
         <div class="pp-panel" data-pp-pane="analytics">
+          <div class="pp-tab-head">
+            <div>
+              <div class="pp-tab-title">Portal analytics</div>
+              <div class="pp-tab-sub">family.msdcr.gov · last 30 days · data refreshed 14 min ago</div>
+            </div>
+            <div class="pp-tab-actions">
+              <button class="pp-btn-ghost">Range · Last 30 days ▾</button>
+              <button class="pp-btn-ghost">Export</button>
+              <button class="pp-btn-primary">Share to Executive readout</button>
+            </div>
+          </div>
           <div class="pp-analytics">
             <div class="pp-kpis">
               <div class="pp-kpi"><div class="pp-kpi-lbl">Sessions (month)</div><div class="pp-kpi-v">12,487</div><div class="pp-kpi-s">▲ 9% vs prior month</div></div>
@@ -10163,21 +10328,81 @@ body.dark .pp-activity-title { color: #f0f0f0; }
                 </g>
               </svg>
             </div>
+            <div class="pp-tab-splitcards">
+              <div class="pp-tab-card pp-tab-subcard">
+                <div class="pp-subcard-title">Top pages</div>
+                <div class="pp-bar-list">
+                  <div class="pp-bar-row"><span>/schedule-visit</span><div class="pp-bar"><div class="pp-bar-fill" style="width:86%;"></div></div><span class="pp-bar-n">4,218</span></div>
+                  <div class="pp-bar-row"><span>/ (Home)</span><div class="pp-bar"><div class="pp-bar-fill" style="width:72%;"></div></div><span class="pp-bar-n">3,553</span></div>
+                  <div class="pp-bar-row"><span>/records-request</span><div class="pp-bar"><div class="pp-bar-fill" style="width:48%;"></div></div><span class="pp-bar-n">2,367</span></div>
+                  <div class="pp-bar-row"><span>/grievance/file</span><div class="pp-bar"><div class="pp-bar-fill" style="width:31%;"></div></div><span class="pp-bar-n">1,527</span></div>
+                  <div class="pp-bar-row"><span>/faq</span><div class="pp-bar"><div class="pp-bar-fill" style="width:18%;"></div></div><span class="pp-bar-n">892</span></div>
+                </div>
+              </div>
+              <div class="pp-tab-card pp-tab-subcard">
+                <div class="pp-subcard-title">Visitation Front Door · conversation outcomes</div>
+                <div class="pp-donut-wrap">
+                  <svg viewBox="0 0 40 40" class="pp-donut" aria-hidden="true">
+                    <circle r="16" cx="20" cy="20" fill="none" stroke="#e5e5e5" stroke-width="6"/>
+                    <circle r="16" cx="20" cy="20" fill="none" stroke="#1e7a3c" stroke-width="6" stroke-dasharray="68 100" stroke-dashoffset="25" transform="rotate(-90 20 20)"/>
+                    <circle r="16" cx="20" cy="20" fill="none" stroke="#c8a55b" stroke-width="6" stroke-dasharray="22 100" stroke-dashoffset="-43" transform="rotate(-90 20 20)"/>
+                    <circle r="16" cx="20" cy="20" fill="none" stroke="#003865" stroke-width="6" stroke-dasharray="10 100" stroke-dashoffset="-65" transform="rotate(-90 20 20)"/>
+                  </svg>
+                  <div class="pp-donut-legend">
+                    <div><span class="dot" style="background:#1e7a3c;"></span> Self-served · <strong>68%</strong></div>
+                    <div><span class="dot" style="background:#c8a55b;"></span> Scheduled visit · <strong>22%</strong></div>
+                    <div><span class="dot" style="background:#003865;"></span> Escalated to coordinator · <strong>10%</strong></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="pp-tab-card pp-tab-subcard" style="margin-top:14px;">
+              <div class="pp-subcard-title">Executive summary · auto-drafted by Copilot</div>
+              <p class="pp-exec">Sessions up <strong>9% MoM</strong>, driven by a <strong>14% lift</strong> in /schedule-visit traffic after the bilingual Visitation Front Door agent went live April 3. Deflection rate held at <strong>98%</strong> with only <strong>10%</strong> of chats needing human coordinator escalation. PRR filings via portal grew <strong>31%</strong>; SLA compliance remains above <strong>96%</strong>. Next focus: /visits/video-kiosk-guide publishes Thursday and should reduce family phone volume further.</p>
+            </div>
           </div>
         </div>
         <!-- Settings -->
         <div class="pp-panel" data-pp-pane="settings">
-          <div class="pp-roletable">
-            <h3 style="font-size:14px;margin-bottom:10px;">Site settings</h3>
-            <table>
-              <tbody>
-                <tr><td>Site URL</td><td>family.msdcr.gov</td></tr>
-                <tr><td>Environment</td><td>MSDCR-Prod (Dataverse)</td></tr>
-                <tr><td>Authentication</td><td>Microsoft Entra External ID · email OTP + vouched</td></tr>
-                <tr><td>Accessibility</td><td>WCAG 2.2 AA · scanned weekly</td></tr>
-                <tr><td>Hosting region</td><td>US Gov Cloud (Government Community Cloud)</td></tr>
-              </tbody>
-            </table>
+          <div class="pp-tab-head">
+            <div>
+              <div class="pp-tab-title">Site settings</div>
+              <div class="pp-tab-sub">family.msdcr.gov · MSDCR-Prod environment · US Gov Cloud (GCC High)</div>
+            </div>
+            <div class="pp-tab-actions">
+              <button class="pp-btn-ghost">Discard</button>
+              <button class="pp-btn-primary">Save changes</button>
+            </div>
+          </div>
+          <div class="pp-settings-grid">
+            <div class="pp-tab-card pp-tab-subcard">
+              <div class="pp-subcard-title">Identity</div>
+              <div class="pp-set-row"><span>Site URL</span><strong>family.msdcr.gov</strong></div>
+              <div class="pp-set-row"><span>Environment</span><strong>MSDCR-Prod · Dataverse</strong></div>
+              <div class="pp-set-row"><span>Branding</span><strong>MSDCR navy / gold · seal &amp; .gov banner</strong></div>
+              <div class="pp-set-row"><span>Language</span><strong>English · Español · Vietnamese · Dari</strong></div>
+            </div>
+            <div class="pp-tab-card pp-tab-subcard">
+              <div class="pp-subcard-title">Authentication</div>
+              <div class="pp-set-row"><span>Provider</span><strong>Microsoft Entra External ID</strong></div>
+              <div class="pp-set-row"><span>Flows</span><strong>Email OTP · Vouched · Bar-verified</strong></div>
+              <div class="pp-set-row"><span>MFA</span><strong>Required for Resident advocate &amp; Legal</strong></div>
+              <div class="pp-set-row"><span>Session TTL</span><strong>45 min · 5-min idle warning</strong></div>
+            </div>
+            <div class="pp-tab-card pp-tab-subcard">
+              <div class="pp-subcard-title">Security &amp; compliance</div>
+              <div class="pp-set-row"><span>Accessibility</span><strong>WCAG 2.2 AA · scanned weekly</strong></div>
+              <div class="pp-set-row"><span>DLP</span><strong>Microsoft Purview · resident-PII + CJIS policies</strong></div>
+              <div class="pp-set-row"><span>Audit</span><strong>Every sign-in + submission → Purview</strong></div>
+              <div class="pp-set-row"><span>Hosting</span><strong>US Gov Cloud (GCC High) · East US 2</strong></div>
+            </div>
+            <div class="pp-tab-card pp-tab-subcard">
+              <div class="pp-subcard-title">Integrations</div>
+              <div class="pp-set-row"><span>Dataverse</span><strong>msdcr_visitor_applications · _grievances · _public_records</strong></div>
+              <div class="pp-set-row"><span>Copilot Studio</span><strong>Visitation Front Door (UC2) · Records Request Desk (UC5)</strong></div>
+              <div class="pp-set-row"><span>Power Automate</span><strong>Visitation Exception · PRR Intake · Grievance SLA</strong></div>
+              <div class="pp-set-row"><span>Foundry</span><strong>Evaluation spine · 98.2% policy-ground match</strong></div>
+            </div>
           </div>
         </div>
       </div>
