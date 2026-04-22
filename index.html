@@ -4072,9 +4072,119 @@ textarea.pa-input { min-height: 56px; resize: vertical; }
 .fa-pill.on { background: #dff6dd; color: #107c10; }
 .fa-pill.off { background: var(--gray-30); color: var(--gray-130); }
 .fa-main { flex: 1; overflow-y: auto; padding: 22px 28px; }
-.fa-main-head { margin-bottom: 18px; }
+.fa-main-head { margin-bottom: 18px; display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+.fa-main-head > div:first-child { flex: 1; min-width: 0; }
 .fa-main-head h2 { font-size: 17px; font-weight: 700; color: var(--gray-160); }
 .fa-main-head p { font-size: 12px; color: var(--gray-130); margin-top: 3px; }
+.fa-main-head-actions { display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
+.fa-test-btn {
+  font-family: inherit; font-size: 12px; font-weight: 600;
+  padding: 8px 16px; border-radius: 4px; cursor: pointer;
+  background: #0b8ba5; color: #fff; border: none;
+  display: inline-flex; align-items: center; gap: 6px;
+  box-shadow: 0 1px 3px rgba(11,139,165,0.3);
+  transition: background 0.12s;
+}
+.fa-test-btn:hover { background: #0a7691; }
+.fa-test-btn:disabled { background: var(--gray-60); cursor: not-allowed; }
+.fa-test-btn.rerun { background: var(--msu-navy); }
+.fa-test-btn.rerun:hover { background: #002d52; }
+.fa-run-banner {
+  display: none;
+  background: linear-gradient(90deg, #eef4fb, #fbf6ea);
+  border: 1px solid #c2d4e6;
+  border-left: 4px solid #0b8ba5;
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin-bottom: 14px;
+  font-size: 12px;
+  color: var(--msu-navy);
+}
+.fa-run-banner.show { display: flex; align-items: center; gap: 10px; }
+.fa-run-banner.success { border-left-color: #107c10; background: linear-gradient(90deg, #dff6dd, #eef4fb); }
+.fa-run-banner .fa-run-spin {
+  width: 14px; height: 14px; border-radius: 50%;
+  border: 2px solid rgba(11,139,165,0.3);
+  border-top-color: #0b8ba5;
+  animation: mfaSpin 0.9s linear infinite;
+  flex-shrink: 0;
+}
+.fa-run-banner.success .fa-run-spin {
+  border: 2px solid #107c10;
+  background: #107c10;
+  animation: none;
+  position: relative;
+}
+.fa-run-banner.success .fa-run-spin::after {
+  content: '\2713'; position: absolute; color: #fff; font-size: 10px;
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+}
+.fa-run-banner strong { font-weight: 700; }
+.fa-run-banner .fa-run-meta { margin-left: auto; color: var(--gray-130); font-family: "Cascadia Mono", Consolas, monospace; font-size: 11px; }
+
+/* Per-node simulation states */
+.fa-node.sim-pending { opacity: 0.55; filter: saturate(0.6); }
+.fa-node.sim-running {
+  box-shadow: 0 0 0 2px rgba(11,139,165,0.5), 0 1px 2px rgba(0,0,0,0.06);
+  animation: faRunPulse 1.4s infinite;
+}
+.fa-node.sim-success { box-shadow: 0 0 0 2px rgba(16,124,16,0.35), 0 1px 2px rgba(0,0,0,0.06); }
+.fa-node.sim-skipped { opacity: 0.35; filter: grayscale(0.8); }
+@keyframes faRunPulse {
+  0%, 100% { box-shadow: 0 0 0 2px rgba(11,139,165,0.5), 0 1px 2px rgba(0,0,0,0.06); }
+  50%      { box-shadow: 0 0 0 4px rgba(11,139,165,0.2), 0 1px 2px rgba(0,0,0,0.06); }
+}
+.fa-step-badge {
+  position: absolute; top: 8px; right: 10px;
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 10px; font-weight: 700;
+  padding: 2px 7px; border-radius: 10px;
+  font-family: "Cascadia Mono", Consolas, monospace;
+}
+.fa-step-badge.running {
+  background: #eef4fb; color: #0b8ba5; border: 1px solid #c2d4e6;
+}
+.fa-step-badge.success {
+  background: #dff6dd; color: #107c10; border: 1px solid #b4e0b4;
+}
+.fa-step-badge.skipped {
+  background: #f3f2f1; color: var(--gray-130); border: 1px solid var(--gray-40);
+}
+.fa-step-badge svg { width: 9px; height: 9px; }
+
+/* Per-node outputs panel (appears after success) */
+.fa-node-output {
+  display: none;
+  margin-top: 8px;
+  background: #1e1e1e; color: #d4d4d4;
+  border-radius: 4px;
+  font-family: "Cascadia Mono", Consolas, monospace;
+  font-size: 10.5px;
+  padding: 8px 10px;
+  white-space: pre-wrap;
+  line-height: 1.5;
+  max-height: 180px; overflow-y: auto;
+  position: relative;
+}
+.fa-node.sim-success .fa-node-output.revealed,
+.fa-node.sim-success .fa-node-output.expanded { display: block; }
+.fa-node-output .k { color: #9cdcfe; }
+.fa-node-output .s { color: #ce9178; }
+.fa-node-output .n { color: #b5cea8; }
+.fa-node-output-toggle {
+  display: none;
+  margin-top: 6px; cursor: pointer;
+  font-size: 10.5px; font-weight: 600;
+  color: #0b8ba5;
+  user-select: none;
+}
+.fa-node.sim-success .fa-node-output-toggle { display: inline-block; }
+.fa-node-output-toggle::before { content: '\25B8 '; }
+.fa-node-output.expanded ~ .fa-node-output-toggle::before,
+.fa-node.sim-success:has(.fa-node-output.expanded) .fa-node-output-toggle::before { content: '\25BE '; }
+
+body.dark .fa-run-banner { background: linear-gradient(90deg, #1f2a3a, #2a2419); color: #cfe0f5; }
+body.dark .fa-run-banner.success { background: linear-gradient(90deg, #1a3020, #1f2a3a); }
 .fa-canvas {
   background: #fff; border: 1px solid var(--gray-30);
   border-radius: 8px; padding: 22px 18px;
@@ -12891,6 +13001,278 @@ function a365Tab(key) {
   // Scroll back to top of the app body when switching tabs
   const body = document.querySelector('#app-agent365 .a365-body');
   if (body) body.scrollTop = 0;
+}
+
+// ============ POWER AUTOMATE — FLOW SIMULATION ============
+
+// Flow-specific branch preferences (which side the Yes/No picks). Default: yes.
+const FA_SIM_BRANCH = {
+  'grievance-sla':         'yes',   // emergency path — Warden notified
+  'prr-intake':            'yes',   // contains protected-class — Legal Review
+  'visitation-exception':  'yes',   // high confidence — auto-approve
+  'classification-notifier': 'yes', // officer approved
+  'reentry-match-notifier': 'yes',  // successful match
+  'records-triage':        'no',    // general PRR path (not medical)
+  'i30-timer':             'yes',   // at-risk grievance escalates
+  'visit-publisher':       'yes'
+};
+
+function faMockOutput(node, flowKey) {
+  const kind = (node.querySelector('.fa-node-kind')?.textContent || '').trim();
+  const title = (node.querySelector('.fa-node-title')?.textContent || '').trim();
+  const sub = (node.querySelector('.fa-node-sub')?.textContent || '').trim();
+  const now = new Date();
+  const isoNow = now.toISOString().replace('Z', '+00:00');
+  const runId = '8a7f' + Math.floor(Math.random()*0xffff).toString(16).padStart(4,'0');
+  // Duration bucket
+  const dur = (k) => {
+    if (k.includes('Trigger')) return (8 + Math.floor(Math.random()*14)) + 'ms';
+    if (k.includes('Delay'))   return '48h00m00s';
+    if (k.includes('Condition')) return (4 + Math.floor(Math.random()*8)) + 'ms';
+    return (90 + Math.floor(Math.random()*540)) + 'ms';
+  };
+  const lines = [];
+  lines.push(`{`);
+  lines.push(`  <span class="k">"statusCode"</span>: <span class="n">200</span>,`);
+  lines.push(`  <span class="k">"runId"</span>: <span class="s">"${runId}"</span>,`);
+  lines.push(`  <span class="k">"startTime"</span>: <span class="s">"${isoNow}"</span>,`);
+  lines.push(`  <span class="k">"duration"</span>: <span class="s">"${dur(kind)}"</span>,`);
+  if (kind.startsWith('Trigger')) {
+    lines.push(`  <span class="k">"triggerOutputs"</span>: {`);
+    lines.push(`    <span class="k">"body"</span>: {`);
+    if (flowKey === 'grievance-sla') {
+      lines.push(`      <span class="k">"recordId"</span>: <span class="s">"MSDCR-G-2026-044210"</span>,`);
+      lines.push(`      <span class="k">"residentId"</span>: <span class="s">"R-2026-038842"</span>,`);
+      lines.push(`      <span class="k">"submittedBy"</span>: <span class="s">"resident"</span>,`);
+      lines.push(`      <span class="k">"type"</span>: <span class="s">"Medical"</span>,`);
+      lines.push(`      <span class="k">"narrative"</span>: <span class="s">"Missed medical appt on 04-18 for chronic condition follow-up..."</span>`);
+    } else if (flowKey === 'prr-intake') {
+      lines.push(`      <span class="k">"recordId"</span>: <span class="s">"MSDCR-P-2026-0411071"</span>,`);
+      lines.push(`      <span class="k">"requester"</span>: <span class="s">"Martinez, D. (Meridian Free Press)"</span>,`);
+      lines.push(`      <span class="k">"scope"</span>: <span class="s">"Q1 use-of-force reports, Complex 4"</span>`);
+    } else if (flowKey === 'visitation-exception') {
+      lines.push(`      <span class="k">"recordId"</span>: <span class="s">"MSDCR-VX-2026-04-2207"</span>,`);
+      lines.push(`      <span class="k">"applicant"</span>: <span class="s">"Huang, J."</span>,`);
+      lines.push(`      <span class="k">"residentId"</span>: <span class="s">"R-2024-018372"</span>,`);
+      lines.push(`      <span class="k">"exceptionReason"</span>: <span class="s">"medical cooldown waiver, pre-release reintegration"</span>`);
+    } else if (flowKey === 'classification-notifier') {
+      lines.push(`      <span class="k">"packetId"</span>: <span class="s">"MSDCR-C-2026-04-2207"</span>,`);
+      lines.push(`      <span class="k">"foundryScore"</span>: <span class="n">0.982</span>,`);
+      lines.push(`      <span class="k">"status"</span>: <span class="s">"evaluated"</span>`);
+    } else if (flowKey === 'reentry-match-notifier') {
+      lines.push(`      <span class="k">"assessmentId"</span>: <span class="s">"MSDCR-R-2026-018372"</span>,`);
+      lines.push(`      <span class="k">"residentId"</span>: <span class="s">"R-2024-018372"</span>,`);
+      lines.push(`      <span class="k">"projectedRelease"</span>: <span class="s">"2026-06-09"</span>`);
+    } else if (flowKey === 'records-triage') {
+      lines.push(`      <span class="k">"requestId"</span>: <span class="s">"MSDCR-P-2026-0411073"</span>,`);
+      lines.push(`      <span class="k">"source"</span>: <span class="s">"/records-request (Power Pages form)"</span>,`);
+      lines.push(`      <span class="k">"category"</span>: <span class="s">"general"</span>`);
+    } else if (flowKey === 'i30-timer') {
+      lines.push(`      <span class="k">"scheduledAt"</span>: <span class="s">"07:00:00 MST"</span>,`);
+      lines.push(`      <span class="k">"frequency"</span>: <span class="s">"daily"</span>`);
+    } else if (flowKey === 'visit-publisher') {
+      lines.push(`      <span class="k">"scheduledAt"</span>: <span class="s">"Sunday 06:00:00 MST"</span>,`);
+      lines.push(`      <span class="k">"frequency"</span>: <span class="s">"weekly"</span>`);
+    } else {
+      lines.push(`      <span class="k">"recordId"</span>: <span class="s">"MSDCR-${runId}"</span>`);
+    }
+    lines.push(`    }`);
+    lines.push(`  }`);
+  } else if (kind.startsWith('Condition')) {
+    const branch = FA_SIM_BRANCH[flowKey] || 'yes';
+    lines.push(`  <span class="k">"expression"</span>: <span class="s">"${title.replace(/"/g,'\\"')}"</span>,`);
+    lines.push(`  <span class="k">"result"</span>: <span class="n">${branch === 'yes'}</span>,`);
+    lines.push(`  <span class="k">"branchTaken"</span>: <span class="s">"${branch}"</span>`);
+  } else if (kind.startsWith('Delay')) {
+    const resume = new Date(now.getTime() + 48*3600*1000).toISOString().replace('Z','+00:00');
+    lines.push(`  <span class="k">"resumedAt"</span>: <span class="s">"${resume}"</span>,`);
+    lines.push(`  <span class="k">"reason"</span>: <span class="s">"${title.replace(/"/g,'\\"')}"</span>`);
+  } else {
+    lines.push(`  <span class="k">"action"</span>: <span class="s">"${title.replace(/"/g,'\\"')}"</span>,`);
+    lines.push(`  <span class="k">"connector"</span>: <span class="s">"${sub.replace(/"/g,'\\"')}"</span>,`);
+    lines.push(`  <span class="k">"outputs"</span>: {`);
+    // title-aware output bodies
+    const t = title.toLowerCase();
+    if (t.includes('classify by tier') || t.includes('assess eligibility') || t.includes('classify request')) {
+      lines.push(`    <span class="k">"tier"</span>: <span class="s">"30-day"</span>,`);
+      lines.push(`    <span class="k">"confidence"</span>: <span class="n">0.96</span>,`);
+      lines.push(`    <span class="k">"rationale"</span>: <span class="s">"Medical but non-life-threatening; prior similar: 2"</span>`);
+    } else if (t.includes('pre-scan')) {
+      lines.push(`    <span class="k">"piiFlagged"</span>: <span class="n">true</span>,`);
+      lines.push(`    <span class="k">"cjisFlagged"</span>: <span class="n">false</span>,`);
+      lines.push(`    <span class="k">"protectedClass"</span>: <span class="n">true</span>,`);
+      lines.push(`    <span class="k">"redactionsApplied"</span>: <span class="n">4</span>`);
+    } else if (t.includes('score') || t.includes('program-match scoring') || t.includes('match')) {
+      lines.push(`    <span class="k">"topMatches"</span>: [`);
+      lines.push(`      { <span class="k">"program"</span>: <span class="s">"Welders Guild pre-apprenticeship"</span>, <span class="k">"score"</span>: <span class="n">0.94</span> },`);
+      lines.push(`      { <span class="k">"program"</span>: <span class="s">"Pathway House transitional housing"</span>, <span class="k">"score"</span>: <span class="n">0.91</span> }`);
+      lines.push(`    ]`);
+    } else if (t.includes('purview') || t.includes('audit')) {
+      lines.push(`    <span class="k">"auditEventId"</span>: <span class="s">"audit.msdcr.${flowKey}.${runId}"</span>,`);
+      lines.push(`    <span class="k">"sensitivityLabel"</span>: <span class="s">"Resident-PII"</span>,`);
+      lines.push(`    <span class="k">"destination"</span>: <span class="s">"Microsoft Purview · GCC"</span>`);
+    } else if (t.includes('teams') || t.includes('notify')) {
+      lines.push(`    <span class="k">"channel"</span>: <span class="s">"MSDCR Ops · Urgent"</span>,`);
+      lines.push(`    <span class="k">"recipients"</span>: [<span class="s">"Warden Reilly"</span>, <span class="s">"Deputy Dir Johnson"</span>],`);
+      lines.push(`    <span class="k">"cardDelivered"</span>: <span class="n">true</span>`);
+    } else if (t.includes('dataverse') || t.includes('update') || t.includes('create')) {
+      lines.push(`    <span class="k">"recordsAffected"</span>: <span class="n">1</span>,`);
+      lines.push(`    <span class="k">"table"</span>: <span class="s">"${sub.split(' ')[0] || 'msdcr_records'}"</span>,`);
+      lines.push(`    <span class="k">"operation"</span>: <span class="s">"upsert"</span>`);
+    } else if (t.includes('email') || t.includes('outlook') || t.includes('acknowledg')) {
+      lines.push(`    <span class="k">"messageId"</span>: <span class="s">"${runId}@msdcr.gov"</span>,`);
+      lines.push(`    <span class="k">"sent"</span>: <span class="n">true</span>,`);
+      lines.push(`    <span class="k">"recipients"</span>: <span class="n">1</span>`);
+    } else {
+      lines.push(`    <span class="k">"success"</span>: <span class="n">true</span>,`);
+      lines.push(`    <span class="k">"message"</span>: <span class="s">"${title.replace(/"/g,'\\"')} completed"</span>`);
+    }
+    lines.push(`  }`);
+  }
+  lines.push(`}`);
+  return lines.join('\n');
+}
+
+function faInitSimulate() {
+  document.querySelectorAll('#app-powerautomate .fa-canvas-wrap').forEach(wrap => {
+    const head = wrap.querySelector('.fa-main-head');
+    if (!head || head.dataset.faReady) return;
+    head.dataset.faReady = '1';
+    // Wrap the existing h2+p in a left div
+    const leftDiv = document.createElement('div');
+    while (head.firstChild) leftDiv.appendChild(head.firstChild);
+    head.appendChild(leftDiv);
+    // Add actions
+    const actions = document.createElement('div');
+    actions.className = 'fa-main-head-actions';
+    const btn = document.createElement('button');
+    btn.className = 'fa-test-btn';
+    btn.innerHTML = '<svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> Test flow';
+    btn.onclick = () => faSimulate(btn);
+    actions.appendChild(btn);
+    head.appendChild(actions);
+    // Add a run banner right after the head
+    const banner = document.createElement('div');
+    banner.className = 'fa-run-banner';
+    banner.innerHTML = '<div class="fa-run-spin"></div><span><strong>Waiting…</strong></span>';
+    head.parentNode.insertBefore(banner, head.nextSibling);
+  });
+}
+
+function faCollectSteps(wrap) {
+  // Walk the canvas DOM and build an ordered step list. Branches produce two parallel step entries tagged with their branch.
+  const canvas = wrap.querySelector('.fa-canvas');
+  if (!canvas) return [];
+  const steps = [];
+  const branch = FA_SIM_BRANCH[wrap.dataset.faFlow] || 'yes';
+  for (const child of canvas.children) {
+    if (child.classList.contains('fa-node')) {
+      steps.push({ node: child, type: 'node' });
+    } else if (child.classList.contains('fa-branch')) {
+      const yesCol = child.querySelector('.fa-branch-col:nth-child(1)');
+      const noCol = child.querySelector('.fa-branch-col:nth-child(2)');
+      const pick = branch === 'yes' ? yesCol : noCol;
+      const skip = branch === 'yes' ? noCol : yesCol;
+      const pickNode = pick?.querySelector('.fa-node');
+      const skipNode = skip?.querySelector('.fa-node');
+      if (pickNode) steps.push({ node: pickNode, type: 'branch-taken', branch });
+      if (skipNode) steps.push({ node: skipNode, type: 'branch-skipped', branch: branch === 'yes' ? 'no' : 'yes' });
+    }
+  }
+  return steps;
+}
+
+function faSimulate(btn) {
+  const wrap = document.querySelector('#app-powerautomate .fa-canvas-wrap.tab-active');
+  if (!wrap || wrap.dataset.faRunning === '1') return;
+  wrap.dataset.faRunning = '1';
+  btn.disabled = true;
+  btn.innerHTML = '<div class="fa-run-spin" style="width:10px;height:10px;"></div> Running…';
+  const banner = wrap.querySelector('.fa-run-banner');
+  banner.className = 'fa-run-banner show';
+  banner.innerHTML = '<div class="fa-run-spin"></div><span><strong>Run started</strong></span><span class="fa-run-meta">run ' + Math.random().toString(16).slice(2,10) + ' · ' + new Date().toLocaleTimeString() + '</span>';
+  // Reset all nodes
+  wrap.querySelectorAll('.fa-node').forEach(n => {
+    n.classList.remove('sim-running','sim-success','sim-skipped','sim-pending');
+    n.querySelector('.fa-step-badge')?.remove();
+    const existingOut = n.querySelector('.fa-node-output');
+    if (existingOut) existingOut.remove();
+    n.querySelector('.fa-node-output-toggle')?.remove();
+    n.classList.add('sim-pending');
+  });
+  const steps = faCollectSteps(wrap);
+  const totalStart = performance.now();
+  let i = 0;
+  let runningStep = () => {
+    if (i >= steps.length) {
+      const total = Math.round(performance.now() - totalStart);
+      banner.className = 'fa-run-banner show success';
+      banner.innerHTML = '<div class="fa-run-spin"></div><span><strong>Flow run succeeded</strong> · ' + steps.filter(s => s.type !== 'branch-skipped').length + ' of ' + steps.length + ' steps executed</span><span class="fa-run-meta">total ' + (total/1000).toFixed(2) + 's</span>';
+      btn.disabled = false;
+      btn.className = 'fa-test-btn rerun';
+      btn.innerHTML = '<svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4V1L8 5l4 4V6a6 6 0 11-6 6H4a8 8 0 108-8z"/></svg> Re-run';
+      wrap.dataset.faRunning = '';
+      try { if (typeof showToast === 'function') showToast({ kind: 'success', title: 'Flow run succeeded', text: 'All ' + steps.filter(s => s.type !== 'branch-skipped').length + ' steps executed · ' + (total/1000).toFixed(2) + 's', ttl: 3500 }); } catch(e){}
+      try { if (typeof auditToPurview === 'function') setTimeout(() => auditToPurview('flow.' + wrap.dataset.faFlow, 'Power Automate run audited'), 400); } catch(e){}
+      return;
+    }
+    const step = steps[i];
+    const node = step.node;
+    node.classList.remove('sim-pending');
+    if (step.type === 'branch-skipped') {
+      node.classList.add('sim-skipped');
+      const badge = document.createElement('span');
+      badge.className = 'fa-step-badge skipped';
+      badge.innerHTML = 'SKIPPED';
+      node.appendChild(badge);
+      i++;
+      runningStep();
+      return;
+    }
+    // running
+    node.classList.add('sim-running');
+    const rbadge = document.createElement('span');
+    rbadge.className = 'fa-step-badge running';
+    rbadge.innerHTML = '<span class="fa-run-spin" style="width:8px;height:8px;border-width:1.5px;"></span> RUN';
+    node.appendChild(rbadge);
+    const kind = (node.querySelector('.fa-node-kind')?.textContent || '').trim();
+    const isDelay = kind.startsWith('Delay');
+    const dur = isDelay ? 900 : (300 + Math.random() * 500);
+    setTimeout(() => {
+      node.classList.remove('sim-running');
+      node.classList.add('sim-success');
+      rbadge.remove();
+      const ms = Math.round(dur);
+      const badge = document.createElement('span');
+      badge.className = 'fa-step-badge success';
+      badge.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.2l-3.5-3.5 1.4-1.4L9 13.4l7.1-7.1 1.4 1.4z"/></svg> ' + (isDelay ? '48h (simulated)' : ms + 'ms');
+      node.appendChild(badge);
+      // attach output panel
+      const out = document.createElement('pre');
+      out.className = 'fa-node-output';
+      out.innerHTML = faMockOutput(node, wrap.dataset.faFlow);
+      node.querySelector('.fa-node-body').appendChild(out);
+      const toggle = document.createElement('span');
+      toggle.className = 'fa-node-output-toggle';
+      toggle.textContent = 'View outputs';
+      toggle.onclick = (e) => {
+        e.stopPropagation();
+        out.classList.toggle('expanded');
+        toggle.textContent = out.classList.contains('expanded') ? 'Hide outputs' : 'View outputs';
+      };
+      node.querySelector('.fa-node-body').appendChild(toggle);
+      i++;
+      setTimeout(runningStep, 160);
+    }, dur);
+  };
+  setTimeout(runningStep, 300);
+}
+
+// Init on load + re-init if user navigates to the powerautomate app
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', faInitSimulate);
+} else {
+  setTimeout(faInitSimulate, 200);
 }
 
 // Power Pages PORTAL nav (inside the Preview tab: Home / Visits / Records / etc.)
