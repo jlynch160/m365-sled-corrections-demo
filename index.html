@@ -4000,6 +4000,10 @@ textarea.pa-input { min-height: 56px; resize: vertical; }
 .fa-run-body .fa-run-s { font-size: 10px; color: var(--gray-130); }
 .fa-run-dur { font-size: 10.5px; color: var(--gray-130); }
 .fa-run-link { font-size: 10.5px; color: #0b8ba5; cursor: pointer; text-align: right; grid-column: 2 / span 2; margin-top: 2px; }
+.fa-canvas-wrap { display: none; }
+.fa-canvas-wrap.tab-active { display: block; }
+.fa-runhistory-panel { display: none; }
+.fa-runhistory-panel.tab-active { display: block; }
 
 /* ============ POWER PAGES ============ */
 .app-topbar.powerpages { background: linear-gradient(180deg, #1e7a3c 0%, #145827 100%); }
@@ -6311,8 +6315,8 @@ body.dark .pp-bar { background: #333; }
       <div class="agent-card" onclick="toggleCopilot('agent','bedcoord'); setTimeout(()=>runCopilotByKey('agent','status'),400);">
         <svg class="agent-logo" width="52" height="52"><use href="#agentLogoBed"/></svg>
         <div class="agent-meta">
-          <div class="agent-name">File Validator</div>
-          <div class="agent-desc">Scans personnel files across CorrectionsCore + SharePoint for missing docs and retention-policy issues across 6 facilities.</div>
+          <div class="agent-name">Policy Copilot</div>
+          <div class="agent-desc">Grounds answers in the MSDCR Policy Manual (rev 2026R1) + DOP/PREA; flags missing or outdated citations in classification-review packets.</div>
           <div class="agent-pill"><span class="dot"></span>Live · last sync 2 min ago</div>
         </div>
       </div>
@@ -6320,24 +6324,24 @@ body.dark .pp-bar { background: #333; }
         <svg class="agent-logo" width="52" height="52"><use href="#agentLogoIntake"/></svg>
         <div class="agent-meta">
           <div class="agent-name">Visitation Front Door</div>
-          <div class="agent-desc">Routes incoming staff requests (address change, release-planning letters) and pre-stages the personnel file + manager loop.</div>
-          <div class="agent-pill"><span class="dot"></span>3 new intakes awaiting review</div>
+          <div class="agent-desc">Routes visitation applications and exceptions from family.msdcr.gov, pre-stages the Coordinator approval loop.</div>
+          <div class="agent-pill"><span class="dot"></span>3 new exceptions awaiting review</div>
         </div>
       </div>
       <div class="agent-card" onclick="toggleCopilot('agent','priorauth'); setTimeout(()=>runCopilotByKey('agent','scan'),400);">
         <svg class="agent-logo" width="52" height="52"><use href="#agentLogoShield"/></svg>
         <div class="agent-meta">
-          <div class="agent-name">Shift-Swap Assistant</div>
-          <div class="agent-desc">Handles Shift-Swap balance lookups + requests in Teams, routes manager approvals, and posts to CorrectionsCore.</div>
-          <div class="agent-pill warn"><span class="dot warn"></span>2 approvals pending &gt;48h</div>
+          <div class="agent-name">Grievance &amp; PRR Router</div>
+          <div class="agent-desc">Classifies grievance tier (Emergency / 15-day / 30-day) and triages PRRs by sensitivity into the right queue.</div>
+          <div class="agent-pill warn"><span class="dot warn"></span>2 SLA risks pending &gt;48h</div>
         </div>
       </div>
       <div class="agent-card" onclick="toggleCopilot('agent','trial'); setTimeout(()=>runCopilotByKey('agent','match'),400);">
         <svg class="agent-logo" width="52" height="52"><use href="#agentLogoTrial"/></svg>
         <div class="agent-meta">
-          <div class="agent-name">Intake Processing Nudge</div>
-          <div class="agent-desc">Monitors 30/60/90-day intake checklists and nudges managers with specific outstanding items.</div>
-          <div class="agent-pill good"><span class="dot good"></span>2 new staff off-track at day 30</div>
+          <div class="agent-name">Reentry Program Match</div>
+          <div class="agent-desc">Scores Reentry Intake Assessments against MCRP program availability and returns ranked placements for the Case Manager.</div>
+          <div class="agent-pill good"><span class="dot good"></span>2 assessments ready to review</div>
         </div>
       </div>
       <div class="agent-card agent-build-card" onclick="openAgentBuilder()">
@@ -7136,7 +7140,7 @@ body.dark .pp-bar { background: #333; }
             <tr><td>4 min ago</td><td>L. Thomas</td><td>Word</td><td>Draft release-planning letter</td><td>3 docs</td><td>${labelChip('phi')}</td><td class="ok">✓</td></tr>
             <tr><td>8 min ago</td><td>Maria Gutierrez</td><td>Excel</td><td>Find file-validation exceptions</td><td>1 sheet · file scan</td><td>${labelChip('conf')}</td><td class="ok">✓</td></tr>
             <tr><td>12 min ago</td><td>Alex Rivera</td><td>Outlook</td><td>Triage inbox</td><td>147 messages</td><td>${labelChip('phi')}</td><td class="ok">✓</td></tr>
-            <tr><td>19 min ago</td><td>Shift-Swap Assistant</td><td>Agent</td><td>Process Shift-Swap requests</td><td>14 requests · CorrectionsCore</td><td>${labelChip('phi')}</td><td class="ok">✓</td></tr>
+            <tr><td>19 min ago</td><td>Visitation Front Door</td><td>Agent</td><td>Process visitation exception requests</td><td>14 applications · Dataverse</td><td>${labelChip('phi')}</td><td class="ok">✓</td></tr>
             <tr><td>26 min ago</td><td>J. Okonkwo</td><td>Outlook</td><td>Tried to forward Resident PII to personal email</td><td>—</td><td>${labelChip('phi')}</td><td class="bad">✕ Blocked by DLP</td></tr>
             <tr><td>34 min ago</td><td>Priya Raman</td><td>Word</td><td>Review draft</td><td>Release-planning letter</td><td>${labelChip('phi')}</td><td class="ok">✓</td></tr>
           </tbody>
@@ -7386,14 +7390,14 @@ body.dark .pp-bar { background: #333; }
           </div>
           <div class="pages-kpis">
             <div class="pages-kpi"><div class="pages-kpi-v">1,247</div><div class="pages-kpi-l">cases ▲7%</div></div>
-            <div class="pages-kpi"><div class="pages-kpi-v">612</div><div class="pages-kpi-l">Shift-Swap in Teams ▲4×</div></div>
+            <div class="pages-kpi"><div class="pages-kpi-v">612</div><div class="pages-kpi-l">Visitation Front Door in Teams ▲4×</div></div>
             <div class="pages-kpi"><div class="pages-kpi-v" style="color:#107c10;">68%</div><div class="pages-kpi-l">Self-service</div></div>
             <div class="pages-kpi"><div class="pages-kpi-v">4.6/5</div><div class="pages-kpi-l">Staff CSAT ▲0.3</div></div>
           </div>
         </div>
 
         <h2 class="pages-h2">The story this quarter</h2>
-        <p class="pages-p">staff inbox volume is up 7%, but Case Manager touch-time is down sharply — the Shift-Swap agent in Teams auto-handled <strong>612 requests</strong> that would have been inbox tickets last quarter, and the File Validator surfaced <strong>237 compliance exceptions</strong> (14 missing classification reviews, 62 missing policy attestationnowledgments) that are now <strong>82% remediated</strong>. CSAT up 0.3 to 4.6/5. The pattern worth watching: verification-letter turnaround. We generated 184 letters but 11 took &gt;2 days — the Front Door intake rollout in Phase 2 should close that.</p>
+        <p class="pages-p">public inquiry volume is up 7%, but Coordinator touch-time is down sharply — the Visitation Front Door agent in Teams auto-handled <strong>612 exception requests</strong> that would have been Coordinator tickets last quarter, and Policy Copilot surfaced <strong>237 policy-citation exceptions</strong> (14 missing classification review references, 62 outdated DOP citations) that are now <strong>82% remediated</strong>. Staff CSAT up 0.3 to 4.6/5. The pattern worth watching: records-request turnaround. We processed 184 PRRs but 11 took &gt;2 days — the Records Request Desk rollout in Phase 2 should close that.</p>
 
         <div class="pages-block suggestion">
           <div class="pages-block-head">
@@ -7788,7 +7792,7 @@ body.dark .pp-bar { background: #333; }
             </thead>
             <tbody>
               <tr>
-                <td class="a-name"><svg width="22" height="22"><use href="#agentLogoShield"/></svg><div><strong>Shift-Swap Assistant</strong><span>Visitation &amp; Family Services · prod</span></div></td>
+                <td class="a-name"><svg width="22" height="22"><use href="#agentLogoShield"/></svg><div><strong>Visitation Front Door</strong><span>Visitation &amp; Family Services · prod</span></div></td>
                 <td><span class="src-badge ms">Copilot Studio</span></td>
                 <td>M. Gutierrez</td>
                 <td><span class="id-chip">🔐 Entra ID</span></td>
@@ -7797,7 +7801,7 @@ body.dark .pp-bar { background: #333; }
                 <td><span class="pill good">● Live</span></td>
               </tr>
               <tr>
-                <td class="a-name"><svg width="22" height="22"><use href="#agentLogoBed"/></svg><div><strong>File Validator</strong><span>Policy & Programs · prod</span></div></td>
+                <td class="a-name"><svg width="22" height="22"><use href="#agentLogoBed"/></svg><div><strong>Policy Copilot</strong><span>Policy &amp; Programs · prod</span></div></td>
                 <td><span class="src-badge ms">Copilot Studio</span></td>
                 <td>M. Johnson</td>
                 <td><span class="id-chip">🔐 Entra ID</span></td>
@@ -7806,7 +7810,7 @@ body.dark .pp-bar { background: #333; }
                 <td><span class="pill good">● Live</span></td>
               </tr>
               <tr>
-                <td class="a-name"><svg width="22" height="22"><use href="#agentLogoIntake"/></svg><div><strong>Visitation Front Door</strong><span>Policy & Programs · prod</span></div></td>
+                <td class="a-name"><svg width="22" height="22"><use href="#agentLogoIntake"/></svg><div><strong>Grievance &amp; PRR Router</strong><span>Policy &amp; Programs · prod</span></div></td>
                 <td><span class="src-badge ms">Copilot Studio</span></td>
                 <td>S. Chen</td>
                 <td><span class="id-chip">🔐 Entra ID</span></td>
@@ -7815,7 +7819,7 @@ body.dark .pp-bar { background: #333; }
                 <td><span class="pill good">● Live</span></td>
               </tr>
               <tr>
-                <td class="a-name"><svg width="22" height="22"><use href="#agentLogoTrial"/></svg><div><strong>Intake Processing Nudge</strong><span>Policy & Programs · pilot</span></div></td>
+                <td class="a-name"><svg width="22" height="22"><use href="#agentLogoTrial"/></svg><div><strong>Reentry Program Match</strong><span>Policy &amp; Programs · pilot</span></div></td>
                 <td><span class="src-badge ms">Copilot Studio</span></td>
                 <td>S. Chen</td>
                 <td><span class="id-chip">🔐 Entra ID</span></td>
@@ -7910,8 +7914,8 @@ body.dark .pp-bar { background: #333; }
               <span class="adm-live"><span class="adm-live-dot"></span>Live</span>
             </div>
             <div class="a365-feed" id="a365-feed">
-              <div class="a365-feed-row"><span class="a365-feed-t">just now</span><span class="a365-feed-a">Shift-Swap Assistant</span><span class="a365-feed-d">Drafted Shift-Swap request for Garcia, E. (Facilities) → routed to T. Reilly for approval</span></div>
-              <div class="a365-feed-row"><span class="a365-feed-t">4s ago</span><span class="a365-feed-a">File Validator</span><span class="a365-feed-d">Queried CorrectionsCore file repo for Complex 4 (High Security) (read-only)</span></div>
+              <div class="a365-feed-row"><span class="a365-feed-t">just now</span><span class="a365-feed-a">Visitation Front Door</span><span class="a365-feed-d">Drafted visitation exception for Huang, J. (family member) → routed to Visitation Coordinator Reilly for approval</span></div>
+              <div class="a365-feed-row"><span class="a365-feed-t">4s ago</span><span class="a365-feed-a">Policy Copilot</span><span class="a365-feed-d">Queried Policy Manual rev 2026R1 for DOP 402 citation match (read-only)</span></div>
               <div class="a365-feed-row bad"><span class="a365-feed-t">9s ago</span><span class="a365-feed-a">Agentforce (SF)</span><span class="a365-feed-d">⚠ Attempted to read a Resident-PII-labeled field outside scope — <strong>DLP block</strong></span></div>
               <div class="a365-feed-row"><span class="a365-feed-t">12s ago</span><span class="a365-feed-a">Visitation Front Door</span><span class="a365-feed-d">Routed address-change request for Garcia, E. to Benefits queue</span></div>
               <div class="a365-feed-row"><span class="a365-feed-t">18s ago</span><span class="a365-feed-a">MSDCR GPT</span><span class="a365-feed-d">Summarized PREA overtime section for Alex Rivera</span></div>
@@ -8001,10 +8005,10 @@ body.dark .pp-bar { background: #333; }
                 <tr><th>Agent</th><th>Entra Agent ID</th><th>Scopes granted</th><th>Last rotated</th><th>Conditional Access</th></tr>
               </thead>
               <tbody>
-                <tr><td class="a-name"><svg width="22" height="22"><use href="#agentLogoShield"/></svg><div><strong>Shift-Swap Assistant</strong><span>Visitation &amp; Family Services</span></div></td><td><code class="a365-code">ai-pto-assist-01</code></td><td><span class="src-badge ms">Graph.Files.Read</span> <span class="src-badge ms">Mail.Send</span></td><td>14 d ago</td><td><span class="pill good">✓ Restricted</span></td></tr>
-                <tr><td class="a-name"><svg width="22" height="22"><use href="#agentLogoBed"/></svg><div><strong>File Validator</strong><span>Policy & Programs</span></div></td><td><code class="a365-code">ai-file-val-01</code></td><td><span class="src-badge ms">Graph.Read</span> <span class="src-badge partner">CorrectionsCore.Files.Read</span></td><td>2 d ago</td><td><span class="pill good">✓ Restricted</span></td></tr>
-                <tr><td class="a-name"><svg width="22" height="22"><use href="#agentLogoIntake"/></svg><div><strong>Visitation Front Door</strong><span>Policy & Programs</span></div></td><td><code class="a365-code">ai-hr-frontdoor-01</code></td><td><span class="src-badge ms">Graph.Files.ReadWrite</span> <span class="src-badge ms">Mail.Draft</span></td><td>21 d ago</td><td><span class="pill good">✓ Restricted</span></td></tr>
-                <tr><td class="a-name"><svg width="22" height="22"><use href="#agentLogoTrial"/></svg><div><strong>Intake Processing Nudge</strong><span>Policy & Programs</span></div></td><td><code class="a365-code">ai-onboard-nudge-01</code></td><td><span class="src-badge ms">Graph.Read</span> <span class="src-badge partner">CorrectionsCore.NewHires.Read</span></td><td>7 d ago</td><td><span class="pill good">✓ Restricted</span></td></tr>
+                <tr><td class="a-name"><svg width="22" height="22"><use href="#agentLogoShield"/></svg><div><strong>Visitation Front Door</strong><span>Visitation &amp; Family Services</span></div></td><td><code class="a365-code">ai-visit-frontdoor-01</code></td><td><span class="src-badge ms">Graph.Files.Read</span> <span class="src-badge ms">Mail.Send</span></td><td>14 d ago</td><td><span class="pill good">✓ Restricted</span></td></tr>
+                <tr><td class="a-name"><svg width="22" height="22"><use href="#agentLogoBed"/></svg><div><strong>Policy Copilot</strong><span>Policy &amp; Programs</span></div></td><td><code class="a365-code">ai-policy-copilot-01</code></td><td><span class="src-badge ms">Graph.Read</span> <span class="src-badge partner">CorrectionsCore.Policy.Read</span></td><td>2 d ago</td><td><span class="pill good">✓ Restricted</span></td></tr>
+                <tr><td class="a-name"><svg width="22" height="22"><use href="#agentLogoIntake"/></svg><div><strong>Grievance &amp; PRR Router</strong><span>Policy &amp; Programs</span></div></td><td><code class="a365-code">ai-grievance-router-01</code></td><td><span class="src-badge ms">Graph.Files.ReadWrite</span> <span class="src-badge ms">Mail.Draft</span></td><td>21 d ago</td><td><span class="pill good">✓ Restricted</span></td></tr>
+                <tr><td class="a-name"><svg width="22" height="22"><use href="#agentLogoTrial"/></svg><div><strong>Reentry Program Match</strong><span>Policy &amp; Programs</span></div></td><td><code class="a365-code">ai-reentry-match-01</code></td><td><span class="src-badge ms">Graph.Read</span> <span class="src-badge partner">MCRP.Partners.Read</span></td><td>7 d ago</td><td><span class="pill good">✓ Restricted</span></td></tr>
                 <tr><td class="a-name"><span class="ext-ico" style="background:#00a1e0;">SF</span><div><strong>Agentforce (Salesforce)</strong><span>Student Services</span></div></td><td><code class="a365-code">ai-sf-agentforce-01</code></td><td><span class="src-badge partner">SF.Read</span> <span class="src-badge ms">Graph.Files.Read</span></td><td>45 d ago · <span style="color:#c77700;font-weight:600;">rotate recommended</span></td><td><span class="pill warn">Attested</span></td></tr>
                 <tr><td class="a-name"><span class="ext-ico" style="background:#ff5a3c;">W</span><div><strong>CorrectionsCore agent</strong><span>Records System</span></div></td><td><code class="a365-code">ai-workday-hcm-01</code></td><td><span class="src-badge partner">CorrectionsCore.Read</span></td><td>9 d ago</td><td><span class="pill good">✓ Restricted</span></td></tr>
               </tbody>
@@ -8024,9 +8028,9 @@ body.dark .pp-bar { background: #333; }
             <div class="a365-card">
               <div class="a365-card-head"><div><div class="a365-card-title">Who can invoke what</div><div class="a365-card-sub">Role-to-agent mapping · top 6</div></div></div>
               <div class="a365-feed" style="max-height:none;">
-                <div class="a365-feed-row"><span class="a365-feed-t">Case Managers</span><span class="a365-feed-a">File Val, Front Door, Intake Processing</span><span class="a365-feed-d">428 users</span></div>
-                <div class="a365-feed-row"><span class="a365-feed-t">Managers</span><span class="a365-feed-a">Shift-Swap, Intake Processing Nudge</span><span class="a365-feed-d">340 users</span></div>
-                <div class="a365-feed-row"><span class="a365-feed-t">Benefits</span><span class="a365-feed-a">Shift-Swap Assistant, Verification</span><span class="a365-feed-d">62 users</span></div>
+                <div class="a365-feed-row"><span class="a365-feed-t">Case Managers</span><span class="a365-feed-a">Policy Copilot, Visitation Front Door, Reentry Match</span><span class="a365-feed-d">428 users</span></div>
+                <div class="a365-feed-row"><span class="a365-feed-t">Coordinators</span><span class="a365-feed-a">Grievance &amp; PRR Router, Visitation Front Door</span><span class="a365-feed-d">340 users</span></div>
+                <div class="a365-feed-row"><span class="a365-feed-t">Records Office</span><span class="a365-feed-a">Records Request Desk, Policy Copilot</span><span class="a365-feed-d">62 users</span></div>
                 <div class="a365-feed-row"><span class="a365-feed-t">Reentry Svcs</span><span class="a365-feed-a">Agentforce</span><span class="a365-feed-d">48 users</span></div>
                 <div class="a365-feed-row"><span class="a365-feed-t">IT</span><span class="a365-feed-a">MSDCR GPT, Now Assist</span><span class="a365-feed-d">124 users</span></div>
                 <div class="a365-feed-row"><span class="a365-feed-t">Operations Analytics</span><span class="a365-feed-a">Policy RAG</span><span class="a365-feed-d">22 users</span></div>
@@ -8129,7 +8133,7 @@ body.dark .pp-bar { background: #333; }
             <div class="a365-inc" style="border-left-color:#107c10;background:linear-gradient(90deg,#eef9f1,#fff);">
               <div class="a365-inc-sev" style="background:#107c10;">RESOLVED</div>
               <div class="a365-inc-main">
-                <div class="a365-inc-t">Shift-Swap Assistant hit rate-limit on CorrectionsCore (Aquera) API</div>
+                <div class="a365-inc-t">Visitation Front Door hit rate-limit on CorrectionsCore roster API</div>
                 <div class="a365-inc-s">Resolved 4d ago · backoff + retry logic pushed · Owner: M. Gutierrez</div>
               </div>
               <div class="a365-inc-actions"><button class="adm-f">Post-mortem</button></div>
@@ -8167,12 +8171,12 @@ body.dark .pp-bar { background: #333; }
             <div class="a365-card-head"><div><div class="a365-card-title">Spend by agent · MTD</div><div class="a365-card-sub">Top 8 · all others rolled up</div></div></div>
             <div class="adm-uc" style="margin-top:8px;">
               <div class="adm-uc-row"><span class="adm-uc-name">MSDCR GPT (custom)</span><div class="adm-uc-bar"><span style="width:92%;background:#7441e8;"></span></div><span class="adm-uc-n">$3,120</span></div>
-              <div class="adm-uc-row"><span class="adm-uc-name">Shift-Swap Assistant</span><div class="adm-uc-bar"><span style="width:58%;background:#1b4aa8;"></span></div><span class="adm-uc-n">$1,642</span></div>
-              <div class="adm-uc-row"><span class="adm-uc-name">File Validator</span><div class="adm-uc-bar"><span style="width:42%;background:#1b4aa8;"></span></div><span class="adm-uc-n">$1,088</span></div>
-              <div class="adm-uc-row"><span class="adm-uc-name">Visitation Front Door</span><div class="adm-uc-bar"><span style="width:28%;background:#1b4aa8;"></span></div><span class="adm-uc-n">$712</span></div>
+              <div class="adm-uc-row"><span class="adm-uc-name">Visitation Front Door</span><div class="adm-uc-bar"><span style="width:58%;background:#1b4aa8;"></span></div><span class="adm-uc-n">$1,642</span></div>
+              <div class="adm-uc-row"><span class="adm-uc-name">Policy Copilot</span><div class="adm-uc-bar"><span style="width:42%;background:#1b4aa8;"></span></div><span class="adm-uc-n">$1,088</span></div>
+              <div class="adm-uc-row"><span class="adm-uc-name">Grievance &amp; PRR Router</span><div class="adm-uc-bar"><span style="width:28%;background:#1b4aa8;"></span></div><span class="adm-uc-n">$712</span></div>
               <div class="adm-uc-row"><span class="adm-uc-name">CorrectionsCore agent</span><div class="adm-uc-bar"><span style="width:22%;background:#ff5a3c;"></span></div><span class="adm-uc-n">$548</span></div>
               <div class="adm-uc-row"><span class="adm-uc-name">Agentforce (SF)</span><div class="adm-uc-bar"><span style="width:16%;background:#00a1e0;"></span></div><span class="adm-uc-n">$402</span></div>
-              <div class="adm-uc-row"><span class="adm-uc-name">Intake Processing Nudge</span><div class="adm-uc-bar"><span style="width:12%;background:#1b4aa8;"></span></div><span class="adm-uc-n">$310</span></div>
+              <div class="adm-uc-row"><span class="adm-uc-name">Reentry Program Match</span><div class="adm-uc-bar"><span style="width:12%;background:#1b4aa8;"></span></div><span class="adm-uc-n">$310</span></div>
               <div class="adm-uc-row"><span class="adm-uc-name">Now Assist</span><div class="adm-uc-bar"><span style="width:9%;background:#62d84e;"></span></div><span class="adm-uc-n">$218</span></div>
               <div class="adm-uc-row"><span class="adm-uc-name">All others (39)</span><div class="adm-uc-bar"><span style="width:7%;background:var(--gray-90);"></span></div><span class="adm-uc-n">$200</span></div>
             </div>
@@ -8217,18 +8221,18 @@ body.dark .pp-bar { background: #333; }
           <table class="a365-table" style="font-size:12px;">
             <thead><tr><th>Time</th><th>Agent</th><th>Invoked by</th><th>Prompt / action</th><th>Sources</th><th>Label</th><th>Outcome</th></tr></thead>
             <tbody>
-              <tr><td>09:14:22</td><td>File Validator</td><td>M. Gutierrez</td><td>"What's the file-exception picture right now?"</td><td>CorrectionsCore files · read</td><td>—</td><td class="ok">✓ OK</td></tr>
-              <tr><td>09:14:11</td><td>Shift-Swap Assistant</td><td>T. Reilly</td><td>Approve Shift-Swap requests for Facilities</td><td>CorrectionsCore (Aquera) · 14 requests</td><td>Resident PII</td><td class="ok">✓ OK</td></tr>
-              <tr><td>09:13:58</td><td>Visitation Front Door</td><td>S. Chen</td><td>Route 3 new intakes</td><td>Intake folder</td><td>Resident PII</td><td class="ok">✓ OK</td></tr>
+              <tr><td>09:14:22</td><td>Policy Copilot</td><td>M. Gutierrez</td><td>"What's the DOP 402 citation picture right now?"</td><td>Policy Manual rev 2026R1 · read</td><td>—</td><td class="ok">✓ OK</td></tr>
+              <tr><td>09:14:11</td><td>Visitation Front Door</td><td>T. Reilly</td><td>Approve visitation exceptions for Complex 4</td><td>Dataverse · 14 applications</td><td>Resident PII</td><td class="ok">✓ OK</td></tr>
+              <tr><td>09:13:58</td><td>Grievance &amp; PRR Router</td><td>S. Chen</td><td>Route 3 new grievances by tier</td><td>msdcr_grievances</td><td>Resident PII</td><td class="ok">✓ OK</td></tr>
               <tr><td>09:13:42</td><td>MSDCR GPT</td><td>P. Raman</td><td>"Summarize PREA overtime Section 4.1"</td><td>Reference · public</td><td>Public</td><td class="ok">✓ OK</td></tr>
               <tr><td>09:13:20</td><td>Agentforce (SF)</td><td>L. Nguyen</td><td>Fetch resident employment record</td><td>SF · CDP</td><td>Resident PII</td><td class="bad">✕ DLP block</td></tr>
-              <tr><td>09:12:58</td><td>Intake Processing Nudge</td><td>M. Johnson</td><td>Screen new staff at day-30 checkpoint</td><td>CorrectionsCore · Outlook</td><td>Confidential</td><td class="ok">✓ OK</td></tr>
-              <tr><td>09:12:41</td><td>CorrectionsCore agent</td><td>D. Kowalski</td><td>Pending file exceptions for Complex 4 (High Security)</td><td>CorrectionsCore · REST</td><td>Resident PII</td><td class="ok">✓ OK</td></tr>
-              <tr><td>09:12:19</td><td>Release Planning</td><td>(scheduled)</td><td>Nightly letter queue</td><td>3 open requests · Policy v4</td><td>Resident PII</td><td class="ok">✓ OK</td></tr>
+              <tr><td>09:12:58</td><td>Reentry Program Match</td><td>M. Johnson</td><td>Score reentry assessment · top-5 programs</td><td>MCRP partners · Dataverse</td><td>Confidential</td><td class="ok">✓ OK</td></tr>
+              <tr><td>09:12:41</td><td>CorrectionsCore agent</td><td>D. Kowalski</td><td>Pending packet exceptions for Complex 4 (High Security)</td><td>CorrectionsCore · REST</td><td>Resident PII</td><td class="ok">✓ OK</td></tr>
+              <tr><td>09:12:19</td><td>Records Request Desk</td><td>(scheduled)</td><td>Nightly PRR triage queue</td><td>3 open requests · Policy v4</td><td>Resident PII</td><td class="ok">✓ OK</td></tr>
               <tr><td>09:11:47</td><td>"PolicyGPT v2"</td><td>r.smith@msdcr.gov</td><td>Unapproved endpoint POST</td><td>—</td><td>—</td><td class="bad">✕ CA blocked</td></tr>
               <tr><td>09:11:12</td><td>Now Assist</td><td>IT Ops</td><td>Resolve ticket HD-4412</td><td>ServiceNow</td><td>Internal</td><td class="ok">✓ OK</td></tr>
-              <tr><td>09:10:58</td><td>File Validator</td><td>M. Gutierrez</td><td>"Who's missing an Classification Review this week?"</td><td>CorrectionsCore files · read</td><td>Resident PII</td><td class="ok">✓ OK</td></tr>
-              <tr><td>09:10:30</td><td>Shift-Swap Assistant</td><td>(scheduled)</td><td>Manager approval reminder scan</td><td>CorrectionsCore · 14 pending</td><td>Resident PII</td><td class="ok">✓ OK</td></tr>
+              <tr><td>09:10:58</td><td>Policy Copilot</td><td>M. Gutierrez</td><td>"Which packets are missing a PREA citation this week?"</td><td>Policy Manual rev 2026R1 · read</td><td>Resident PII</td><td class="ok">✓ OK</td></tr>
+              <tr><td>09:10:30</td><td>Classification Packet Prep</td><td>(scheduled)</td><td>Thursday docket pre-eval scan</td><td>Dataverse · 7 packets</td><td>Resident PII</td><td class="ok">✓ OK</td></tr>
             </tbody>
           </table>
         </div>
@@ -9882,37 +9886,37 @@ body.dark .pp-bar { background: #333; }
           <p>MSDCR-Prod · 8 cloud flows</p>
         </div>
         <div class="fa-flowlist">
-          <div class="fa-flowrow active">
+          <div class="fa-flowrow active" onclick="faFlow(this, 'grievance-sla')">
             <div class="fa-flowrow-name">Grievance SLA Escalation</div>
-            <div class="fa-flowrow-meta"><span class="fa-pill on">Enabled</span> · ran 7 min ago</div>
+            <div class="fa-flowrow-meta"><span class="fa-pill on">Enabled</span> · 2 min ago · 247 runs / 30d</div>
           </div>
-          <div class="fa-flowrow">
+          <div class="fa-flowrow" onclick="faFlow(this, 'prr-intake')">
             <div class="fa-flowrow-name">PRR Intake Router</div>
-            <div class="fa-flowrow-meta"><span class="fa-pill on">Enabled</span> · ran 2 h ago</div>
+            <div class="fa-flowrow-meta"><span class="fa-pill on">Enabled</span> · 8 min ago · 94 runs / 30d</div>
           </div>
-          <div class="fa-flowrow">
+          <div class="fa-flowrow" onclick="faFlow(this, 'visitation-exception')">
             <div class="fa-flowrow-name">Visitation Exception Routing</div>
-            <div class="fa-flowrow-meta"><span class="fa-pill on">Enabled</span> · ran 34 min ago</div>
+            <div class="fa-flowrow-meta"><span class="fa-pill on">Enabled</span> · 14 min ago · 38 runs / 30d</div>
           </div>
-          <div class="fa-flowrow">
+          <div class="fa-flowrow" onclick="faFlow(this, 'classification-notifier')">
             <div class="fa-flowrow-name">Classification Packet Approval Notifier</div>
-            <div class="fa-flowrow-meta"><span class="fa-pill on">Enabled</span> · ran yesterday</div>
+            <div class="fa-flowrow-meta"><span class="fa-pill on">Enabled</span> · 1 h ago · 42 runs / 30d</div>
           </div>
-          <div class="fa-flowrow">
+          <div class="fa-flowrow" onclick="faFlow(this, 'reentry-match-notifier')">
             <div class="fa-flowrow-name">Reentry Program Match Notifier</div>
-            <div class="fa-flowrow-meta"><span class="fa-pill on">Enabled</span> · ran 1 h ago</div>
+            <div class="fa-flowrow-meta"><span class="fa-pill on">Enabled</span> · 3 h ago · 28 runs / 30d</div>
           </div>
-          <div class="fa-flowrow">
+          <div class="fa-flowrow" onclick="faFlow(this, 'records-triage')">
             <div class="fa-flowrow-name">Records Request Triage</div>
-            <div class="fa-flowrow-meta"><span class="fa-pill on">Enabled</span> · ran 22 min ago</div>
+            <div class="fa-flowrow-meta"><span class="fa-pill on">Enabled</span> · 41 min ago · 73 runs / 30d</div>
           </div>
-          <div class="fa-flowrow">
+          <div class="fa-flowrow" onclick="faFlow(this, 'i30-timer')">
             <div class="fa-flowrow-name">I-30 Grievance Response Timer</div>
-            <div class="fa-flowrow-meta"><span class="fa-pill off">Paused</span> · last week</div>
+            <div class="fa-flowrow-meta"><span class="fa-pill on">Enabled</span> · 6 h ago · 30 runs / 30d (scheduled)</div>
           </div>
-          <div class="fa-flowrow">
+          <div class="fa-flowrow" onclick="faFlow(this, 'visit-publisher')">
             <div class="fa-flowrow-name">Visitation Schedule Publisher</div>
-            <div class="fa-flowrow-meta"><span class="fa-pill on">Enabled</span> · Sundays 06:00</div>
+            <div class="fa-flowrow-meta"><span class="fa-pill on">Enabled</span> · 3 d ago · 4 runs / 30d (weekly)</div>
           </div>
         </div>
       </div>
@@ -9931,6 +9935,7 @@ body.dark .pp-bar { background: #333; }
             <div class="msdcr-banner-meta-sub">Every run captured to Microsoft Purview · GCC</div>
           </div>
         </div>
+        <div class="fa-canvas-wrap tab-active" data-fa-flow="grievance-sla">
         <div class="fa-main-head">
           <h2>Grievance SLA Escalation</h2>
           <p>Triggered by new records in Dataverse · msdcr_grievances. Grounds routing in the Grievance &amp; PRR Router agent; escalates to Warden + Purview audit on SLA risk.</p>
@@ -10018,52 +10023,961 @@ body.dark .pp-bar { background: #333; }
             </div>
           </div>
         </div>
+        </div><!-- /grievance-sla canvas -->
+
+        <!-- ===== PRR Intake Router ===== -->
+        <div class="fa-canvas-wrap" data-fa-flow="prr-intake">
+          <div class="fa-main-head">
+            <h2>PRR Intake Router</h2>
+            <p>Pre-scans inbound public records requests for PII / CJIS / protected-class content, routes them, and starts the statutory 10-day clock. Grounded by the Records Request Desk agent.</p>
+          </div>
+          <div class="fa-canvas">
+            <div class="fa-node trigger">
+              <div class="fa-node-ico">⚡</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Trigger</div>
+                <div class="fa-node-title">When a new PRR is submitted</div>
+                <div class="fa-node-sub">Dataverse · msdcr_public_records · On create</div>
+              </div>
+            </div>
+            <div class="fa-arrow"></div>
+            <div class="fa-node action">
+              <div class="fa-node-ico">◆</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Action · Copilot Studio</div>
+                <div class="fa-node-title">Pre-scan for PII / CJIS / protected-class data</div>
+                <div class="fa-node-sub">Call Records Request Desk agent · sensitivity classification</div>
+                <div class="fa-node-out">Flags: protected_class · pii · cjis</div>
+              </div>
+            </div>
+            <div class="fa-arrow"></div>
+            <div class="fa-node condition">
+              <div class="fa-node-ico">?</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Condition</div>
+                <div class="fa-node-title">Contains protected-class data?</div>
+                <div class="fa-node-sub">Branches: Yes / No</div>
+              </div>
+            </div>
+            <div class="fa-arrow"></div>
+            <div class="fa-branch">
+              <div class="fa-branch-col">
+                <span class="fa-branch-lbl yes">Yes</span>
+                <div class="fa-arrow"></div>
+                <div class="fa-node action" style="max-width:none;">
+                  <div class="fa-node-ico">⚖</div>
+                  <div class="fa-node-body">
+                    <div class="fa-node-kind">Action</div>
+                    <div class="fa-node-title">Route to Legal Review queue</div>
+                    <div class="fa-node-sub">Planner · MSDCR Legal · notify General Counsel via Teams</div>
+                  </div>
+                </div>
+              </div>
+              <div class="fa-branch-col">
+                <span class="fa-branch-lbl no">No</span>
+                <div class="fa-arrow"></div>
+                <div class="fa-node action" style="max-width:none;">
+                  <div class="fa-node-ico">⏱</div>
+                  <div class="fa-node-body">
+                    <div class="fa-node-kind">Action</div>
+                    <div class="fa-node-title">Route to Records Office · start 10-day clock</div>
+                    <div class="fa-node-sub">Dataverse update · msdcr_public_records.sla_start = utcNow()</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="fa-arrow"></div>
+            <div class="fa-node action">
+              <div class="fa-node-ico">🌐</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Action · Power Pages</div>
+                <div class="fa-node-title">Publish public status page entry</div>
+                <div class="fa-node-sub">family.msdcr.gov/records-request/{id} · case # + ETA</div>
+              </div>
+            </div>
+            <div class="fa-arrow"></div>
+            <div class="fa-node action">
+              <div class="fa-node-ico">✉</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Action · Office 365 Outlook</div>
+                <div class="fa-node-title">Email acknowledgement to requester</div>
+                <div class="fa-node-sub">Template · "Your PRR has been received" · includes case # + status link</div>
+              </div>
+            </div>
+          </div>
+        </div><!-- /prr-intake canvas -->
+
+        <!-- ===== Visitation Exception Routing ===== -->
+        <div class="fa-canvas-wrap" data-fa-flow="visitation-exception">
+          <div class="fa-main-head">
+            <h2>Visitation Exception Routing</h2>
+            <p>Triggered by exception submissions from family.msdcr.gov. Grounds eligibility in the Visitation Front Door agent, cross-checks active reentry plans, and routes to the right approver.</p>
+          </div>
+          <div class="fa-canvas">
+            <div class="fa-node trigger">
+              <div class="fa-node-ico">⚡</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Trigger</div>
+                <div class="fa-node-title">When a visitation exception is submitted</div>
+                <div class="fa-node-sub">Dataverse · msdcr_visitation_exceptions · On create</div>
+              </div>
+            </div>
+            <div class="fa-arrow"></div>
+            <div class="fa-node action">
+              <div class="fa-node-ico">◆</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Action · Copilot Studio</div>
+                <div class="fa-node-title">Assess eligibility</div>
+                <div class="fa-node-sub">Call Visitation Front Door agent · policy-grounded assessment</div>
+                <div class="fa-node-out">Recommendation · confidence score</div>
+              </div>
+            </div>
+            <div class="fa-arrow"></div>
+            <div class="fa-node action">
+              <div class="fa-node-ico">◆</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Action · Copilot Studio</div>
+                <div class="fa-node-title">Cross-check active reentry plan</div>
+                <div class="fa-node-sub">Call Reentry Program Match agent · conflict check</div>
+              </div>
+            </div>
+            <div class="fa-arrow"></div>
+            <div class="fa-node condition">
+              <div class="fa-node-ico">?</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Condition</div>
+                <div class="fa-node-title">Confidence ≥ 90% AND no policy conflict?</div>
+                <div class="fa-node-sub">Branches: Yes / No</div>
+              </div>
+            </div>
+            <div class="fa-arrow"></div>
+            <div class="fa-branch">
+              <div class="fa-branch-col">
+                <span class="fa-branch-lbl yes">Yes</span>
+                <div class="fa-arrow"></div>
+                <div class="fa-node action" style="max-width:none;">
+                  <div class="fa-node-ico">📋</div>
+                  <div class="fa-node-body">
+                    <div class="fa-node-kind">Action</div>
+                    <div class="fa-node-title">Route to Visitation Coordinator queue</div>
+                    <div class="fa-node-sub">Pre-filled recommendation · one-click approve</div>
+                  </div>
+                </div>
+              </div>
+              <div class="fa-branch-col">
+                <span class="fa-branch-lbl no">No</span>
+                <div class="fa-arrow"></div>
+                <div class="fa-node action" style="max-width:none;">
+                  <div class="fa-node-ico">!</div>
+                  <div class="fa-node-body">
+                    <div class="fa-node-kind">Action</div>
+                    <div class="fa-node-title">Escalate to Warden with full context</div>
+                    <div class="fa-node-sub">Teams adaptive card · policy citations attached</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="fa-arrow"></div>
+            <div class="fa-node action">
+              <div class="fa-node-ico">🌐</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Action · Power Pages</div>
+                <div class="fa-node-title">Update family.msdcr.gov status page</div>
+                <div class="fa-node-sub">Applicant sees "Under review" with ETA</div>
+              </div>
+            </div>
+            <div class="fa-arrow"></div>
+            <div class="fa-node action">
+              <div class="fa-node-ico">🔏</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Action · Microsoft Purview</div>
+                <div class="fa-node-title">Log decision + rationale to audit</div>
+                <div class="fa-node-sub">audit.msdcr.visitation.exception_routed · immutable 180-day retention</div>
+              </div>
+            </div>
+          </div>
+        </div><!-- /visitation-exception canvas -->
+
+        <!-- ===== Classification Packet Approval Notifier ===== -->
+        <div class="fa-canvas-wrap" data-fa-flow="classification-notifier">
+          <div class="fa-main-head">
+            <h2>Classification Packet Approval Notifier</h2>
+            <p>Runs after a classification packet passes Foundry evaluation. Sends the assigned Classification Officer a Teams adaptive card and escorts the packet through the Thursday docket.</p>
+          </div>
+          <div class="fa-canvas">
+            <div class="fa-node trigger">
+              <div class="fa-node-ico">⚡</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Trigger</div>
+                <div class="fa-node-title">When a packet passes Foundry eval</div>
+                <div class="fa-node-sub">Dataverse · msdcr_classification_reviews · status = "evaluated"</div>
+              </div>
+            </div>
+            <div class="fa-arrow"></div>
+            <div class="fa-node action">
+              <div class="fa-node-ico">🔍</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Action · CorrectionsCore</div>
+                <div class="fa-node-title">Look up assigned Classification Officer</div>
+                <div class="fa-node-sub">CorrectionsCore.Roster.Read · by facility + shift</div>
+              </div>
+            </div>
+            <div class="fa-arrow"></div>
+            <div class="fa-node action">
+              <div class="fa-node-ico">📨</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Action · Microsoft Teams</div>
+                <div class="fa-node-title">Send adaptive card to officer</div>
+                <div class="fa-node-sub">"{n} packets ready for Thursday's docket" · Approve / Request changes buttons</div>
+              </div>
+            </div>
+            <div class="fa-arrow"></div>
+            <div class="fa-node delay">
+              <div class="fa-node-ico">⏱</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Delay until</div>
+                <div class="fa-node-title">24 hours before docket OR officer acts</div>
+                <div class="fa-node-sub">Whichever comes first</div>
+              </div>
+            </div>
+            <div class="fa-arrow"></div>
+            <div class="fa-node condition">
+              <div class="fa-node-ico">?</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Condition</div>
+                <div class="fa-node-title">Officer approved?</div>
+                <div class="fa-node-sub">Branches: Yes / No</div>
+              </div>
+            </div>
+            <div class="fa-arrow"></div>
+            <div class="fa-branch">
+              <div class="fa-branch-col">
+                <span class="fa-branch-lbl yes">Yes</span>
+                <div class="fa-arrow"></div>
+                <div class="fa-node action" style="max-width:none;">
+                  <div class="fa-node-ico">📋</div>
+                  <div class="fa-node-body">
+                    <div class="fa-node-kind">Action</div>
+                    <div class="fa-node-title">Add to hearing docket + Purview audit</div>
+                    <div class="fa-node-sub">CorrectionsCore.Docket.Write · audit.msdcr.classif.approved</div>
+                  </div>
+                </div>
+              </div>
+              <div class="fa-branch-col">
+                <span class="fa-branch-lbl no">No</span>
+                <div class="fa-arrow"></div>
+                <div class="fa-node action" style="max-width:none;">
+                  <div class="fa-node-ico">↻</div>
+                  <div class="fa-node-body">
+                    <div class="fa-node-kind">Action</div>
+                    <div class="fa-node-title">Return to Classification Packet Prep agent</div>
+                    <div class="fa-node-sub">Include officer revision notes · re-queue for next eval cycle</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="fa-arrow"></div>
+            <div class="fa-node action">
+              <div class="fa-node-ico">📊</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Action · Power BI</div>
+                <div class="fa-node-title">Update operations dashboard</div>
+                <div class="fa-node-sub">Dataset refresh · MSDCR Ops · classification-docket tile</div>
+              </div>
+            </div>
+          </div>
+        </div><!-- /classification-notifier canvas -->
+
+        <!-- ===== Reentry Program Match Notifier ===== -->
+        <div class="fa-canvas-wrap" data-fa-flow="reentry-match-notifier">
+          <div class="fa-main-head">
+            <h2>Reentry Program Match Notifier</h2>
+            <p>Runs program-match scoring after a Reentry Intake Assessment is submitted. Queries MCRP partner availability and drops ranked recommendations into the Case Manager's queue.</p>
+          </div>
+          <div class="fa-canvas">
+            <div class="fa-node trigger">
+              <div class="fa-node-ico">⚡</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Trigger</div>
+                <div class="fa-node-title">When a Reentry Intake Assessment is submitted</div>
+                <div class="fa-node-sub">Dataverse · msdcr_reentry_assessments · On create</div>
+              </div>
+            </div>
+            <div class="fa-arrow"></div>
+            <div class="fa-node action">
+              <div class="fa-node-ico">◆</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Action · Copilot Studio</div>
+                <div class="fa-node-title">Run program-match scoring</div>
+                <div class="fa-node-sub">Call Reentry Program Match agent · ranked list with rationale</div>
+                <div class="fa-node-out">Top 5 programs · confidence &amp; fit scores</div>
+              </div>
+            </div>
+            <div class="fa-arrow"></div>
+            <div class="fa-node action">
+              <div class="fa-node-ico">🔌</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Action · Custom connector</div>
+                <div class="fa-node-title">Query MCRP partner availability</div>
+                <div class="fa-node-sub">Meridian Community Reentry Partners · beds/slots/waitlist</div>
+              </div>
+            </div>
+            <div class="fa-arrow"></div>
+            <div class="fa-node action">
+              <div class="fa-node-ico">✉</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Action · Office 365 Outlook</div>
+                <div class="fa-node-title">Email ranked recommendations</div>
+                <div class="fa-node-sub">To Case Manager + MCRP coordinator · HTML summary + case link</div>
+              </div>
+            </div>
+            <div class="fa-arrow"></div>
+            <div class="fa-node action">
+              <div class="fa-node-ico">📋</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Action · Microsoft Planner</div>
+                <div class="fa-node-title">Create Planner tasks per approved placement</div>
+                <div class="fa-node-sub">One task per program · assigned to Case Manager</div>
+              </div>
+            </div>
+            <div class="fa-arrow"></div>
+            <div class="fa-node action">
+              <div class="fa-node-ico">📄</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Action · Office 365 Outlook + Word</div>
+                <div class="fa-node-title">Schedule release-planning letter draft</div>
+                <div class="fa-node-sub">Outlook meeting with Word template attached · 2 weeks pre-release</div>
+              </div>
+            </div>
+          </div>
+        </div><!-- /reentry-match-notifier canvas -->
+
+        <!-- ===== Records Request Triage ===== -->
+        <div class="fa-canvas-wrap" data-fa-flow="records-triage">
+          <div class="fa-main-head">
+            <h2>Records Request Triage</h2>
+            <p>First-touch classifier for records requests arriving through the public Power Pages portal. Splits medical records admin from general PRR and legal discovery before the SLA clock starts.</p>
+          </div>
+          <div class="fa-canvas">
+            <div class="fa-node trigger">
+              <div class="fa-node-ico">⚡</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Trigger</div>
+                <div class="fa-node-title">When a records request is received</div>
+                <div class="fa-node-sub">Power Pages form · family.msdcr.gov/records-request · On submit</div>
+              </div>
+            </div>
+            <div class="fa-arrow"></div>
+            <div class="fa-node action">
+              <div class="fa-node-ico">◆</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Action · Copilot Studio</div>
+                <div class="fa-node-title">Classify request type</div>
+                <div class="fa-node-sub">Call Records Request Desk agent · Medical records admin / General PRR / Legal discovery</div>
+                <div class="fa-node-out">Type · requester role · urgency</div>
+              </div>
+            </div>
+            <div class="fa-arrow"></div>
+            <div class="fa-node condition">
+              <div class="fa-node-ico">?</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Condition</div>
+                <div class="fa-node-title">Type = Medical records admin?</div>
+                <div class="fa-node-sub">Branches: Yes / No</div>
+              </div>
+            </div>
+            <div class="fa-arrow"></div>
+            <div class="fa-branch">
+              <div class="fa-branch-col">
+                <span class="fa-branch-lbl yes">Yes</span>
+                <div class="fa-arrow"></div>
+                <div class="fa-node action" style="max-width:none;">
+                  <div class="fa-node-ico">⚕</div>
+                  <div class="fa-node-body">
+                    <div class="fa-node-kind">Action</div>
+                    <div class="fa-node-title">Route to Healthcare Admin queue</div>
+                    <div class="fa-node-sub">HIPAA banner attached · BAA-scoped access only</div>
+                  </div>
+                </div>
+              </div>
+              <div class="fa-branch-col">
+                <span class="fa-branch-lbl no">No</span>
+                <div class="fa-arrow"></div>
+                <div class="fa-node action" style="max-width:none;">
+                  <div class="fa-node-ico">→</div>
+                  <div class="fa-node-body">
+                    <div class="fa-node-kind">Action</div>
+                    <div class="fa-node-title">Hand off to PRR Intake Router flow</div>
+                    <div class="fa-node-sub">Invokes child flow · carries correlation id</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="fa-arrow"></div>
+            <div class="fa-node action">
+              <div class="fa-node-ico">📨</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Action · Microsoft Teams</div>
+                <div class="fa-node-title">Notify triage coordinator</div>
+                <div class="fa-node-sub">Channel post · @mention · includes request summary</div>
+              </div>
+            </div>
+            <div class="fa-arrow"></div>
+            <div class="fa-node action">
+              <div class="fa-node-ico">💾</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Action · Dataverse</div>
+                <div class="fa-node-title">Update case status</div>
+                <div class="fa-node-sub">msdcr_public_records.status = "triaged" · set route_queue</div>
+              </div>
+            </div>
+          </div>
+        </div><!-- /records-triage canvas -->
+
+        <!-- ===== I-30 Grievance Response Timer ===== -->
+        <div class="fa-canvas-wrap" data-fa-flow="i30-timer">
+          <div class="fa-main-head">
+            <h2>I-30 Grievance Response Timer</h2>
+            <p>Scheduled daily sweep of I-30 (informal 30-day) grievances approaching SLA. Escalates to Warden + Ombudsman when &gt;95% of SLA has elapsed; otherwise nudges the assigned Coordinator.</p>
+          </div>
+          <div class="fa-canvas">
+            <div class="fa-node trigger">
+              <div class="fa-node-ico">⏰</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Trigger · Scheduled</div>
+                <div class="fa-node-title">Daily at 7:00 AM (America/Denver)</div>
+                <div class="fa-node-sub">Recurrence · every 1 day</div>
+              </div>
+            </div>
+            <div class="fa-arrow"></div>
+            <div class="fa-node action">
+              <div class="fa-node-ico">🔍</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Action · Dataverse</div>
+                <div class="fa-node-title">Query open I-30 grievances approaching SLA</div>
+                <div class="fa-node-sub">msdcr_grievances · tier = "I-30" · due within 3 days</div>
+                <div class="fa-node-out">Returns: list of cases + hours remaining</div>
+              </div>
+            </div>
+            <div class="fa-arrow"></div>
+            <div class="fa-node action">
+              <div class="fa-node-ico">◆</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Action · Copilot Studio</div>
+                <div class="fa-node-title">Classify urgency + remaining time</div>
+                <div class="fa-node-sub">Call Grievance &amp; PRR Router agent · computes % SLA elapsed</div>
+              </div>
+            </div>
+            <div class="fa-arrow"></div>
+            <div class="fa-node condition">
+              <div class="fa-node-ico">?</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Condition</div>
+                <div class="fa-node-title">Any &gt; 95% of SLA elapsed?</div>
+                <div class="fa-node-sub">Branches: Yes / No</div>
+              </div>
+            </div>
+            <div class="fa-arrow"></div>
+            <div class="fa-branch">
+              <div class="fa-branch-col">
+                <span class="fa-branch-lbl yes">Yes</span>
+                <div class="fa-arrow"></div>
+                <div class="fa-node action" style="max-width:none;">
+                  <div class="fa-node-ico">!</div>
+                  <div class="fa-node-body">
+                    <div class="fa-node-kind">Action</div>
+                    <div class="fa-node-title">Escalate to Warden + Ombudsman</div>
+                    <div class="fa-node-sub">Teams urgent-card + Outlook high-importance email</div>
+                  </div>
+                </div>
+              </div>
+              <div class="fa-branch-col">
+                <span class="fa-branch-lbl no">No</span>
+                <div class="fa-arrow"></div>
+                <div class="fa-node action" style="max-width:none;">
+                  <div class="fa-node-ico">📨</div>
+                  <div class="fa-node-body">
+                    <div class="fa-node-kind">Action</div>
+                    <div class="fa-node-title">Reminder to assigned Coordinator</div>
+                    <div class="fa-node-sub">Teams channel message · includes case links + hours left</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="fa-arrow"></div>
+            <div class="fa-node action">
+              <div class="fa-node-ico">📊</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Action · Power BI</div>
+                <div class="fa-node-title">Update grievance cycle-time dashboard</div>
+                <div class="fa-node-sub">Dataset refresh · MSDCR Grievance Ops · I-30 tile</div>
+              </div>
+            </div>
+          </div>
+        </div><!-- /i30-timer canvas -->
+
+        <!-- ===== Visitation Schedule Publisher ===== -->
+        <div class="fa-canvas-wrap" data-fa-flow="visit-publisher">
+          <div class="fa-main-head">
+            <h2>Visitation Schedule Publisher</h2>
+            <p>Weekly publisher that pulls approved visits, generates per-unit schedule grids, and pushes them to the public portal plus Outlook calendar invites for approved visitors.</p>
+          </div>
+          <div class="fa-canvas">
+            <div class="fa-node trigger">
+              <div class="fa-node-ico">⏰</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Trigger · Scheduled</div>
+                <div class="fa-node-title">Every Sunday at 6:00 AM</div>
+                <div class="fa-node-sub">Recurrence · weekly · America/Denver</div>
+              </div>
+            </div>
+            <div class="fa-arrow"></div>
+            <div class="fa-node action">
+              <div class="fa-node-ico">🔍</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Action · Dataverse</div>
+                <div class="fa-node-title">Pull approved visits for upcoming week</div>
+                <div class="fa-node-sub">msdcr_visitor_applications · status = "approved" · visit_date within next 7 days</div>
+              </div>
+            </div>
+            <div class="fa-arrow"></div>
+            <div class="fa-node action">
+              <div class="fa-node-ico">📐</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Action · Power Apps canvas</div>
+                <div class="fa-node-title">Generate per-unit schedule grids</div>
+                <div class="fa-node-sub">Visitation Scheduler canvas app · 6 facility grids</div>
+              </div>
+            </div>
+            <div class="fa-arrow"></div>
+            <div class="fa-node action">
+              <div class="fa-node-ico">🌐</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Action · Power Pages</div>
+                <div class="fa-node-title">Publish to portal</div>
+                <div class="fa-node-sub">family.msdcr.gov/visits/schedule-by-unit · auto-refreshes cache</div>
+              </div>
+            </div>
+            <div class="fa-arrow"></div>
+            <div class="fa-node action">
+              <div class="fa-node-ico">📅</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Action · Office 365 Outlook</div>
+                <div class="fa-node-title">Send calendar invites to approved visitors</div>
+                <div class="fa-node-sub">One invite per approved visit · includes check-in instructions</div>
+              </div>
+            </div>
+            <div class="fa-arrow"></div>
+            <div class="fa-node action">
+              <div class="fa-node-ico">📨</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Action · Microsoft Teams</div>
+                <div class="fa-node-title">Notify Coordinator + Complex Administrators</div>
+                <div class="fa-node-sub">Channel post with per-unit summary counts</div>
+              </div>
+            </div>
+            <div class="fa-arrow"></div>
+            <div class="fa-node action">
+              <div class="fa-node-ico">🔏</div>
+              <div class="fa-node-body">
+                <div class="fa-node-kind">Action · Microsoft Purview</div>
+                <div class="fa-node-title">Log publication event to audit</div>
+                <div class="fa-node-sub">audit.msdcr.visitation.schedule_published · weekly retention</div>
+              </div>
+            </div>
+          </div>
+        </div><!-- /visit-publisher canvas -->
       </div>
       <div class="fa-rail">
-        <div class="fa-rail-stats">
-          <div class="fr-t">28-day summary</div>
-          <div class="fr-v"><strong>247</strong> runs · <strong>98.4%</strong> success · avg 1.3s · 4 failures (auto-retried)</div>
+        <div class="fa-runhistory-panel tab-active" data-fa-flow="grievance-sla">
+          <div class="fa-rail-stats">
+            <div class="fr-t">28-day summary</div>
+            <div class="fr-v"><strong>247</strong> runs · <strong>98.4%</strong> success · avg 1.3s · 4 failures (auto-retried)</div>
+          </div>
+          <div class="fa-rail-stats" style="border-color:#c2d4e6; background:#f4f8fc;">
+            <div class="fr-t" style="color:var(--msu-navy);">Compliance</div>
+            <div class="fr-v"><strong>100%</strong> of flow runs logged to Microsoft Purview · <strong>0</strong> policy exceptions · field-level diff captured</div>
+          </div>
+          <div class="pa-rail-h">Recent runs</div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">Today · 09:54</div><div class="fa-run-s">msdcr_grievances/create · Tier: 15-day</div></div>
+            <div class="fa-run-dur">1.2s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">Today · 08:31</div><div class="fa-run-s">msdcr_grievances/create · Tier: 30-day</div></div>
+            <div class="fa-run-dur">1.1s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status run">⟳</div>
+            <div class="fa-run-body"><div class="fa-run-t">Today · 07:42</div><div class="fa-run-s">msdcr_grievances/create · delay until 04-28</div></div>
+            <div class="fa-run-dur">— running</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">Yesterday · 16:08</div><div class="fa-run-s">msdcr_grievances/create · Tier: Emergency</div></div>
+            <div class="fa-run-dur">1.8s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status fail">✗</div>
+            <div class="fa-run-body"><div class="fa-run-t">Yesterday · 11:12</div><div class="fa-run-s">Planner connector · transient · retried OK</div></div>
+            <div class="fa-run-dur">4.2s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">Yesterday · 09:40</div><div class="fa-run-s">msdcr_grievances/create · Tier: 15-day</div></div>
+            <div class="fa-run-dur">1.3s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
         </div>
-        <div class="fa-rail-stats" style="border-color:#c2d4e6; background:#f4f8fc;">
-          <div class="fr-t" style="color:var(--msu-navy);">Compliance</div>
-          <div class="fr-v"><strong>100%</strong> of flow runs logged to Microsoft Purview · <strong>0</strong> policy exceptions · field-level diff captured</div>
+
+        <!-- Run history · PRR Intake Router -->
+        <div class="fa-runhistory-panel" data-fa-flow="prr-intake">
+          <div class="fa-rail-stats">
+            <div class="fr-t">28-day summary</div>
+            <div class="fr-v"><strong>94</strong> runs · <strong>100%</strong> success · avg 2.1s · 0 failures</div>
+          </div>
+          <div class="fa-rail-stats" style="border-color:#c2d4e6; background:#f4f8fc;">
+            <div class="fr-t" style="color:var(--msu-navy);">Compliance</div>
+            <div class="fr-v"><strong>100%</strong> of requests acknowledged &lt; 5 min · <strong>12</strong> routed to Legal Review · audit: complete</div>
+          </div>
+          <div class="pa-rail-h">Recent runs</div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">Today · 09:41</div><div class="fa-run-s">msdcr_public_records/create · routed: Records Office</div></div>
+            <div class="fa-run-dur">1.9s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">Today · 08:02</div><div class="fa-run-s">msdcr_public_records/create · routed: Legal Review</div></div>
+            <div class="fa-run-dur">2.4s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">Yesterday · 16:55</div><div class="fa-run-s">msdcr_public_records/create · routed: Records Office</div></div>
+            <div class="fa-run-dur">1.7s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">Yesterday · 13:11</div><div class="fa-run-s">msdcr_public_records/create · routed: Legal Review</div></div>
+            <div class="fa-run-dur">2.2s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">Yesterday · 10:28</div><div class="fa-run-s">msdcr_public_records/create · media request</div></div>
+            <div class="fa-run-dur">2.0s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">2 d ago · 14:09</div><div class="fa-run-s">msdcr_public_records/create · routed: Records Office</div></div>
+            <div class="fa-run-dur">1.8s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
         </div>
-        <div class="pa-rail-h">Recent runs</div>
-        <div class="fa-run-row">
-          <div class="fa-run-status ok">✓</div>
-          <div class="fa-run-body"><div class="fa-run-t">Today · 09:54</div><div class="fa-run-s">msdcr_grievances/create · Tier: 15-day</div></div>
-          <div class="fa-run-dur">1.2s</div>
-          <div class="fa-run-link">View run →</div>
+
+        <!-- Run history · Visitation Exception Routing -->
+        <div class="fa-runhistory-panel" data-fa-flow="visitation-exception">
+          <div class="fa-rail-stats">
+            <div class="fr-t">28-day summary</div>
+            <div class="fr-v"><strong>38</strong> runs · <strong>97.4%</strong> success · avg 3.1s · 1 Warden escalation</div>
+          </div>
+          <div class="fa-rail-stats" style="border-color:#c2d4e6; background:#f4f8fc;">
+            <div class="fr-t" style="color:var(--msu-navy);">Compliance</div>
+            <div class="fr-v"><strong>100%</strong> decisions audited in Purview · <strong>0</strong> reentry-plan conflicts missed</div>
+          </div>
+          <div class="pa-rail-h">Recent runs</div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">Today · 09:35</div><div class="fa-run-s">exception/create · coord queue · conf 0.94</div></div>
+            <div class="fa-run-dur">2.9s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">Today · 07:14</div><div class="fa-run-s">exception/create · escalated to Warden · conf 0.71</div></div>
+            <div class="fa-run-dur">3.6s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">Yesterday · 15:40</div><div class="fa-run-s">exception/create · coord queue · conf 0.96</div></div>
+            <div class="fa-run-dur">2.7s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status fail">✗</div>
+            <div class="fa-run-body"><div class="fa-run-t">Yesterday · 11:02</div><div class="fa-run-s">MCRP connector timeout · retried OK</div></div>
+            <div class="fa-run-dur">6.8s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">2 d ago · 14:22</div><div class="fa-run-s">exception/create · coord queue · conf 0.92</div></div>
+            <div class="fa-run-dur">3.0s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">2 d ago · 09:47</div><div class="fa-run-s">exception/create · coord queue · conf 0.98</div></div>
+            <div class="fa-run-dur">2.8s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
         </div>
-        <div class="fa-run-row">
-          <div class="fa-run-status ok">✓</div>
-          <div class="fa-run-body"><div class="fa-run-t">Today · 08:31</div><div class="fa-run-s">msdcr_grievances/create · Tier: 30-day</div></div>
-          <div class="fa-run-dur">1.1s</div>
-          <div class="fa-run-link">View run →</div>
+
+        <!-- Run history · Classification Notifier -->
+        <div class="fa-runhistory-panel" data-fa-flow="classification-notifier">
+          <div class="fa-rail-stats">
+            <div class="fr-t">28-day summary</div>
+            <div class="fr-v"><strong>42</strong> runs · <strong>100%</strong> success · avg 2.4s · 40 approved / 2 revised</div>
+          </div>
+          <div class="fa-rail-stats" style="border-color:#c2d4e6; background:#f4f8fc;">
+            <div class="fr-t" style="color:var(--msu-navy);">Compliance</div>
+            <div class="fr-v"><strong>100%</strong> officer approval gated · <strong>0</strong> packets auto-submitted · Purview audit complete</div>
+          </div>
+          <div class="pa-rail-h">Recent runs</div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">Today · 08:45</div><div class="fa-run-s">packet #4 of 7 · officer approved · docket added</div></div>
+            <div class="fa-run-dur">2.2s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status run">⟳</div>
+            <div class="fa-run-body"><div class="fa-run-t">Today · 08:12</div><div class="fa-run-s">packet #5 of 7 · awaiting officer</div></div>
+            <div class="fa-run-dur">— running</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">Yesterday · 16:30</div><div class="fa-run-s">packet #3 of 7 · officer approved</div></div>
+            <div class="fa-run-dur">2.5s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">Yesterday · 10:15</div><div class="fa-run-s">packet #2 of 7 · revisions requested</div></div>
+            <div class="fa-run-dur">2.3s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">2 d ago · 09:20</div><div class="fa-run-s">packet #1 of 7 · officer approved</div></div>
+            <div class="fa-run-dur">2.1s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">Last Thu · 14:05</div><div class="fa-run-s">prior docket · 6/6 officer approved</div></div>
+            <div class="fa-run-dur">2.4s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
         </div>
-        <div class="fa-run-row">
-          <div class="fa-run-status run">⟳</div>
-          <div class="fa-run-body"><div class="fa-run-t">Today · 07:42</div><div class="fa-run-s">msdcr_grievances/create · delay until 04-28</div></div>
-          <div class="fa-run-dur">— running</div>
-          <div class="fa-run-link">View run →</div>
+
+        <!-- Run history · Reentry Match Notifier -->
+        <div class="fa-runhistory-panel" data-fa-flow="reentry-match-notifier">
+          <div class="fa-rail-stats">
+            <div class="fr-t">28-day summary</div>
+            <div class="fr-v"><strong>28</strong> runs · <strong>100%</strong> success · avg 4.2s · 24 placements confirmed</div>
+          </div>
+          <div class="fa-rail-stats" style="border-color:#c2d4e6; background:#f4f8fc;">
+            <div class="fr-t" style="color:var(--msu-navy);">Compliance</div>
+            <div class="fr-v"><strong>100%</strong> MCRP partner availability verified · Planner tasks created per placement</div>
+          </div>
+          <div class="pa-rail-h">Recent runs</div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">Today · 06:55</div><div class="fa-run-s">assessment/create · top-5 programs sent to CM</div></div>
+            <div class="fa-run-dur">4.1s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">Yesterday · 13:22</div><div class="fa-run-s">assessment/create · CBT + Housing match</div></div>
+            <div class="fa-run-dur">4.5s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">2 d ago · 10:48</div><div class="fa-run-s">assessment/create · vocational track</div></div>
+            <div class="fa-run-dur">3.9s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">3 d ago · 15:10</div><div class="fa-run-s">assessment/create · SUD residential</div></div>
+            <div class="fa-run-dur">4.3s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status fail">✗</div>
+            <div class="fa-run-body"><div class="fa-run-t">4 d ago · 09:34</div><div class="fa-run-s">MCRP partner API 429 · retried OK</div></div>
+            <div class="fa-run-dur">8.7s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">5 d ago · 11:02</div><div class="fa-run-s">assessment/create · mental-health track</div></div>
+            <div class="fa-run-dur">4.0s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
         </div>
-        <div class="fa-run-row">
-          <div class="fa-run-status ok">✓</div>
-          <div class="fa-run-body"><div class="fa-run-t">Yesterday · 16:08</div><div class="fa-run-s">msdcr_grievances/create · Tier: Emergency</div></div>
-          <div class="fa-run-dur">1.8s</div>
-          <div class="fa-run-link">View run →</div>
+
+        <!-- Run history · Records Triage -->
+        <div class="fa-runhistory-panel" data-fa-flow="records-triage">
+          <div class="fa-rail-stats">
+            <div class="fr-t">28-day summary</div>
+            <div class="fr-v"><strong>73</strong> runs · <strong>98.6%</strong> success · avg 1.6s · 1 transient failure</div>
+          </div>
+          <div class="fa-rail-stats" style="border-color:#c2d4e6; background:#f4f8fc;">
+            <div class="fr-t" style="color:var(--msu-navy);">Compliance</div>
+            <div class="fr-v"><strong>100%</strong> medical records carry HIPAA banner · child-flow correlation id preserved</div>
+          </div>
+          <div class="pa-rail-h">Recent runs</div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">Today · 09:20</div><div class="fa-run-s">pp-form/submit · type: General PRR</div></div>
+            <div class="fa-run-dur">1.5s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">Today · 08:04</div><div class="fa-run-s">pp-form/submit · type: Medical records admin</div></div>
+            <div class="fa-run-dur">1.4s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">Today · 06:48</div><div class="fa-run-s">pp-form/submit · type: Legal discovery</div></div>
+            <div class="fa-run-dur">1.9s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">Yesterday · 17:13</div><div class="fa-run-s">pp-form/submit · type: General PRR</div></div>
+            <div class="fa-run-dur">1.6s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status fail">✗</div>
+            <div class="fa-run-body"><div class="fa-run-t">Yesterday · 14:40</div><div class="fa-run-s">Teams post throttled · retried OK</div></div>
+            <div class="fa-run-dur">3.2s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">Yesterday · 10:55</div><div class="fa-run-s">pp-form/submit · type: General PRR</div></div>
+            <div class="fa-run-dur">1.5s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
         </div>
-        <div class="fa-run-row">
-          <div class="fa-run-status fail">✗</div>
-          <div class="fa-run-body"><div class="fa-run-t">Yesterday · 11:12</div><div class="fa-run-s">Planner connector · transient · retried OK</div></div>
-          <div class="fa-run-dur">4.2s</div>
-          <div class="fa-run-link">View run →</div>
+
+        <!-- Run history · I-30 Timer -->
+        <div class="fa-runhistory-panel" data-fa-flow="i30-timer">
+          <div class="fa-rail-stats">
+            <div class="fr-t">28-day summary</div>
+            <div class="fr-v"><strong>30</strong> runs · <strong>100%</strong> success · avg 1.1s · scheduled daily 7:00 AM</div>
+          </div>
+          <div class="fa-rail-stats" style="border-color:#c2d4e6; background:#f4f8fc;">
+            <div class="fr-t" style="color:var(--msu-navy);">Compliance</div>
+            <div class="fr-v"><strong>0</strong> I-30 grievances breached SLA in last 28 days · <strong>3</strong> Warden escalations fired</div>
+          </div>
+          <div class="pa-rail-h">Recent runs</div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">Today · 07:00</div><div class="fa-run-s">scheduled · 4 reminders · 0 escalations</div></div>
+            <div class="fa-run-dur">0.9s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">Yesterday · 07:00</div><div class="fa-run-s">scheduled · 5 reminders · 1 escalation to Warden</div></div>
+            <div class="fa-run-dur">1.2s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">2 d ago · 07:00</div><div class="fa-run-s">scheduled · 3 reminders · 0 escalations</div></div>
+            <div class="fa-run-dur">1.0s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">3 d ago · 07:00</div><div class="fa-run-s">scheduled · 6 reminders · 0 escalations</div></div>
+            <div class="fa-run-dur">1.3s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">4 d ago · 07:00</div><div class="fa-run-s">scheduled · 2 reminders · 0 escalations</div></div>
+            <div class="fa-run-dur">0.8s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">5 d ago · 07:00</div><div class="fa-run-s">scheduled · 4 reminders · 1 escalation to Ombudsman</div></div>
+            <div class="fa-run-dur">1.4s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
         </div>
-        <div class="fa-run-row">
-          <div class="fa-run-status ok">✓</div>
-          <div class="fa-run-body"><div class="fa-run-t">Yesterday · 09:40</div><div class="fa-run-s">msdcr_grievances/create · Tier: 15-day</div></div>
-          <div class="fa-run-dur">1.3s</div>
-          <div class="fa-run-link">View run →</div>
+
+        <!-- Run history · Visit Publisher -->
+        <div class="fa-runhistory-panel" data-fa-flow="visit-publisher">
+          <div class="fa-rail-stats">
+            <div class="fr-t">28-day summary</div>
+            <div class="fr-v"><strong>4</strong> runs · <strong>100%</strong> success · avg 6.8s · Sundays 06:00</div>
+          </div>
+          <div class="fa-rail-stats" style="border-color:#c2d4e6; background:#f4f8fc;">
+            <div class="fr-t" style="color:var(--msu-navy);">Compliance</div>
+            <div class="fr-v"><strong>612</strong> Outlook invites sent · <strong>6</strong> per-unit grids published · audit complete</div>
+          </div>
+          <div class="pa-rail-h">Recent runs</div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">Sun · 06:00</div><div class="fa-run-s">scheduled · 148 invites · 6 unit grids published</div></div>
+            <div class="fa-run-dur">6.5s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">Last Sun · 06:00</div><div class="fa-run-s">scheduled · 163 invites · 6 unit grids published</div></div>
+            <div class="fa-run-dur">7.1s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">2 Sun ago · 06:00</div><div class="fa-run-s">scheduled · 155 invites · 6 unit grids published</div></div>
+            <div class="fa-run-dur">6.9s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">3 Sun ago · 06:00</div><div class="fa-run-s">scheduled · 146 invites · 6 unit grids published</div></div>
+            <div class="fa-run-dur">6.7s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">4 Sun ago · 06:00</div><div class="fa-run-s">scheduled · 152 invites · 6 unit grids published</div></div>
+            <div class="fa-run-dur">6.4s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
+          <div class="fa-run-row">
+            <div class="fa-run-status ok">✓</div>
+            <div class="fa-run-body"><div class="fa-run-t">5 Sun ago · 06:00</div><div class="fa-run-s">scheduled · 139 invites · 6 unit grids published</div></div>
+            <div class="fa-run-dur">6.8s</div>
+            <div class="fa-run-link">View run →</div>
+          </div>
         </div>
       </div>
     </div>
@@ -11281,20 +12195,38 @@ function paApp(el, key) {
   if (rail) rail.scrollTop = 0;
 }
 
+// Power Automate flow canvas + run-history switcher
+function faFlow(el, key) {
+  // sidebar row active-state
+  document.querySelectorAll('#app-powerautomate .fa-flowrow').forEach(r => r.classList.remove('active'));
+  if (el) el.classList.add('active');
+  // canvas wrap show/hide
+  document.querySelectorAll('#app-powerautomate .fa-canvas-wrap').forEach(w => {
+    w.classList.toggle('tab-active', w.getAttribute('data-fa-flow') === key);
+  });
+  // run-history panel show/hide
+  document.querySelectorAll('#app-powerautomate .fa-runhistory-panel').forEach(p => {
+    p.classList.toggle('tab-active', p.getAttribute('data-fa-flow') === key);
+  });
+  // reset scroll
+  const main = document.querySelector('#app-powerautomate .fa-main');
+  if (main) main.scrollTop = 0;
+}
+
 // Agent 365 live-feed animator. Prepends a new activity row every 3–5s while the view is active.
 const A365_FEED_POOL = [
-  { bad:false, a:'Shift-Swap Assistant', d:'Checked CorrectionsCore balance for new Shift-Swap request · approved 0.92 confidence' },
-  { bad:false, a:'File Validator', d:'Queried CorrectionsCore files queue · 4 exceptions pending' },
+  { bad:false, a:'Visitation Front Door', d:'Checked Coordinator queue for new exception · confidence 0.92 · pre-approved' },
+  { bad:false, a:'Policy Copilot', d:'Queried Policy Manual rev 2026R1 for DOP 906 citation · 4 packets flagged' },
   { bad:true,  a:'Agentforce (SF)', d:'⚠ Tried to write an Resident PII field — <strong>DLP block</strong>' },
-  { bad:false, a:'Visitation Front Door', d:'Requested prior-role docs for Okonkwo, D.' },
-  { bad:false, a:'MSDCR GPT', d:'Summarized overnight employee relations log for Case Manager queue' },
-  { bad:false, a:'Intake Processing Nudge', d:'Re-scored 12 active new staff against 30/60/90 criteria' },
-  { bad:false, a:'CorrectionsCore agent', d:'Surfaced pending Classification Review exceptions for 3 employees' },
-  { bad:false, a:'Release Planning', d:'Added priority flag to Park, S. (0.71 confidence)' },
+  { bad:false, a:'Grievance &amp; PRR Router', d:'Classified grievance as 15-day tier for Okonkwo, D.' },
+  { bad:false, a:'MSDCR GPT', d:'Summarized overnight ombudsman log for Case Manager queue' },
+  { bad:false, a:'Reentry Program Match', d:'Re-scored 12 active reentry assessments against MCRP availability' },
+  { bad:false, a:'CorrectionsCore agent', d:'Surfaced pending classification-review exceptions for 3 residents' },
+  { bad:false, a:'Records Request Desk', d:'Added priority flag to PRR-2026-0418 (0.71 confidence)' },
   { bad:true,  a:'"DocuMate Assistant"', d:'⚠ Attempted external HTTPS POST — <strong>Conditional Access blocked</strong>' },
   { bad:false, a:'Now Assist (SN)', d:'Routed ticket HD-4419 to laptop imaging queue' },
-  { bad:false, a:'Executive Readout Agent', d:'Drafted weekly one-pager for Monday Executive readout' },
-  { bad:false, a:'Shift-Swap Assistant', d:'Sent approval-overdue reminder to T. Reilly (Facilities)' }
+  { bad:false, a:'Classification Packet Prep', d:'Drafted 3 Thursday-docket packets for Foundry evaluation' },
+  { bad:false, a:'Visitation Front Door', d:'Sent approval-overdue reminder to Visitation Coordinator Reilly' }
 ];
 function startAgent365Feed() {
   const feed = document.getElementById('a365-feed');
@@ -12313,27 +13245,27 @@ const APP_CONTEXT = {
   },
   agent_bedcoord: {
     chipIcon: '<svg viewBox="0 0 16 16" fill="#0078d4"><path d="M2 12V4h2v4h10V6h2v6h-2v-2H4v2H2zm6-5a2 2 0 100-4 2 2 0 000 4z"/></svg>',
-    chipText: "File Validator · Agent · 6 facilities connected",
-    tryPrompt: "'what file-exception picture right now?'",
-    messagePlaceholder: 'Ask the File Validator agent'
+    chipText: "Policy Copilot · Agent · grounded in Policy Manual rev 2026R1",
+    tryPrompt: "'which packets are missing a PREA citation right now?'",
+    messagePlaceholder: 'Ask the Policy Copilot agent'
   },
   agent_intake: {
     chipIcon: '<svg viewBox="0 0 16 16" fill="#6264a7"><path d="M10 1H4a1 1 0 00-1 1v12a1 1 0 001 1h8a1 1 0 001-1V5l-4-4zM9 6V2l4 4H9z"/></svg>',
-    chipText: "Visitation Front Door · 3 new intakes",
-    tryPrompt: "'review today's new visitation intakes'",
+    chipText: "Visitation Front Door · 3 new exceptions",
+    tryPrompt: "'review today's visitation exceptions'",
     messagePlaceholder: 'Ask the Visitation Front Door agent'
   },
   agent_priorauth: {
     chipIcon: '<svg viewBox="0 0 16 16" fill="#0b8043"><path d="M8 1l6 2.5v4c0 3.5-2.5 6.5-6 7-3.5-0.5-6-3.5-6-7v-4L8 1z"/></svg>',
-    chipText: "Shift-Swap Assistant · 2 pending &gt;48h · 14 active",
+    chipText: "Grievance &amp; PRR Router · 2 SLA risks &gt;48h · 14 active",
     tryPrompt: "'what's stuck this week?'",
-    messagePlaceholder: 'Ask the Shift-Swap Assistant agent'
+    messagePlaceholder: 'Ask the Grievance &amp; PRR Router agent'
   },
   agent_trial: {
     chipIcon: '<svg viewBox="0 0 16 16" fill="#a68340"><path d="M5 2h6l1 2h2a1 1 0 011 1v8a1 1 0 01-1 1H2a1 1 0 01-1-1V5a1 1 0 011-1h2l1-2zm3 9a3 3 0 100-6 3 3 0 000 6z"/></svg>',
-    chipText: "Intake Processing Nudge · today's 7 new-hire checkpoints",
-    tryPrompt: "'whose intake processing is off-track at day 30?'",
-    messagePlaceholder: 'Ask the Intake Processing Nudge agent'
+    chipText: "Reentry Program Match · today's 7 assessments",
+    tryPrompt: "'whose reentry placement is ready to confirm?'",
+    messagePlaceholder: 'Ask the Reentry Program Match agent'
   },
   outlook: {
     chipIcon: '<svg viewBox="0 0 16 16" fill="#0078d4"><path d="M2 3h12v10H2V3zm1 1v1.5l5 3 5-3V4H3zm10 2.7L8 9.5 3 6.7V12h10V6.7z"/></svg>',
@@ -13965,7 +14897,7 @@ function thumbVolume() {
     <div class="th-h">Q2 Volume</div>
     <div class="th-row">
       <div class="th-box"><div class="th-n">1,247</div>Tickets ▲7%</div>
-      <div class="th-box"><div class="th-n">612</div>Shift-Swap ▲4×</div>
+      <div class="th-box"><div class="th-n">612</div>Visitation Front Door ▲4×</div>
       <div class="th-box"><div class="th-n">184</div>Verify ▲2×</div>
     </div>
   </div>`;
@@ -13984,8 +14916,8 @@ function thumbWins() {
   return `<div class="thumb content">
     <div class="th-h">Top 3 Wins</div>
     <div class="th-row">
-      <div class="th-box"><div class="th-n" style="font-size:6px;">◆</div>Shift-Swap in Teams</div>
-      <div class="th-box"><div class="th-n" style="font-size:6px;">✦</div>File Validator</div>
+      <div class="th-box"><div class="th-n" style="font-size:6px;">◆</div>Visitation Front Door in Teams</div>
+      <div class="th-box"><div class="th-n" style="font-size:6px;">✦</div>Policy Copilot</div>
       <div class="th-box"><div class="th-n" style="font-size:6px;">♥</div>Awards x2</div>
     </div>
   </div>`;
@@ -13996,7 +14928,7 @@ function thumbMay() {
     <div class="th-agenda">
       <div class="th-ai"><div class="th-d" style="background:var(--msu-gold);">1</div>Front Door</div>
       <div class="th-ai"><div class="th-d" style="background:var(--msu-gold);">2</div>Staff CSAT</div>
-      <div class="th-ai"><div class="th-d" style="background:var(--msu-gold);">3</div>Intake Processing Nudge</div>
+      <div class="th-ai"><div class="th-d" style="background:var(--msu-gold);">3</div>Reentry Program Match</div>
     </div>
   </div>`;
 }
@@ -14186,8 +15118,8 @@ function generateFollowupResponse(text) {
 
   // Deck / PowerPoint
   if (app === 'powerpoint' && /slide|deck|deck/.test(t)) {
-    return `<p>The Q2 deck has 6 slides. The strongest data story is <strong>Shift-Swap-in-Teams 4× growth</strong> — that's the biggest single-quarter jump since launch. Worth leading with.</p>
-      <p>Want me to rewrite slide 1 to lead with the Shift-Swap story instead of the agenda?</p>`;
+    return `<p>The Q2 deck has 6 slides. The strongest data story is <strong>Visitation-Front-Door-in-Teams 4× growth</strong> — that's the biggest single-quarter jump since launch. Worth leading with.</p>
+      <p>Want me to rewrite slide 1 to lead with the Visitation Front Door story instead of the agenda?</p>`;
   }
 
   // Excel
@@ -14209,7 +15141,7 @@ function generateFollowupResponse(text) {
         <p>Want me to build a one-pager for the Executive Leadership Team, or drill into Athletics?</p>`;
     }
     if (/license|cost|roi/.test(t)) {
-      return `<p>self-service deflection this month: <strong>68%</strong> (vs 37% before Shift-Swap agent). <strong>136 licenses</strong> show low usage — reassigning them to waitlisted Benefits and Policy & Programs would unlock more value.</p>`;
+      return `<p>self-service deflection this month: <strong>68%</strong> (vs 37% before Visitation Front Door agent). <strong>136 licenses</strong> show low usage — reassigning them to waitlisted Records Office and Policy &amp; Programs would unlock more value.</p>`;
     }
     if (/compliance|ferpa|privacy|dlp|purview/.test(t)) {
       return `<p>Last 30 days: <strong>3.2M prompts</strong>, <strong>1.1M touched Resident PII</strong>, <strong>48 DLP events</strong> — all contained. Zero outside-tenant access requests. Full log is in Purview. CJIS boundary holds on shift coverage records.</p>`;
@@ -14635,10 +15567,10 @@ const ABM_DEFAULT_PROMPTS = [
 
 let abmState = {
   step: 0,
-  description: "Help employees request Shift-Swap in Teams and route manager approvals to CorrectionsCore. Use our Shift-Swap policy and the current CorrectionsCore balances in SharePoint.",
-  name: "Intake Processing Nudge",
-  role: "Proactively flag new staff at 30/60/90 days whose intake checklists are incomplete, and nudge their manager with the specific outstanding items before they fall off track.",
-  instructions: "Always lead with the employee name and their day number (30/60/90). Never recommend an case decision — only surface the missing item and ask the manager to own it. Cite the specific document and date you pulled from. If you don't have enough information to answer, say so and offer what you do know.",
+  description: "Help families request visitation exceptions from family.msdcr.gov and route Coordinator approvals. Use our visitation policy and current unit schedules in SharePoint.",
+  name: "Reentry Program Match",
+  role: "Score each Reentry Intake Assessment against current MCRP partner availability and return a ranked list of placements with fit scores.",
+  instructions: "Always lead with the resident's name and release horizon. Never commit a placement — only surface the ranked options and ask the Case Manager to own it. Cite the specific program criteria and date you pulled from. If you don't have enough information to answer, say so and offer what you do know.",
   logo: "agentLogoReadmit",
   starters: ABM_DEFAULT_PROMPTS.slice(),
   // Sources are limited to what the in-Copilot builder actually supports: SharePoint, OneDrive,
@@ -14788,25 +15720,25 @@ function abmStepDescribe() {
     <p class="abm-lede">Describe the goal in plain language. The agent builder lives inside Microsoft 365 Copilot, so it uses the SharePoint, OneDrive, and Teams data you already have — nothing leaves Meridian State's tenant.</p>
     <div class="abm-prompt-box">
       <div class="abm-prompt-label">Your goal</div>
-      <textarea id="abm-describe-input" placeholder="e.g. Help employees request Shift-Swap in Teams ...">${abmState.description}</textarea>
+      <textarea id="abm-describe-input" placeholder="e.g. Help families request visitation exceptions from family.msdcr.gov ...">${abmState.description}</textarea>
     </div>
     <div style="margin-top:22px; font-size:12px; font-weight:700; color:var(--gray-130); text-transform:uppercase; letter-spacing:0.8px;">Or start from a template</div>
     <div class="abm-templates">
       <div class="abm-template-card" onclick="abmApplyTemplate('readmit')">
-        <div class="abm-t-head"><div class="abm-t-ico">ON</div>Intake Processing Nudge</div>
-        <div class="abm-t-desc">Flag new staff off-track at 30/60/90 days and nudge their manager.</div>
+        <div class="abm-t-head"><div class="abm-t-ico">RM</div>Reentry Program Match</div>
+        <div class="abm-t-desc">Score Reentry Intake Assessments against MCRP program availability and return ranked placements.</div>
       </div>
       <div class="abm-template-card" onclick="abmApplyTemplate('huddle')">
         <div class="abm-t-head"><div class="abm-t-ico">MH</div>Morning Huddle Prep</div>
         <div class="abm-t-desc">Assemble the 7 AM case review brief from overnight notes and the Case Manager handoff.</div>
       </div>
       <div class="abm-template-card" onclick="abmApplyTemplate('cert')">
-        <div class="abm-t-head"><div class="abm-t-ico">CT</div>File Validator</div>
-        <div class="abm-t-desc">Watch personnel files for missing Classification Review/W-4/policy manual-ack docs and flag by retention policy.</div>
+        <div class="abm-t-head"><div class="abm-t-ico">PC</div>Policy Copilot</div>
+        <div class="abm-t-desc">Ground answers in the MSDCR Policy Manual · flag missing or outdated DOP/PREA citations in classification packets.</div>
       </div>
       <div class="abm-template-card" onclick="abmApplyTemplate('patientq')">
-        <div class="abm-t-head"><div class="abm-t-ico">PQ</div>Visitation Front Door</div>
-        <div class="abm-t-desc">Route self-service messages by case urgency and draft first-pass replies.</div>
+        <div class="abm-t-head"><div class="abm-t-ico">VF</div>Visitation Front Door</div>
+        <div class="abm-t-desc">Route visitation exception requests by urgency and draft first-pass coordinator replies.</div>
       </div>
     </div>
     <div style="margin-top:22px; padding:12px 14px; background:#f4f6f9; border-left:3px solid var(--msu-teal); border-radius:4px; font-size:12px; color:var(--gray-130); line-height:1.55;">
@@ -14817,13 +15749,13 @@ function abmStepDescribe() {
 function abmApplyTemplate(tpl) {
   const T = {
     readmit: {
-      description: "Proactively flag new staff at 30/60/90 days whose intake checklists are incomplete, and nudge their manager with the specific outstanding items before they fall off track. Use our intake processing policies and the current CorrectionsCore new-hire cohort.",
-      name: "Intake Processing Nudge", logo: "agentLogoReadmit",
-      instructions: "Always lead with the employee name and their day number (30/60/90). Never recommend an case decision — only surface the missing item and ask the manager to own it. Cite the specific document and date you pulled from.",
+      description: "Score each Reentry Intake Assessment against current MCRP partner availability and return a ranked list of placements with fit scores. Use our reentry program criteria and the current Meridian Community Reentry Partners roster.",
+      name: "Reentry Program Match", logo: "agentLogoReadmit",
+      instructions: "Always lead with the resident's name and release horizon. Never commit a placement — only surface the ranked options and ask the Case Manager to own it. Cite the specific program criteria and date you pulled from.",
       starters: [
-        "Which new staff are off-track at day 30 this week?",
+        "Which reentry assessments are ready to place this week?",
         "Summarize Resident Patel's release-plan case and flag what's missing.",
-        "Draft the weekly intake processing nudge for the Complex 4 (High Security) managers."
+        "Draft the weekly reentry-placement brief for the Complex 4 (High Security) Case Managers."
       ]
     },
     huddle: {
@@ -14837,23 +15769,23 @@ function abmApplyTemplate(tpl) {
       ]
     },
     cert: {
-      description: "Watch personnel files for missing Classification Review, W-4, offer, direct deposit, policy attestation, background check, and license/cert docs across all 6 facilities. Generate exception reports with remediation owner, and draft reminder emails for manager sign-off.",
-      name: "File Validator", logo: "agentLogoShield",
-      instructions: "Group findings by doc type (Classification Review / policy manual / license). Always link to the specific personnel file. Do not email employees directly — draft and hand off to the manager.",
+      description: "Ground answers in the MSDCR Policy Manual (rev 2026R1), DOP 402 / DOP 906 / PREA. Scan classification-review packets for missing or outdated policy citations across all 6 facilities. Generate exception reports with remediation owner, and draft reminder emails for officer sign-off.",
+      name: "Policy Copilot", logo: "agentLogoShield",
+      instructions: "Group findings by policy section (DOP 402 / DOP 906 / PREA). Always link to the specific packet and policy citation. Do not contact residents directly — draft and hand off to the Classification Officer.",
       starters: [
-        "Which classification packets are pending this month?",
-        "Draft a reminder email for A. Thompson's policy attestationnowledgment.",
-        "Who is at risk of being on shift scheduling without complete docs?"
+        "Which classification packets are missing a PREA citation this month?",
+        "Draft a reminder email for A. Thompson's packet · DOP 906 citation pending.",
+        "Which packets would fail Foundry eval if submitted today?"
       ]
     },
     patientq: {
-      description: "Route incoming self-service staff messages by urgency and draft a first-pass reply in the employee's preferred language at a 6th-grade reading level.",
+      description: "Route incoming visitation exception requests from family.msdcr.gov by urgency and draft a first-pass reply in the family member's preferred language at a 6th-grade reading level.",
       name: "Visitation Front Door", logo: "agentLogoIntake",
-      instructions: "Never give agency policy advice beyond what's in the policy manual. Acknowledge the employee's feeling first, name the concern in plain language, and offer a concrete next step (call the benefits line, schedule, wait for X). Flag urgent items for immediate Case Manager review.",
+      instructions: "Never give policy advice beyond what's in the Visitation Policy. Acknowledge the family member's feeling first, name the concern in plain language, and offer a concrete next step (schedule, wait for X, contact Coordinator). Flag urgent items for immediate Visitation Coordinator review.",
       starters: [
-        "Triage today's self-service messages by urgency.",
-        "Draft a reply to Jessica Huang about her missing policy attestation + DD issue.",
-        "Which messages need an Case Manager's eyes today?"
+        "Triage today's visitation exception requests by urgency.",
+        "Draft a reply to Jessica Huang about her pending exception for Huang, M.",
+        "Which exceptions need the Visitation Coordinator's eyes today?"
       ]
     }
   };
@@ -15117,10 +16049,10 @@ function publishAgent() {
   // Reset state for the next time the builder opens
   abmState = {
     step: 0,
-    description: "Help employees request Shift-Swap in Teams and route manager approvals to CorrectionsCore. Use our Shift-Swap policy and the current CorrectionsCore balances in SharePoint.",
-    name: "Intake Processing Nudge",
-    role: "Proactively flag new staff at 30/60/90 days whose intake checklists are incomplete, and nudge their manager with the specific outstanding items before they fall off track.",
-    instructions: "Always lead with the employee name and their day number (30/60/90). Never recommend an case decision — only surface the missing item and ask the manager to own it. Cite the specific document and date you pulled from. If you don't have enough information to answer, say so and offer what you do know.",
+    description: "Help families request visitation exceptions from family.msdcr.gov and route Coordinator approvals. Use our visitation policy and current unit schedules in SharePoint.",
+    name: "Reentry Program Match",
+    role: "Score each Reentry Intake Assessment against current MCRP partner availability and return a ranked list of placements with fit scores.",
+    instructions: "Always lead with the resident's name and release horizon. Never commit a placement — only surface the ranked options and ask the Case Manager to own it. Cite the specific program criteria and date you pulled from. If you don't have enough information to answer, say so and offer what you do know.",
     logo: "agentLogoReadmit",
     starters: ABM_DEFAULT_PROMPTS.slice(),
     sources: { sp_oncology: true, sp_policies: true, onedrive: true, teams: false, files: false, web: false },
