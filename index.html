@@ -5651,6 +5651,153 @@ body.dark .dx-dim-track { background: #332233; }
 body.dark .dx-life-step .dx-life-dot { box-shadow: 0 0 0 3px #1a1a1a inset, 0 0 0 4px var(--gray-60); }
 body.dark .dx-life-step.done .dx-life-dot { box-shadow: 0 0 0 3px #1a1a1a inset, 0 0 0 4px #a82574; }
 
+/* ============ POWER PAGES — PORTAL NAV + PAGE CONTENT ============ */
+.pp-portal-content { display: block; }
+.pp-portal-page { display: none; padding: 0 2px; }
+.pp-portal-page.active { display: block; }
+
+.pp-page-head {
+  display: flex; align-items: center; gap: 18px;
+  padding: 18px 4px 18px 4px;
+  border-bottom: 2px solid var(--msu-navy);
+  margin-bottom: 18px;
+}
+.pp-page-head h1 {
+  font-size: 26px; font-weight: 700; color: var(--msu-navy);
+  letter-spacing: -0.3px; margin-bottom: 4px;
+}
+.pp-page-sub { font-size: 13px; color: var(--gray-130); line-height: 1.5; max-width: 640px; }
+.pp-page-head .pp-crumb {
+  margin-left: auto; font-size: 11px; color: var(--gray-130);
+  font-family: "Segoe UI", sans-serif;
+}
+.pp-page-head .pp-crumb .sep { color: var(--gray-60); margin: 0 5px; }
+
+.pp-page-cards {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px; margin-bottom: 18px;
+}
+.pp-page-card {
+  background: #fff; border: 1px solid var(--gray-30); border-radius: 10px;
+  padding: 18px; box-shadow: 0 1px 3px rgba(0,56,101,0.04);
+  transition: transform 0.15s, box-shadow 0.15s;
+  cursor: pointer;
+}
+.pp-page-card:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,56,101,0.08); }
+.pp-page-card h3 { font-size: 15px; font-weight: 700; color: var(--msu-navy); margin-bottom: 6px; }
+.pp-page-card p { font-size: 12.5px; color: var(--gray-130); line-height: 1.55; margin-bottom: 12px; }
+.pp-page-card-ico {
+  width: 40px; height: 40px; border-radius: 8px;
+  background: var(--msu-navy); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 12px;
+}
+.pp-page-card-ico.gold { background: var(--msu-gold); color: var(--msu-navy); }
+.pp-page-card-ico svg { width: 22px; height: 22px; }
+
+.pp-page-panel {
+  background: #fff; border: 1px solid var(--gray-30); border-radius: 10px;
+  padding: 18px 20px; margin-bottom: 14px;
+  box-shadow: 0 1px 3px rgba(0,56,101,0.04);
+}
+.pp-page-panel-title {
+  font-size: 13px; font-weight: 700; color: var(--msu-navy);
+  padding-bottom: 10px; margin-bottom: 12px;
+  border-bottom: 1px solid var(--gray-30);
+}
+.pp-visit-list { display: flex; flex-direction: column; gap: 10px; }
+.pp-visit-row {
+  display: grid; grid-template-columns: 160px 1fr auto;
+  gap: 16px; align-items: center;
+  padding: 12px 14px; background: #f8fafd; border-radius: 8px;
+  border-left: 3px solid var(--msu-gold);
+  font-size: 12.5px;
+}
+.pp-visit-row strong { color: var(--msu-navy); display: block; font-size: 13px; font-weight: 700; }
+.pp-visit-row span { color: var(--gray-130); font-size: 11.5px; display: block; margin-top: 2px; }
+
+.pp-rule-list {
+  font-size: 13px; color: var(--gray-160); line-height: 1.75;
+  list-style: none; padding: 0;
+}
+.pp-rule-list li { padding: 8px 0; border-bottom: 1px solid var(--gray-20); }
+.pp-rule-list li:last-child { border-bottom: none; }
+.pp-rule-list li strong { color: var(--msu-navy); font-weight: 700; }
+
+.pp-faq-cats {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  padding: 14px 0; margin-bottom: 14px;
+  border-bottom: 1px solid var(--gray-30);
+}
+.pp-faq-cat {
+  padding: 6px 12px; border-radius: 18px;
+  background: var(--gray-20); color: var(--gray-160);
+  font-size: 12px; font-weight: 500; cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+}
+.pp-faq-cat:hover { background: var(--gray-30); }
+.pp-faq-cat.active { background: var(--msu-navy); color: #fff; font-weight: 600; }
+.pp-faq-list {
+  display: flex; flex-direction: column; gap: 6px;
+  background: #fff; border: 1px solid var(--gray-30); border-radius: 10px;
+  padding: 4px 16px; margin-bottom: 14px;
+}
+.pp-faq-item {
+  border-bottom: 1px solid var(--gray-20);
+  padding: 10px 0;
+}
+.pp-faq-item:last-child { border-bottom: none; }
+.pp-faq-item summary {
+  font-size: 13px; font-weight: 600; color: var(--msu-navy);
+  cursor: pointer; list-style: none;
+  padding: 6px 0; position: relative; padding-right: 28px;
+}
+.pp-faq-item summary::-webkit-details-marker { display: none; }
+.pp-faq-item summary::after {
+  content: '+'; position: absolute; right: 6px; top: 5px;
+  font-size: 18px; font-weight: 400; color: var(--msu-gold);
+  transition: transform 0.2s;
+}
+.pp-faq-item[open] summary::after { content: '−'; }
+.pp-faq-item p { font-size: 12.5px; color: var(--gray-160); line-height: 1.6; padding: 6px 0 10px 0; }
+.pp-faq-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 4px; gap: 10px; flex-wrap: wrap;
+}
+.pp-faq-hint {
+  font-size: 12px; color: var(--gray-130);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.pp-msdcr-chat-btn.inline {
+  padding: 6px 12px; font-size: 12px; margin: 0 2px;
+}
+
+.pp-fac-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+}
+.pp-fac-card {
+  background: #fff; border: 1px solid var(--gray-30); border-radius: 10px;
+  padding: 16px; box-shadow: 0 1px 3px rgba(0,56,101,0.04);
+  border-left: 4px solid var(--msu-navy);
+}
+.pp-fac-head { margin-bottom: 6px; }
+.pp-fac-head strong { font-size: 14px; color: var(--msu-navy); font-weight: 700; display: block; }
+.pp-fac-head span { font-size: 11.5px; color: var(--msu-gold); font-weight: 600; }
+.pp-fac-meta { font-size: 12px; color: var(--gray-130); margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid var(--gray-20); }
+.pp-fac-rows { display: flex; flex-direction: column; gap: 6px; font-size: 12px; }
+.pp-fac-rows > div { display: flex; justify-content: space-between; }
+.pp-fac-rows span { color: var(--gray-130); }
+.pp-fac-rows strong { color: var(--msu-navy); font-weight: 600; }
+
+body.dark .pp-page-head h1 { color: #cfe0f5; }
+body.dark .pp-page-card, body.dark .pp-page-panel, body.dark .pp-faq-list, body.dark .pp-fac-card { background: #252525; border-color: #333; color: #e0e0e0; }
+body.dark .pp-page-card h3, body.dark .pp-page-card-ico:not(.gold) { color: #cfe0f5; }
+body.dark .pp-visit-row { background: #2a2a2a; }
+body.dark .pp-faq-item summary { color: #cfe0f5; }
+body.dark .pp-faq-cat { background: #2a2a2a; color: #e0e0e0; }
+body.dark .pp-fac-head strong, body.dark .pp-page-panel-title { color: #cfe0f5; }
+
 /* ============ POWER PAGES — TAB PANEL POLISH ============ */
 .pp-tab-head {
   display: flex; align-items: flex-end; justify-content: space-between;
@@ -11263,17 +11410,20 @@ body.dark .pp-bar { background: #333; }
             </div>
             <!-- portal top nav -->
             <div class="pp-portal-nav">
-              <a class="active">Home</a>
-              <a>Visits</a>
-              <a>Records</a>
-              <a>Grievances</a>
-              <a>FAQ</a>
-              <a>Reentry Resources</a>
-              <a>Find a Facility</a>
-              <a>En Espa&ntilde;ol</a>
+              <a class="active" data-pp-nav="home" onclick="ppNav(this,'home')">Home</a>
+              <a data-pp-nav="visits" onclick="ppNav(this,'visits')">Visits</a>
+              <a data-pp-nav="records" onclick="ppNav(this,'records')">Records</a>
+              <a data-pp-nav="grievances" onclick="ppNav(this,'grievances')">Grievances</a>
+              <a data-pp-nav="faq" onclick="ppNav(this,'faq')">FAQ</a>
+              <a data-pp-nav="reentry" onclick="ppNav(this,'reentry')">Reentry Resources</a>
+              <a data-pp-nav="facilities" onclick="ppNav(this,'facilities')">Find a Facility</a>
+              <a data-pp-nav="espanol" onclick="ppNav(this,'espanol')">En Espa&ntilde;ol</a>
               <span class="spacer"></span>
               <button class="pp-signin">Sign in</button>
             </div>
+            <!-- portal pages (switched by .pp-portal-nav) -->
+            <div class="pp-portal-content">
+            <div class="pp-portal-page active" data-pp-page="home">
             <!-- hero -->
             <div class="pp-portal-hero msdcr-hero">
               <svg class="pp-seal-svg" style="width:72px;height:72px;"><use href="#msdcrSeal"/></svg>
@@ -11458,6 +11608,361 @@ body.dark .pp-bar { background: #333; }
               <span class="ada-chip">Large-print available</span>
               <span class="ada-chip">TTY compatible</span>
             </div>
+            </div><!-- /pp-portal-page home -->
+
+            <!-- ========== VISITS PAGE ========== -->
+            <div class="pp-portal-page" data-pp-page="visits">
+              <div class="pp-page-head">
+                <svg class="pp-seal-svg" style="width:48px;height:48px;"><use href="#msdcrSeal"/></svg>
+                <div>
+                  <h1>Visits</h1>
+                  <p class="pp-page-sub">Schedule a visit, check eligibility, or look up status. Warden-approved window: Fri–Sun 9 AM – 4 PM.</p>
+                </div>
+                <span class="pp-crumb">Home <span class="sep">›</span> Visits</span>
+              </div>
+              <div class="pp-page-cards">
+                <div class="pp-page-card">
+                  <div class="pp-page-card-ico gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg></div>
+                  <h3>Schedule a new visit</h3>
+                  <p>In-person, video, or non-contact. Check eligibility in two minutes with our virtual assistant.</p>
+                  <button class="pp-msdcr-chat-btn"><svg class="cp-spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.7 5.3L19 9l-5.3 1.7L12 16l-1.7-5.3L5 9l5.3-1.7L12 2z"/></svg>Start with our virtual assistant</button>
+                </div>
+                <div class="pp-page-card">
+                  <div class="pp-page-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="14" height="10" rx="2"/><polyline points="22,7 16,12 22,17 22,7"/></svg></div>
+                  <h3>Video visit kiosks</h3>
+                  <p>Our video kiosks run on the family.msdcr.gov portal, no app install. Use Chrome, Edge, or Safari.</p>
+                  <a class="pp-begin-pill">Kiosk guide →</a>
+                </div>
+                <div class="pp-page-card">
+                  <div class="pp-page-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0"/></svg></div>
+                  <h3>Register as an approved visitor</h3>
+                  <p>Background check required. Family and legal representatives complete the Entra External ID flow.</p>
+                  <a class="pp-begin-pill">Register →</a>
+                </div>
+              </div>
+              <div class="pp-page-panel">
+                <div class="pp-page-panel-title">Your upcoming visits</div>
+                <div class="pp-visit-list">
+                  <div class="pp-visit-row">
+                    <div class="pp-visit-when"><strong>Sat Apr 26</strong><span>10:30–11:30 AM MST</span></div>
+                    <div class="pp-visit-where"><strong>Video visit · Complex 2, Unit 4B</strong><span>Resident J. Patel · Approved</span></div>
+                    <span class="pp-activity-pill nav">Eligibility check</span>
+                  </div>
+                  <div class="pp-visit-row">
+                    <div class="pp-visit-when"><strong>Sat May 10</strong><span>2:00–3:00 PM MST</span></div>
+                    <div class="pp-visit-where"><strong>In-person · Complex 2 · Visitor Center</strong><span>Resident J. Patel · Held</span></div>
+                    <span class="pp-activity-pill">Pending Warden</span>
+                  </div>
+                </div>
+              </div>
+              <div class="pp-page-panel">
+                <div class="pp-page-panel-title">Visit rules at a glance</div>
+                <ul class="pp-rule-list">
+                  <li><strong>Acceptable ID:</strong> State-issued driver's license, state ID, tribal ID, passport, or military ID.</li>
+                  <li><strong>Minor children:</strong> Must be accompanied by a legal parent or guardian. Birth certificate or court order required.</li>
+                  <li><strong>Dress code:</strong> No solid orange, no gang-affiliated insignia, no revealing attire. Full dress code: MSDCR DOP 507.</li>
+                  <li><strong>Items allowed:</strong> One clear bag, keys, ID, $20 in small bills. Lockers at the visitor center.</li>
+                  <li><strong>Duration:</strong> In-person 60 min · video 30 min. Extensions require warden approval via the exception process.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- ========== RECORDS PAGE ========== -->
+            <div class="pp-portal-page" data-pp-page="records">
+              <div class="pp-page-head">
+                <svg class="pp-seal-svg" style="width:48px;height:48px;"><use href="#msdcrSeal"/></svg>
+                <div>
+                  <h1>Public records</h1>
+                  <p class="pp-page-sub">File a public-records request or look up the status of an existing one. Routine requests are answered within ten business days.</p>
+                </div>
+                <span class="pp-crumb">Home <span class="sep">›</span> Records</span>
+              </div>
+              <div class="pp-page-cards">
+                <div class="pp-page-card">
+                  <div class="pp-page-card-ico gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"/><polyline points="15,3 15,7 19,7"/><line x1="9" y1="12" x2="16" y2="12"/><line x1="9" y1="15" x2="16" y2="15"/><line x1="9" y1="18" x2="13" y2="18"/></svg></div>
+                  <h3>File a new request</h3>
+                  <p>Describe what records you need and the date range. Our Records Request Desk agent pre-screens for PII and protected-class data.</p>
+                  <a class="pp-begin-pill">Begin →</a>
+                </div>
+                <div class="pp-page-card">
+                  <div class="pp-page-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16" y2="16"/></svg></div>
+                  <h3>Look up a request</h3>
+                  <p>Enter your case reference or request ID to track status, estimated fees, and delivery method.</p>
+                  <a class="pp-begin-pill">Look up →</a>
+                </div>
+                <div class="pp-page-card">
+                  <div class="pp-page-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg></div>
+                  <h3>Fee schedule</h3>
+                  <p>First 30 pages free. Copies $0.10/page, electronic release free. Legal-review fees apply to cases with protected-class data.</p>
+                  <a class="pp-begin-pill">Schedule →</a>
+                </div>
+              </div>
+              <div class="pp-page-panel">
+                <div class="pp-page-panel-title">Your recent requests</div>
+                <div class="pp-visit-list">
+                  <div class="pp-visit-row">
+                    <div class="pp-visit-when"><strong>#MSDCR-P-2026-0411007</strong><span>Filed Apr 11 · Routine</span></div>
+                    <div class="pp-visit-where"><strong>Q1 use-of-force incident reports · Complex 4</strong><span>Records Office · Daniela Martinez</span></div>
+                    <span class="pp-activity-pill">Day 7 of 10</span>
+                  </div>
+                </div>
+              </div>
+              <div class="pp-page-panel">
+                <div class="pp-page-panel-title">What you can and cannot request</div>
+                <ul class="pp-rule-list">
+                  <li><strong>Available:</strong> Incident reports, visitation logs, contracts, policies (DOP series), staff rosters, PREA audit summaries.</li>
+                  <li><strong>Redacted or restricted:</strong> Resident medical records (HIPAA), CJIS-protected data, victim information, ongoing investigations.</li>
+                  <li><strong>Not available through PRR:</strong> Individual resident case files — contact the resident's legal representative.</li>
+                  <li><strong>Appeal:</strong> If a request is partially denied, you may appeal to the MSDCR Office of General Counsel within 30 days.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- ========== GRIEVANCES PAGE ========== -->
+            <div class="pp-portal-page" data-pp-page="grievances">
+              <div class="pp-page-head">
+                <svg class="pp-seal-svg" style="width:48px;height:48px;"><use href="#msdcrSeal"/></svg>
+                <div>
+                  <h1>Grievances</h1>
+                  <p class="pp-page-sub">File or follow up on a grievance. Residents and family advocates can submit a secure intake — every grievance is tracked to resolution with a Purview audit trail.</p>
+                </div>
+                <span class="pp-crumb">Home <span class="sep">›</span> Grievances</span>
+              </div>
+              <div class="pp-page-cards">
+                <div class="pp-page-card">
+                  <div class="pp-page-card-ico gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><polyline points="8,12 11,15 16,9"/></svg></div>
+                  <h3>File a new grievance</h3>
+                  <p>Safety, medical, property, staff conduct, housing, discrimination, or other. Tiered SLA (Emergency / 15-day / 30-day).</p>
+                  <a class="pp-begin-pill">File →</a>
+                </div>
+                <div class="pp-page-card">
+                  <div class="pp-page-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16" y2="16"/></svg></div>
+                  <h3>Check status</h3>
+                  <p>Enter your case # or sign in to see every grievance you've filed and its current tier, coordinator, and SLA clock.</p>
+                  <a class="pp-begin-pill">Check →</a>
+                </div>
+                <div class="pp-page-card">
+                  <div class="pp-page-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16"/><path d="M12 4v16"/><circle cx="12" cy="12" r="9"/></svg></div>
+                  <h3>Ombudsman</h3>
+                  <p>If your grievance is not resolved within the SLA, you may escalate to the MSDCR Ombudsman's Office.</p>
+                  <a class="pp-begin-pill">Contact ombudsman →</a>
+                </div>
+              </div>
+              <div class="pp-page-panel">
+                <div class="pp-page-panel-title">Open cases filed by you</div>
+                <div class="pp-visit-list">
+                  <div class="pp-visit-row">
+                    <div class="pp-visit-when"><strong>#MSDCR-G-2026-044210</strong><span>Filed Apr 19 · 30-day tier</span></div>
+                    <div class="pp-visit-where"><strong>Missed medical appointment · Complex 3, Unit 7A</strong><span>Coordinator: Unit 7A · Ombudsman cc</span></div>
+                    <span class="pp-activity-pill">Day 3 of 30</span>
+                  </div>
+                </div>
+              </div>
+              <div class="pp-page-panel">
+                <div class="pp-page-panel-title">How grievances are handled</div>
+                <ul class="pp-rule-list">
+                  <li><strong>Emergency tier</strong> (safety risk) — 24-hour response, Warden notified immediately via Teams adaptive card.</li>
+                  <li><strong>15-day tier</strong> (medical, PREA, ADA) — assigned to unit coordinator + specialist ombudsman.</li>
+                  <li><strong>30-day tier</strong> (standard) — assigned to unit coordinator; Grievance & PRR Router classifies automatically.</li>
+                  <li><strong>Appeals</strong> — submit within 10 days of decision to the Office of General Counsel.</li>
+                  <li><strong>Retaliation protection</strong> — every grievance is audit-logged to Microsoft Purview with read-only access for Office of General Counsel.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- ========== FAQ PAGE ========== -->
+            <div class="pp-portal-page" data-pp-page="faq">
+              <div class="pp-page-head">
+                <svg class="pp-seal-svg" style="width:48px;height:48px;"><use href="#msdcrSeal"/></svg>
+                <div>
+                  <h1>Frequently asked questions</h1>
+                  <p class="pp-page-sub">128 answers · Updated 2 days ago · Powered by the Visitation Front Door agent</p>
+                </div>
+                <span class="pp-crumb">Home <span class="sep">›</span> FAQ</span>
+              </div>
+              <div class="pp-faq-cats">
+                <span class="pp-faq-cat active">Visits (21)</span>
+                <span class="pp-faq-cat">Money &amp; mail (14)</span>
+                <span class="pp-faq-cat">Reentry (19)</span>
+                <span class="pp-faq-cat">ID &amp; docs (12)</span>
+                <span class="pp-faq-cat">Legal rights (18)</span>
+                <span class="pp-faq-cat">Grievances (15)</span>
+                <span class="pp-faq-cat">Records (9)</span>
+                <span class="pp-faq-cat">Medical admin (20)</span>
+              </div>
+              <div class="pp-faq-list">
+                <details class="pp-faq-item"><summary>Can my minor child attend a visit?</summary><p>Yes. A legal parent or guardian must accompany the child. Bring a birth certificate or court order. Children under 8 may not visit high-security units.</p></details>
+                <details class="pp-faq-item"><summary>What ID do I need to visit?</summary><p>State-issued driver's license, state ID, tribal ID, passport, or military ID. Expired IDs are not accepted. Legal representatives must also present bar credentials.</p></details>
+                <details class="pp-faq-item"><summary>How do video visits work?</summary><p>Video visits run from family.msdcr.gov. Use Chrome, Edge, or Safari on a device with a camera. No app install required. A family member must be registered and verified via Entra External ID.</p></details>
+                <details class="pp-faq-item"><summary>Can I deposit money online?</summary><p>Yes. Deposits are handled through our approved vendor. Daily limit $300, monthly limit $1,500. See Money &amp; mail for full terms.</p></details>
+                <details class="pp-faq-item"><summary>What does "30-day tier" mean on my grievance?</summary><p>Grievance &amp; PRR Router agent classifies every grievance into one of three tiers. 30-day tier means a coordinator will respond within 30 days. Emergency tier gets a 24-hour response.</p></details>
+                <details class="pp-faq-item"><summary>How do I request a public record?</summary><p>Use the Records page. Routine requests answered within 10 business days. First 30 pages free.</p></details>
+                <details class="pp-faq-item"><summary>My loved one is approaching release. What do I do next?</summary><p>See Reentry Resources. MCRP (Meridian Community Reentry Partners) will contact you 60 days before release to coordinate housing, ID replacement, and parole-officer assignment.</p></details>
+                <details class="pp-faq-item"><summary>Why was my request flagged for legal review?</summary><p>Some records contain protected-class data (medical, CJIS, victim info). Our Records Request Desk agent pre-screens for this, and legal review ensures release is compliant before delivery.</p></details>
+              </div>
+              <div class="pp-faq-footer">
+                <a class="pp-begin-pill">Browse all 128 answers →</a>
+                <span class="pp-faq-hint">Or <button class="pp-msdcr-chat-btn inline"><svg class="cp-spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.7 5.3L19 9l-5.3 1.7L12 16l-1.7-5.3L5 9l5.3-1.7L12 2z"/></svg>ask our virtual assistant</button></span>
+              </div>
+            </div>
+
+            <!-- ========== REENTRY RESOURCES PAGE ========== -->
+            <div class="pp-portal-page" data-pp-page="reentry">
+              <div class="pp-page-head">
+                <svg class="pp-seal-svg" style="width:48px;height:48px;"><use href="#msdcrSeal"/></svg>
+                <div>
+                  <h1>Reentry resources</h1>
+                  <p class="pp-page-sub">Housing, employment, ID replacement, mental health, and parole — what your loved one's reentry plan may include.</p>
+                </div>
+                <span class="pp-crumb">Home <span class="sep">›</span> Reentry</span>
+              </div>
+              <div class="pp-page-cards">
+                <div class="pp-page-card">
+                  <div class="pp-page-card-ico gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-8 9 8"/><path d="M5 10v10h14V10"/></svg></div>
+                  <h3>Housing &amp; transitional living</h3>
+                  <p>MCRP partners provide transitional housing including Pathway House, Riverton Transitional, and Northside Sober Living.</p>
+                  <a class="pp-begin-pill">See partners →</a>
+                </div>
+                <div class="pp-page-card">
+                  <div class="pp-page-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 12h6m-3-3v6"/></svg></div>
+                  <h3>Employment &amp; apprenticeships</h3>
+                  <p>Welders Guild pre-apprenticeship, CDL training, culinary bridge programs. 94% completion for returning students.</p>
+                  <a class="pp-begin-pill">Programs →</a>
+                </div>
+                <div class="pp-page-card">
+                  <div class="pp-page-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="6" width="16" height="12" rx="2"/><line x1="4" y1="10" x2="20" y2="10"/></svg></div>
+                  <h3>ID replacement</h3>
+                  <p>MSDCR coordinates with Meridian State DMV for pre-release ID. Start 90 days before projected release date.</p>
+                  <a class="pp-begin-pill">Start →</a>
+                </div>
+                <div class="pp-page-card">
+                  <div class="pp-page-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21a8 8 0 10-16 0"/><circle cx="12" cy="7" r="4"/></svg></div>
+                  <h3>Parole officer finder</h3>
+                  <p>Look up the assigned parole officer by district, or call MCRP (555) 204-1001 for coordination.</p>
+                  <a class="pp-begin-pill">Find officer →</a>
+                </div>
+              </div>
+              <div class="pp-page-panel">
+                <div class="pp-page-panel-title">MCRP partner directory — Meridian Community Reentry Partners</div>
+                <ul class="pp-rule-list">
+                  <li><strong>District 1 · Meridian City</strong> — 221 Bridge St · Supervisor: Ofc. R. Chavez · (555) 301-1001</li>
+                  <li><strong>District 2 · Northridge</strong> — 40 Harbor Lane · Supervisor: Ofc. M. Daniels · (555) 301-1002</li>
+                  <li><strong>District 3 · Eastlake</strong> — 88 Pathway Ave · Supervisor: Ofc. T. Lang · (555) 301-1003</li>
+                  <li><strong>District 4 · Riverton</strong> — 12 Mill Rd · Supervisor: Ofc. S. Patel · (555) 301-1004</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- ========== FACILITIES PAGE ========== -->
+            <div class="pp-portal-page" data-pp-page="facilities">
+              <div class="pp-page-head">
+                <svg class="pp-seal-svg" style="width:48px;height:48px;"><use href="#msdcrSeal"/></svg>
+                <div>
+                  <h1>Find a facility</h1>
+                  <p class="pp-page-sub">Four correctional complexes and MSDCR headquarters. Visiting hours, addresses, and direct phone lines.</p>
+                </div>
+                <span class="pp-crumb">Home <span class="sep">›</span> Facilities</span>
+              </div>
+              <div class="pp-fac-grid">
+                <div class="pp-fac-card">
+                  <div class="pp-fac-head"><strong>Complex 1 · Meridian City</strong><span>Reception &amp; Classification · Medium</span></div>
+                  <div class="pp-fac-meta">1400 North Reception Way · Meridian, MS 00001</div>
+                  <div class="pp-fac-rows">
+                    <div><span>Main line</span><strong>(555) 204-1100</strong></div>
+                    <div><span>Visitation desk</span><strong>(555) 204-1110</strong></div>
+                    <div><span>Visiting hours</span><strong>Fri–Sun · 9 AM – 4 PM</strong></div>
+                    <div><span>Video kiosks</span><strong>Yes · 12 stations</strong></div>
+                  </div>
+                </div>
+                <div class="pp-fac-card">
+                  <div class="pp-fac-head"><strong>Complex 2 · Northridge</strong><span>Medium · Pre-release &amp; Reentry</span></div>
+                  <div class="pp-fac-meta">220 Harbor Boulevard · Northridge, MS 00002</div>
+                  <div class="pp-fac-rows">
+                    <div><span>Main line</span><strong>(555) 204-2100</strong></div>
+                    <div><span>Visitation desk</span><strong>(555) 204-2110</strong></div>
+                    <div><span>Visiting hours</span><strong>Fri–Sun · 9 AM – 4 PM</strong></div>
+                    <div><span>Video kiosks</span><strong>Yes · 8 stations</strong></div>
+                  </div>
+                </div>
+                <div class="pp-fac-card">
+                  <div class="pp-fac-head"><strong>Complex 3 · Eastlake</strong><span>Medium · Healthcare &amp; Programs</span></div>
+                  <div class="pp-fac-meta">77 Lakeview Drive · Eastlake, MS 00003</div>
+                  <div class="pp-fac-rows">
+                    <div><span>Main line</span><strong>(555) 204-3100</strong></div>
+                    <div><span>Visitation desk</span><strong>(555) 204-3110</strong></div>
+                    <div><span>Visiting hours</span><strong>Fri–Sun · 9 AM – 4 PM</strong></div>
+                    <div><span>Video kiosks</span><strong>Yes · 6 stations</strong></div>
+                  </div>
+                </div>
+                <div class="pp-fac-card">
+                  <div class="pp-fac-head"><strong>Complex 4 · Riverton</strong><span>Close custody · High security</span></div>
+                  <div class="pp-fac-meta">5000 Mill Road · Riverton, MS 00004</div>
+                  <div class="pp-fac-rows">
+                    <div><span>Main line</span><strong>(555) 204-4100</strong></div>
+                    <div><span>Visitation desk</span><strong>(555) 204-4110</strong></div>
+                    <div><span>Visiting hours</span><strong>Sat–Sun · 10 AM – 2 PM</strong></div>
+                    <div><span>Video kiosks</span><strong>Yes · 4 stations (non-contact only)</strong></div>
+                  </div>
+                </div>
+                <div class="pp-fac-card">
+                  <div class="pp-fac-head"><strong>MSDCR Headquarters</strong><span>Administration · Policy &amp; Programs</span></div>
+                  <div class="pp-fac-meta">1 Capitol Plaza · Meridian, MS 00000</div>
+                  <div class="pp-fac-rows">
+                    <div><span>Main line</span><strong>(555) 204-0900</strong></div>
+                    <div><span>Records Office</span><strong>(555) 204-0930</strong></div>
+                    <div><span>General Counsel</span><strong>(555) 204-0955</strong></div>
+                    <div><span>Tip line (non-emergency)</span><strong>(555) 204-0955</strong></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ========== EN ESPAÑOL PAGE ========== -->
+            <div class="pp-portal-page" data-pp-page="espanol">
+              <div class="pp-page-head">
+                <svg class="pp-seal-svg" style="width:48px;height:48px;"><use href="#msdcrSeal"/></svg>
+                <div>
+                  <h1>Portal familiar · en Espa&ntilde;ol</h1>
+                  <p class="pp-page-sub">Programe visitas, solicite registros p&uacute;blicos y siga una queja. Informaci&oacute;n tambi&eacute;n disponible en Vietnamita y Dari.</p>
+                </div>
+                <span class="pp-crumb">Inicio <span class="sep">›</span> Espa&ntilde;ol</span>
+              </div>
+              <div class="pp-page-cards">
+                <div class="pp-page-card">
+                  <div class="pp-page-card-ico gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></div>
+                  <h3>Programar una visita</h3>
+                  <p>Video, en persona o sin contacto. Verifique su elegibilidad en dos minutos con nuestro asistente virtual.</p>
+                  <button class="pp-msdcr-chat-btn"><svg class="cp-spark" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.7 5.3L19 9l-5.3 1.7L12 16l-1.7-5.3L5 9l5.3-1.7L12 2z"/></svg>Comenzar con el asistente</button>
+                </div>
+                <div class="pp-page-card">
+                  <div class="pp-page-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"/><polyline points="15,3 15,7 19,7"/></svg></div>
+                  <h3>Solicitar un registro p&uacute;blico</h3>
+                  <p>Presente una solicitud y siga su estado. Las solicitudes rutinarias se responden en diez d&iacute;as h&aacute;biles.</p>
+                  <a class="pp-begin-pill">Comenzar →</a>
+                </div>
+                <div class="pp-page-card">
+                  <div class="pp-page-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><polyline points="8,12 11,15 16,9"/></svg></div>
+                  <h3>Presentar una queja</h3>
+                  <p>Admisi&oacute;n segura para residentes y defensores familiares. Cada queja se rastrea hasta su resoluci&oacute;n con un registro de auditor&iacute;a.</p>
+                  <a class="pp-begin-pill">Presentar →</a>
+                </div>
+              </div>
+              <div class="pp-page-panel">
+                <div class="pp-page-panel-title">Servicios de idioma</div>
+                <ul class="pp-rule-list">
+                  <li><strong>Int&eacute;rprete telef&oacute;nico</strong> sin costo &middot; marque (555) 204-0900 y presione 2.</li>
+                  <li><strong>Formularios impresos</strong> en espa&ntilde;ol disponibles en cada centro de visitas.</li>
+                  <li><strong>Asistente virtual</strong> (Visitation Front Door) responde en espa&ntilde;ol &middot; ingl&eacute;s &middot; vietnamita &middot; dari.</li>
+                  <li><strong>Letra grande y TTY</strong> disponibles bajo solicitud.</li>
+                </ul>
+              </div>
+              <div class="pp-page-panel">
+                <a class="pp-begin-pill" onclick="ppNav(document.querySelector('.pp-portal-nav a[data-pp-nav=&quot;home&quot;]'),'home')">Ver en English →</a>
+              </div>
+            </div>
+
+            </div><!-- /pp-portal-content -->
+
             <!-- upgraded enterprise footer -->
             <div class="pp-footer msdcr v2">
               <div class="pp-footer-mission">
@@ -12386,6 +12891,17 @@ function a365Tab(key) {
   // Scroll back to top of the app body when switching tabs
   const body = document.querySelector('#app-agent365 .a365-body');
   if (body) body.scrollTop = 0;
+}
+
+// Power Pages PORTAL nav (inside the Preview tab: Home / Visits / Records / etc.)
+function ppNav(el, key) {
+  document.querySelectorAll('.pp-portal-nav a').forEach(a => a.classList.remove('active'));
+  if (el) el.classList.add('active');
+  document.querySelectorAll('.pp-portal-page').forEach(p => {
+    p.classList.toggle('active', p.getAttribute('data-pp-page') === key);
+  });
+  const browser = document.querySelector('#app-powerpages .pp-browser');
+  if (browser) browser.scrollTop = 0;
 }
 
 // Power Pages tab switcher
