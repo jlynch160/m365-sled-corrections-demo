@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
 <title>Meridian State Department of Corrections and Rehabilitation — Microsoft 365</title>
 <style>
 /* ============ BASE ============ */
@@ -5375,6 +5378,123 @@ body.dark .pp-ref-strip { background: #2a241a; border-color: #554a32; color: #c0
 body.dark .pp-activity-card { background: #252525; border-color: #333; color: #e0e0e0; }
 body.dark .pp-activity-title { color: #f0f0f0; }
 
+/* ============ FOUNDRY — GOVERNANCE & EVALUATIONS POLISH ============ */
+.dax-patient-card .dax-p-meta {
+  margin-top: 10px; padding-top: 10px;
+  border-top: 1px solid var(--gray-30);
+  display: flex; flex-direction: column; gap: 4px;
+  font-size: 11px;
+}
+.dax-patient-card .dax-p-meta > div {
+  display: flex; justify-content: space-between; gap: 8px;
+}
+.dax-patient-card .dax-p-meta span {
+  color: var(--gray-130); text-transform: uppercase; letter-spacing: 0.3px;
+  font-size: 10px; font-weight: 700; flex-shrink: 0;
+}
+.dax-patient-card .dax-p-meta strong {
+  color: var(--gray-160); font-size: 11px; font-weight: 600; text-align: right;
+}
+
+/* lifecycle stepper */
+.dax-lifecycle {
+  display: flex; align-items: center; gap: 4px;
+  padding: 10px 0; margin-bottom: 14px;
+  border-top: 1px solid var(--gray-30);
+  border-bottom: 1px solid var(--gray-30);
+  overflow-x: auto;
+}
+.dx-life-step {
+  display: flex; align-items: center; gap: 8px;
+  padding: 6px 10px;
+  font-size: 11.5px; color: var(--gray-130);
+  white-space: nowrap;
+}
+.dx-life-step .dx-life-dot {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--gray-60); flex-shrink: 0;
+  box-shadow: 0 0 0 3px #fff inset, 0 0 0 4px var(--gray-60);
+}
+.dx-life-step.done .dx-life-dot { background: #a82574; box-shadow: 0 0 0 3px #fff inset, 0 0 0 4px #a82574; }
+.dx-life-step.done .dx-life-lbl { color: #6b1a52; font-weight: 600; }
+.dx-life-step.cur .dx-life-dot {
+  background: #a82574; box-shadow: 0 0 0 3px #fff inset, 0 0 0 4px #c8a55b;
+  animation: dotPulse 1.6s infinite;
+}
+.dx-life-step.cur .dx-life-lbl { color: #a82574; font-weight: 700; }
+.dx-life-n {
+  font-family: "Cascadia Mono", Consolas, monospace;
+  font-size: 10.5px; color: var(--gray-90);
+}
+.dx-life-step.done .dx-life-n, .dx-life-step.cur .dx-life-n { color: var(--gray-130); }
+.dx-life-arr { color: var(--gray-60); font-size: 14px; }
+
+/* evaluation dimensions panel */
+.dax-evaldims {
+  background: #faf6fa;
+  border: 1px solid #ead0ea;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-top: 14px;
+}
+.dx-dim-head {
+  font-size: 11.5px; font-weight: 700; color: #6b1a52;
+  text-transform: uppercase; letter-spacing: 0.4px;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #ead0ea;
+}
+.dx-dim {
+  display: grid;
+  grid-template-columns: 200px 1fr 120px;
+  gap: 10px; align-items: center;
+  padding: 5px 0;
+  font-size: 12px;
+}
+.dx-dim-lbl { color: var(--gray-160); font-weight: 500; }
+.dx-dim-track {
+  height: 7px; background: #f0e4f0; border-radius: 4px; overflow: hidden;
+}
+.dx-dim-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #a82574 0%, #d948ef 100%);
+  border-radius: 4px;
+}
+.dx-dim-fill.safe {
+  background: linear-gradient(90deg, #107c10 0%, #5db55d 100%);
+}
+.dx-dim-fill.halluc {
+  background: linear-gradient(90deg, #d1a500 0%, #8a6e36 100%);
+}
+.dx-dim-v {
+  font-family: "Cascadia Mono", Consolas, monospace;
+  font-size: 11.5px; color: var(--gray-160);
+  display: flex; justify-content: space-between; align-items: baseline; gap: 8px;
+}
+.dx-dim-delta {
+  font-size: 10.5px; font-weight: 700;
+  color: var(--gray-130);
+}
+.dx-dim-delta.up { color: #107c10; }
+.dx-dim-delta.down { color: #a82574; }
+.dx-dim-foot {
+  margin-top: 10px; padding-top: 10px;
+  border-top: 1px solid #ead0ea;
+  font-size: 11px; color: var(--gray-130);
+}
+.dx-dim-link {
+  color: #a82574; font-weight: 600; cursor: pointer; margin-right: 4px;
+  text-decoration: none;
+}
+.dx-dim-link:hover { text-decoration: underline; }
+
+body.dark .dax-patient-card .dax-p-meta strong { color: #e0e0e0; }
+body.dark .dax-evaldims { background: #2a1f2a; border-color: #553255; }
+body.dark .dx-dim-lbl { color: #e0e0e0; }
+body.dark .dx-dim-track { background: #332233; }
+body.dark .dx-life-step .dx-life-dot { box-shadow: 0 0 0 3px #1a1a1a inset, 0 0 0 4px var(--gray-60); }
+body.dark .dx-life-step.done .dx-life-dot { box-shadow: 0 0 0 3px #1a1a1a inset, 0 0 0 4px #a82574; }
+
 /* ============ POWER PAGES — TAB PANEL POLISH ============ */
 .pp-tab-head {
   display: flex; align-items: flex-end; justify-content: space-between;
@@ -7042,11 +7162,16 @@ body.dark .pp-bar { background: #333; }
       <div class="dax-sidebar">
         <div class="dax-patient-card">
           <div class="dax-p-name">Classification Packet Prep</div>
-          <div class="dax-p-mrn">Agent ID 0x91CE · UC6 · Complex 1 + Complex 4</div>
+          <div class="dax-p-mrn">Agent ID ai-classif-prep-01 · v2.3.1 · UC6</div>
           <div class="dax-p-chips">
-            <span class="slabel phi">Resident PII</span>
             <span class="pill">Foundry-evaluated</span>
             <span class="pill" style="background:#fdecea;color:#b02a1b;">Human approval required</span>
+          </div>
+          <div class="dax-p-meta">
+            <div><span>Model</span><strong>GPT-4.1 · Azure OpenAI (GCC High)</strong></div>
+            <div><span>Grounding</span><strong>MSDCR Policy Manual rev 2026R1 · DOP 402 · DOP 906 · PREA</strong></div>
+            <div><span>Eval cadence</span><strong>Weekly · next run Fri 5 AM</strong></div>
+            <div><span>Audit log</span><strong>Microsoft Purview</strong></div>
           </div>
         </div>
         <div class="dax-label">Agents under Foundry governance</div>
@@ -7059,13 +7184,26 @@ body.dark .pp-bar { background: #333; }
           <div class="dax-enc-s">96.4% citation match · healthy</div>
         </div>
         <div class="dax-enc">
+          <div class="dax-enc-t">Visitation Front Door · UC2</div>
+          <div class="dax-enc-s">97.1% intent accuracy · healthy</div>
+        </div>
+        <div class="dax-enc">
           <div class="dax-enc-t">Grievance &amp; PRR Router · UC3</div>
           <div class="dax-enc-s">93.1% SLA-tier accuracy · healthy</div>
         </div>
-        <div class="dax-label">This week</div>
-        <div class="dax-mini">42 classification packets · all approval-gated</div>
-        <div class="dax-mini">Avg. human review <strong>7 min</strong></div>
+        <div class="dax-enc">
+          <div class="dax-enc-t">Reentry Program Match · UC4</div>
+          <div class="dax-enc-s">93.0% placement accuracy · healthy</div>
+        </div>
+        <div class="dax-enc">
+          <div class="dax-enc-t">Records Request Desk · UC5</div>
+          <div class="dax-enc-s">99.2% PII redaction · healthy</div>
+        </div>
+        <div class="dax-label">This week · Classification Packet Prep</div>
+        <div class="dax-mini">42 packets drafted · all approval-gated</div>
+        <div class="dax-mini">Avg. human review <strong>7 min</strong> (was 38)</div>
         <div class="dax-mini">Policy-ground match <strong>98.2%</strong></div>
+        <div class="dax-mini">Flagged for supervisor <strong>2 of 42</strong></div>
       </div>
 
       <div class="dax-main">
@@ -7084,6 +7222,52 @@ body.dark .pp-bar { background: #333; }
           <div class="dax-evalprog" id="dax-evalprog">
             <div class="dax-evalprog-track"><div class="dax-evalprog-fill" id="dax-evalprog-fill"></div></div>
             <div class="dax-evalprog-label">Packet 5 of 7 · 98.2% avg policy-ground match</div>
+          </div>
+          <div class="dax-lifecycle">
+            <div class="dx-life-step done"><span class="dx-life-dot"></span><span class="dx-life-lbl">Drafted</span><span class="dx-life-n">7/7</span></div>
+            <div class="dx-life-arr">›</div>
+            <div class="dx-life-step cur"><span class="dx-life-dot"></span><span class="dx-life-lbl">Foundry evaluated</span><span class="dx-life-n">5/7</span></div>
+            <div class="dx-life-arr">›</div>
+            <div class="dx-life-step"><span class="dx-life-dot"></span><span class="dx-life-lbl">Officer approval</span><span class="dx-life-n">0/7</span></div>
+            <div class="dx-life-arr">›</div>
+            <div class="dx-life-step"><span class="dx-life-dot"></span><span class="dx-life-lbl">Submitted to hearing</span><span class="dx-life-n">0/7</span></div>
+          </div>
+          <div class="dax-evaldims">
+            <div class="dx-dim-head">Evaluation dimensions · run #2041 · vs baseline run #2040</div>
+            <div class="dx-dim">
+              <div class="dx-dim-lbl">Groundedness</div>
+              <div class="dx-dim-track"><div class="dx-dim-fill" style="width:98%;"></div></div>
+              <div class="dx-dim-v">98.2%<span class="dx-dim-delta up">▲ 0.4</span></div>
+            </div>
+            <div class="dx-dim">
+              <div class="dx-dim-lbl">Citation integrity</div>
+              <div class="dx-dim-track"><div class="dx-dim-fill" style="width:100%;"></div></div>
+              <div class="dx-dim-v">100%<span class="dx-dim-delta">— 0.0</span></div>
+            </div>
+            <div class="dx-dim">
+              <div class="dx-dim-lbl">Policy-criteria coverage</div>
+              <div class="dx-dim-track"><div class="dx-dim-fill" style="width:96%;"></div></div>
+              <div class="dx-dim-v">96.1%<span class="dx-dim-delta up">▲ 1.2</span></div>
+            </div>
+            <div class="dx-dim">
+              <div class="dx-dim-lbl">Relevance</div>
+              <div class="dx-dim-track"><div class="dx-dim-fill" style="width:94%;"></div></div>
+              <div class="dx-dim-v">94.0%<span class="dx-dim-delta down">▼ 0.6</span></div>
+            </div>
+            <div class="dx-dim">
+              <div class="dx-dim-lbl">Safety (protected-class &amp; bias)</div>
+              <div class="dx-dim-track"><div class="dx-dim-fill safe" style="width:99%;"></div></div>
+              <div class="dx-dim-v">99.6%<span class="dx-dim-delta up">▲ 0.1</span></div>
+            </div>
+            <div class="dx-dim">
+              <div class="dx-dim-lbl">Hallucination rate (lower is better)</div>
+              <div class="dx-dim-track"><div class="dx-dim-fill halluc" style="width:3%;"></div></div>
+              <div class="dx-dim-v">0.3%<span class="dx-dim-delta up">▼ 0.1</span></div>
+            </div>
+            <div class="dx-dim-foot">
+              <a class="dx-dim-link">View full trace in Foundry ↗</a>
+              <span>· 214 historical packets in eval suite · Azure OpenAI GPT-4.1 · GCC High</span>
+            </div>
           </div>
           <div class="dax-transcript">
             <div class="dax-turn patient">
@@ -7113,7 +7297,7 @@ body.dark .pp-bar { background: #333; }
           <div class="dax-note-head">
             <div>
               <div class="dax-note-title">
-                <svg width="18" height="18" style="vertical-align:-3px;margin-right:6px;"><use href="#copilotLogo"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:6px;"><path d="M12 2l3 5 5 1-4 4 1 6-5-3-5 3 1-6-4-4 5-1z" fill="#a82574"/></svg>
                 Foundry evaluation run · Classification Packet Prep
               </div>
               <div class="dax-note-sub">Weekly eval vs. MSDCR Policy Manual · <strong>human approval gate on every packet</strong></div>
@@ -11725,24 +11909,23 @@ function closeEventDetail() {
 }
 
 function daxRegenerate() {
-  showToast({ kind:'copilot', title:'Regenerating note…', text:'Records Intake agent is re-reading the conversation from the top.', ttl:2200 });
+  showToast({ kind:'copilot', title:'Re-running Foundry evaluation…', text:'Re-scoring packets 1–7 against MSDCR Policy Manual rev 2026R1 ground truth.', ttl:2400 });
 }
 function daxAcceptSign() {
   const btn = document.getElementById('dax-sign-btn');
   if (!btn) return;
-  // Button state sequence: signing → routed
-  btn.textContent = 'Signing…';
+  btn.textContent = 'Opening queue…';
   btn.disabled = true;
   btn.style.opacity = '0.75';
   setTimeout(() => {
-    showToast({ kind:'success', title:'Filed &amp; routed to CorrectionsCore', text:'Mr. Hernandez reentry-plan intake · case note signed and attached to personnel file. Manager T. Reilly notified.', ttl:6000 });
+    showToast({ kind:'success', title:'Approval queue opened', text:'7 Classification Packet Prep recommendations awaiting Classification Officer (T. Reilly) sign-off for Thursday\'s docket. Each packet requires human approval before hearing.', ttl:5000 });
   }, 700);
   setTimeout(() => {
-    btn.textContent = '✓ Filed — view in CorrectionsCore';
+    btn.textContent = '✓ 7 packets queued for officer approval';
     btn.style.opacity = '1';
-    btn.style.background = 'linear-gradient(135deg, #107c10, #0a5a0a)';
+    btn.style.background = 'linear-gradient(135deg, #a82574, #6b1a52)';
     btn.disabled = false;
-    addTimeSaved(17);
+    addTimeSaved(14);
   }, 1200);
 }
 
