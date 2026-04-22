@@ -6525,7 +6525,7 @@ body.dark .pp-bar { background: #333; }
               <div class="mc-badge recording">● RECORDED</div>
             </div>
             <div style="font-size:12px;color:var(--gray-130);line-height:1.6;margin-top:6px;">
-              <strong>Attendees:</strong> Marcus Johnson (Deputy Director of Operations), Priya Raman (Operations Analytics), Maria Gutierrez (Benefits), Dan Kowalski (IT / Records System), Tom Reilly (Facilities Manager), L. Thomas (Staff Relations), Alex Rivera (Case Manager)<br/>
+              <strong>Attendees:</strong> Marcus Johnson (Deputy Director of Operations), Priya Raman (Operations Analytics), Maria Gutierrez (Visitation &amp; Family Services), Dan Kowalski (IT Director), Warden Reilly (Complex 4), L. Thomas (Staff Relations), Alex Rivera (Senior Case Manager)<br/>
               <strong>Cases reviewed:</strong> 7 open tickets
             </div>
             <div class="mc-attendees">
@@ -6547,7 +6547,7 @@ body.dark .pp-bar { background: #333; }
               <div class="mc-badge recording">● RECORDED</div>
             </div>
             <div style="font-size:12px;color:var(--gray-130);line-height:1.6;margin-top:6px;">
-              <strong>Attendees:</strong> Marcus Johnson (Deputy Director of Operations), Maria Gutierrez (Visitation &amp; Family Services), Alex Rivera (Case Manager), D. Alvarez (Parole Officer, MCRP)<br/>
+              <strong>Attendees:</strong> Marcus Johnson (Deputy Director of Operations), Maria Gutierrez (Visitation &amp; Family Services), Alex Rivera (Senior Case Manager), Ofc. Teresa Lang (Parole Officer, MCRP District 3)<br/>
               <strong>Topic:</strong> Reconcile program-completion records between CorrectionsCore and MCRP intake system — discrepancy flagged by Program Match agent
             </div>
             <div class="mc-actions">
@@ -6625,20 +6625,20 @@ body.dark .pp-bar { background: #333; }
         </div>
         <h2 style="color:#777;font-weight:400;border-top:1px solid #999;padding-top:10pt;">Request information (for reference)</h2>
         <p>
-          <strong>Employee:</strong> Patel, Jitendra (Case #MSDCR-2026-04-118349)<br/>
-          <strong>Title:</strong> Resident (Complex 3 · Reentry &amp; Programs)  ·  <strong>Scheduled Release:</strong> 5/14/2026<br/>
-          <strong>Requester:</strong> Meridian Community Reentry Partners — Community Reentry Intake<br/>
-          <strong>Case #:</strong> MSDCR-2026-04-118349<br/>
+          <strong>Resident:</strong> Patel, J. (Resident ID R-2024-018372)<br/>
+          <strong>Housing:</strong> Complex 2 · Unit 4B · Medium (Level 3)  ·  <strong>Scheduled Release:</strong> 2026-06-09<br/>
+          <strong>Requester:</strong> Meridian Community Reentry Partners (MCRP) — Parole District 3<br/>
+          <strong>Ref #:</strong> MSDCR-R-2026-018372<br/>
           <strong>Letter type:</strong> Release-planning letter — program completions + housing plan + parole officer assignment<br/>
-          <strong>Requested by employee:</strong> "Please confirm completed programs (Cognitive Behavioral, GED, Job-Readiness), approved housing plan, assigned parole officer, and scheduled release date. Please send via the MCRP secure portal (ROI-7 on file)."
+          <strong>Requested by MCRP:</strong> "Please confirm completed programs (CBT, GED, Welders Guild pre-apprenticeship), approved housing plan, assigned parole officer, and scheduled release date. Please send via the MCRP secure portal (ROI-7 on file)."
         </p>
         <h2 style="color:#777;font-weight:400;">Supporting records attached</h2>
         <ul>
-          <li>Program completion certificates (CBT, GED, Job-Readiness) · Records Division export</li>
-          <li>Approved housing plan on file 04/10/2026 (Transitional House #4, Meridian County)</li>
-          <li>Parole officer assignment confirmation — D. Alvarez, Community Supervision District 2</li>
-          <li>MCRP intake appointment scheduled 5/14/2026 @ 09:30 (confirmed by MCRP portal)</li>
-          <li>Resident consent + signed ROI-7 to MCRP (04/19/2026)</li>
+          <li>Program completion certificates (CBT 2025-11-22, GED 2026-01-24, Welders Guild pre-apprenticeship 2026-03-30) · Records Division export</li>
+          <li>Approved housing plan on file 2026-04-10 (Pathway House, 12 mi from MCRP District 3)</li>
+          <li>Parole officer assignment confirmation — Ofc. Teresa Lang, MCRP Parole District 3</li>
+          <li>MCRP reception appointment scheduled 2026-06-10 @ 09:00 (confirmed by MCRP portal)</li>
+          <li>Resident consent + signed ROI-7 to MCRP (2026-04-19)</li>
         </ul>
         <p style="color:#999;font-style:italic;margin-top:14pt;">Release-planning letter body will appear here. Click the Copilot logo (top-right) to draft.</p>
       </div>
@@ -11885,7 +11885,7 @@ const fillerSubjects = [
 const fillerFroms = [
   ["MSDCR Procurement","PR"], ["Maria Gutierrez (Visitation)","MG"], ["Marcus Johnson (Deputy Director)","MJ"],
   ["MSDCR Facilities","MF"], ["MSDCR Info Security","IC"], ["Priya Raman (Ops Analytics)","PR"],
-  ["MSDCR L&D","LD"], ["Benefits Admin","BA"], ["CorrectionsCore Tips","CT"], ["Staff Experience","SE"],
+  ["MSDCR L&D","LD"], ["PREA Coordinator Office","PC"], ["CorrectionsCore Tips","CT"], ["Staff Experience","SE"],
   ["Policy Office","PO"], ["MSDCR Research Office","RO"], ["Vendor Management","VM"],
   ["Operations Analytics","OA"], ["Volunteer Services","VS"], ["Reentry Partners","RP"],
   ["EAP","EA"], ["Pension Committee","PC"], ["Collective Bargaining","CB"], ["PREA Coordinator","PC"],
@@ -12371,7 +12371,7 @@ function startLiveActivity() {
 }
 
 const NEW_EMAIL_POOL = [
-  { from:"Benefits", fromInit:"HP", subject:"Policy update — video-visit window effective May 1", preview:"Video-visit scheduling window moves from 14 days to 21 days advance…", time:"now" },
+  { from:"Visitation &amp; Family Services", fromInit:"VF", subject:"Policy update — video-visit window effective May 1", preview:"Video-visit scheduling window moves from 14 days to 21 days advance…", time:"now" },
   { from:"Marcus Johnson", fromInit:"MJ", subject:"Quick — Patel verification peer review just scheduled", preview:"Meridian Community Reentry Partners wants a call at 11:30 today. Can you join?…", time:"now", urgent:true },
   { from:"Operations Analytics", fromInit:"HQ", subject:"April ops dashboard refreshed", preview:"CSAT up 18%, 90-day turnover flat. Full report…", time:"now" },
   { from:"L. Thomas", fromInit:"LT", subject:"case review prep — 1 case added", preview:"Ms. Park added late, case packet attached…", time:"now" },
@@ -12544,7 +12544,7 @@ const TEAMS_CHANNELS = {
     sub: '38 members · Active now',
     html: `
       <div class="teams-post-card">
-        <div class="tp-head"><div class="tp-av" style="background:#7f68c7;color:#fff;">MG</div><div><strong>Maria Gutierrez (Benefits)</strong><span>Today 5:40 AM</span></div></div>
+        <div class="tp-head"><div class="tp-av" style="background:#7f68c7;color:#fff;">MG</div><div><strong>Maria Gutierrez (Visitation &amp; Family Services)</strong><span>Today 5:40 AM</span></div></div>
         <div class="tp-body">Resident Patel's release-plan is in progress — Alex Rivera is drafting. If anyone has the Meridian Community Reentry Partners talking-points template, please drop it here.</div>
         <div class="tp-reactions">👍 2 · 💬 3 replies</div>
       </div>
@@ -12738,7 +12738,7 @@ const CAL_EVENT_DETAILS = [
     attendees: [
       { i:'MJ', n:'Marcus Johnson (Deputy Director of Operations)', bg:'#7f68c7' },
       { i:'MN', n:'Warden M. Nguyen (College liaison)', bg:'#464775' },
-      { i:'MG', n:'Maria Gutierrez (Benefits)', bg:'#c50f1f' },
+      { i:'MG', n:'Maria Gutierrez (Visitation &amp; Family Services)', bg:'#c50f1f' },
       { i:'PR', n:'Priya Raman (Operations Analytics)', bg:'#0078d4' },
       { i:'DK', n:'Dan Kowalski (IT / Records System)', bg:'#217346' },
       { i:'LT', n:'L. Thomas (ER)', bg:'#0090a8' },
@@ -12755,11 +12755,11 @@ const CAL_EVENT_DETAILS = [
   },
   {
     headClass: 'urgent',
-    eyebrow: 'Sensitive · verification follow-up',
-    description: "Follow-up call with the Meridian Community Reentry Partners parole partner after yesterday's employment-verification intake. They asked for a written letter and confirmation of program completion status. Reminder: program-completion records mismatch between the release-planning letter and the MCRP intake feed — reconcile first.",
+    eyebrow: 'Sensitive · release-plan handoff',
+    description: "Follow-up call with the MCRP parole partner after yesterday's release-plan handoff intake. They asked for a written letter and confirmation of program completion dates. Reminder: program-completion records mismatch between the release-planning letter and the MCRP intake feed — reconcile first.",
     attendees: [
-      { i:'SC', n:'Alex Rivera (Case Manager)', bg:'#c8a55b' },
-      { i:'FM', n:'Meridian Community Reentry Partners underwriter', bg:'#707070' }
+      { i:'AR', n:'Alex Rivera (Senior Case Manager)', bg:'#c8a55b' },
+      { i:'TL', n:'Ofc. Teresa Lang (MCRP Parole District 3)', bg:'#707070' }
     ],
     agenda: [
       "Confirm program completion (CBT, GED, Job-Readiness)",
@@ -12775,7 +12775,7 @@ const CAL_EVENT_DETAILS = [
     eyebrow: 'Case Manager huddle · Policy & Programs',
     description: "Mid-day Case Manager huddle. Review afternoon open-case load, intake processing check-ins, coverage gaps, and ER events.",
     attendees: [
-      { i:'MG', n:'M. Gutierrez (Benefits)', bg:'#2b8a55' },
+      { i:'MG', n:'M. Gutierrez (Visitation &amp; Family Services)', bg:'#2b8a55' },
       { i:'SC', n:'Alex Rivera (Case Manager)', bg:'#c8a55b' },
       { i:'LT', n:'L. Thomas (ER)', bg:'#0090a8' }
     ],
@@ -13006,13 +13006,13 @@ function sendReply() {
 // Fabricate a plausible Copilot-drafted reply based on the email content.
 function generateEmailDraft(em) {
   const s = (em.subject + ' ' + (em.preview||'')).toLowerCase();
-  // Self-service portal — Jessica Huang (new staff intake processing)
-  if (/jessica|huang|intake processing|policy manual|direct deposit/.test(s)) {
+  // Family portal — Jessica Huang (video-visit application for J. Patel)
+  if (/jessica|huang|video visit|visitation|application/.test(s)) {
     return `<p>Hi Jessica,</p>
-      <p>Welcome to Meridian State — glad you reached out, and sorry for the double hiccup on week one.</p>
-      <p>On the <strong>policy attestationnowledgment</strong>: it lives in the Intake Processing task list inside CorrectionsCore under "My Intake Processing" → "Required Forms." If it's not appearing for you, the Intake Processing Nudge agent may not have provisioned it yet. I'll push it manually so it shows up for you today.</p>
-      <p>On <strong>direct deposit</strong>: if nothing posts by end of day Wednesday, call the Shift scheduling line (555-555-XXXX) and I'll loop in Maria Gutierrez (Benefits). Most likely a routing-number mismatch we can fix same-day; no need to wait until Friday's check-in.</p>
-      <p>Warmly,<br/>Alex Rivera, Senior Case Manager<br/>Policy & Programs · Meridian State Department of Corrections and Rehabilitation</p>`;
+      <p>Thanks for your patience on the video-visit application for J. Patel — I know the delay has been frustrating.</p>
+      <p>On <strong>application #MSDCR-V-2026-0429031</strong>: the Visitation Front Door agent flagged a mismatch between your ID photo and the approved-visitor list. I've routed it to Maria Gutierrez (Visitation &amp; Family Services) with a note to clear it manually; you should see "Approved" on the portal by end of day Wednesday.</p>
+      <p>On the <strong>scheduling window</strong>: effective May 1, the video-visit window moves from 14 days to 21 days advance, so you'll have more flexibility. The Visitation Scheduling line (555-555-XXXX) is open 8 AM–6 PM if the portal still shows "Pending" after Wednesday.</p>
+      <p>Warmly,<br/>Alex Rivera, Senior Case Manager · Reentry Coordinator<br/>Policy &amp; Programs · Meridian State Department of Corrections and Rehabilitation</p>`;
   }
   // Maria — staffing/coverage callouts
   if (/callout|coverage|shift|pto/.test(s)) {
@@ -13047,21 +13047,21 @@ function generateEmailDraft(em) {
 // ============ EXCEL RENDER ============
 // ============ ONEDRIVE RENDER ============
 const OD_FILES = [
-  { type:'folder', name:'Employee Cases',                       label:'phi',      modified:'Today, 9:12 AM',   by:'Alex Rivera',      size:'—',        share:{kind:'team',  label:'Policy & Programs team'} },
+  { type:'folder', name:'Resident Case Files',                   label:'phi',      modified:'Today, 9:12 AM',   by:'Alex Rivera',      size:'—',        share:{kind:'team',  label:'Policy & Programs team'} },
   { type:'folder', name:'Case Review — April 2026',          label:'phi',      modified:'Today, 7:18 AM',   by:'Marcus Johnson',  size:'—',        share:{kind:'team',  label:'Policy & Programs'} },
   { type:'folder', name:'Release-Planning Letters',                 label:'conf',     modified:'Yesterday',        by:'Alex Rivera',      size:'—',        share:{kind:'team',  label:'Case Mgmt Shared Svcs'} },
   { type:'folder', name:'Q2 Ops Reviews',                     label:'internal', modified:'Apr 18, 2026',     by:'Marcus Johnson',  size:'—',        share:{kind:'team',  label:'Policy & Programs'} },
-  { type:'word',   name:'Employment Release-Planning Letter — Patel, J. (DRAFT).docx', label:'phi', modified:'2 h ago', by:'Alex Rivera', size:'48.3 KB', share:{kind:'private', label:'Only you'}, tag:'jensen' },
+  { type:'word',   name:'Release-Planning Letter — Patel, J. (DRAFT).docx', label:'phi', modified:'2 h ago', by:'Alex Rivera', size:'48.3 KB', share:{kind:'private', label:'Only you'}, tag:'jensen' },
   { type:'word',   name:'Patel release-plan case notes — plain language.docx',         label:'phi', modified:'Yesterday, 4:55 PM', by:'Alex Rivera', size:'31.1 KB', share:{kind:'shared', label:'Shared with 3'}, tag:'jensen' },
-  { type:'word',   name:'Release-Planning Letter — Case #MSDCR-2026-04-118349 (Patel, J.).docx',                  label:'phi', modified:'Jul 12, 2015', by:'Executive Director Office', size:'72.4 KB', share:{kind:'team', label:'personnel file room'}, tag:'jensen' },
+  { type:'word',   name:'Classification Intake Record — Patel, J. (R-2024-018372).docx',                  label:'phi', modified:'Aug 14, 2022', by:'Classification Office', size:'72.4 KB', share:{kind:'team', label:'Classification office'}, tag:'jensen' },
   { type:'excel',  name:'Policy & Programs — 14-day Case Coverage.xlsx',                       label:'conf',     modified:'7 h ago', by:'M. Johnson', size:'214 KB', share:{kind:'team', label:'Policy & Programs staff'} },
   { type:'excel',  name:'Q2 Ops Metrics Dashboard.xlsx',                                  label:'conf',     modified:'Apr 20, 2026',     by:'Priya Raman',     size:'1.8 MB',   share:{kind:'team',  label:'Policy & Programs'} },
   { type:'powerpoint', name:'Q2 Ops Review — DRAFT v2.pptx',                          label:'internal', modified:'Yesterday', by:'Alex Rivera', size:'6.2 MB', share:{kind:'shared', label:'Shared with 4'} },
   { type:'powerpoint', name:'Q1 Ops Review — FINAL.pptx',                             label:'internal', modified:'Mar 30, 2026',     by:'Marcus Johnson',  size:'8.1 MB',   share:{kind:'team',  label:'Policy & Programs'} },
-  { type:'pdf',    name:'PREA Overtime Reference Guide — 2021.pdf',                     label:'public',   modified:'Apr 08, 2026', by:'Priya Raman', size:'4.3 MB', share:{kind:'team', label:'Policy & Programs staff'}, tag:'jensen' },
-  { type:'pdf',    name:'Program Completion Record — Patel 05-02-2022.pdf',             label:'phi', modified:'May 02, 2022', by:'Executive Director Office', size:'2.1 MB', share:{kind:'team', label:'personnel file room'}, tag:'jensen' },
+  { type:'pdf',    name:'PREA Standards Reference — 2021.pdf',                     label:'public',   modified:'Apr 08, 2026', by:'Priya Raman', size:'4.3 MB', share:{kind:'team', label:'Policy & Programs staff'}, tag:'jensen' },
+  { type:'pdf',    name:'Classification Review Record — Patel 2025-11-01.pdf',             label:'phi', modified:'Nov 01, 2025', by:'Classification Review Committee', size:'2.1 MB', share:{kind:'team', label:'Classification office'}, tag:'jensen' },
   { type:'video',  name:'Case Review — Policy & Programs (Recording).mp4',                  label:'phi', modified:'Today, 8:12 AM', by:'M. Johnson', size:'418 MB', share:{kind:'team', label:'Policy & Programs'} },
-  { type:'video',  name:'Patel Verification Intake (Recording).mp4',                    label:'phi', modified:'Apr 20, 2026', by:'Alex Rivera', size:'287 MB', share:{kind:'private', label:'Restricted'}, tag:'jensen' },
+  { type:'video',  name:'Patel MCRP Handoff Intake (Recording).mp4',                    label:'phi', modified:'Apr 20, 2026', by:'Alex Rivera', size:'287 MB', share:{kind:'private', label:'Restricted'}, tag:'jensen' },
   { type:'pdf',    name:'CJIS + Records Privacy Training Reminder — due 4-30.pdf',          label:'internal', modified:'Apr 15, 2026',   by:'Compliance',    size:'188 KB',   share:{kind:'team',  label:'All staff'} },
   { type:'image',  name:'MSDCR-Brand-Assets.png',                                       label:'public',   modified:'Jan 12, 2026',     by:'Marketing',       size:'3.4 MB',   share:{kind:'team',  label:'All staff'} }
 ];
@@ -13281,7 +13281,7 @@ const APP_CONTEXT = {
   },
   teams_family: {
     chipIcon: '<svg viewBox="0 0 16 16" fill="#5059c9"><rect x="1" y="3" width="10" height="10" rx="1.5"/><rect x="9" y="5" width="6" height="8" rx="1" opacity="0.85"/></svg>',
-    chipText: 'Patel Verification Intake · April 20, 2026 · 48 min',
+    chipText: 'Patel MCRP Handoff Intake · April 20, 2026 · 48 min',
     tryPrompt: "'summarize this for the parole partner in plain language'",
     messagePlaceholder: 'Message Copilot about this meeting'
   },
@@ -13438,7 +13438,7 @@ function getSuggestions(app, context) {
     },
     teams: {
       items: context === 'family' ? [
-        { shortLabel: "Summarize for the parole partner in plain language", label: "Summarize the verification intake in 8th-grade language for the Meridian Community Reentry Partners parole partner.", key: "familyrecap" },
+        { shortLabel: "Summarize for the parole partner in plain language", label: "Summarize the MCRP handoff intake in 8th-grade language for Ofc. Teresa Lang (MCRP Parole District 3).", key: "familyrecap" },
         { shortLabel: "Create a hearing-ready case note", label: "Create a hearing-ready case note from the meeting.", key: "gocnote" },
         { shortLabel: "Translate the summary to Spanish", label: "Translate the employee-facing summary to Spanish at the same reading level.", key: "spanish" }
       ] : [
@@ -13715,7 +13715,7 @@ function getResponse(app, key) {
       </ul>
       <h4>Audit</h4>
       <ul>
-        <li><strong>State Classification Review audit prep</strong> — Alex has the exception list 92% cleared. Your sign-off on remediation plan is the last step before May 8 audit. <span class="cite" onclick="openSource('jensen-appeal')">2</span></li>
+        <li><strong>State Classification Review audit prep</strong> — Alex has the exception list 92% cleared. Your sign-off on remediation plan is the last step before May 8 audit. <span class="cite" onclick="openSource('patel-release-plan')">2</span></li>
       </ul>
       <h4>Admin</h4>
       <ul>
@@ -13797,7 +13797,7 @@ function getResponse(app, key) {
       </ul>
       <h4>Case state</h4>
       <ul>
-        <li>Work authorization expired (Classification Review Section 3 needs re-verify), visa renewed last month. Benefits consulting.</li>
+        <li>Work authorization expired (Classification Review Section 3 needs re-verify), visa renewed last month. Staff Relations consulting.</li>
         <li>Best case: re-verify completes this week with dose adjustment to shift scheduling hold. Worst case: meaningful delay.</li>
       </ul>
       <h4>Likely employee questions</h4>
@@ -13821,7 +13821,7 @@ function getResponse(app, key) {
       <h4>Needs you right now</h4>
       <ul>
         <li><strong>Marcus Johnson — 14 missing classification reviews before state audit</strong> — start remediation, manager notifications. Deadline: before 10 AM. <span class="cite" onclick="openSource('policy-review-apr')">1</span></li>
-        <li><strong>Meridian Community Reentry Partners — Patel verification</strong> — response due in 5 business days, but Policy & Programs team expects you to coordinate the letter. <span class="cite" onclick="openSource('jensen-appeal')">2</span></li>
+        <li><strong>Meridian Community Reentry Partners — Patel verification</strong> — response due in 5 business days, but Policy & Programs team expects you to coordinate the letter. <span class="cite" onclick="openSource('patel-release-plan')">2</span></li>
         <li><strong>Maria Gutierrez — 2 Shift-Swap approvals stuck &gt;48h</strong> — manager nudge + backup approver assignment needed before 2 PM.</li>
         <li><strong>Priya Raman — Q2 Executive Leadership summary request</strong> — leadership is waiting for the written one-pager of Q2 Operations ops. <span class="cite" onclick="openSource('jensen-family')">3</span></li>
         <li><strong>Jessica Huang portal msg — new-hire intake processing</strong> — missing policy attestation + direct-deposit issue. Fixable today.</li>
@@ -13843,9 +13843,9 @@ function getResponse(app, key) {
       <ul>
         <li>Jenny Ashford and Ashlynn Nguyen both have Shift-Swap approved for tonight. Case Manager on-call coverage is 28 cases with 4 fresh intakes.</li>
       </ul>
-      <h4>💰 Benefits + comp</h4>
+      <h4>📋 Reentry &amp; release planning</h4>
       <ul>
-        <li>Meridian Community Reentry Partners requested an release-planning letter for Resident Patel. Response clock started.</li>
+        <li>Meridian Community Reentry Partners (MCRP) requested the release-planning letter for Resident Patel. Response clock started.</li>
       </ul>
       <h4>💌 Employee / self-service</h4>
       <ul>
@@ -13911,21 +13911,22 @@ function getResponse(app, key) {
       <p>Ready to send via secure email when you review.</p>
     `,
     'teams|familyrecap': `
-      <h4>Summary for the Meridian Community Reentry Partners underwriter</h4>
+      <h4>Summary for the MCRP parole partner (Ofc. Teresa Lang)</h4>
       <div style="background:#fff;border:1px solid var(--gray-30);border-radius:6px;padding:12px;font-size:12.5px;line-height:1.7;">
         <p><strong>What we talked about yesterday</strong></p>
-        <p>We met to discuss what Meridian State can and can't confirm for Resident Patel's release-plan verification. Marcus Johnson (Deputy Director of Operations), Maria Gutierrez (Benefits), and Alex Rivera (Case Manager) joined us, along with Resident Patel and the Meridian Community Reentry Partners underwriter.</p>
+        <p>We met to walk MCRP through the release-plan handoff for Resident Patel (R-2024-018372). Marcus Johnson (Deputy Director of Operations), Maria Gutierrez (Visitation &amp; Family Services), and Alex Rivera (Senior Case Manager) joined, along with Resident Patel and Ofc. Teresa Lang (MCRP Parole District 3).</p>
         <p><strong>What we confirmed together</strong></p>
         <ul>
-          <li>Resident Patel's <strong>title, program completion (CBT, GED, Job-Readiness), and FY26 base salary</strong> are verified.</li>
-          <li>Expected continued employment is <strong>confirmed per continued-service appointment</strong>.</li>
-          <li>Letter will be issued on <strong>MSDCR letterhead</strong>, signed by Deputy Director of Operations.</li>
-          <li>Employee consent is on file (signed 4/19/2026).</li>
+          <li>Program completions on file: <strong>CBT 2025-11-22, GED 2026-01-24, Welders Guild pre-apprenticeship 2026-03-30</strong>.</li>
+          <li>Classification: <strong>Medium (Level 3)</strong> on pre-release track (approved Week 18, 2025-11-01).</li>
+          <li>Housing plan approved — <strong>Pathway House</strong>, 12 mi from MCRP District 3.</li>
+          <li>Release date: <strong>2026-06-09</strong>. Reception appointment: 2026-06-10 09:00 at MCRP District 3.</li>
+          <li>Letter will be issued on <strong>MSDCR letterhead</strong>, cosigned by Deputy Director of Operations.</li>
         </ul>
         <p><strong>What happens next</strong></p>
         <ul>
-          <li>Case Management shared services will send the release-planning letter this afternoon.</li>
-          <li>Resident Patel will be copied per his request.</li>
+          <li>Policy &amp; Programs will send the signed release-planning letter this afternoon.</li>
+          <li>MCRP cosign confirmation requested within 10 business days.</li>
           <li>Alex will check in by phone on Friday to confirm receipt.</li>
         </ul>
         <p><strong>If you have questions, call Alex: 555-555-XXXX.</strong> We are here to help.</p>
@@ -13938,41 +13939,41 @@ function getResponse(app, key) {
     `,
     'word|appeal': `
       <h4>Release-planning letter drafted</h4>
-      <p>I've drafted an release-planning letter using the attached records. Key elements:</p>
+      <p>I've drafted the release-planning letter to MCRP using the attached records. Key elements:</p>
       <ul>
-        <li>Opens with case reference and clear confirmation of employment. <span class="cite" onclick="openSource('jensen-appeal')">1</span></li>
-        <li>Cites Resident Patel's appointment (Resident, Complex 3 · Reentry &amp; Programs, intake 2015) and <strong>program completion (CBT, GED, Job-Readiness)</strong> per the program completion record. <span class="cite" onclick="openSource('acc-aha')">2</span></li>
-        <li>Includes current FY26 base salary per CorrectionsCore export (04/18/2026).</li>
-        <li>Confirms expected continued employment consistent with continued serviced status.</li>
-        <li>Closes with Case Management contact for parole partner follow-up, with employee copy per his written consent.</li>
+        <li>Opens with the handoff reference (#MSDCR-R-2026-018372) and purpose — transfer of custody-supervision to MCRP effective 2026-06-09. <span class="cite" onclick="openSource('patel-release-plan')">1</span></li>
+        <li>Cites Resident Patel's custody entry (2022-08-14), Complex 2 Unit 4B, Medium (Level 3) classification, and pre-release track per the Classification Review record. <span class="cite" onclick="openSource('acc-aha')">2</span></li>
+        <li>Names the three program completions (CBT 2025-11-22, GED 2026-01-24, Welders Guild pre-apprenticeship 2026-03-30) per DOP 906 §2.3.</li>
+        <li>Confirms Pathway House placement (12 mi from MCRP District 3) and the 2026-06-10 09:00 reception appointment.</li>
+        <li>Closes with Policy &amp; Programs contact for MCRP cosign follow-up.</li>
       </ul>
       <p>I also flagged two places where you may want to add Deputy Director of Operations sign-off language — I've left bracketed prompts in the draft. Check the document pane.</p>
-      <p style="margin-top:12px; font-size:11px; color:var(--gray-90); padding-top:8px; border-top:1px solid #ebebeb;">Sources: <span class="cite" onclick="openSource('jensen-appeal')">1</span> Verification draft · <span class="cite" onclick="openSource('acc-aha')">2</span> Program completion record 2022.</p>
+      <p style="margin-top:12px; font-size:11px; color:var(--gray-90); padding-top:8px; border-top:1px solid #ebebeb;">Sources: <span class="cite" onclick="openSource('patel-release-plan')">1</span> Release-planning draft · <span class="cite" onclick="openSource('acc-aha')">2</span> Classification Review Record 2025-11-01.</p>
     `,
     'word|review': `
       <h4>Review of your current draft</h4>
       <p><span class="pill warn">3 weak wording choices</span> <span class="pill good">5 strong elements</span></p>
       <h4>What's working</h4>
       <ul>
-        <li>Title + continued service citation is specific and unambiguous for policy.</li>
-        <li>Reference to the program completion record is the right source for this parole partner.</li>
-        <li>Tone is warm without being casual — likely to land well with an underwriter.</li>
+        <li>DOP 906 §2.3 citation is specific and unambiguous for policy grounding.</li>
+        <li>Reference to the Classification Review Record is the right source for MCRP.</li>
+        <li>Tone is professional without being bureaucratic — likely to land well with the parole officer.</li>
       </ul>
       <h4>What to strengthen</h4>
       <ul>
-        <li>Paragraph 2 uses "longstanding employment" — replace with the specific start date and continued service year to prevent underwriter follow-up.</li>
-        <li>No mention of expected continued employment — this is what the parole partner actually needs.</li>
-        <li>Deputy Director of Operations co-sign is buried at the bottom — lead with the authorized signer.</li>
+        <li>Paragraph 2 uses "longstanding programming" — replace with the specific program-completion dates to prevent MCRP follow-up.</li>
+        <li>No mention of the Pathway House placement distance — this is what the parole officer actually needs to plan reporting.</li>
+        <li>Deputy Director of Operations cosign is buried at the bottom — lead with the authorized signer.</li>
       </ul>
     `,
     'word|tone': `
       <h4>Tone check</h4>
       <p><span class="pill good">Professional</span> <span class="pill good">Warm</span> <span class="pill">Could be more concise</span></p>
-      <p>The draft reads as professional and verifiable — appropriate for an release-planning letter. Suggestions:</p>
+      <p>The draft reads as professional and verifiable — appropriate for a release-planning letter to MCRP. Suggestions:</p>
       <ul>
-        <li>Two instances of "as you can clearly see" — remove. Underwriters read hundreds of these and respond better to understated confidence.</li>
-        <li>Opening paragraph is 94 words. A 40-word opening that leads with the employment confirmation will land harder.</li>
-        <li>Closing contact is good — specific, with the Case Management shared services line and direct email.</li>
+        <li>Two instances of "as you can clearly see" — remove. Parole officers read hundreds of these and respond better to understated confidence.</li>
+        <li>Opening paragraph is 94 words. A 40-word opening that leads with the handoff purpose + release date will land harder.</li>
+        <li>Closing contact is good — specific, with the Policy &amp; Programs / Reentry Coordination line and direct email.</li>
       </ul>
     `,
     'excel|risks': `
@@ -14052,8 +14053,8 @@ function getResponse(app, key) {
 
     // ========= CROSS-APP (HOME) =========
     'home|patient360': `
-      <h4>Jitendra Patel (Case #MSDCR-2026-04-118349) — everything I can see right now</h4>
-      <p><span class="pill">Assoc. Prof · Biology</span> <span class="pill">Continued Serviced 2022</span> <span class="pill urgent">Verification request active</span> <span class="pill warn">Parole Partner call 10 AM</span> <span class="slabel phi" style="vertical-align:2px;">Resident PII</span></p>
+      <h4>Resident Patel, J. (R-2024-018372) — everything I can see right now</h4>
+      <p><span class="pill">Complex 2 · Unit 4B</span> <span class="pill">Medium (Level 3)</span> <span class="pill urgent">Release 2026-06-09 · 48 days</span> <span class="pill warn">MCRP handoff call 10 AM</span> <span class="slabel phi" style="vertical-align:2px;">Resident PII</span></p>
       <div class="src-row"><svg class="src-ico"><use href="#logoOutlook"/></svg><strong>Outlook (14 threads, last 21 days)</strong></div>
       <ul>
         <li>Resident Patel thanked you yesterday; he asked to be copied on the final letter.</li>
@@ -14067,7 +14068,7 @@ function getResponse(app, key) {
       </ul>
       <div class="src-row"><svg class="src-ico"><use href="#logoWord"/></svg><strong>Word (1 document open)</strong></div>
       <ul>
-        <li><strong>Employment release-planning letter — Meridian Community Reentry Partners</strong> · draft in progress · you last edited 2 hours ago. <span class="cite" onclick="openSource('jensen-appeal')">3</span> Cites program completion record. <span class="cite" onclick="openSource('acc-aha')">4</span></li>
+        <li><strong>Employment release-planning letter — Meridian Community Reentry Partners</strong> · draft in progress · you last edited 2 hours ago. <span class="cite" onclick="openSource('patel-release-plan')">3</span> Cites program completion record. <span class="cite" onclick="openSource('acc-aha')">4</span></li>
       </ul>
       <div class="src-row"><svg class="src-ico"><use href="#logoExcel"/></svg><strong>Excel (coverage context)</strong></div>
       <ul>
@@ -14075,15 +14076,15 @@ function getResponse(app, key) {
       </ul>
       <div class="src-row"><svg class="src-ico"><use href="#logoOnedrive"/></svg><strong>OneDrive</strong></div>
       <ul>
-        <li>Offer letter, program completion record, current FY26 salary schedule, and PREA reference all linked to the verification doc.</li>
+        <li>Classification review record, program completion certificates (CBT, GED, Welders Guild), Pathway House placement letter, and PREA standards reference all linked to the release-planning doc.</li>
       </ul>
       <h4>What I'd do next if I were you</h4>
       <ol>
         <li>Send Resident Patel the letter draft for his review (I've drafted it — one click to send). <span class="cite" onclick="openSource('jensen-family')">1</span></li>
-        <li>Finish paragraph 2 of the release-planning letter — it's the only outstanding blocker. <span class="cite" onclick="openSource('jensen-appeal')">3</span></li>
+        <li>Finish paragraph 2 of the release-planning letter — it's the only outstanding blocker. <span class="cite" onclick="openSource('patel-release-plan')">3</span></li>
         <li>Put a 10-minute Friday check-in on the calendar — the parole partner is expecting it.</li>
       </ol>
-      <p style="margin-top:14px; font-size:11px; color:var(--gray-90); padding-top:10px; border-top:1px solid #ebebeb;">Sources: <span class="cite" onclick="openSource('jensen-family')">1</span> Patel case notes.docx · <span class="cite" onclick="openSource('goc-meeting')">2</span> Intake meeting recording · <span class="cite" onclick="openSource('jensen-appeal')">3</span> Verification draft · <span class="cite" onclick="openSource('acc-aha')">4</span> Program completion record 2022. Every answer respects your permissions in Meridian State's tenant.</p>
+      <p style="margin-top:14px; font-size:11px; color:var(--gray-90); padding-top:10px; border-top:1px solid #ebebeb;">Sources: <span class="cite" onclick="openSource('jensen-family')">1</span> Patel case notes.docx · <span class="cite" onclick="openSource('goc-meeting')">2</span> Handoff meeting recording · <span class="cite" onclick="openSource('patel-release-plan')">3</span> Release-planning draft · <span class="cite" onclick="openSource('acc-aha')">4</span> Classification Review Record 2025-11-01. Every answer respects your permissions in MSDCR's tenant.</p>
     `,
     'home|focus': `
       <h4>Here's what I'd focus on today</h4>
@@ -14107,8 +14108,8 @@ function getResponse(app, key) {
       <p>CJIS + Records Privacy training reminder (due 4/30), policy updates, ACA notifications, ops review invite. I'll resurface on Thursday.</p>
     `,
     'home|prebrief': `
-      <h4>10 AM — Meridian Community Reentry Partners verification call (underwriter)</h4>
-      <p><span class="pill">Teams call · 15 min booked</span> <span class="pill warn">Sensitive: verification + income confirmation</span></p>
+      <h4>10 AM — MCRP release-plan handoff call (Ofc. Teresa Lang, Parole District 3)</h4>
+      <p><span class="pill">Teams call · 15 min booked</span> <span class="pill warn">Sensitive: release plan + parole handoff</span></p>
       <h4>What's happened since yesterday</h4>
       <ul>
         <li>Intake meeting decision: release letter, Deputy Director of Operations co-sign, consent on file.</li>
@@ -14343,22 +14344,23 @@ function getResponse(app, key) {
 
     // ========= NEW TEAMS KEYS =========
     'teams|spanish': `
-      <h4>Resumen para el prestamista (español)</h4>
+      <h4>Resumen para la oficial de libertad condicional de MCRP (español)</h4>
       <div style="background:#fff;border:1px solid var(--gray-30);border-radius:6px;padding:12px;font-size:12.5px;line-height:1.7;">
         <p><strong>De qué hablamos ayer</strong></p>
-        <p>Nos reunimos para discutir qué puede confirmar Meridian State sobre la verificación de empleo del Resident Patel.</p>
+        <p>Nos reunimos con la Ofc. Teresa Lang (MCRP, Distrito 3) para coordinar el traspaso del plan de liberación del Residente Patel (R-2024-018372).</p>
         <p><strong>Lo que confirmamos juntos</strong></p>
         <ul>
-          <li>El Resident Patel tiene <strong>título, estatus de titularidad (titular desde 2022), y salario base FY26</strong> verificados.</li>
-          <li>Se confirma continuidad del empleo <strong>conforme a su nombramiento titular</strong>.</li>
-          <li>La carta se emitirá en <strong>papel membretado de MSDCR</strong>, firmada por el Director de RRHH.</li>
-          <li>El consentimiento del empleado está registrado (firmado el 19/4/2026).</li>
+          <li>Finalizaciones de programa en expediente: <strong>CBT 2025-11-22, GED 2026-01-24, pre-aprendizaje del Gremio de Soldadores 2026-03-30</strong>.</li>
+          <li>Clasificación: <strong>Media (Nivel 3)</strong> en vía de pre-liberación (aprobada Semana 18, 2025-11-01).</li>
+          <li>Plan de vivienda aprobado — <strong>Pathway House</strong>, a 12 millas del Distrito 3 de MCRP.</li>
+          <li>Fecha de liberación: <strong>2026-06-09</strong>. Cita de recepción: 2026-06-10 09:00 en el Distrito 3 de MCRP.</li>
+          <li>La carta se emitirá en <strong>papel membretado de MSDCR</strong>, firmada por el Subdirector de Operaciones.</li>
         </ul>
         <p><strong>Qué sigue</strong></p>
         <ul>
-          <li>Servicios Compartidos de RRHH enviará la carta esta tarde.</li>
-          <li>Se copiará al Resident Patel por solicitud del empleado.</li>
-          <li>Alex los llamará el viernes para confirmar recepción.</li>
+          <li>Políticas y Programas enviará la carta firmada esta tarde.</li>
+          <li>Se solicita a MCRP confirmación de firma conjunta en un plazo de 10 días hábiles.</li>
+          <li>Alex llamará el viernes para confirmar recepción.</li>
         </ul>
         <p>Si tienen preguntas, llamen a Alex: 555-555-XXXX. Estamos aquí para ayudar.</p>
       </div>
@@ -14368,7 +14370,7 @@ function getResponse(app, key) {
       <p><span class="pill warn">Sensitive: employment on hold · acute doc issue</span></p>
       <h4>Trajectory (last 30 days)</h4>
       <ul>
-        <li>Facilities staff, 9-year continued service · current visa renewed 3/14.</li>
+        <li>Facilities staff, 9-year continuous service · current visa renewed 3/14.</li>
         <li>Flagged 4/20 overnight for expired Classification Review Section 3.</li>
         <li>Employment hold placed this AM; housing-plan consult pending.</li>
       </ul>
@@ -14435,7 +14437,7 @@ function getResponse(app, key) {
       <h4>What would drop the risk</h4>
       <ul>
         <li><strong>Hernandez:</strong> manager 1:1 today (not Friday) + EAP outreach within 48 hrs.</li>
-        <li><strong>Park:</strong> assign mentor before week 4 + benefits counseling call.</li>
+        <li><strong>Park:</strong> assign field training officer before week 4 + certification check (ACA/PREA).</li>
         <li><strong>Singh:</strong> schedule next manager 1:1 before weekend + comp-transparency readout.</li>
       </ul>
       <p>I can add these as action items to the 10 AM Case Manager huddle sheet.</p>
@@ -14443,20 +14445,20 @@ function getResponse(app, key) {
 
     // ========= NEW POWERPOINT KEYS =========
     'onedrive|jensen': `
-      <h4>5 files and 1 recording mention Resident Patel (Case #MSDCR-2026-04-118349)</h4>
+      <h4>5 files and 1 recording mention Resident Patel (R-2024-018372 · Ref #MSDCR-R-2026-018372)</h4>
       <p><span class="pill">Searched 847 files · 0.6 s</span></p>
       <ul>
-        <li><svg width="14" height="14" style="vertical-align:-2px;"><use href="#logoWord"/></svg> <strong>Employment Release-Planning Letter — Patel, J. (DRAFT).docx</strong> — you, 2 h ago</li>
+        <li><svg width="14" height="14" style="vertical-align:-2px;"><use href="#logoWord"/></svg> <strong>Release-Planning Letter — Patel, J. (DRAFT).docx</strong> — you, 2 h ago</li>
         <li><svg width="14" height="14" style="vertical-align:-2px;"><use href="#logoWord"/></svg> <strong>Patel release-plan case notes — plain language.docx</strong> — you, yesterday</li>
-        <li><svg width="14" height="14" style="vertical-align:-2px;"><use href="#logoWord"/></svg> <strong>Release-Planning Letter — Case #MSDCR-2026-04-118349 (Patel, J.).docx</strong> — Executive Director Office, Jul 12 2015</li>
-        <li><span style="display:inline-block;width:14px;height:14px;background:#c50f1f;color:#fff;font-size:8px;font-weight:700;border-radius:2px;text-align:center;line-height:14px;vertical-align:-2px;">PDF</span> <strong>PREA Overtime Reference Guide — 2021.pdf</strong> — referenced in the verification</li>
-        <li><span style="display:inline-block;width:14px;height:14px;background:#c50f1f;color:#fff;font-size:8px;font-weight:700;border-radius:2px;text-align:center;line-height:14px;vertical-align:-2px;">PDF</span> <strong>Program Completion Record — Patel 05-02-2022.pdf</strong> — Executive Director Office</li>
-        <li><span style="display:inline-block;width:14px;height:14px;background:#464775;color:#fff;font-size:9px;border-radius:2px;text-align:center;line-height:14px;vertical-align:-2px;">▶</span> <strong>Patel Verification Intake (Recording).mp4</strong> — restricted access</li>
+        <li><svg width="14" height="14" style="vertical-align:-2px;"><use href="#logoWord"/></svg> <strong>Classification Intake Record — Patel, J. (R-2024-018372).docx</strong> — Classification Office, Aug 14 2022</li>
+        <li><span style="display:inline-block;width:14px;height:14px;background:#c50f1f;color:#fff;font-size:8px;font-weight:700;border-radius:2px;text-align:center;line-height:14px;vertical-align:-2px;">PDF</span> <strong>PREA Standards Reference — 2021.pdf</strong> — referenced in the release-planning packet</li>
+        <li><span style="display:inline-block;width:14px;height:14px;background:#c50f1f;color:#fff;font-size:8px;font-weight:700;border-radius:2px;text-align:center;line-height:14px;vertical-align:-2px;">PDF</span> <strong>Classification Review Record — Patel 2025-11-01.pdf</strong> — Classification Review Committee</li>
+        <li><span style="display:inline-block;width:14px;height:14px;background:#464775;color:#fff;font-size:9px;border-radius:2px;text-align:center;line-height:14px;vertical-align:-2px;">▶</span> <strong>Patel MCRP Handoff Intake (Recording).mp4</strong> — restricted access</li>
       </ul>
       <h4>What I noticed</h4>
       <ul>
-        <li>The verification draft references the continued service letter but doesn't cite the page number — I can add it.</li>
-        <li>The case notes and release-planning letter contradict on the original start date (July 12 vs July 15). Worth reconciling before either goes out.</li>
+        <li>The release-planning draft references the classification review record but doesn't cite the DOP 402 §3.2.1 section — I can add it.</li>
+        <li>The case notes and classification intake record contradict on the custody-entry date (8/14 vs 8/17 first approved visit). Worth reconciling before the MCRP handoff packet goes out.</li>
         <li>Recording has restricted access — only you, Marcus Johnson, and Maria Gutierrez can view. No action needed.</li>
       </ul>
       <p><span class="pill good">✓ I've highlighted these files in the file list</span> — see the yellow rows.</p>
@@ -14518,10 +14520,10 @@ function getResponse(app, key) {
       <ul>
         <li><strong>Alex Rivera</strong> (you · owner)</li>
         <li><strong>Marcus Johnson</strong> · Deputy Director of Operations · edit</li>
-        <li><strong>Maria Gutierrez</strong> · Benefits · edit</li>
+        <li><strong>Maria Gutierrez</strong> · Visitation &amp; Family Services · edit</li>
         <li><strong>L. Thomas</strong> · Staff Relations · edit</li>
         <li><strong>Case Management Shared Services</strong> · 4 members · edit</li>
-        <li><span class="pill warn">⚠ fm-underwriter@firstmeridian.com</span> · view · added 3 months ago for a previous case</li>
+        <li><span class="pill warn">⚠ ext-review@old-mcrp-vendor.org</span> · view · added 3 months ago for a previous case</li>
         <li><span class="pill warn">⚠ consult@external-hr.com</span> · view · added in January, no recent activity</li>
       </ul>
       <h4>What I'd change</h4>
@@ -14602,31 +14604,53 @@ function populateAppeal() {
         MSDCR Confidential · PII
       </div>
     </div>
-    <p style="margin-bottom:14pt;">April 21, 2026</p>
-    <p>Meridian Community Reentry Partners<br/>Community Reentry Intake<br/>P.O. Box 272540<br/>Meridian, State 00000</p>
-    <p><strong>Re:</strong> Release Planning · Case #MSDCR-2026-04-118349<br/>
-    <strong>Employee:</strong> Patel, Jitendra (Case #MSDCR-2026-04-118349)<br/>
-    <strong>Date of Request:</strong> 04/19/2026<br/>
-    <strong>Requested:</strong> Title, program completion status, base salary, expected continued employment</p>
-    <p>Dear Underwriter:</p>
-    <p>This letter confirms the employment of Jitendra Patel at Meridian State Department of Corrections and Rehabilitation. The employee record attached establishes his appointment, program completion status, and current compensation unambiguously, per his signed written consent (on file 04/19/2026).</p>
-    <h2>Confirmed employment facts</h2>
-    <p>Resident Patel joined Meridian State Department of Corrections and Rehabilitation on <strong>July 12, 2015</strong> as an Assistant Professor in the Department of Biology, Complex 1 (Reception &amp; Classification). On <strong>May 2, 2022</strong>, he was awarded <strong>continued service at the rank of Associate Professor</strong> (90% appointment), consistent with our university continued service policy. His current FY26 base salary is on file in CorrectionsCore, as exported 04/18/2026.</p>
-    <h2>Expected continued employment</h2>
-    <p>Continued Service appointments at Meridian State Department of Corrections and Rehabilitation are continuous and are not subject to scheduled end dates. Based on the employee's current record and the normal course of agency business, his continued employment is expected to remain stable through the foreseeable reentry planning horizon. This statement is consistent with MSDCR MSDCR Policy Section 4.1 (release planning for continued serviced staff).</p>
-    <h2>Authorization</h2>
-    <p>This letter is issued under the authority of:</p>
+    <p style="margin-bottom:14pt;">April 22, 2026</p>
+    <p>Meridian Community Reentry Partners (MCRP)<br/>Attn: Ofc. Teresa Lang, Parole District 3<br/>P.O. Box 272540<br/>Meridian, State 00000</p>
+    <p><strong>Re:</strong> Release-Plan Handoff · Ref #MSDCR-R-2026-018372<br/>
+    <strong>Resident:</strong> Patel, J. (Resident ID R-2024-018372)<br/>
+    <strong>Housing:</strong> Complex 2 · Unit 4B · Classification Medium (Level 3)<br/>
+    <strong>Scheduled Release:</strong> 2026-06-09 (48 days from today)</p>
+    <p>Dear Ofc. Lang:</p>
+    <h2>Purpose</h2>
+    <p>Meridian State Department of Corrections and Rehabilitation (MSDCR) is transferring custody-supervision handoff responsibilities for Resident Patel from MSDCR to Meridian Community Reentry Partners (MCRP) effective <strong>2026-06-09</strong>. This letter formally requests MCRP confirmation of the assigned parole officer and the reception appointment at MCRP District 3. Issued per MSDCR DOP 906 §2.3 (release planning) and cosigned by the Deputy Director of Operations.</p>
+    <h2>Resident summary</h2>
+    <p>Resident Patel (ID <strong>R-2024-018372</strong>) entered MSDCR custody on <strong>2022-08-14</strong> under sentence #MSDCR-S-2022-041197. Current classification is <strong>Medium (Level 3)</strong> on the pre-release track, last reviewed 2025-11-01 (Week 18 Classification Review). Housing plan status: <strong>Approved · Pathway House</strong> (12 mi from MCRP District 3). Scheduled release 2026-06-09.</p>
+    <h2>Program completion attestation</h2>
+    <p>Per DOP 906 §2.3, the following program completions are confirmed in CorrectionsCore and verified against the Classification Packet Prep record:</p>
+    <ul>
+      <li><strong>Cognitive Behavioral Therapy (CBT):</strong> completed 2025-11-22 · Instructor Dr. N. Osei</li>
+      <li><strong>GED awarded:</strong> 2026-01-24 · Meridian State Adult Education Authority</li>
+      <li><strong>Welders Guild pre-apprenticeship:</strong> completed 2026-03-30 · Complex 2 Vocational Training</li>
+    </ul>
+    <h2>Risk and protective factors (static, officer-confirmed)</h2>
+    <ul>
+      <li><strong>Protective — Family engagement:</strong> yes (approved visitors list active; spouse + two minor children; 14 in-person visits and 22 video visits since 2025-01-01).</li>
+      <li><strong>Risk — Prior SUD history:</strong> yes; sobriety sustained 14 months (last positive screen 2025-02-18; 34 consecutive clean screens since).</li>
+      <li><strong>Housing stability:</strong> moderate — Pathway House placement confirmed (letter on file 2026-04-10), employment lead with Welders Guild District 3 signatory.</li>
+    </ul>
+    <h2>Required documents attached</h2>
+    <ul style="list-style:none; padding-left:0;">
+      <li>✓ Program completion certificates (CBT, GED, Welders Guild pre-apprenticeship)</li>
+      <li>✓ Approved housing plan — Pathway House placement letter (2026-04-10)</li>
+      <li>✓ Medical administrative continuity summary (non-diagnostic; medication-continuity schedule only)</li>
+      <li>✓ Classification review record — approved Week 18 (2025-11-01)</li>
+      <li>✓ Visitation history summary — 2025-01-01 through 2026-04-20</li>
+    </ul>
+    <h2>Next steps</h2>
     <ol>
-      <li>Written employee consent on file (signed 04/19/2026);</li>
-      <li>Verified position, program completion status, and compensation from CorrectionsCore;</li>
-      <li>Authorized signatory — Deputy Director of Operations per MSDCR MSDCR Policy Section 4.1.</li>
+      <li>MCRP reception appointment scheduled <strong>2026-06-10 at 09:00</strong> at MCRP District 3.</li>
+      <li>Please cosign and return the parole-officer assignment confirmation within 10 business days.</li>
+      <li>Any exception requests (alternate housing, reception-date change, cosigner substitution) route through MSDCR Policy &amp; Programs (attn: A. Rivera).</li>
     </ol>
-    <p>[BRACKETED: Deputy Director of Operations sign-off paragraph — recommend Marcus Johnson add a direct co-sign note here]</p>
-    <p>All supporting documentation is enclosed. Please contact our Case Management Shared Services team at (555) 555-XXXX if additional information would expedite your reentry planning.</p>
+    <p>Thank you for your partnership on this transition. If anything in this packet needs clarification before 2026-06-09, please contact MSDCR Policy &amp; Programs / Reentry Coordination at (555) 555-XXXX.</p>
     <p style="margin-top:20pt;">Respectfully,<br/><br/><br/>
-    Alex Rivera, Senior Case Manager · Policy & Programs<br/>
-    On behalf of the Policy &amp; Programs Office · Reentry Coordination<br/>
+    Alex Rivera, Senior Case Manager · Reentry Coordinator<br/>
+    Policy &amp; Programs Office<br/>
     Meridian State Department of Corrections and Rehabilitation</p>
+    <p style="margin-top:16pt;"><br/><br/>
+    Marcus Johnson, Deputy Director of Operations <em>(cosign)</em><br/>
+    Meridian State Department of Corrections and Rehabilitation</p>
+    <p style="margin-top:20pt; font-size:9pt; color:#777; border-top:1px solid #ebebeb; padding-top:10pt;"><em>Prepared with Microsoft 365 Copilot · Grounded in MSDCR Policy Manual rev 2026R1 · Reviewed against the Classification Packet Prep record · Cosigned via Power Apps Visitation &amp; Case Management. All actions audited to Microsoft Purview.</em></p>
   `;
   doc.style.transition = 'opacity 0.3s ease';
   doc.style.opacity = '0.5';
@@ -15076,9 +15100,9 @@ function generateFollowupResponse(text) {
       return `<p>Here's the parole partner recap at a 7th-grade reading level, in English and Spanish side-by-side. <span class="cite" onclick="openSource('jensen-family')">1</span></p>
         <p>Want me to send it through secure email now, or hold for your review first?</p>`;
     }
-    if (/verif|letter|first meridian/.test(t)) {
-      return `<p>The release-planning letter is 92% complete. Paragraph 2 is still generic — you have two anchor facts (continued service 2022, FY26 salary) that should be named explicitly. <span class="cite" onclick="openSource('jensen-appeal')">1</span></p>
-        <p>The parole-partner call prep sheet is ready if you want it. <span class="cite" onclick="openSource('acc-aha')">2</span></p>`;
+    if (/verif|letter|mcrp|release/.test(t)) {
+      return `<p>The release-planning letter is 92% complete. Paragraph 2 is still generic — name the two anchor facts: program completion dates (CBT 2025-11-22, GED 2026-01-24, Welders Guild pre-apprenticeship 2026-03-30) and the approved Pathway House placement. <span class="cite" onclick="openSource('patel-release-plan')">1</span></p>
+        <p>The MCRP handoff call prep sheet is ready if you want it. <span class="cite" onclick="openSource('acc-aha')">2</span></p>`;
     }
     if (/fmla|start date|offboard/.test(t)) {
       return `<p>I found a date conflict: the <strong>case notes say Thursday 4/23</strong>, but the <strong>release-planning letter says Friday 4/24</strong>. <span class="cite" onclick="openSource('jensen-family')">1</span> <span class="cite" onclick="openSource('jensen-discharge')">2</span></p>
@@ -15090,7 +15114,7 @@ function generateFollowupResponse(text) {
 
   // Castillo — active resident case
   if (/castillo/.test(t)) {
-    return `<p>Mrs. Castillo is currently on Classification Review re-verification hold (work-auth doc expired; visa was renewed last month). Benefits is consulting. Employee call is on your calendar at 3 PM. <span class="cite" onclick="openSource('policy-review-apr')">1</span></p>
+    return `<p>Mrs. Castillo is currently on Classification Review re-verification hold (work-auth doc expired; visa was renewed last month). Staff Relations is consulting. Employee call is on your calendar at 3 PM. <span class="cite" onclick="openSource('policy-review-apr')">1</span></p>
       <p>Want the pre-brief for the employee call, or the hearing-ready case note from this morning's case review?</p>`;
   }
 
@@ -15173,21 +15197,21 @@ function pickFollowupPrompts(lastText) {
 // mirrors the real M365 Copilot reference pane — header, metadata, and a body snippet
 // with the cited line highlighted in yellow.
 const SOURCES = {
-  'jensen-appeal': {
-    title: 'Employment Release-Planning Letter — Patel, J. (DRAFT).docx',
+  'patel-release-plan': {
+    title: 'Release-Planning Letter — Patel, J. (DRAFT).docx',
     app: 'word', icon: 'logoWord', label: 'phi',
     meta: [
-      ['Location', 'OneDrive · My files'],
+      ['Location', 'OneDrive · Release-Planning Letters'],
       ['Modified', '2 hours ago · Alex Rivera'],
       ['Sharing', '🔒 Only you'],
       ['Sensitivity', 'Resident PII · Confidential']
     ],
     body: `
       <p style="color:#777;font-size:11px;margin-bottom:10px;">MERIDIAN STATE DEPT. OF CORRECTIONS AND REHABILITATION · Policy &amp; Programs Office · Reentry Coordination</p>
-      <p><strong>Re:</strong> Release Planning · Case #MSDCR-2026-04-118349 · Patel, Jitendra</p>
-      <p>This letter confirms the employment of Jitendra Patel at Meridian State Department of Corrections and Rehabilitation. The employee record attached establishes his appointment, program completion status, and current compensation unambiguously, per his signed written consent (on file 04/19/2026).</p>
-      <p><span class="ss-highlight">Resident Patel joined Meridian State Department of Corrections and Rehabilitation on July 12, 2015 as Assistant Professor in Biology. On May 2, 2022, he was awarded continued service at the rank of Associate Professor (90% appointment). His current FY26 base salary is on file in CorrectionsCore.</span></p>
-      <p>Based on the employee's current continued serviced record, his continued employment is expected to remain stable through the reentry planning horizon.</p>
+      <p><strong>Re:</strong> Release-Plan Handoff · Ref #MSDCR-R-2026-018372 · Patel, J. (R-2024-018372)</p>
+      <p>MSDCR is transferring custody-supervision handoff responsibilities for Resident Patel to MCRP effective 2026-06-09. This letter formally requests MCRP confirmation of the assigned parole officer (Ofc. Teresa Lang, Parole District 3) and the reception appointment at MCRP District 3, per DOP 906 §2.3.</p>
+      <p><span class="ss-highlight">Resident Patel entered MSDCR custody 2022-08-14 under sentence #MSDCR-S-2022-041197, Complex 2 Unit 4B, classification Medium (Level 3). Scheduled release 2026-06-09. Housing plan approved — Pathway House (12 mi from MCRP District 3). Program completions on file: CBT 2025-11-22, GED 2026-01-24, Welders Guild pre-apprenticeship 2026-03-30.</span></p>
+      <p>Reception appointment scheduled 2026-06-10 at 09:00 at MCRP District 3. Cosigned by Deputy Director of Operations Marcus Johnson.</p>
     `
   },
   'jensen-family': {
@@ -15201,40 +15225,40 @@ const SOURCES = {
     ],
     body: `
       <p><strong>What we talked about yesterday</strong></p>
-      <p>We met to discuss what Meridian State can and can't confirm for Resident Patel's release-plan verification.</p>
+      <p>We met with MCRP to walk through the release-plan handoff for Resident Patel (R-2024-018372) and confirm the reception appointment.</p>
       <p><strong>What we confirmed together</strong></p>
-      <p><span class="ss-highlight">Resident Patel wants the release-planning letterd with Deputy Director of Operations co-sign. We are moving to issue on MSDCR letterhead. Letter release will start this Thursday.</span></p>
-      <p>Marcus Johnson is the authorized signatory for release plannings.</p>
+      <p><span class="ss-highlight">MCRP confirmed Ofc. Teresa Lang as the assigned parole officer. Release-planning letter will go out with Deputy Director of Operations cosign. Reception appointment 2026-06-10 09:00 at MCRP District 3. Letter release begins this Thursday.</span></p>
+      <p>Marcus Johnson is the authorized signatory for release-planning letters; Policy &amp; Programs retains the handoff packet.</p>
     `
   },
   'jensen-discharge': {
-    title: 'Release-Planning Letter — Case #MSDCR-2026-04-118349 (Patel, J.).docx',
+    title: 'Classification Intake Record — Patel, J. (R-2024-018372).docx',
     app: 'word', icon: 'logoWord', label: 'phi',
     meta: [
-      ['Location', 'OneDrive · Employee Cases folder'],
-      ['Modified', 'Jul 12, 2015 · Executive Director Office'],
-      ['Sharing', '◈ personnel file room'],
+      ['Location', 'OneDrive · Resident Case Files'],
+      ['Modified', 'Aug 14, 2022 · Classification Office'],
+      ['Sharing', '◈ Classification office · restricted'],
       ['Sensitivity', 'Resident PII · Confidential']
     ],
     body: `
-      <p><strong>Release-Planning Letter</strong> · Patel, Jitendra · Case #MSDCR-2026-04-118349</p>
-      <p><strong>Start date:</strong> July 15, 2015 (Assistant Professor, Biology).</p>
-      <p><span class="ss-highlight">Initial base salary per FY16 schedule. Continued Service-track appointment. Standard benefits package per MSDCR policy, effective first day.</span></p>
-      <p style="color:#c50f1f; font-size:12px; margin-top:8px; font-style:italic;">⚠ This date (7/15) conflicts with the Records System record (which says 7/12 for official start).</p>
+      <p><strong>Classification Intake Record</strong> · Patel, J. · R-2024-018372</p>
+      <p><strong>Custody entry date:</strong> August 14, 2022 (initial classification Medium, Complex 1 Reception &amp; Classification).</p>
+      <p><span class="ss-highlight">Initial classification assignment Medium per DOP 402 §3.2.1. Sentence #MSDCR-S-2022-041197. Pre-release track added at Week 18 review (2025-11-01). Scheduled release 2026-06-09.</span></p>
+      <p style="color:#c50f1f; font-size:12px; margin-top:8px; font-style:italic;">⚠ This date (8/14) conflicts with the visitation log record (which says 8/17 for first approved visit — worth reconciling before the MCRP handoff packet goes out).</p>
     `
   },
   'acc-aha': {
-    title: 'Program Completion Record — Patel 05-02-2022.pdf',
+    title: 'Classification Review Record — Patel 2025-11-01.pdf',
     app: 'pdf', icon: null, label: 'phi',
     meta: [
-      ['Location', 'OneDrive · Employee Cases folder'],
-      ['Modified', 'May 02, 2022 · Executive Director Office'],
-      ['Sharing', '◈ personnel file room'],
+      ['Location', 'OneDrive · Resident Case Files'],
+      ['Modified', 'Nov 01, 2025 · Classification Review Committee'],
+      ['Sharing', '◈ Classification office · restricted'],
       ['Sensitivity', 'Resident PII · Confidential']
     ],
     body: `
-      <p style="color:#777; font-size:11px;">Section 1 — Promotion and continued service</p>
-      <p><span class="ss-highlight">The Board of Trustees, on the recommendation of the Executive Director, confirms Jitendra Patel at the rank of Associate Professor with continued service, effective July 1, 2022, at a 90% appointment in the Department of Biology, Complex 1 (Reception &amp; Classification).</span></p>
+      <p style="color:#777; font-size:11px;">Section 1 — Classification review and pre-release track (DOP 402 §3.2.1)</p>
+      <p><span class="ss-highlight">The Classification Review Committee, on the recommendation of the Case Manager, confirmed Resident Patel's classification as Medium (Level 3) with pre-release track, effective 2025-11-01, per MSDCR DOP 402 §3.2.1. Program placement track: CBT (completed 2025-11-22), GED (awarded 2026-01-24), Welders Guild pre-apprenticeship (completed 2026-03-30). Scheduled release 2026-06-09 · Complex 2 Unit 4B.</span></p>
     `
   },
   'policy-review-apr': {
@@ -15253,18 +15277,18 @@ const SOURCES = {
     `
   },
   'goc-meeting': {
-    title: 'Patel Verification Intake (Recording).mp4',
+    title: 'Patel MCRP Handoff Intake (Recording).mp4',
     app: 'teams', icon: 'logoTeams', label: 'phi',
     meta: [
       ['Location', 'Teams · Restricted'],
       ['Date', 'Apr 20, 2026 · 4:30–5:18 PM · 48 min'],
-      ['Attendees', 'Marcus Johnson, Maria Gutierrez, Alex Rivera, Resident Patel, parole partner'],
+      ['Attendees', 'Marcus Johnson, Maria Gutierrez, Alex Rivera, Resident Patel, Ofc. Teresa Lang (MCRP)'],
       ['Sensitivity', 'Resident PII · Restricted']
     ],
     body: `
       <p><strong>Transcript excerpt · 17:42</strong></p>
       <p style="color:#777;">Maria Gutierrez:</p>
-      <p><span class="ss-highlight">"So what I'm hearing is that the parole partner just needs title, program completion status, and salary, and we'd like to get it out by Thursday. Resident Patel, does that match what the underwriter asked?"</span></p>
+      <p><span class="ss-highlight">"So what I'm hearing is that MCRP needs the classification record, program completion dates, and the approved housing plan, and we'd like to get the signed letter out by Thursday. Resident Patel, does that match what Ofc. Lang asked?"</span></p>
       <p style="color:#777;">Resident Patel:</p>
       <p>"Yes. I want the letter issued. I also want a copy sent to me."</p>
     `
@@ -15280,7 +15304,7 @@ const SOURCES = {
     ],
     body: `
       <p><strong>Section 3.2 — Intake Processing risk scoring</strong></p>
-      <p><span class="ss-highlight">New staff scoring ≥ 0.65 on the Meridian State 90-day turnover model must have an Case Manager-led 30-day intake processing review, including a manager 1:1 check-in and benefits counseling call if risk drivers include incomplete checklist items, missed 1:1s, or isolated work location.</span></p>
+      <p><span class="ss-highlight">New Case Managers and Correctional Officers scoring ≥ 0.65 on the MSDCR staffing-risk model must have a Case Manager huddle, coverage review, and Foundry-evaluated check-in at day 30, including an FTO follow-up and ACA/PREA certification audit if risk drivers include incomplete FTO checklist items, missed field rides, or isolated-post assignments.</span></p>
     `
   }
 };
