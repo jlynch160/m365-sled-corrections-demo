@@ -2004,6 +2004,158 @@ body.dark .toast .toast-text { color: #b0b0b0; }
 }
 .toast .toast-close:hover { background: var(--gray-20); }
 
+/* ============ PURVIEW AUDIT TOAST VARIANT ============ */
+.toast.audit { border-left-color: #5f9ef0; background: linear-gradient(180deg, #f6faff 0%, #eef3fb 100%); }
+.toast.audit .toast-ico { background: #e2edfb; color: #2c5ba8; }
+.toast.audit .toast-title { color: #1b3a6a; display: inline-flex; align-items: center; gap: 6px; }
+.toast.audit .toast-title::before {
+  content: ''; display: inline-block; width: 12px; height: 12px; flex-shrink: 0;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232c5ba8'><path d='M12 2l9 4v6c0 5-3.5 9-9 10-5.5-1-9-5-9-10V6l9-4z'/></svg>") center / contain no-repeat;
+}
+body.dark .toast.audit { background: linear-gradient(180deg, #1f2a3d 0%, #16233a 100%); border-left-color: #5f9ef0; }
+body.dark .toast.audit .toast-title { color: #cfe1ff; }
+
+/* ============ TENANT CHIP (CJIS / GCC HIGH) ============ */
+.tenant-chip-wrap { position: relative; }
+.tenant-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 24px; padding: 0 8px 0 7px;
+  background: rgba(0,56,101,0.15);
+  border-left: 2px solid var(--msu-gold);
+  border-radius: 3px;
+  color: #fff; font-size: 11px; font-weight: 600; letter-spacing: 0.1px;
+  cursor: pointer; user-select: none;
+  transition: background 0.15s;
+}
+.tenant-chip:hover { background: rgba(0,56,101,0.28); }
+.tenant-chip .tc-sep { display: inline-block; width: 1px; height: 10px; background: rgba(255,255,255,0.45); margin: 0 2px; }
+.tenant-chip .tc-shield { flex-shrink: 0; display: inline-block; width: 12px; height: 12px; color: var(--msu-gold); }
+.tenant-chip .tc-shield svg { width: 12px; height: 12px; display: block; fill: currentColor; }
+
+.tenant-chip-popover {
+  position: absolute; top: calc(100% + 10px); right: 0;
+  width: 320px;
+  background: #fff; color: var(--gray-160);
+  border-radius: 10px;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.3), 0 0 0 1px rgba(0,0,0,0.05);
+  overflow: hidden;
+  opacity: 0; transform: translateY(-6px) scale(0.98);
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  z-index: 200;
+  font-size: 12px;
+}
+.tenant-chip-popover.open { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+.tenant-chip-popover::before {
+  content: ''; position: absolute; top: -6px; right: 14px;
+  width: 12px; height: 12px; background: #fff; transform: rotate(45deg);
+  box-shadow: -1px -1px 0 rgba(0,0,0,0.04);
+}
+.tenant-chip-popover .tcp-head {
+  padding: 12px 14px 10px;
+  background: linear-gradient(135deg, #003865 0%, #0a4a7a 100%);
+  color: #fff;
+}
+.tenant-chip-popover .tcp-head .tcp-title {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 700;
+}
+.tenant-chip-popover .tcp-head .tcp-title .tc-shield { color: var(--msu-gold); }
+.tenant-chip-popover .tcp-head .tcp-sub {
+  font-size: 11px; color: rgba(255,255,255,0.85); margin-top: 3px;
+}
+.tenant-chip-popover .tcp-body { padding: 10px 14px; }
+.tenant-chip-popover .tcp-row {
+  display: flex; justify-content: space-between; gap: 14px;
+  padding: 5px 0;
+  border-bottom: 1px dashed var(--gray-30);
+  font-size: 11.5px;
+}
+.tenant-chip-popover .tcp-row:last-child { border-bottom: none; }
+.tenant-chip-popover .tcp-lbl { color: var(--gray-130); font-weight: 500; }
+.tenant-chip-popover .tcp-val { color: var(--gray-160); font-weight: 600; text-align: right; }
+.tenant-chip-popover .tcp-val .tcp-ok { color: #107c10; font-weight: 700; }
+.tenant-chip-popover .tcp-foot {
+  padding: 10px 14px; border-top: 1px solid var(--gray-30); background: #faf9f8;
+}
+.tenant-chip-popover .tcp-link {
+  color: var(--msu-navy); font-size: 11.5px; font-weight: 600; cursor: pointer; text-decoration: none;
+}
+.tenant-chip-popover .tcp-link:hover { text-decoration: underline; }
+body.dark .tenant-chip-popover { background: #252525; color: #f0f0f0; }
+body.dark .tenant-chip-popover::before { background: #252525; }
+body.dark .tenant-chip-popover .tcp-row { border-bottom-color: #333333; }
+body.dark .tenant-chip-popover .tcp-lbl { color: #b0b0b0; }
+body.dark .tenant-chip-popover .tcp-val { color: #f0f0f0; }
+body.dark .tenant-chip-popover .tcp-foot { background: #1a1a1a; border-top-color: #333333; }
+
+/* ============ SERVICE HEALTH CHIP (TOPBAR) ============ */
+.health-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 24px; padding: 0 9px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 12px;
+  color: #fff; font-size: 11px; font-weight: 600;
+  cursor: pointer; user-select: none;
+  transition: background 0.15s;
+}
+.health-chip:hover { background: rgba(255,255,255,0.18); }
+.health-chip .hc-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #3cb371; box-shadow: 0 0 4px rgba(60,179,113,0.7); }
+.health-chip.advisory .hc-dot { background: #f0b340; box-shadow: 0 0 4px rgba(240,179,64,0.7); }
+.health-chip.advisory { background: rgba(240,179,64,0.18); }
+
+/* ============ ADMIN SERVICE HEALTH SECTION ============ */
+.adm-svc-card { background: #fff; border: 1px solid var(--gray-30); border-radius: 10px; padding: 18px 20px; margin-bottom: 20px; }
+.adm-svc-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; flex-wrap: wrap; gap: 10px; }
+.adm-svc-title { font-size: 14px; font-weight: 600; color: var(--gray-160); }
+.adm-svc-sub { font-size: 11px; color: var(--gray-90); margin-top: 2px; }
+.adm-svc-refresh { font-size: 11.5px; color: var(--msu-navy); cursor: pointer; font-weight: 600; }
+.adm-svc-refresh:hover { text-decoration: underline; }
+.adm-svc-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 6px 14px;
+}
+.adm-svc-item {
+  display: flex; align-items: center; gap: 8px;
+  padding: 7px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  border: 1px solid transparent;
+}
+.adm-svc-item:hover { background: #f7faff; }
+.adm-svc-item.advisory { background: #fff8ea; border-color: #f2dca0; }
+.adm-svc-item .sv-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.adm-svc-item .sv-dot.ok { background: #107c10; }
+.adm-svc-item .sv-dot.warn { background: #c77700; }
+.adm-svc-item .sv-dot.err { background: #c50f1f; }
+.adm-svc-item .sv-name { font-weight: 600; color: var(--gray-160); flex-shrink: 0; }
+.adm-svc-item .sv-status { color: var(--gray-90); margin-left: auto; font-size: 11px; }
+.adm-svc-item .sv-advisory-link { color: var(--msu-navy); font-weight: 600; font-size: 11px; cursor: pointer; margin-left: 6px; }
+.adm-svc-item .sv-advisory-link:hover { text-decoration: underline; }
+.adm-svc-incidents {
+  margin-top: 14px; padding-top: 12px;
+  border-top: 1px solid var(--gray-30);
+}
+.adm-svc-incidents-head { font-size: 12px; font-weight: 600; color: var(--gray-160); margin-bottom: 6px; }
+.adm-svc-incident {
+  font-size: 11.5px; color: var(--gray-130); padding: 4px 0;
+  display: flex; gap: 8px; align-items: baseline;
+}
+.adm-svc-incident .si-id { font-family: 'Cascadia Mono', Consolas, monospace; font-size: 11px; color: var(--gray-90); flex-shrink: 0; }
+.adm-svc-incident .si-title { color: var(--gray-160); }
+.adm-svc-incident .si-meta { color: var(--gray-90); margin-left: auto; white-space: nowrap; }
+body.dark .adm-svc-card { background: #252525; border-color: #333333; }
+body.dark .adm-svc-title, body.dark .adm-svc-item .sv-name,
+body.dark .adm-svc-incidents-head, body.dark .adm-svc-incident .si-title { color: #f0f0f0; }
+body.dark .adm-svc-item:hover { background: #2d2d2d; }
+body.dark .adm-svc-item.advisory { background: #3a2f14; border-color: #6b5315; }
+body.dark .adm-svc-incidents { border-top-color: #333333; }
+body.dark .adm-svc-refresh { color: #7cb4f0; }
+
+/* Signin-footer extra links share the existing tiny-link look */
+.signin-footer .sf-link { color: inherit; text-decoration: none; cursor: pointer; }
+.signin-footer .sf-link:hover { text-decoration: underline; }
+
 /* ============ GUIDED TOUR (presenter mode) ============ */
 .tour-launch {
   position: fixed; bottom: 22px; left: 22px;
@@ -5942,7 +6094,7 @@ body.dark .pp-bar { background: #333; }
     </div>
   </div>
 
-  <div class="signin-footer">© 2026 Meridian State Department of Corrections and Rehabilitation · Microsoft 365 · Terms of use · Privacy &amp; cookies</div>
+  <div class="signin-footer">© 2026 Meridian State Department of Corrections and Rehabilitation · Microsoft 365 · <a class="sf-link" onclick="showTip('Terms of use — demo only. In a real tenant this would open the Microsoft Services Agreement.');">Terms of use</a> · <a class="sf-link" onclick="showTip('Privacy &amp; cookies — demo only. Real tenants surface the Microsoft Privacy Statement plus any MSDCR-specific addendums.');">Privacy &amp; cookies</a> · <a class="sf-link" onclick="showTip('CJIS notice: MSDCR operates in the Microsoft Gov Cloud (GCC High). All CJI data is encrypted with FIPS 140-3 validated cryptography and logged to Microsoft Purview for audit.');">CJIS notice</a> · <a class="sf-link" onclick="showTip('Accessibility — WCAG 2.2 AA. Microsoft 365 supports screen readers, keyboard navigation, color-contrast preferences, and live-captioning across Teams.');">Accessibility (WCAG 2.2 AA)</a></div>
 </div>
 
 <!-- ============ DESKTOP ============ -->
@@ -6002,6 +6154,36 @@ body.dark .pp-bar { background: #333; }
           <button class="copilot-hover-item" onclick="toggleCopilot('home'); setTimeout(()=>runCopilotByKey('home','focus'),400);"><span class="bold">What should I focus</span> <span class="light">on today?</span></button>
           <button class="copilot-hover-item" onclick="toggleCopilot('home'); setTimeout(()=>runCopilotByKey('home','prebrief'),400);"><span class="bold">Prep me</span> <span class="light">for my 10 AM</span></button>
         </div>
+      </div>
+      <div class="tenant-chip-wrap" id="tenant-chip-wrap">
+        <div class="tenant-chip" onclick="toggleTenantPopover(event)" title="Tenant: msdcr.onmicrosoft.us · CJIS-compliant · Hosted in US Gov Cloud (GCC High) · Data residency: East US 2">
+          <span class="tc-shield"><svg viewBox="0 0 24 24"><path d="M12 2l9 4v6c0 5-3.5 9-9 10-5.5-1-9-5-9-10V6l9-4z"/></svg></span>
+          CJIS
+          <span class="tc-sep"></span>
+          GCC High
+        </div>
+        <div class="tenant-chip-popover" id="tenant-chip-popover">
+          <div class="tcp-head">
+            <div class="tcp-title"><span class="tc-shield"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l9 4v6c0 5-3.5 9-9 10-5.5-1-9-5-9-10V6l9-4z"/></svg></span>MSDCR tenant</div>
+            <div class="tcp-sub">msdcr.onmicrosoft.us · Hosted in US Gov Cloud</div>
+          </div>
+          <div class="tcp-body">
+            <div class="tcp-row"><span class="tcp-lbl">Tenant</span><span class="tcp-val">msdcr.onmicrosoft.us</span></div>
+            <div class="tcp-row"><span class="tcp-lbl">Region</span><span class="tcp-val">GCC High · East US 2</span></div>
+            <div class="tcp-row"><span class="tcp-lbl">Compliance</span><span class="tcp-val">CJIS · FedRAMP High · IL5 · PREA · ACA</span></div>
+            <div class="tcp-row"><span class="tcp-lbl">Data residency</span><span class="tcp-val">US only</span></div>
+            <div class="tcp-row"><span class="tcp-lbl">Encryption</span><span class="tcp-val">FIPS 140-3 validated</span></div>
+            <div class="tcp-row"><span class="tcp-lbl">Audit destination</span><span class="tcp-val">Microsoft Purview</span></div>
+            <div class="tcp-row"><span class="tcp-lbl">Last compliance scan</span><span class="tcp-val">2026-04-19 · <span class="tcp-ok">&#10003; Passed</span></span></div>
+          </div>
+          <div class="tcp-foot">
+            <a class="tcp-link" onclick="closeTenantPopover(); openApp('admin'); setTimeout(()=>{var s=document.getElementById('adm-svc-health');if(s)s.scrollIntoView({behavior:'smooth',block:'start'});},250);">View compliance posture &rarr;</a>
+          </div>
+        </div>
+      </div>
+      <div class="health-chip" id="health-chip" title="Microsoft 365 service health · MSDCR tenant" onclick="openApp('admin'); setTimeout(()=>{var s=document.getElementById('adm-svc-health');if(s)s.scrollIntoView({behavior:'smooth',block:'start'});},250);">
+        <span class="hc-dot"></span>
+        <span id="health-chip-label">All services healthy</span>
       </div>
       <div class="time-saved" id="time-saved-chip" title="Minutes saved by Copilot today · demo estimate">
         <svg width="14" height="14" style="flex-shrink:0;"><use href="#copilotLogo"/></svg>
@@ -7015,6 +7197,34 @@ body.dark .pp-bar { background: #333; }
           <span class="adm-f">All departments ▾</span>
           <span class="adm-f">Last 30 days ▾</span>
           <span class="adm-f primary">↓ Export report</span>
+        </div>
+      </div>
+
+      <div class="adm-svc-card" id="adm-svc-health">
+        <div class="adm-svc-head">
+          <div>
+            <div class="adm-svc-title">Service health <span style="font-weight:400; color:var(--gray-90);">&middot; MSDCR tenant &middot; refreshed 2 min ago</span></div>
+            <div class="adm-svc-sub">Live status of Microsoft 365 and Power Platform services in this tenant. For IT staff.</div>
+          </div>
+          <div class="adm-svc-refresh" onclick="refreshServiceHealth(this)">Refresh</div>
+        </div>
+        <div class="adm-svc-grid">
+          <div class="adm-svc-item"><span class="sv-dot ok"></span><span class="sv-name">Microsoft 365 apps</span><span class="sv-status">Healthy</span></div>
+          <div class="adm-svc-item"><span class="sv-dot ok"></span><span class="sv-name">Exchange Online</span><span class="sv-status">Healthy</span></div>
+          <div class="adm-svc-item"><span class="sv-dot ok"></span><span class="sv-name">Microsoft Teams</span><span class="sv-status">Healthy</span></div>
+          <div class="adm-svc-item"><span class="sv-dot ok"></span><span class="sv-name">SharePoint</span><span class="sv-status">Healthy</span></div>
+          <div class="adm-svc-item"><span class="sv-dot ok"></span><span class="sv-name">OneDrive for Business</span><span class="sv-status">Healthy</span></div>
+          <div class="adm-svc-item advisory" title="Elevated latency in East US 2 — investigating"><span class="sv-dot warn"></span><span class="sv-name">Microsoft Copilot</span><span class="sv-status">Advisory &middot; elevated latency (East US 2)</span><span class="sv-advisory-link" onclick="showToast({kind:'warn',icon:'!',title:'Advisory IN-1184',text:'Microsoft Copilot — elevated latency in East US 2 region. Engineering has identified the root cause and is rolling out a mitigation. No data loss. ETA: 45 min.',ttl:5000})">View advisory</span></div>
+          <div class="adm-svc-item"><span class="sv-dot ok"></span><span class="sv-name">Copilot Studio</span><span class="sv-status">Healthy</span></div>
+          <div class="adm-svc-item"><span class="sv-dot ok"></span><span class="sv-name">Microsoft Foundry</span><span class="sv-status">Healthy</span></div>
+          <div class="adm-svc-item"><span class="sv-dot ok"></span><span class="sv-name">Power Platform</span><span class="sv-status">Healthy</span></div>
+          <div class="adm-svc-item"><span class="sv-dot ok"></span><span class="sv-name">Purview</span><span class="sv-status">Healthy</span></div>
+        </div>
+        <div class="adm-svc-incidents">
+          <div class="adm-svc-incidents-head">Incidents &mdash; last 7 days</div>
+          <div class="adm-svc-incident"><span class="si-id">IN-1178</span><span class="si-title">Copilot Studio elevated latency</span><span class="si-meta">resolved 2d ago &middot; 42 min</span></div>
+          <div class="adm-svc-incident"><span class="si-id">IN-1165</span><span class="si-title">Exchange Online mailflow delays (GCC High East)</span><span class="si-meta">resolved 4d ago &middot; 1h 18m</span></div>
+          <div class="adm-svc-incident"><span class="si-id">IN-1152</span><span class="si-title">Purview audit ingestion backlog</span><span class="si-meta">resolved 6d ago &middot; 27 min</span></div>
         </div>
       </div>
 
@@ -12464,6 +12674,213 @@ function dismissToast(closer) {
   setTimeout(() => toast.remove(), 280);
 }
 
+// ============ TENANT / CJIS POPOVER ============
+function toggleTenantPopover(e) {
+  if (e) e.stopPropagation();
+  const pop = document.getElementById('tenant-chip-popover');
+  if (!pop) return;
+  pop.classList.toggle('open');
+}
+function closeTenantPopover() {
+  const pop = document.getElementById('tenant-chip-popover');
+  if (pop) pop.classList.remove('open');
+}
+document.addEventListener('click', (e) => {
+  const wrap = document.getElementById('tenant-chip-wrap');
+  if (wrap && !wrap.contains(e.target)) closeTenantPopover();
+});
+
+// ============ SERVICE HEALTH REFRESH ============
+function refreshServiceHealth(el) {
+  if (!el) return;
+  const original = el.textContent;
+  el.textContent = 'Refreshing…';
+  el.style.pointerEvents = 'none';
+  setTimeout(() => {
+    el.textContent = original;
+    el.style.pointerEvents = '';
+    const head = el.closest('.adm-svc-head');
+    if (head) {
+      const sub = head.querySelector('.adm-svc-title');
+      if (sub) sub.innerHTML = 'Service health <span style="font-weight:400; color:var(--gray-90);">&middot; MSDCR tenant &middot; refreshed just now</span>';
+    }
+    showToast({ kind: 'success', icon: '✓', title: 'Service health refreshed', text: '9 of 10 services healthy · 1 advisory (Microsoft Copilot).', ttl: 3200 });
+  }, 900);
+}
+
+// Kick off: make the health chip reflect the advisory state we seeded
+(function initHealthChip() {
+  const chip = document.getElementById('health-chip');
+  const lbl = document.getElementById('health-chip-label');
+  if (!chip || !lbl) return;
+  chip.classList.add('advisory');
+  lbl.textContent = '1 advisory';
+  chip.title = 'Microsoft Copilot · Advisory — elevated latency in East US 2';
+})();
+
+// ============ PURVIEW AUDIT TOAST HELPER ============
+function auditToPurview(opts = {}) {
+  const text = opts.text || 'Event audited to Microsoft Purview · CorrectionsCore · labeled Resident PII';
+  showToast({ kind: 'audit', title: opts.title || 'Audited to Purview', text, ttl: opts.ttl || 3600 });
+}
+
+// ============ LIVE UNREAD COUNTER ============
+// Bump the Outlook unread badge + persona menu + home hero every 35–60s after sign-in.
+// Capped at +8 over the demo session so the original "147" story still reads.
+const LIVE_EMAIL_POOL = [
+  { from: 'Visitation Front Door',                      fromInit: 'VF', subject: 'Visitation Front Door — spike in inquiries, unit 4 video kiosk', preview: 'Agent saw 4× normal volume on video-kiosk availability in unit 4 between 6:30–7:00 AM…', urgent: false },
+  { from: 'Public Records Desk',                         fromInit: 'PR', subject: 'PRR — new request MSDCR-P-2026-0411071 just filed by Martinez', preview: 'Public records request auto-routed by Grievance & PRR Router. SLA: 10 business days…', urgent: false },
+  { from: 'Classification Packet Prep (Foundry)',        fromInit: 'CP', subject: 'Classification Packet #7 flagged for supervisor review — Foundry eval 94.8%', preview: 'Policy-ground match below 95% threshold. Human approval required before hearing…', urgent: true },
+  { from: 'Amanda Kim (Classification)',                 fromInit: 'AK', subject: 'Re: Thursday docket — one late background-check came in', preview: 'The late background-check for Chang just cleared. Adding to the Thursday packet…', urgent: false },
+  { from: 'Grievance & PRR Router',                      fromInit: 'GP', subject: 'SLA timer — grievance #G-2026-0419-0104 crossed 48h without assignment', preview: 'Auto-escalation rule fired. Routing to Deputy Warden as backup approver…', urgent: true },
+  { from: 'Maria Gutierrez (Visitation)',                fromInit: 'MG', subject: 'Tonight: two Case Managers still open on the Complex 2 on-call board', preview: 'K. Williams confirmed one slot. Still need a second. Can you help chase?…', urgent: false },
+  { from: 'Reentry Program Match',                       fromInit: 'RM', subject: 'May cohort — 3 additional job-readiness candidates matched', preview: 'Program Match found 3 new candidates after overnight CorrectionsCore sync…', urgent: false }
+];
+
+let liveEmailTickCount = 0;
+const LIVE_EMAIL_CAP = 8;
+
+// Central helper: set every place the unread count appears to the same number.
+function setUnreadCount(n) {
+  // Topbar home-tile badge for outlook (persona-gated — only if it already shows a numeric badge)
+  document.querySelectorAll('[data-persona-badge="outlook"]').forEach(b => {
+    if (/^\d+$/.test((b.textContent || '').trim())) {
+      b.textContent = String(n);
+      b.style.display = '';
+    }
+  });
+  // Home hero text — replace the "X unread messages" fragment wherever it appears
+  document.querySelectorAll('.home-hero p').forEach(p => {
+    p.innerHTML = p.innerHTML.replace(/<strong>\d+ unread messages<\/strong>/, `<strong>${n} unread messages</strong>`);
+  });
+  // Outlook sidebar Inbox count
+  document.querySelectorAll('.outlook-folder[data-view="inbox"].active .fcount').forEach(c => {
+    if (/^\d+$/.test((c.textContent || '').trim())) c.textContent = String(n);
+  });
+  // Generic Inbox count (first inbox folder)
+  const firstInbox = document.querySelector('.outlook-folder[data-view="inbox"] .fcount');
+  if (firstInbox && /^\d+$/.test((firstInbox.textContent || '').trim())) firstInbox.textContent = String(n);
+}
+
+function getUnreadCount() {
+  const b = document.querySelector('.app-tile [data-persona-badge="outlook"]');
+  if (b && /^\d+$/.test((b.textContent || '').trim())) return parseInt(b.textContent, 10);
+  return 147;
+}
+
+function liveUnreadTick() {
+  if (liveEmailTickCount >= LIVE_EMAIL_CAP) return;
+  liveEmailTickCount++;
+  const em = LIVE_EMAIL_POOL[Math.floor(Math.random() * LIVE_EMAIL_POOL.length)];
+  const now = new Date();
+  const timeStr = 'now';
+  // Build the INBOX entry and push to front
+  const nextId = (INBOX[0] && INBOX[0].id ? INBOX[0].id + 1 : 200);
+  const entry = {
+    id: nextId,
+    from: em.from,
+    fromInit: em.fromInit,
+    subject: em.subject,
+    preview: em.preview,
+    time: timeStr,
+    unread: true,
+    urgent: !!em.urgent,
+    folder: 'inbox',
+    body: `<p>${em.preview}</p>`
+  };
+  INBOX.unshift(entry);
+  // Bump count (+1 each tick)
+  setUnreadCount(getUnreadCount() + 1);
+  // If user is actively in outlook reading, insert into the email-list at top without disturbing focus
+  if (currentApp === 'outlook') {
+    const list = document.getElementById('email-list');
+    if (list && typeof inferLabel === 'function' && typeof labelChip === 'function' && typeof openEmail === 'function') {
+      const div = document.createElement('div');
+      div.className = 'email-item unread newly-arrived';
+      const label = inferLabel(em);
+      div.innerHTML = `
+        <div class="email-row"><div class="email-from">${em.from}</div><div class="email-time">${em.time}</div></div>
+        <div class="email-subject">${em.subject}</div>
+        <div class="email-preview">${em.preview}</div>
+        <div class="email-labels">${labelChip(label)}</div>
+        ${em.urgent ? '<div class="email-flags"><span class="flag urgent">!</span></div>' : ''}
+      `;
+      div.onclick = () => openEmail(em, div);
+      list.insertBefore(div, list.firstChild);
+    }
+  }
+  // Single non-disruptive toast
+  showToast({ kind: em.urgent ? 'warn' : '', icon: '✉', title: 'New message', text: `${em.from} — ${em.subject}`, ttl: 4000 });
+  // Schedule the next tick with a randomized 35–60s delay
+  scheduleNextLiveTick();
+}
+
+function scheduleNextLiveTick() {
+  if (liveEmailTickCount >= LIVE_EMAIL_CAP) return;
+  const delay = 35000 + Math.floor(Math.random() * 25000);
+  window._liveUnreadTimer = setTimeout(liveUnreadTick, delay);
+}
+
+// Kick off after sign-in: startLiveActivity() already runs on completeSignIn.
+// We patch into it by waiting for the desktop to become active.
+(function startLiveCounterWatcher() {
+  const tryStart = () => {
+    const d = document.getElementById('desktop');
+    if (d && d.classList.contains('active') && !window._liveUnreadTimer) {
+      scheduleNextLiveTick();
+    } else {
+      setTimeout(tryStart, 1500);
+    }
+  };
+  setTimeout(tryStart, 1500);
+})();
+
+// ============ POWER APPS SUBMIT BUTTON WIRING ============
+// The 6 intake forms (Visitation, Grievance, Classification, Records, Reentry, etc.)
+// use .pa-submit-btn.msdcr-primary for the primary action. We delegate clicks so any
+// currently-inert submit button fires a realistic "Submitting → Submitted → Audited"
+// sequence without touching each individual form's markup.
+document.addEventListener('click', function (e) {
+  const btn = e.target.closest && e.target.closest('.pa-submit-btn.msdcr-primary');
+  if (!btn) return;
+  if (btn.disabled || btn.classList.contains('is-disabled')) return;
+  if (btn.dataset.paWired === '1') return; // already mid-submit
+  // Infer which form it is from the button label for a more specific audit line
+  const label = (btn.textContent || '').trim();
+  let formName = 'Intake form';
+  let purviewText = 'Event audited to Microsoft Purview · CorrectionsCore · labeled Resident PII';
+  if (/Visitation/i.test(label))            { formName = 'Visitation exception request'; purviewText = 'Event audited to Microsoft Purview · CorrectionsCore · labeled Resident PII · Visitation'; }
+  else if (/grievance/i.test(label))        { formName = 'Resident grievance';            purviewText = 'Event audited to Microsoft Purview · CorrectionsCore · labeled Resident PII · Grievance'; }
+  else if (/Records Office/i.test(label))   { formName = 'Records request';               purviewText = 'Event audited to Microsoft Purview · CorrectionsCore · labeled Admin PII · Records'; }
+  else if (/coordinator/i.test(label))      { formName = 'Classification packet';         purviewText = 'Event audited to Microsoft Purview · CorrectionsCore · labeled Classification · Foundry-evaluated'; }
+  else if (/Log decision/i.test(label))     { formName = 'Exception decision';            purviewText = 'Event audited to Microsoft Purview · CorrectionsCore · labeled Resident PII · Exception'; }
+  // Start submit animation
+  btn.dataset.paWired = '1';
+  const origText = btn.innerHTML;
+  btn.innerHTML = '<span style="opacity:0.85;">Submitting…</span>';
+  btn.disabled = true;
+  btn.style.opacity = '0.8';
+  setTimeout(() => {
+    btn.innerHTML = '&#10003; Submitted';
+    btn.style.opacity = '1';
+    showToast({ kind: 'success', icon: '✓', title: 'Submitted', text: `${formName} has been submitted for routing.`, ttl: 3600 });
+  }, 650);
+  setTimeout(() => auditToPurview({ title: 'Audited to Purview', text: purviewText }), 950);
+  // Reset after a few seconds so the form remains interactive
+  setTimeout(() => {
+    btn.innerHTML = origText;
+    btn.disabled = false;
+    btn.dataset.paWired = '';
+  }, 4200);
+});
+
+// Power Pages "Chat with Copilot" — wire any .pp-chat-btn click to a Purview session-recorded audit.
+document.addEventListener('click', function (e) {
+  const btn = e.target.closest && e.target.closest('.pp-chat-btn');
+  if (!btn) return;
+  setTimeout(() => auditToPurview({ title: 'Purview', text: 'Session recorded to Purview for audit · Power Pages · Public inquiry' }), 400);
+});
+
 // ============ TEAMS CHANNEL SWITCHER ============
 const TEAMS_CHANNELS = {
   'bo-general': {
@@ -12859,6 +13276,8 @@ function daxAcceptSign() {
     btn.disabled = false;
     addTimeSaved(14);
   }, 1200);
+  // Follow-up Purview audit toast
+  setTimeout(() => auditToPurview({ title: 'Audited to Purview', text: 'Audit event logged to Microsoft Purview · CorrectionsCore · 7 events' }), 1600);
 }
 
 // Foundry eval-progress bar — nudges the fill width so it reads as a live evaluation run, not a recording
@@ -15503,7 +15922,21 @@ function setPersona(key) {
 
   document.getElementById('persona-menu').classList.remove('open');
   showTip(`Switched to ${p.full} — ${p.role}. Home is tuned to their day.`);
+
+  // Fire a persona-appropriate "new message" toast 1.5s after the switch
+  const payload = PERSONA_SWITCH_TOASTS[key];
+  if (payload) {
+    setTimeout(() => showToast(payload), 1500);
+  }
 }
+
+// Persona-switch toast payloads — one realistic incoming message per persona.
+const PERSONA_SWITCH_TOASTS = {
+  sarah: { kind: '',        icon: '✉', title: 'New: Policy Copilot', text: 'DOP 906 revision landed overnight — Visitation policy rev notes ready for your review.', ttl: 5000 },
+  patel: { kind: '',        icon: '✉', title: 'New: Executive Leadership Team', text: 'Q2 ops review — approval requested on the Classification Packet Prep pilot summary.', ttl: 5000 },
+  maria: { kind: 'warn',    icon: '✉', title: 'New: Visitation Front Door', text: 'Family inquiry escalation from J. Huang — video-visit eligibility needs human review.', ttl: 5000 },
+  cio:   { kind: 'copilot', title: 'New: Microsoft Foundry', text: 'Evaluation run #2042 complete — 97.9% policy-match. Governance report staged in Admin.', ttl: 5000 }
+};
 
 // Render the Recent files grid from the active persona's list.
 function renderRecents(items) {
