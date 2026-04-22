@@ -5822,6 +5822,24 @@ body.dark .pp-bar { background: #333; }
       <image href="logo-m365.png" width="512" height="512" preserveAspectRatio="xMidYMid meet"/>
     </symbol>
 
+    <!-- Microsoft Foundry mark — gradient hex with nested inner hex -->
+    <linearGradient id="foundryMarkBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#4a1fa0"/>
+      <stop offset="45%"  stop-color="#a82574"/>
+      <stop offset="100%" stop-color="#d948ef"/>
+    </linearGradient>
+    <symbol id="foundryMark" viewBox="0 0 64 64">
+      <rect width="64" height="64" rx="14" fill="url(#foundryMarkBg)"/>
+      <path d="M0 0h64v26Q32 12 0 26Z" fill="rgba(255,255,255,0.14)"/>
+      <rect x="0.5" y="0.5" width="63" height="63" rx="13.5" fill="none" stroke="rgba(255,255,255,0.28)"/>
+      <!-- outer hex -->
+      <path d="M32 10 L50 20 L50 44 L32 54 L14 44 L14 20 Z" fill="#fff" opacity="0.95"/>
+      <!-- inner hex (inverted) -->
+      <path d="M32 18 L44 25 L44 39 L32 46 L20 39 L20 25 Z" fill="url(#foundryMarkBg)"/>
+      <!-- center diamond -->
+      <path d="M32 25 L38 32 L32 39 L26 32 Z" fill="#fff"/>
+    </symbol>
+
     <!-- ============ CUSTOM AGENT LOGOS (Copilot Studio style) ============ -->
     <!-- Bed Coordinator: blue gradient · hospital bed silhouette + room grid -->
     <linearGradient id="agBedBg" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -6118,7 +6136,7 @@ body.dark .pp-bar { background: #333; }
           <div class="waffle-app" onclick="closeWaffle(); openApp('powerpoint')"><svg width="30" height="30"><use href="#logoPowerpoint"/></svg><span>PowerPoint</span></div>
           <div class="waffle-app" onclick="closeWaffle(); openApp('onedrive')"><svg width="30" height="30"><use href="#logoOnedrive"/></svg><span>OneDrive</span></div>
           <div class="waffle-app" onclick="closeWaffle(); openApp('pages')"><div class="wa-box" style="background:linear-gradient(135deg,#0f9d58,#0b7d47);"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M5 3h10l4 4v14H5V3zm9 1v4h4z"/></svg></div><span>Pages</span></div>
-          <div class="waffle-app" onclick="closeWaffle(); openApp('dax')"><div class="wa-box" style="background:linear-gradient(135deg,#e8491d,#a8330f);"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a3 3 0 00-3 3v7a3 3 0 006 0V5a3 3 0 00-3-3zm-7 9a7 7 0 0014 0h-2a5 5 0 01-10 0H5z"/></svg></div><span>Foundry</span></div>
+          <div class="waffle-app" onclick="closeWaffle(); openApp('dax')"><svg width="30" height="30"><use href="#foundryMark"/></svg><span>Foundry</span></div>
           <div class="waffle-app" onclick="closeWaffle(); openApp('powerapps')"><div class="wa-box" style="background:linear-gradient(135deg,#742774,#b14ab1);"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l9 5v10l-9 5-9-5V7l9-5zM8 10l4-2 4 2v4l-4 2-4-2v-4z"/></svg></div><span>Power Apps</span></div>
           <div class="waffle-app" onclick="closeWaffle(); openApp('powerautomate')"><div class="wa-box" style="background:linear-gradient(135deg,#0b8ba5,#4bc9f0);"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M4 12a8 8 0 0114-5.3l-2 1.5A5.5 5.5 0 006.5 12H9l-3.5 4L2 12h2zm16 0a8 8 0 01-14 5.3l2-1.5a5.5 5.5 0 009.5-3.8H15l3.5-4L22 12h-2z"/></svg></div><span>Automate</span></div>
           <div class="waffle-app" onclick="closeWaffle(); openApp('powerpages')"><div class="wa-box" style="background:linear-gradient(135deg,#1e7a3c,#3ea558);"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M3 5a2 2 0 012-2h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5zm2 3v11h14V8H5z"/></svg></div><span>Power Pages</span></div>
@@ -6350,14 +6368,10 @@ body.dark .pp-bar { background: #333; }
         <div class="badge" style="background:linear-gradient(135deg,#0f9d58,#0b7d47);box-shadow:0 2px 4px rgba(15,157,88,0.4);">NEW</div>
       </div>
       <div class="app-tile" data-personas="sarah patel cio" onclick="openApp('dax')">
-        <div class="app-icon" style="filter:none;">
-          <div class="tile-logo-box" style="background:linear-gradient(135deg,#e8491d 0%,#a8330f 100%);">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a3 3 0 00-3 3v7a3 3 0 006 0V5a3 3 0 00-3-3zm-7 9a7 7 0 0014 0h-2a5 5 0 01-10 0H5zm6 8v3h2v-3h-2z"/></svg>
-          </div>
-        </div>
+        <div class="app-icon"><svg width="48" height="48"><use href="#foundryMark"/></svg></div>
         <div class="app-name">Microsoft Foundry</div>
         <div class="app-meta">Agent governance &amp; evaluations</div>
-        <div class="badge" style="background:linear-gradient(135deg,#e8491d,#a8330f);box-shadow:0 2px 4px rgba(232,73,29,0.4);">ADM</div>
+        <div class="badge" style="background:linear-gradient(135deg,#a82574,#6b1a52);box-shadow:0 2px 4px rgba(168,37,116,0.4);">GA</div>
       </div>
       <div class="app-tile" data-personas="cio" onclick="openApp('admin')">
         <div class="app-icon" style="filter:none;">
@@ -7364,7 +7378,7 @@ body.dark .pp-bar { background: #333; }
     <div class="app-topbar dax">
       <div class="back" onclick="goHome()">☰</div>
       <div class="app-title">
-        <svg class="app-title-logo" width="22" height="22" viewBox="0 0 24 24"><rect width="24" height="24" rx="5" fill="#a82574"/><path d="M12 2l3 5 5 1-4 4 1 6-5-3-5 3 1-6-4-4 5-1z" fill="#fff" transform="scale(0.8) translate(3 3)"/></svg>
+        <svg class="app-title-logo" width="22" height="22"><use href="#foundryMark"/></svg>
         Microsoft Foundry — Governance &amp; Evaluations
       </div>
       <div style="flex:1"></div>
@@ -7511,7 +7525,7 @@ body.dark .pp-bar { background: #333; }
           <div class="dax-note-head">
             <div>
               <div class="dax-note-title">
-                <svg width="18" height="18" viewBox="0 0 24 24" style="vertical-align:-3px;margin-right:6px;"><path d="M12 2l3 5 5 1-4 4 1 6-5-3-5 3 1-6-4-4 5-1z" fill="#a82574"/></svg>
+                <svg width="18" height="18" style="vertical-align:-3px;margin-right:6px;"><use href="#foundryMark"/></svg>
                 Foundry evaluation run · Classification Packet Prep
               </div>
               <div class="dax-note-sub">Weekly eval vs. MSDCR Policy Manual · <strong>human approval gate on every packet</strong></div>
