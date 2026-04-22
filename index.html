@@ -2684,7 +2684,7 @@ body.dark .rm-track { background: linear-gradient(90deg, #107c10 0%, #107c10 60%
 .adm-audit-table td.bad { color: #c50f1f; font-weight: 600; }
 
 /* ============ DRAGON COPILOT (DAX) ============ */
-.app-topbar.dax { background: linear-gradient(180deg, #e8491d 0%, #a8330f 100%); }
+.app-topbar.dax { background: linear-gradient(180deg, #a82574 0%, #6b1a52 100%); }
 .dax-body { flex: 1; display: flex; overflow: hidden; background: #fafafa; }
 .dax-sidebar { width: 260px; background: #fff; border-right: 1px solid var(--gray-30); padding: 16px; overflow-y: auto; flex-shrink: 0; }
 .dax-patient-card { background: linear-gradient(135deg, #fff4ed, #ffe4d3); border: 1px solid rgba(232,73,29,0.3); border-radius: 10px; padding: 14px; margin-bottom: 18px; }
@@ -2695,28 +2695,31 @@ body.dark .rm-track { background: linear-gradient(90deg, #107c10 0%, #107c10 60%
 .dax-label { font-size: 10px; font-weight: 700; color: var(--gray-130); text-transform: uppercase; letter-spacing: 0.8px; margin: 10px 0 6px; }
 .dax-enc { padding: 10px 12px; border-radius: 6px; border-left: 3px solid transparent; cursor: pointer; margin-bottom: 4px; }
 .dax-enc:hover { background: var(--gray-20); }
-.dax-enc.active { background: #fdeee5; border-left-color: #e8491d; }
+.dax-enc.active { background: #f7ecf3; border-left-color: #a82574; }
 .dax-enc-t { font-size: 12.5px; font-weight: 600; color: var(--gray-160); }
 .dax-enc-s { font-size: 11px; color: var(--gray-130); margin-top: 2px; }
 .dax-mini { font-size: 12px; color: var(--gray-130); padding: 4px 0; }
-.dax-mini strong { color: #e8491d; font-weight: 700; }
+.dax-mini strong { color: #a82574; font-weight: 700; }
 
 .dax-main { flex: 1; overflow-y: auto; padding: 20px 28px; display: flex; flex-direction: column; gap: 18px; }
 .dax-live { background: #fff; border: 1px solid var(--gray-30); border-radius: 12px; padding: 18px 20px; }
 .dax-live-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
 .dax-live-title { font-size: 15px; font-weight: 600; color: var(--gray-160); }
 .dax-live-sub { font-size: 11.5px; color: var(--gray-90); margin-top: 2px; }
-.dax-rec { display: inline-flex; align-items: center; gap: 8px; background: #fef4f4; color: #c50f1f; padding: 6px 12px; border-radius: 14px; font-size: 11px; font-weight: 700; }
-.dax-rec-dot { width: 8px; height: 8px; border-radius: 50%; background: #c50f1f; animation: dotPulse 1.4s infinite; }
+.dax-rec { display: inline-flex; align-items: center; gap: 8px; background: #f7ecf3; color: #6b1a52; padding: 6px 12px; border-radius: 14px; font-size: 11px; font-weight: 700; }
+.dax-rec-dot { width: 8px; height: 8px; border-radius: 50%; background: #a82574; animation: dotPulse 1.4s infinite; }
 .dax-timer { font-family: Consolas, monospace; font-weight: 700; font-variant-numeric: tabular-nums; }
 
-.dax-waveform { display: flex; align-items: center; gap: 2px; height: 40px; margin-bottom: 14px; padding: 0 4px; }
-.dax-waveform span { flex: 1; background: linear-gradient(180deg, #e8491d, #f5a623); border-radius: 1px; opacity: 0.7; }
+/* Eval progress bar — replaces the former .dax-waveform (audio) visual. Foundry run progress. */
+.dax-evalprog { display: flex; align-items: center; gap: 10px; height: 32px; margin-bottom: 14px; padding: 0 2px; }
+.dax-evalprog-track { flex: 1; height: 8px; background: #f3edf1; border-radius: 4px; overflow: hidden; position: relative; }
+.dax-evalprog-fill { height: 100%; width: 72%; background: linear-gradient(90deg, #a82574 0%, #d948ef 100%); border-radius: 4px; transition: width 0.45s ease; }
+.dax-evalprog-label { font-size: 11px; color: var(--gray-130); font-variant-numeric: tabular-nums; white-space: nowrap; }
 
 .dax-transcript { display: flex; flex-direction: column; gap: 10px; max-height: 260px; overflow-y: auto; padding-right: 6px; }
 .dax-turn { display: grid; grid-template-columns: 110px 1fr; gap: 12px; font-size: 13px; line-height: 1.55; padding: 6px 0; }
 .dax-turn .dax-speaker { font-weight: 700; color: var(--gray-130); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.5px; }
-.dax-turn.patient .dax-speaker { color: #e8491d; }
+.dax-turn.patient .dax-speaker { color: #a82574; }
 .dax-turn.doctor .dax-speaker { color: #0078d4; }
 .dax-turn .dax-text { color: var(--gray-160); }
 .dax-turn.active .dax-text { color: var(--gray-130); font-style: italic; }
@@ -3692,6 +3695,1465 @@ body.dark .rm-track { background: linear-gradient(90deg, #107c10 0%, #107c10 60%
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: #c8c6c4; border-radius: 5px; }
 ::-webkit-scrollbar-thumb:hover { background: #a19f9d; }
+
+/* ============ DATAVERSE HOME CALLOUT ============ */
+.dv-callout {
+  margin-top: 10px;
+  background: #fff;
+  border: 1px solid var(--gray-30);
+  border-left: 4px solid #742774;
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+.dv-callout-head {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
+}
+.dv-callout-head .dv-ico {
+  width: 26px; height: 26px; border-radius: 5px;
+  background: linear-gradient(135deg, #742774 0%, #b14ab1 100%);
+  display: flex; align-items: center; justify-content: center; color: #fff;
+  box-shadow: 0 1px 3px rgba(116,39,116,0.35);
+  flex-shrink: 0;
+}
+.dv-callout-title { font-size: 13px; font-weight: 700; color: var(--gray-160); }
+.dv-callout-sub { font-size: 11.5px; color: var(--gray-130); }
+.dv-chip-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.dv-chip {
+  background: linear-gradient(135deg, #fbf5fb, #fff);
+  border: 1px solid #ead0ea;
+  border-radius: 6px;
+  padding: 8px 10px;
+}
+.dv-chip-name { font-size: 11.5px; font-weight: 700; color: #742774; font-family: "Cascadia Mono", Consolas, monospace; }
+.dv-chip-rows { font-size: 11px; color: var(--gray-130); margin-top: 2px; }
+
+/* ============ POWER APPS ============ */
+.app-topbar.powerapps { background: linear-gradient(180deg, #742774 0%, #4a1a4a 100%); }
+.pa-body { flex: 1; display: flex; overflow: hidden; background: #f5f2f5; }
+.pa-sidebar {
+  width: 280px; flex-shrink: 0;
+  background: #fff; border-right: 1px solid var(--gray-30);
+  display: flex; flex-direction: column;
+}
+.pa-sidebar-head {
+  padding: 14px 16px 10px;
+  border-bottom: 1px solid var(--gray-30);
+}
+.pa-sidebar-head h3 { font-size: 13px; font-weight: 700; color: var(--gray-160); margin-bottom: 2px; }
+.pa-sidebar-head p { font-size: 11px; color: var(--gray-130); }
+.pa-applist { overflow-y: auto; flex: 1; padding: 6px 0; }
+.pa-approw {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px; cursor: pointer; border-left: 3px solid transparent;
+  transition: background 0.1s;
+}
+.pa-approw:hover { background: #faf5fa; }
+.pa-approw.active { background: #f3e8f3; border-left-color: #742774; }
+.pa-approw-ico {
+  width: 28px; height: 28px; border-radius: 4px;
+  background: linear-gradient(135deg, #742774, #b14ab1);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.pa-approw-meta { flex: 1; min-width: 0; }
+.pa-approw-name { font-size: 12.5px; font-weight: 600; color: var(--gray-160); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pa-approw-sub { font-size: 10.5px; color: var(--gray-130); margin-top: 1px; }
+.pa-approw-kind { font-size: 9.5px; font-weight: 700; color: #742774; text-transform: uppercase; letter-spacing: 0.4px; }
+.pa-main { flex: 1; overflow-y: auto; padding: 22px 28px; position: relative; }
+.pa-canvas-head {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 14px;
+}
+.pa-canvas-title { font-size: 15px; font-weight: 700; color: var(--gray-160); }
+.pa-canvas-sub { font-size: 11.5px; color: var(--gray-130); margin-top: 2px; }
+.pa-copilot-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 10px; border-radius: 999px;
+  background: linear-gradient(135deg, #f1e6ff, #fbf2ff);
+  border: 1px solid #c7a8f0;
+  font-size: 11px; color: #4a1fa0; font-weight: 600;
+  cursor: default;
+}
+.pa-copilot-chip::before { content: '✨'; font-size: 11px; }
+.pa-canvas {
+  background: #fff;
+  border: 1px solid var(--gray-30);
+  border-radius: 8px;
+  padding: 24px;
+  position: relative;
+  box-shadow: var(--shadow-sm);
+  background-image: radial-gradient(#e4d8e4 1px, transparent 1px);
+  background-size: 14px 14px;
+  background-position: 0 0;
+}
+.pa-canvas::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.95));
+  border-radius: 8px;
+  pointer-events: none;
+}
+.pa-canvas > * { position: relative; z-index: 1; }
+.pa-form-title {
+  font-size: 17px; font-weight: 700; color: var(--gray-160);
+  padding-bottom: 10px; border-bottom: 1px solid var(--gray-30); margin-bottom: 18px;
+}
+.pa-form-title .pa-ver { font-size: 11px; color: var(--gray-90); font-weight: 500; margin-left: 8px; }
+.pa-field { margin-bottom: 14px; }
+.pa-field-label { font-size: 11.5px; font-weight: 600; color: var(--gray-160); margin-bottom: 5px; display: block; }
+.pa-field-label .req { color: #c50f1f; margin-left: 3px; }
+.pa-input {
+  width: 100%; padding: 7px 10px;
+  border: 1px solid var(--gray-40); border-radius: 3px;
+  background: #fff; font-size: 13px; font-family: inherit; color: var(--gray-160);
+}
+.pa-input:focus { border-color: #742774; outline: 2px solid #e8d2e8; }
+.pa-input.filled { border-color: #9a6a9a; background: #fdfafd; }
+textarea.pa-input { min-height: 56px; resize: vertical; }
+.pa-dropdown {
+  width: 100%; padding: 7px 10px;
+  border: 1px solid var(--gray-40); border-radius: 3px;
+  background: #fff; font-size: 13px; color: var(--gray-160);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.pa-dropdown::after { content: '▾'; color: var(--gray-90); font-size: 10px; }
+.pa-radio-group { display: flex; gap: 14px; flex-wrap: wrap; }
+.pa-radio {
+  display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px;
+  color: var(--gray-160); cursor: default;
+}
+.pa-radio .pa-dot {
+  width: 14px; height: 14px; border-radius: 50%; border: 1.5px solid var(--gray-60);
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.pa-radio.sel .pa-dot { border-color: #742774; }
+.pa-radio.sel .pa-dot::after {
+  content: ''; width: 7px; height: 7px; border-radius: 50%;
+  background: #742774;
+}
+.pa-check { display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--gray-160); }
+.pa-check .pa-box { width: 14px; height: 14px; border: 1.5px solid var(--gray-60); border-radius: 2px; }
+.pa-filechip {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #f3f2f1; border: 1px solid var(--gray-40); border-radius: 4px;
+  padding: 6px 10px; font-size: 12px; color: var(--gray-160);
+}
+.pa-filechip::before { content: '📎'; }
+.pa-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.pa-submit-row { display: flex; align-items: center; gap: 12px; margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--gray-30); }
+.pa-submit-btn {
+  background: linear-gradient(135deg, #742774, #b14ab1);
+  color: #fff; border: none; border-radius: 4px;
+  padding: 9px 22px; font-size: 13px; font-weight: 600; font-family: inherit;
+  cursor: pointer; box-shadow: 0 1px 3px rgba(116,39,116,0.3);
+}
+.pa-ds-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 10px; border-radius: 4px;
+  background: #f5eef5; border: 1px solid #d8bed8;
+  font-size: 11px; color: #4a1a4a;
+}
+.pa-ds-chip .dot { width: 6px; height: 6px; border-radius: 50%; background: #107c10; }
+.pa-rail {
+  width: 296px; flex-shrink: 0;
+  background: #fff; border-left: 1px solid var(--gray-30);
+  padding: 14px 16px;
+  overflow-y: auto;
+}
+.pa-rail-h { font-size: 11px; font-weight: 700; color: var(--gray-130); text-transform: uppercase; letter-spacing: 0.5px; margin: 6px 0 10px; }
+.pa-conn {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 10px; border-radius: 6px;
+  background: var(--gray-20);
+  margin-bottom: 6px;
+  font-size: 12px;
+}
+.pa-conn-ico {
+  width: 26px; height: 26px; border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 11px; font-weight: 700; flex-shrink: 0;
+}
+.pa-conn-name { flex: 1; min-width: 0; }
+.pa-conn-name strong { display: block; font-size: 12px; color: var(--gray-160); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pa-conn-name span { font-size: 10.5px; color: var(--gray-130); }
+.pa-conn-pill {
+  font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px;
+  padding: 2px 7px; border-radius: 10px; white-space: nowrap;
+}
+.pa-conn-pill.ok { background: #dff6dd; color: #107c10; }
+.pa-conn-pill.studio { background: #ebe4ff; color: #4a1fa0; }
+.pa-conn-pill.automate { background: #d6f4fb; color: #0b6e86; }
+.pa-conn-pill.blue { background: #deecf9; color: #005a9e; }
+.pa-data-card {
+  background: linear-gradient(135deg, #fbf5fb, #fff);
+  border: 1px solid #ead0ea; border-radius: 6px;
+  padding: 10px 12px; margin-top: 4px;
+}
+.pa-data-card .pd-t { font-size: 11.5px; font-weight: 700; color: #742774; font-family: "Cascadia Mono", Consolas, monospace; }
+.pa-data-card .pd-r { font-size: 11px; color: var(--gray-130); margin-top: 2px; }
+
+/* ============ POWER AUTOMATE ============ */
+.app-topbar.powerautomate { background: linear-gradient(180deg, #0b8ba5 0%, #0a6a7e 100%); }
+.fa-body { flex: 1; display: flex; overflow: hidden; background: #f2f7f9; }
+.fa-sidebar {
+  width: 292px; flex-shrink: 0;
+  background: #fff; border-right: 1px solid var(--gray-30);
+  display: flex; flex-direction: column;
+}
+.fa-sidebar-head { padding: 14px 16px 10px; border-bottom: 1px solid var(--gray-30); }
+.fa-sidebar-head h3 { font-size: 13px; font-weight: 700; color: var(--gray-160); }
+.fa-sidebar-head p { font-size: 11px; color: var(--gray-130); }
+.fa-flowlist { overflow-y: auto; flex: 1; padding: 6px 0; }
+.fa-flowrow {
+  padding: 10px 14px; border-left: 3px solid transparent; cursor: pointer;
+}
+.fa-flowrow:hover { background: #f1f9fb; }
+.fa-flowrow.active { background: #e4f4f9; border-left-color: #0b8ba5; }
+.fa-flowrow-name { font-size: 12.5px; font-weight: 600; color: var(--gray-160); margin-bottom: 3px; }
+.fa-flowrow-meta { display: flex; align-items: center; gap: 8px; font-size: 10.5px; color: var(--gray-130); }
+.fa-pill {
+  font-size: 9.5px; font-weight: 700; padding: 2px 7px; border-radius: 10px;
+  text-transform: uppercase; letter-spacing: 0.3px;
+}
+.fa-pill.on { background: #dff6dd; color: #107c10; }
+.fa-pill.off { background: var(--gray-30); color: var(--gray-130); }
+.fa-main { flex: 1; overflow-y: auto; padding: 22px 28px; }
+.fa-main-head { margin-bottom: 18px; }
+.fa-main-head h2 { font-size: 17px; font-weight: 700; color: var(--gray-160); }
+.fa-main-head p { font-size: 12px; color: var(--gray-130); margin-top: 3px; }
+.fa-canvas {
+  background: #fff; border: 1px solid var(--gray-30);
+  border-radius: 8px; padding: 22px 18px;
+  display: flex; flex-direction: column; align-items: center; gap: 0;
+  box-shadow: var(--shadow-sm);
+}
+.fa-node {
+  width: 100%; max-width: 520px;
+  background: #fff; border: 1px solid var(--gray-40); border-radius: 6px;
+  padding: 10px 14px; display: flex; align-items: flex-start; gap: 10px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+  position: relative;
+}
+.fa-node.trigger { border-left: 4px solid #742774; }
+.fa-node.action { border-left: 4px solid #0b8ba5; }
+.fa-node.condition { border-left: 4px solid #f2a900; }
+.fa-node.delay { border-left: 4px solid #605e5c; }
+.fa-node-ico {
+  width: 28px; height: 28px; border-radius: 4px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 14px;
+}
+.fa-node.trigger .fa-node-ico { background: #742774; }
+.fa-node.action .fa-node-ico { background: #0b8ba5; }
+.fa-node.condition .fa-node-ico { background: #f2a900; }
+.fa-node.delay .fa-node-ico { background: #605e5c; }
+.fa-node-body { flex: 1; min-width: 0; }
+.fa-node-kind { font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--gray-130); }
+.fa-node-title { font-size: 13px; font-weight: 600; color: var(--gray-160); margin: 1px 0 3px; }
+.fa-node-sub { font-size: 11.5px; color: var(--gray-130); line-height: 1.4; }
+.fa-node-out {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 6px; font-size: 11px; color: var(--gray-160);
+  background: var(--gray-20); border-radius: 4px; padding: 3px 8px;
+}
+.fa-arrow {
+  width: 2px; height: 22px; background: var(--gray-60); position: relative; flex-shrink: 0;
+}
+.fa-arrow::after {
+  content: ''; position: absolute; bottom: -1px; left: -4px;
+  width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent;
+  border-top: 6px solid var(--gray-60);
+}
+.fa-branch {
+  display: flex; gap: 16px; width: 100%; max-width: 520px; margin: 0 auto;
+}
+.fa-branch-col { flex: 1; display: flex; flex-direction: column; align-items: center; }
+.fa-branch-lbl {
+  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+  padding: 3px 9px; border-radius: 10px;
+}
+.fa-branch-lbl.yes { background: #dff6dd; color: #107c10; }
+.fa-branch-lbl.no { background: #fde7e9; color: #a80000; }
+.fa-rail { width: 308px; flex-shrink: 0; background: #fff; border-left: 1px solid var(--gray-30); padding: 14px 16px; overflow-y: auto; }
+.fa-rail-stats {
+  background: linear-gradient(135deg, #e4f4f9, #fff);
+  border: 1px solid #b4dae4; border-radius: 6px;
+  padding: 10px 12px; margin-bottom: 14px;
+}
+.fa-rail-stats .fr-t { font-size: 11px; font-weight: 700; color: #0b6e86; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+.fa-rail-stats .fr-v { font-size: 13px; color: var(--gray-160); line-height: 1.55; }
+.fa-rail-stats .fr-v strong { color: #107c10; }
+.fa-run-row {
+  display: grid; grid-template-columns: auto 1fr auto;
+  gap: 8px; padding: 8px 10px; border-bottom: 1px solid var(--gray-20);
+  font-size: 11.5px; align-items: center;
+}
+.fa-run-row:last-child { border-bottom: none; }
+.fa-run-status { width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: #fff; flex-shrink: 0; }
+.fa-run-status.ok { background: #107c10; }
+.fa-run-status.fail { background: #c50f1f; }
+.fa-run-status.run { background: #0b8ba5; animation: spin 1.2s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.fa-run-body .fa-run-t { font-size: 11px; color: var(--gray-160); font-weight: 600; }
+.fa-run-body .fa-run-s { font-size: 10px; color: var(--gray-130); }
+.fa-run-dur { font-size: 10.5px; color: var(--gray-130); }
+.fa-run-link { font-size: 10.5px; color: #0b8ba5; cursor: pointer; text-align: right; grid-column: 2 / span 2; margin-top: 2px; }
+
+/* ============ POWER PAGES ============ */
+.app-topbar.powerpages { background: linear-gradient(180deg, #1e7a3c 0%, #145827 100%); }
+.pp-body { flex: 1; display: flex; flex-direction: column; overflow: hidden; background: #f4f7f4; }
+.pp-tabs {
+  display: flex; gap: 2px; padding: 6px 20px 0; background: #fff;
+  border-bottom: 1px solid var(--gray-30); flex-shrink: 0;
+}
+.pp-tab {
+  padding: 9px 16px; font-size: 12.5px; color: var(--gray-130); font-weight: 600;
+  cursor: pointer; border-bottom: 2px solid transparent;
+}
+.pp-tab:hover { color: #1e7a3c; }
+.pp-tab.tab-active { color: #1e7a3c; border-bottom-color: #1e7a3c; }
+.pp-panels { flex: 1; overflow-y: auto; }
+.pp-panel { display: none; padding: 22px 28px; }
+.pp-panel.tab-active { display: block; }
+.pp-browser {
+  max-width: 1100px; margin: 0 auto;
+  background: #fff; border: 1px solid var(--gray-30); border-radius: 10px;
+  box-shadow: var(--shadow-md); overflow: hidden;
+}
+.pp-browser-chrome {
+  background: #eceef0; padding: 8px 12px; display: flex; align-items: center; gap: 10px;
+  border-bottom: 1px solid var(--gray-30);
+}
+.pp-browser-dots { display: flex; gap: 5px; }
+.pp-browser-dots span { width: 10px; height: 10px; border-radius: 50%; }
+.pp-browser-dots span:nth-child(1) { background: #ff5f57; }
+.pp-browser-dots span:nth-child(2) { background: #febc2e; }
+.pp-browser-dots span:nth-child(3) { background: #28c840; }
+.pp-url {
+  flex: 1; background: #fff; border-radius: 14px;
+  padding: 5px 12px; font-size: 11.5px; color: var(--gray-160);
+  font-family: "Cascadia Mono", Consolas, monospace;
+  border: 1px solid var(--gray-30);
+}
+.pp-url::before { content: '🔒 '; color: #107c10; }
+.pp-portal-hero {
+  background: linear-gradient(135deg, #145827 0%, #1e7a3c 60%, #3ea558 100%);
+  color: #fff; padding: 36px 40px; display: flex; align-items: center; gap: 18px;
+}
+.pp-seal {
+  width: 64px; height: 64px; flex-shrink: 0;
+  background: #fff; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #145827; font-weight: 700; font-size: 13px; font-family: Georgia, serif;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  border: 3px solid #c8a55b;
+  letter-spacing: -0.5px;
+}
+.pp-portal-title { font-size: 22px; font-weight: 700; letter-spacing: -0.3px; }
+.pp-portal-sub { font-size: 13px; opacity: 0.9; margin-top: 3px; }
+.pp-cards {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+  padding: 22px 24px 8px;
+}
+.pp-card {
+  border: 1px solid var(--gray-30); border-radius: 8px;
+  padding: 16px; background: #fff;
+  transition: box-shadow 0.15s, transform 0.15s;
+  cursor: pointer;
+}
+.pp-card:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+.pp-card-ico {
+  width: 36px; height: 36px; border-radius: 7px;
+  background: linear-gradient(135deg, #1e7a3c, #3ea558);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 18px; margin-bottom: 10px;
+}
+.pp-card h3 { font-size: 14px; font-weight: 700; color: var(--gray-160); margin-bottom: 6px; }
+.pp-card p { font-size: 12px; color: var(--gray-130); line-height: 1.5; margin-bottom: 10px; }
+.pp-chat-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 12px; border-radius: 14px;
+  background: linear-gradient(135deg, #7441e8, #b14ab1);
+  color: #fff; font-size: 11px; font-weight: 600;
+  border: none; cursor: pointer;
+  box-shadow: 0 1px 3px rgba(116,65,232,0.3);
+}
+.pp-chat-btn::before { content: '✨'; }
+.pp-secondary {
+  display: grid; grid-template-columns: repeat(3, 1fr) 1fr; gap: 14px;
+  padding: 12px 24px 22px;
+}
+.pp-mini {
+  background: #faf9f8; border: 1px solid var(--gray-30); border-radius: 7px;
+  padding: 12px; font-size: 12px; color: var(--gray-160);
+}
+.pp-mini h4 { font-size: 12px; font-weight: 700; margin-bottom: 5px; color: var(--gray-160); }
+.pp-mini p { font-size: 11.5px; color: var(--gray-130); line-height: 1.45; }
+.pp-map {
+  background: linear-gradient(135deg, #e4f0e8, #f1faf4);
+  border: 1px solid #b8d8c0;
+  position: relative;
+  min-height: 100px;
+}
+.pp-map::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(30,122,60,0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30,122,60,0.1) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+.pp-map-pin {
+  position: absolute; width: 12px; height: 12px; border-radius: 50%;
+  background: #c50f1f; border: 2px solid #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+.pp-footer {
+  padding: 14px 24px; font-size: 11px; color: var(--gray-130);
+  border-top: 1px solid var(--gray-30); background: #faf9f8;
+  display: flex; gap: 14px;
+}
+.pp-footer a { color: var(--gray-130); text-decoration: none; cursor: pointer; }
+.pp-conn-bar {
+  max-width: 1100px; margin: 14px auto 0; padding: 10px 14px;
+  background: #fff; border: 1px solid var(--gray-30); border-radius: 7px;
+  display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
+}
+.pp-conn-bar-lbl { font-size: 10.5px; font-weight: 700; color: var(--gray-130); text-transform: uppercase; letter-spacing: 0.4px; margin-right: 4px; }
+.pp-conn-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 9px; border-radius: 12px;
+  font-size: 11px; font-weight: 500;
+  background: var(--gray-20); color: var(--gray-160); border: 1px solid var(--gray-30);
+}
+.pp-conn-chip.dv { background: #fbf5fb; color: #742774; border-color: #ead0ea; }
+.pp-conn-chip.st { background: #ebe4ff; color: #4a1fa0; border-color: #d0bfff; }
+.pp-conn-chip.au { background: #d6f4fb; color: #0b6e86; border-color: #a5d8e4; }
+.pp-conn-chip.en { background: #deecf9; color: #005a9e; border-color: #9ec4e8; }
+
+.pp-pagelist {
+  max-width: 900px; margin: 0 auto;
+  background: #fff; border: 1px solid var(--gray-30); border-radius: 8px;
+  overflow: hidden;
+}
+.pp-plrow {
+  display: grid; grid-template-columns: 3fr 1fr 1fr 1fr;
+  padding: 10px 14px; border-bottom: 1px solid var(--gray-20);
+  font-size: 12.5px; color: var(--gray-160); align-items: center;
+}
+.pp-plrow:last-child { border-bottom: none; }
+.pp-plrow.head { background: #faf9f8; font-size: 10.5px; font-weight: 700; color: var(--gray-130); text-transform: uppercase; letter-spacing: 0.4px; }
+.pp-plrow .pub { color: #107c10; font-weight: 600; }
+.pp-plrow .draft { color: #8a5c00; font-weight: 600; }
+.pp-roletable {
+  max-width: 700px; margin: 0 auto;
+  background: #fff; border: 1px solid var(--gray-30); border-radius: 8px;
+  padding: 18px;
+}
+.pp-roletable table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.pp-roletable th { text-align: left; padding: 8px 10px; font-size: 10.5px; color: var(--gray-130); text-transform: uppercase; letter-spacing: 0.4px; border-bottom: 1px solid var(--gray-30); }
+.pp-roletable td { padding: 10px; border-bottom: 1px solid var(--gray-20); color: var(--gray-160); }
+.pp-roletable td:last-child { color: var(--gray-130); font-size: 11.5px; }
+.pp-analytics { max-width: 1000px; margin: 0 auto; }
+.pp-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 18px; }
+.pp-kpi {
+  background: #fff; border: 1px solid var(--gray-30); border-radius: 8px;
+  padding: 14px 16px; box-shadow: var(--shadow-sm);
+}
+.pp-kpi-lbl { font-size: 10.5px; color: var(--gray-130); text-transform: uppercase; letter-spacing: 0.4px; font-weight: 700; }
+.pp-kpi-v { font-size: 26px; font-weight: 700; color: #1e7a3c; margin: 5px 0 3px; letter-spacing: -0.5px; }
+.pp-kpi-s { font-size: 11px; color: var(--gray-130); }
+.pp-trend {
+  background: #fff; border: 1px solid var(--gray-30); border-radius: 8px;
+  padding: 18px; box-shadow: var(--shadow-sm);
+}
+.pp-trend h3 { font-size: 13px; font-weight: 700; color: var(--gray-160); margin-bottom: 10px; }
+.pp-trend svg { display: block; width: 100%; height: 120px; }
+
+/* Dark mode adjustments for new apps */
+body.dark .pa-canvas { background: #1e1a1e; background-image: radial-gradient(#3a2e3a 1px, transparent 1px); }
+body.dark .pa-canvas::before { background: linear-gradient(rgba(30,26,30,0.85), rgba(30,26,30,0.95)); }
+body.dark .pa-sidebar, body.dark .pa-rail,
+body.dark .fa-sidebar, body.dark .fa-rail,
+body.dark .fa-canvas, body.dark .fa-node,
+body.dark .pp-browser, body.dark .pp-pagelist, body.dark .pp-roletable,
+body.dark .pp-kpi, body.dark .pp-trend, body.dark .pp-conn-bar { background: #252525; color: #e0e0e0; border-color: #333; }
+body.dark .pa-body, body.dark .fa-body, body.dark .pp-body { background: #1a1a1a; }
+body.dark .pa-form-title, body.dark .pa-approw-name, body.dark .fa-node-title,
+body.dark .fa-flowrow-name, body.dark .fa-main-head h2 { color: #f0f0f0; }
+
+/* ============ MSDCR BRAND POLISH ============ */
+.msdcr-banner {
+  display: flex; align-items: stretch; justify-content: space-between;
+  background: linear-gradient(90deg, var(--msu-navy) 0%, #00457f 100%);
+  color: #fff;
+  border-radius: 6px;
+  padding: 10px 18px;
+  margin-bottom: 12px;
+  min-height: 60px;
+  box-shadow: 0 1px 3px rgba(0,56,101,0.25);
+  border: 1px solid rgba(200,165,91,0.35);
+}
+.msdcr-banner-id { display: flex; align-items: center; gap: 12px; }
+.msdcr-banner-seal {
+  width: 42px; height: 42px; flex-shrink: 0;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3));
+}
+.msdcr-banner-name {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 13.5px; font-weight: 700; letter-spacing: 0.3px;
+  line-height: 1.15;
+}
+.msdcr-banner-name small {
+  display: block;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 10px; font-weight: 500; letter-spacing: 1.4px;
+  color: var(--msu-gold);
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+.msdcr-banner-meta {
+  text-align: right;
+  display: flex; flex-direction: column; justify-content: center; gap: 3px;
+}
+.msdcr-banner-meta-rule {
+  font-size: 10.5px; letter-spacing: 1.4px; font-weight: 600;
+  color: var(--msu-gold);
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(200,165,91,0.55);
+  padding-bottom: 3px;
+}
+.msdcr-banner-meta-sub {
+  font-size: 10.5px; color: rgba(255,255,255,0.82); letter-spacing: 0.3px;
+}
+
+/* breadcrumb + stage strip */
+.msdcr-crumb {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 14px;
+  padding: 7px 12px;
+  background: #f5f6f8; border: 1px solid var(--gray-30); border-radius: 5px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+.msdcr-crumb-path {
+  font-size: 11.5px; color: var(--gray-130);
+}
+.msdcr-crumb-path strong { color: var(--msu-navy); font-weight: 600; }
+.msdcr-crumb-path .sep { color: var(--gray-90); margin: 0 6px; }
+.msdcr-crumb-path .id { color: var(--msu-navy); font-weight: 700; font-family: "Cascadia Mono", Consolas, monospace; font-size: 11px; }
+.msdcr-crumb-right { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.msdcr-draft-pill {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 11px; color: #107c10; font-weight: 600;
+  padding: 3px 10px; border-radius: 12px;
+  background: #effaf0; border: 1px solid #b8e0b8;
+}
+.msdcr-draft-pill::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: #107c10; animation: msdcrPulse 2s ease-in-out infinite;
+}
+@keyframes msdcrPulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+.msdcr-stepper {
+  display: inline-flex; align-items: center; gap: 0;
+  font-size: 10.5px;
+  border: 1px solid var(--gray-30); border-radius: 999px;
+  overflow: hidden; background: #fff;
+}
+.msdcr-stepper span {
+  padding: 4px 11px; color: var(--gray-130);
+  border-right: 1px solid var(--gray-30);
+}
+.msdcr-stepper span:last-child { border-right: none; }
+.msdcr-stepper span.cur { background: var(--msu-navy); color: #fff; font-weight: 600; }
+.msdcr-stepper span.done { color: var(--msu-teal); }
+
+/* narrow info strip above form title */
+.msdcr-info-strip {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.msdcr-info-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 11px; border-radius: 12px;
+  font-size: 10.5px; font-weight: 600;
+  border: 1px solid;
+}
+.msdcr-info-chip.navy {
+  background: #eef4fb; color: var(--msu-navy); border-color: #c2d4e6;
+}
+.msdcr-info-chip.navy::before {
+  content: ''; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--msu-navy);
+}
+.msdcr-info-chip.gold {
+  background: #fbf6ea; color: #846425; border-color: #e2cf9a;
+}
+.msdcr-info-chip.gold::before {
+  content: ''; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--msu-gold);
+}
+
+/* two-column form grid */
+.pa-layout-grid {
+  display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+@media (max-width: 1100px) {
+  .pa-layout-grid { grid-template-columns: 1fr; }
+}
+.pa-context-col {
+  display: flex; flex-direction: column; gap: 12px;
+}
+.pa-context-card {
+  background: #fcfcfd;
+  border: 1px solid var(--gray-30);
+  border-left: 3px solid var(--msu-navy);
+  border-radius: 6px;
+  padding: 12px 14px;
+}
+.pa-context-card h5 {
+  font-size: 11.5px; font-weight: 700;
+  color: var(--msu-navy);
+  text-transform: uppercase; letter-spacing: 0.6px;
+  margin-bottom: 8px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.pa-context-card h5 .ctx-badge {
+  font-size: 9.5px; font-weight: 600;
+  color: #4a1fa0; background: #f1e6ff;
+  border: 1px solid #d0bfff; border-radius: 10px;
+  padding: 1px 7px; letter-spacing: 0.3px; text-transform: none;
+}
+.pa-ctx-match {
+  display: flex; flex-direction: column; gap: 4px;
+  font-size: 11.5px; color: var(--gray-160);
+  line-height: 1.45;
+}
+.pa-ctx-match .ctx-match-hit {
+  font-weight: 600; color: var(--msu-navy);
+  display: flex; align-items: center; gap: 5px;
+}
+.pa-ctx-match .ctx-match-hit::before {
+  content: '\2713'; color: #107c10; font-weight: 700;
+}
+.pa-ctx-match .ctx-match-sub { color: var(--gray-130); font-size: 11px; padding-left: 15px; }
+.pa-ctx-list {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-direction: column; gap: 5px;
+  font-size: 11.5px; color: var(--gray-160);
+}
+.pa-ctx-list li {
+  display: flex; align-items: flex-start; gap: 6px; line-height: 1.4;
+}
+.pa-ctx-list li .ci {
+  flex-shrink: 0; width: 13px; height: 13px; border-radius: 50%;
+  font-size: 9px; font-weight: 700;
+  display: inline-flex; align-items: center; justify-content: center;
+  margin-top: 1px;
+}
+.pa-ctx-list li.ok .ci { background: #e1f3e1; color: #107c10; }
+.pa-ctx-list li.warn .ci { background: #fff4ce; color: #8a6100; }
+.pa-ctx-list li.ok .ci::before { content: '\2713'; }
+.pa-ctx-list li.warn .ci::before { content: '!'; }
+.pa-ctx-policy-item {
+  font-size: 11.5px; color: var(--gray-160);
+  padding: 6px 8px; border-radius: 4px;
+  background: #eef4fb; border: 1px solid #d0e0ef;
+  margin-bottom: 5px;
+  display: flex; align-items: center; gap: 6px;
+}
+.pa-ctx-policy-item::before {
+  content: '\00A7'; color: var(--msu-navy); font-weight: 700; font-size: 12px;
+}
+.pa-ctx-policy-item:last-child { margin-bottom: 0; }
+
+/* Copilot suggestion callout */
+.pa-copilot-callout {
+  margin-top: 8px;
+  background: linear-gradient(135deg, #f7edff, #fbf4ff);
+  border: 1px solid #d9bdfc;
+  border-left: 3px solid #7441e8;
+  border-radius: 6px;
+  padding: 10px 12px;
+  max-width: 420px;
+  min-height: 78px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.pa-copilot-callout-head {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 10.5px; font-weight: 700; color: #4a1fa0;
+  text-transform: uppercase; letter-spacing: 0.6px;
+}
+.pa-copilot-callout-head::before { content: '\2728'; }
+.pa-copilot-callout-body {
+  font-size: 12px; color: #2c1761; line-height: 1.45;
+}
+.pa-copilot-callout-actions { display: flex; gap: 6px; margin-top: 2px; }
+.pa-copilot-callout-actions button {
+  font-size: 11px; font-weight: 600; font-family: inherit;
+  padding: 4px 12px; border-radius: 12px; cursor: pointer; border: 1px solid;
+}
+.pa-copilot-callout-actions .acc {
+  background: #7441e8; color: #fff; border-color: #5f2cc3;
+}
+.pa-copilot-callout-actions .dis {
+  background: #fff; color: #4a1fa0; border-color: #d0bfff;
+}
+
+/* dual submit buttons */
+.pa-submit-row.msdcr { flex-wrap: wrap; }
+.pa-submit-btn.msdcr-primary {
+  background: linear-gradient(135deg, var(--msu-navy) 0%, #00467f 100%);
+  box-shadow: 0 1px 3px rgba(0,56,101,0.35);
+}
+.pa-submit-btn.msdcr-secondary {
+  background: #fff; color: var(--msu-navy);
+  border: 1px solid var(--msu-navy);
+  box-shadow: none;
+}
+.pa-submit-note {
+  font-size: 11px; color: var(--gray-130);
+  margin-left: auto; text-align: right; line-height: 1.4;
+}
+.pa-submit-note strong { color: var(--msu-navy); }
+
+/* audit/compliance footer */
+.msdcr-audit-footer {
+  margin-top: 12px; padding: 7px 10px;
+  background: #f5f6f8; border: 1px solid var(--gray-30); border-radius: 4px;
+  font-size: 10.5px; color: var(--gray-130);
+  display: flex; align-items: center; gap: 10px;
+  flex-wrap: wrap;
+}
+.msdcr-audit-footer .purview-ico {
+  width: 14px; height: 14px; border-radius: 50%;
+  background: linear-gradient(135deg, #5f9ef0, #2c5ba8);
+  display: inline-flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 9px; font-weight: 700;
+  flex-shrink: 0;
+}
+.msdcr-audit-footer .af-seg { display: inline-flex; align-items: center; gap: 4px; }
+.msdcr-audit-footer .af-sep { color: var(--gray-60); }
+
+/* ============ POWER PAGES PORTAL POLISH ============ */
+.pp-portal-hero.msdcr-hero {
+  background: linear-gradient(120deg, var(--msu-navy) 0%, #004e82 55%, var(--msu-teal) 100%);
+  padding: 30px 36px;
+  gap: 20px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.pp-portal-hero.msdcr-hero::after {
+  content: ''; position: absolute; right: -40px; bottom: -40px;
+  width: 240px; height: 240px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,165,91,0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+.pp-seal-svg {
+  width: 84px; height: 84px; flex-shrink: 0;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.35));
+}
+.pp-hero-text { flex: 1; position: relative; z-index: 1; }
+.pp-portal-title.msdcr {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: -0.2px;
+  line-height: 1.15;
+}
+.pp-portal-sub.msdcr {
+  display: inline-block;
+  font-size: 13.5px;
+  margin-top: 6px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--msu-gold);
+  opacity: 0.95;
+}
+.pp-hero-cta {
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 10px;
+  padding: 10px 14px;
+  color: #fff;
+  position: relative; z-index: 1;
+  max-width: 260px;
+}
+.pp-hero-cta-text { font-size: 12px; line-height: 1.35; }
+.pp-hero-cta-text strong { display: block; font-size: 12.5px; margin-bottom: 2px; }
+.pp-hero-cta-btn {
+  flex-shrink: 0;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: linear-gradient(135deg, #7441e8, #b14ab1);
+  color: #fff; border: none; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 6px rgba(116,65,232,0.4);
+}
+
+/* portal top nav */
+.pp-portal-nav {
+  display: flex; align-items: center; gap: 2px;
+  background: #fff;
+  padding: 8px 18px;
+  border-bottom: 1px solid var(--gray-30);
+}
+.pp-portal-nav a {
+  padding: 7px 11px; font-size: 12.5px;
+  color: var(--msu-navy); font-weight: 500;
+  text-decoration: none; cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.15s, color 0.15s;
+}
+.pp-portal-nav a:hover { border-bottom-color: var(--msu-gold); color: var(--msu-navy); }
+.pp-portal-nav a.active { border-bottom-color: var(--msu-navy); }
+.pp-portal-nav .spacer { flex: 1; }
+.pp-portal-nav .pp-signin {
+  padding: 5px 14px; font-size: 12px; font-weight: 600;
+  color: var(--msu-navy);
+  border: 1px solid var(--msu-navy);
+  background: transparent;
+  border-radius: 4px; cursor: pointer;
+}
+.pp-portal-nav .pp-signin:hover { background: var(--msu-navy); color: #fff; }
+
+/* card polish — navy/gold government style */
+.pp-card.msdcr {
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+}
+.pp-card.msdcr::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 3px; background: var(--msu-gold);
+}
+.pp-card.msdcr .pp-card-inner { padding: 18px 16px 14px; display: flex; flex-direction: column; flex: 1; }
+.pp-card-svg-ico {
+  width: 38px; height: 38px;
+  color: var(--msu-navy);
+  margin-bottom: 12px;
+}
+.pp-card.msdcr h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 15px; font-weight: 700; color: var(--msu-navy);
+  margin-bottom: 6px;
+}
+.pp-card.msdcr p {
+  font-size: 12px; color: var(--gray-130); line-height: 1.5;
+  margin-bottom: 12px;
+  flex: 1;
+}
+.pp-card.msdcr .pp-card-actions {
+  display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+}
+.pp-card.msdcr .pp-start {
+  font-size: 12px; font-weight: 600; color: var(--msu-navy);
+  text-decoration: none; cursor: pointer;
+}
+.pp-card.msdcr .pp-start:hover { text-decoration: underline; }
+
+/* quick-answers chip strip */
+.pp-quick {
+  padding: 14px 24px 4px;
+}
+.pp-quick h5 {
+  font-size: 11px; color: var(--gray-130);
+  text-transform: uppercase; letter-spacing: 0.8px;
+  margin-bottom: 8px; font-weight: 700;
+}
+.pp-quick h5::before { content: '\2728 '; color: #7441e8; }
+.pp-quick-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.pp-quick-chip {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 6px 12px; border-radius: 14px;
+  font-size: 12px; color: var(--msu-navy);
+  background: #fff;
+  border: 1px solid var(--msu-gold);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.pp-quick-chip:hover { background: #fbf6ea; }
+
+/* FAQ tile icons + browse-all */
+.pp-mini-ico {
+  width: 18px; height: 18px;
+  color: var(--msu-navy);
+  float: left; margin-right: 8px; margin-top: 1px;
+}
+.pp-mini h4 .pp-mini-count {
+  font-size: 10.5px; color: var(--msu-teal); font-weight: 600;
+  margin-left: 4px;
+}
+.pp-browse-all {
+  padding: 4px 24px 0;
+  font-size: 11.5px;
+}
+.pp-browse-all a {
+  color: var(--msu-navy); font-weight: 600; cursor: pointer;
+  text-decoration: none;
+}
+.pp-browse-all a:hover { text-decoration: underline; }
+
+/* map tile */
+.pp-map.msdcr-map { background: linear-gradient(135deg, #e8eef5, #f4f7fb); border-color: #c2d4e6; }
+.pp-map.msdcr-map::before {
+  background-image:
+    linear-gradient(rgba(0,56,101,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,56,101,0.08) 1px, transparent 1px);
+}
+.pp-map-pin.msdcr {
+  background: var(--msu-navy); width: 10px; height: 10px;
+  box-shadow: 0 0 0 3px rgba(0,56,101,0.15), 0 1px 3px rgba(0,0,0,0.3);
+}
+.pp-map-pin.msdcr.teal { background: var(--msu-teal); box-shadow: 0 0 0 3px rgba(0,144,168,0.18), 0 1px 3px rgba(0,0,0,0.3); }
+.pp-map-pin.msdcr.gold { background: var(--msu-gold); box-shadow: 0 0 0 3px rgba(200,165,91,0.25), 0 1px 3px rgba(0,0,0,0.3); }
+.pp-map-label {
+  position: absolute; font-size: 9.5px; font-weight: 600;
+  color: var(--msu-navy); background: rgba(255,255,255,0.88);
+  padding: 1px 5px; border-radius: 3px; white-space: nowrap;
+  transform: translate(-50%, 6px);
+  pointer-events: none;
+}
+
+/* upgraded portal footer */
+.pp-footer.msdcr {
+  background: var(--msu-navy); color: #fff;
+  padding: 22px 28px 18px;
+  border-top: 4px solid var(--msu-gold);
+  display: grid;
+  grid-template-columns: auto 1fr 1fr 1fr auto;
+  gap: 22px;
+  align-items: start;
+}
+.pp-footer.msdcr .pp-footer-seal {
+  width: 56px; height: 56px;
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.4));
+}
+.pp-footer.msdcr .pp-footer-col h6 {
+  font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.8px;
+  color: var(--msu-gold); margin-bottom: 7px; font-weight: 700;
+}
+.pp-footer.msdcr .pp-footer-col a {
+  display: block; font-size: 11.5px; color: rgba(255,255,255,0.85);
+  margin-bottom: 3px; text-decoration: none; cursor: pointer;
+}
+.pp-footer.msdcr .pp-footer-col a:hover { color: var(--msu-gold); }
+.pp-footer.msdcr .pp-footer-social { display: flex; gap: 8px; align-items: flex-start; }
+.pp-footer.msdcr .pp-footer-social .soc {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.22);
+  color: #fff;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; cursor: pointer;
+}
+.pp-footer.msdcr .pp-footer-social .soc:hover { background: var(--msu-gold); color: var(--msu-navy); border-color: var(--msu-gold); }
+@media (max-width: 900px) {
+  .pp-footer.msdcr { grid-template-columns: 1fr 1fr; }
+}
+
+/* seal usage in topbar */
+.app-title-seal {
+  width: 22px; height: 22px; margin-right: 4px;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.25));
+}
+
+/* ============ PA ENTERPRISE POLISH (v2) ============ */
+.pa-stamp-head {
+  display: grid;
+  grid-template-columns: minmax(240px, 1fr) minmax(280px, 1.2fr) minmax(180px, auto);
+  gap: 18px;
+  align-items: center;
+  padding: 14px 16px;
+  background: #fff;
+  border: 1px solid var(--gray-30);
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  margin-bottom: 14px;
+}
+.pa-stamp-id { display: flex; align-items: center; gap: 12px; }
+.pa-stamp-id .pa-stamp-seal { width: 44px; height: 44px; flex-shrink: 0; filter: drop-shadow(0 1px 2px rgba(0,56,101,0.28)); }
+.pa-stamp-id .pa-stamp-t {
+  font-family: "Segoe UI", sans-serif;
+  font-size: 15px; font-weight: 700; color: var(--gray-160); letter-spacing: -0.1px; line-height: 1.15;
+}
+.pa-stamp-id .pa-stamp-s {
+  font-size: 11.5px; color: var(--gray-130); margin-top: 3px; line-height: 1.3;
+}
+.pa-stamp-id .pa-stamp-m {
+  font-size: 10.5px; color: var(--gray-130); margin-top: 2px;
+  font-family: "Cascadia Mono", Consolas, monospace; letter-spacing: 0.1px;
+}
+.pa-stamp-stepper {
+  display: flex; align-items: center; justify-content: center; gap: 0;
+}
+.pa-step {
+  display: inline-flex; flex-direction: column; align-items: center; gap: 4px;
+  font-size: 10.5px; color: var(--gray-130); font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.3px;
+}
+.pa-step .pa-step-dot {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--gray-30); color: var(--gray-130);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; border: 2px solid transparent;
+}
+.pa-step.done .pa-step-dot { background: var(--msu-teal); color: #fff; }
+.pa-step.done { color: var(--msu-teal); }
+.pa-step.cur .pa-step-dot {
+  background: var(--msu-navy); color: #fff;
+  border-color: var(--msu-gold);
+  box-shadow: 0 0 0 2px rgba(200,165,91,0.28);
+}
+.pa-step.cur { color: var(--msu-navy); }
+.pa-step-bar {
+  height: 2px; width: 42px; background: var(--gray-30); margin: 0 2px; margin-top: -13px;
+  align-self: flex-start;
+}
+.pa-step-bar.done { background: var(--msu-teal); }
+.pa-stamp-right { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+.pa-stamp-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 600; color: #107c10;
+  padding: 4px 10px; border-radius: 12px;
+  background: #effaf0; border: 1px solid #b8e0b8;
+}
+.pa-stamp-chip::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%; background: #107c10;
+  animation: msdcrPulse 2s ease-in-out infinite;
+}
+.pa-ada-badge {
+  font-size: 9.5px; font-weight: 700; letter-spacing: 0.5px;
+  padding: 2px 8px; border-radius: 4px;
+  background: var(--msu-navy); color: var(--msu-gold);
+  text-transform: uppercase;
+}
+
+/* form card wrapper (elevated) */
+.pa-canvas.msdcr-form {
+  background: #fff;
+  background-image: none;
+  border: 1px solid var(--gray-30);
+  border-radius: 12px;
+  padding: 28px 28px 22px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05), 0 6px 24px rgba(0,56,101,0.08);
+  overflow: hidden;
+}
+.pa-canvas.msdcr-form::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--msu-navy) 0%, var(--msu-teal) 100%);
+  border-radius: 12px 12px 0 0;
+}
+.pa-canvas.msdcr-form::after {
+  content: 'OFFICIAL USE — MSDCR · OFFICIAL USE — MSDCR · OFFICIAL USE — MSDCR · OFFICIAL USE — MSDCR · OFFICIAL USE — MSDCR';
+  position: absolute; inset: 0;
+  font-family: Georgia, serif; font-size: 54px; font-weight: 700;
+  color: var(--msu-navy); opacity: 0.03;
+  transform: rotate(-18deg);
+  pointer-events: none;
+  white-space: nowrap;
+  letter-spacing: 8px;
+  line-height: 120px;
+  padding: 100px 0;
+  overflow: hidden;
+}
+.pa-canvas.msdcr-form > * { position: relative; z-index: 1; }
+
+/* section titles with gold underline */
+.pa-section {
+  margin-top: 14px; margin-bottom: 10px;
+}
+.pa-section:first-child { margin-top: 0; }
+.pa-section h4 {
+  font-family: "Segoe UI", sans-serif;
+  font-size: 12.5px; font-weight: 700; color: var(--msu-navy);
+  text-transform: uppercase; letter-spacing: 0.9px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid var(--msu-gold);
+  display: inline-block;
+  margin-bottom: 2px;
+}
+.pa-section-sub {
+  font-size: 11px; color: var(--gray-130); margin-top: 3px; margin-bottom: 8px;
+  font-style: italic;
+}
+
+/* field refinements */
+.pa-field.with-check {
+  position: relative;
+}
+.pa-field-check {
+  position: absolute; top: 28px; right: 10px;
+  width: 14px; height: 14px;
+  color: #107c10;
+}
+.pa-input.msdcr {
+  padding: 8px 12px; font-size: 13px;
+  border-radius: 4px; border: 1px solid var(--gray-40);
+}
+.pa-input.msdcr.filled { background: #f9fbfd; border-color: #b8c8da; color: var(--gray-160); }
+.pa-input.msdcr:focus { border-color: var(--msu-navy); outline: 2px solid rgba(0,56,101,0.2); }
+.pa-dropdown.msdcr { padding: 8px 12px; font-size: 13px; border-radius: 4px; border: 1px solid var(--gray-40); background: #f9fbfd; }
+.pa-advisory {
+  display: block; font-size: 10.5px; color: var(--gray-130);
+  padding: 5px 8px; margin-top: 4px;
+  background: #fbf6ea; border-left: 2px solid var(--msu-gold); border-radius: 0 3px 3px 0;
+}
+.pa-advisory::before {
+  content: 'i'; display: inline-flex; align-items: center; justify-content: center;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--msu-gold); color: #fff;
+  font-family: Georgia, serif; font-size: 9px; font-weight: 700;
+  margin-right: 5px; font-style: normal;
+}
+.pa-consent-fine {
+  font-size: 10.5px; color: var(--gray-130); margin-top: 4px; margin-left: 22px; line-height: 1.4;
+}
+.pa-signature-block {
+  background: #fcfbf5; border: 1px dashed var(--msu-gold); border-radius: 5px;
+  padding: 12px 14px; margin-top: 6px;
+}
+.pa-signature-line {
+  display: flex; align-items: baseline; gap: 12px;
+  border-bottom: 1px solid var(--gray-90);
+  padding-bottom: 2px; margin-bottom: 4px;
+}
+.pa-signature-cursive {
+  font-family: "Segoe Script", "Lucida Handwriting", "Brush Script MT", cursive;
+  font-size: 20px; color: var(--msu-navy); font-weight: 400;
+}
+.pa-signature-date {
+  margin-left: auto;
+  font-size: 11px; color: var(--gray-130);
+  font-family: "Cascadia Mono", Consolas, monospace;
+}
+.pa-signature-meta {
+  font-size: 10px; color: var(--gray-130);
+  font-family: "Cascadia Mono", Consolas, monospace;
+  display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+}
+.pa-signature-meta .lock-ico {
+  width: 11px; height: 11px; color: #107c10;
+}
+
+/* after-submission breadcrumb */
+.pa-after-submit {
+  margin-top: 12px; padding: 8px 12px;
+  background: linear-gradient(90deg, rgba(0,56,101,0.05), rgba(0,144,168,0.05));
+  border: 1px dashed var(--msu-navy);
+  border-radius: 6px;
+  font-size: 11px; color: var(--gray-160); line-height: 1.6;
+}
+.pa-after-submit strong { color: var(--msu-navy); font-weight: 700; }
+.pa-after-submit .arr { color: var(--msu-teal); font-weight: 700; margin: 0 4px; }
+
+/* upgraded Copilot chip */
+.pa-copilot-chip.msdcr-upgrade {
+  padding: 6px 12px 6px 8px;
+  background: linear-gradient(135deg, #2ED4FF 0%, #7441E8 55%, #F0509B 100%);
+  border: none;
+  color: #fff; font-weight: 600;
+  box-shadow: 0 2px 8px rgba(116,65,232,0.32);
+}
+.pa-copilot-chip.msdcr-upgrade::before { content: none; }
+.pa-copilot-chip.msdcr-upgrade .cp-sparkle {
+  width: 14px; height: 14px; display: inline-block;
+}
+
+/* right-rail connection SVG tiles */
+.pa-conn-ico svg { width: 16px; height: 16px; color: #fff; }
+.pa-conn-ico.msdcr-dv { background: #b14ab1; }
+.pa-conn-ico.msdcr-sp { background: #0b6e86; }
+.pa-conn-ico.msdcr-cs { background: #7441e8; }
+.pa-conn-ico.msdcr-pa { background: #0090a8; }
+.pa-conn-ico.msdcr-ms { background: #0078d4; }
+
+/* Dataverse table preview mini-card */
+.pa-dv-preview {
+  background: #fff;
+  border: 1px solid #ead0ea;
+  border-radius: 6px; overflow: hidden; margin-top: 4px;
+}
+.pa-dv-preview-head {
+  background: linear-gradient(135deg, #fbf5fb, #fff);
+  padding: 7px 10px;
+  font-size: 11px; color: #742774; font-weight: 700;
+  font-family: "Cascadia Mono", Consolas, monospace;
+  border-bottom: 1px solid #ead0ea;
+  display: flex; justify-content: space-between;
+}
+.pa-dv-preview-head .dv-rows { color: var(--gray-130); font-weight: 500; font-family: "Segoe UI"; font-size: 10px; }
+.pa-dv-tbl { width: 100%; border-collapse: collapse; }
+.pa-dv-tbl th, .pa-dv-tbl td {
+  font-size: 10px; text-align: left;
+  padding: 4px 8px;
+  border-bottom: 1px solid #f3e8f3;
+}
+.pa-dv-tbl th {
+  background: #faf4fa; color: #742774; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.3px; font-size: 9px;
+}
+.pa-dv-tbl td.dv-id { font-family: "Cascadia Mono", Consolas, monospace; color: #742774; }
+.pa-dv-tbl td.dv-status { font-size: 9.5px; }
+.pa-dv-tbl .dv-s-draft { color: #8a5c00; }
+.pa-dv-tbl .dv-s-review { color: #004c88; }
+.pa-dv-tbl .dv-s-ok { color: #107c10; }
+.pa-dv-tbl tr.dv-row-current { background: #fbf5fb; }
+
+/* Security & audit block */
+.pa-security {
+  background: linear-gradient(135deg, #eef4fb, #f8fbff);
+  border: 1px solid #c2d4e6; border-left: 3px solid var(--msu-navy);
+  border-radius: 6px;
+  padding: 10px 12px; margin-top: 4px;
+  font-size: 11px; color: var(--gray-160); line-height: 1.55;
+}
+.pa-security h5 {
+  font-size: 10.5px; font-weight: 700; color: var(--msu-navy);
+  text-transform: uppercase; letter-spacing: 0.6px;
+  margin-bottom: 5px;
+}
+.pa-security ul { list-style: none; padding: 0; margin: 0; }
+.pa-security li {
+  display: flex; align-items: flex-start; gap: 6px;
+  padding: 2px 0; font-size: 11px;
+}
+.pa-security li::before {
+  content: '\2713'; color: #107c10; font-weight: 700; flex-shrink: 0;
+}
+
+/* ============ PP ENTERPRISE POLISH (v2) ============ */
+.pp-govbar {
+  background: #fff; color: var(--gray-160);
+  padding: 5px 20px; font-size: 11.5px;
+  display: flex; align-items: center; gap: 10px;
+  border-bottom: 1px solid var(--gray-30);
+}
+.pp-govbar .gov-tri {
+  display: inline-flex; align-items: center; gap: 5px;
+  color: var(--msu-navy); font-weight: 600;
+}
+.pp-govbar .gov-tri svg { width: 11px; height: 11px; }
+.pp-govbar .gov-sep { color: var(--gray-60); }
+.pp-govbar .gov-how { color: var(--msu-navy); cursor: pointer; font-weight: 600; }
+.pp-govbar .gov-how::after { content: ' \25BE'; font-size: 8px; }
+.pp-securebar {
+  background: var(--msu-navy); color: #fff;
+  padding: 5px 20px; font-size: 10.5px;
+  display: flex; align-items: center; gap: 10px;
+  border-bottom: 1px solid #c8a55b;
+}
+.pp-securebar .sb-lock { width: 11px; height: 11px; color: var(--msu-gold); flex-shrink: 0; }
+.pp-securebar .sb-url {
+  font-family: "Cascadia Mono", Consolas, monospace;
+  color: #fff; font-weight: 500;
+}
+.pp-securebar .sb-sep { color: rgba(255,255,255,0.4); }
+.pp-securebar .sb-verified { color: var(--msu-gold); font-weight: 600; }
+
+/* authenticated-session widget */
+.pp-auth-widget {
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: #fff;
+}
+.pp-auth-widget .pp-auth-av {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--msu-gold); color: var(--msu-navy);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 12.5px;
+  flex-shrink: 0;
+}
+.pp-auth-widget .pp-auth-text { font-size: 11.5px; line-height: 1.35; }
+.pp-auth-widget .pp-auth-text strong { display: block; font-size: 12px; font-weight: 600; }
+.pp-auth-widget .pp-auth-text .role { color: var(--msu-gold); font-size: 10.5px; font-weight: 600; }
+.pp-auth-widget .pp-auth-signout {
+  font-size: 10.5px; color: #fff;
+  padding: 3px 8px; border-radius: 4px; cursor: pointer;
+  background: transparent; border: 1px solid rgba(255,255,255,0.4);
+  font-family: inherit;
+}
+.pp-auth-widget .pp-auth-signout:hover { background: rgba(255,255,255,0.12); }
+
+/* ref ID strip */
+.pp-ref-strip {
+  display: flex; justify-content: space-between; align-items: center;
+  background: #faf8f2;
+  border-bottom: 1px solid #eadfc7;
+  padding: 6px 24px;
+  font-size: 10.5px; color: var(--gray-130);
+}
+.pp-ref-strip .ref-meta {
+  font-family: "Cascadia Mono", Consolas, monospace;
+  letter-spacing: 0.3px;
+}
+.pp-ref-strip strong { color: var(--msu-navy); }
+
+/* navy-on-gold card icon */
+.pp-card-ico.msdcr-circle {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: var(--msu-gold);
+  color: var(--msu-navy);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 12px;
+  box-shadow: 0 1px 3px rgba(200,165,91,0.4);
+}
+.pp-card-ico.msdcr-circle svg { width: 22px; height: 22px; }
+
+/* MSDCR-branded Copilot-style button (replaces purple) */
+.pp-msdcr-chat-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 14px; border-radius: 18px;
+  background: var(--msu-navy); color: #fff;
+  font-size: 11.5px; font-weight: 600; font-family: inherit;
+  border: 1px solid var(--msu-navy); cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0,56,101,0.3);
+  transition: box-shadow 0.15s;
+}
+.pp-msdcr-chat-btn:hover {
+  box-shadow: 0 0 0 3px rgba(200,165,91,0.45), 0 1px 3px rgba(0,56,101,0.3);
+}
+.pp-msdcr-chat-btn .cp-spark { width: 12px; height: 12px; flex-shrink: 0; }
+
+.pp-begin-pill {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 6px 13px; border-radius: 18px;
+  background: var(--msu-gold); color: var(--msu-navy);
+  font-size: 11.5px; font-weight: 700;
+  cursor: pointer; text-decoration: none;
+}
+.pp-begin-pill:hover { background: #d5b672; }
+
+/* recent activity row */
+.pp-activity {
+  padding: 4px 24px 14px;
+}
+.pp-activity-head {
+  font-size: 12px; color: var(--msu-navy); font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.8px;
+  border-bottom: 1px solid var(--msu-gold);
+  padding-bottom: 5px; margin-bottom: 10px;
+}
+.pp-activity-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+}
+.pp-activity-card {
+  background: #fff;
+  border: 1px solid var(--gray-30);
+  border-left: 3px solid var(--msu-navy);
+  border-radius: 6px;
+  padding: 12px 14px;
+  cursor: pointer;
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+.pp-activity-card:hover { box-shadow: 0 4px 14px rgba(0,56,101,0.1); transform: translateY(-1px); }
+.pp-activity-card-head {
+  display: flex; justify-content: space-between; align-items: center; gap: 10px;
+  margin-bottom: 6px;
+}
+.pp-activity-id {
+  font-size: 12px; color: var(--msu-navy); font-weight: 700;
+  font-family: "Cascadia Mono", Consolas, monospace;
+}
+.pp-activity-pill {
+  font-size: 10px; font-weight: 600;
+  padding: 2px 8px; border-radius: 10px;
+  text-transform: uppercase; letter-spacing: 0.3px;
+  background: #fbf6ea; color: #846425; border: 1px solid #e2cf9a;
+  white-space: nowrap;
+}
+.pp-activity-pill.nav { background: #eef4fb; color: var(--msu-navy); border-color: #c2d4e6; }
+.pp-activity-title {
+  font-size: 12.5px; color: var(--gray-160); font-weight: 600; margin-bottom: 6px;
+}
+.pp-activity-prog {
+  display: flex; gap: 3px; margin: 6px 0;
+}
+.pp-activity-prog span {
+  flex: 1; height: 5px; border-radius: 3px; background: var(--gray-30);
+}
+.pp-activity-prog span.done { background: var(--msu-teal); }
+.pp-activity-prog span.cur { background: var(--msu-navy); }
+.pp-activity-foot {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 10.5px; color: var(--gray-130);
+}
+.pp-activity-foot .days {
+  font-size: 10px; font-weight: 700;
+  padding: 2px 7px; border-radius: 9px;
+  background: #effaf0; color: #107c10; border: 1px solid #b8e0b8;
+}
+
+/* accessibility strip */
+.pp-ada-strip {
+  padding: 4px 24px 14px;
+  display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+}
+.pp-ada-strip .ada-chip {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 10.5px; font-weight: 500;
+  padding: 3px 9px; border-radius: 10px;
+  background: #f5f6f8; color: var(--gray-160); border: 1px solid var(--gray-30);
+}
+.pp-ada-strip .ada-chip.pri { background: var(--msu-navy); color: #fff; border-color: var(--msu-navy); font-weight: 600; }
+
+/* footer with 3 columns + bottom strip */
+.pp-footer.msdcr.v2 {
+  grid-template-columns: 1.3fr 1fr 1fr;
+  padding: 24px 28px 14px;
+  row-gap: 16px;
+  position: relative;
+}
+.pp-footer.msdcr.v2 .pp-footer-mission {
+  display: flex; gap: 14px; align-items: flex-start;
+}
+.pp-footer.msdcr.v2 .pp-footer-mission-text {
+  font-size: 11.5px; color: rgba(255,255,255,0.85); line-height: 1.5;
+}
+.pp-footer.msdcr.v2 .pp-footer-mission-text strong {
+  display: block; color: #fff; font-family: Georgia, serif;
+  font-size: 12.5px; font-weight: 700; margin-bottom: 4px;
+}
+.pp-footer.msdcr.v2 .pp-footer-mission-text .addr {
+  display: block; margin-top: 6px; color: var(--msu-gold); font-size: 10.5px; letter-spacing: 0.3px;
+}
+.pp-footer.msdcr.v2 .pp-footer-bottom {
+  grid-column: 1 / -1;
+  margin-top: 10px; padding-top: 12px;
+  border-top: 1px solid rgba(200,165,91,0.3);
+  font-size: 10.5px; color: rgba(255,255,255,0.7); text-align: center;
+  letter-spacing: 0.2px;
+}
+
+/* pp-conn-chip SVG slot */
+.pp-conn-chip svg { width: 12px; height: 12px; flex-shrink: 0; }
+.pp-conn-chip.foundry { background: #fde7f4; color: #a8156c; border-color: #f2bdd9; }
+
+/* dark-mode overrides for new surfaces */
+body.dark .pa-stamp-head { background: #1f1f1f; border-color: #333; }
+body.dark .pa-stamp-id .pa-stamp-t { color: #f0f0f0; }
+body.dark .pa-stamp-id .pa-stamp-s,
+body.dark .pa-stamp-id .pa-stamp-m { color: #b6b6b6; }
+body.dark .pa-canvas.msdcr-form { background: #1f1f1f; border-color: #333; color: #e0e0e0; }
+body.dark .pa-canvas.msdcr-form::after { opacity: 0.04; color: #7ab4e8; }
+body.dark .pa-section h4 { color: #cfe0f5; }
+body.dark .pa-input.msdcr.filled { background: #2a2a2a; border-color: #3a4a5e; color: #e0e0e0; }
+body.dark .pa-dropdown.msdcr { background: #2a2a2a; border-color: #3a4a5e; color: #e0e0e0; }
+body.dark .pa-advisory { background: #2a2418; color: #d3bd7d; }
+body.dark .pa-signature-block { background: #231e12; border-color: #7a6530; }
+body.dark .pa-after-submit { background: linear-gradient(90deg, rgba(0,56,101,0.2), rgba(0,144,168,0.15)); color: #e0e0e0; }
+body.dark .pa-dv-preview { background: #252525; border-color: #4a2a4a; }
+body.dark .pa-dv-tbl th { background: #2a1f2a; color: #d8a8d8; }
+body.dark .pa-dv-tbl td, body.dark .pa-dv-tbl th { border-color: #332233; }
+body.dark .pa-security { background: #1a2332; border-color: #2d3d5a; color: #cfe0f5; }
+body.dark .pp-govbar { background: #1f1f1f; color: #e0e0e0; border-color: #333; }
+body.dark .pp-ref-strip { background: #2a241a; border-color: #554a32; color: #c0b8a0; }
+body.dark .pp-activity-card { background: #252525; border-color: #333; color: #e0e0e0; }
+body.dark .pp-activity-title { color: #f0f0f0; }
+
 </style>
 </head>
 <body>
@@ -3905,6 +5367,59 @@ body.dark .rm-track { background: linear-gradient(90deg, #107c10 0%, #107c10 60%
         <rect x="5" y="12" width="4" height="6" fill="#0090a8" opacity="0.7"/>
       </g>
     </symbol>
+
+    <!-- ============ MSDCR AGENCY SEAL (full, for hero) ============ -->
+    <symbol id="msdcrSeal" viewBox="0 0 100 100">
+      <!-- outer gold ring -->
+      <circle cx="50" cy="50" r="48" fill="#c8a55b"/>
+      <circle cx="50" cy="50" r="45" fill="#003865"/>
+      <circle cx="50" cy="50" r="45" fill="none" stroke="#c8a55b" stroke-width="0.6"/>
+      <!-- inner navy disc with gold hairline -->
+      <circle cx="50" cy="50" r="34" fill="#003865" stroke="#c8a55b" stroke-width="0.8"/>
+      <!-- wrap-around agency text on outer ring -->
+      <defs>
+        <path id="msdcrSealTop" d="M 10 50 A 40 40 0 0 1 90 50"/>
+        <path id="msdcrSealBot" d="M 12 50 A 38 38 0 0 0 88 50"/>
+      </defs>
+      <text fill="#c8a55b" font-family="Georgia, 'Times New Roman', serif" font-size="6.4" font-weight="700" letter-spacing="1.1">
+        <textPath href="#msdcrSealTop" startOffset="50%" text-anchor="middle">MERIDIAN STATE · CORRECTIONS &amp; REHABILITATION</textPath>
+      </text>
+      <text fill="#c8a55b" font-family="Georgia, 'Times New Roman', serif" font-size="5.2" font-weight="600" letter-spacing="1.6">
+        <textPath href="#msdcrSealBot" startOffset="50%" text-anchor="middle">· EST. 1912 ·</textPath>
+      </text>
+      <!-- scales of justice inside -->
+      <g stroke="#c8a55b" stroke-width="1.3" stroke-linecap="round" fill="none">
+        <!-- center post -->
+        <line x1="50" y1="32" x2="50" y2="66"/>
+        <!-- crossbar -->
+        <line x1="34" y1="40" x2="66" y2="40"/>
+        <!-- hanging chains -->
+        <line x1="36" y1="40" x2="36" y2="48"/>
+        <line x1="64" y1="40" x2="64" y2="48"/>
+      </g>
+      <!-- scale pans -->
+      <g fill="#c8a55b">
+        <path d="M30 48 Q36 56 42 48 Z"/>
+        <path d="M58 48 Q64 56 70 48 Z"/>
+        <!-- base -->
+        <rect x="44" y="64" width="12" height="2" rx="0.5"/>
+        <rect x="42" y="66" width="16" height="2" rx="0.5"/>
+      </g>
+      <!-- top star -->
+      <path d="M50 26 L51.2 29 L54.3 29 L51.8 30.9 L52.9 34 L50 32.1 L47.1 34 L48.2 30.9 L45.7 29 L48.8 29 Z" fill="#c8a55b"/>
+    </symbol>
+
+    <!-- ============ MSDCR SEAL MARK (simplified, for topbars / small sizes) ============ -->
+    <symbol id="msdcrSealMark" viewBox="0 0 32 32">
+      <circle cx="16" cy="16" r="15.2" fill="#c8a55b"/>
+      <circle cx="16" cy="16" r="13.5" fill="#003865"/>
+      <circle cx="16" cy="16" r="13.5" fill="none" stroke="#c8a55b" stroke-width="0.6"/>
+      <!-- center star -->
+      <path d="M16 7.5 L17.4 11.4 L21.5 11.4 L18.2 13.9 L19.5 17.8 L16 15.3 L12.5 17.8 L13.8 13.9 L10.5 11.4 L14.6 11.4 Z" fill="#c8a55b"/>
+      <!-- base -->
+      <rect x="10" y="21" width="12" height="1.4" rx="0.4" fill="#c8a55b"/>
+      <rect x="11.5" y="22.8" width="9" height="1.2" rx="0.4" fill="#c8a55b"/>
+    </symbol>
   </defs>
 </svg>
 
@@ -4003,6 +5518,9 @@ body.dark .rm-track { background: linear-gradient(90deg, #107c10 0%, #107c10 60%
           <div class="waffle-app" onclick="closeWaffle(); openApp('onedrive')"><svg width="30" height="30"><use href="#logoOnedrive"/></svg><span>OneDrive</span></div>
           <div class="waffle-app" onclick="closeWaffle(); openApp('pages')"><div class="wa-box" style="background:linear-gradient(135deg,#0f9d58,#0b7d47);"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M5 3h10l4 4v14H5V3zm9 1v4h4z"/></svg></div><span>Pages</span></div>
           <div class="waffle-app" onclick="closeWaffle(); openApp('dax')"><div class="wa-box" style="background:linear-gradient(135deg,#e8491d,#a8330f);"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a3 3 0 00-3 3v7a3 3 0 006 0V5a3 3 0 00-3-3zm-7 9a7 7 0 0014 0h-2a5 5 0 01-10 0H5z"/></svg></div><span>Foundry</span></div>
+          <div class="waffle-app" onclick="closeWaffle(); openApp('powerapps')"><div class="wa-box" style="background:linear-gradient(135deg,#742774,#b14ab1);"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l9 5v10l-9 5-9-5V7l9-5zM8 10l4-2 4 2v4l-4 2-4-2v-4z"/></svg></div><span>Power Apps</span></div>
+          <div class="waffle-app" onclick="closeWaffle(); openApp('powerautomate')"><div class="wa-box" style="background:linear-gradient(135deg,#0b8ba5,#4bc9f0);"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M4 12a8 8 0 0114-5.3l-2 1.5A5.5 5.5 0 006.5 12H9l-3.5 4L2 12h2zm16 0a8 8 0 01-14 5.3l2-1.5a5.5 5.5 0 009.5-3.8H15l3.5-4L22 12h-2z"/></svg></div><span>Automate</span></div>
+          <div class="waffle-app" onclick="closeWaffle(); openApp('powerpages')"><div class="wa-box" style="background:linear-gradient(135deg,#1e7a3c,#3ea558);"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M3 5a2 2 0 012-2h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5zm2 3v11h14V8H5z"/></svg></div><span>Power Pages</span></div>
         </div>
         <div class="waffle-label">IT / Admin</div>
         <div class="waffle-grid">
@@ -4134,6 +5652,25 @@ body.dark .rm-track { background: linear-gradient(90deg, #107c10 0%, #107c10 60%
           <div class="ms-stack-uc"><span class="stack-badge foundry">Foundry</span> UC6 classification · governance across all six</div>
         </div>
       </div>
+
+      <!-- Dataverse sub-callout — the common data layer beneath Power Platform + agents -->
+      <div class="dv-callout">
+        <div class="dv-callout-head">
+          <div class="dv-ico">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M12 3c-4.97 0-9 1.34-9 3v12c0 1.66 4.03 3 9 3s9-1.34 9-3V6c0-1.66-4.03-3-9-3zm0 2c4.41 0 7 1.12 7 1s-2.59 1-7 1-7-1.12-7-1 2.59-1 7-1zM5 8.3c1.59.76 4.25 1.2 7 1.2s5.41-.44 7-1.2V12c0 .12-2.59 1-7 1s-7-.88-7-1V8.3zM5 14.3c1.59.76 4.25 1.2 7 1.2s5.41-.44 7-1.2V18c0 .12-2.59 1-7 1s-7-.88-7-1v-3.7z"/></svg>
+          </div>
+          <div>
+            <div class="dv-callout-title">Dataverse · shared data spine</div>
+            <div class="dv-callout-sub">The governed tables powering every Power App, Power Automate flow, Power Pages portal, and Copilot Studio agent at MSDCR.</div>
+          </div>
+        </div>
+        <div class="dv-chip-row">
+          <div class="dv-chip"><div class="dv-chip-name">msdcr_residents</div><div class="dv-chip-rows">18,204 rows · ACA-aligned</div></div>
+          <div class="dv-chip"><div class="dv-chip-name">msdcr_grievances</div><div class="dv-chip-rows">1,847 rows · SLA tiered</div></div>
+          <div class="dv-chip"><div class="dv-chip-name">msdcr_visitor_applications</div><div class="dv-chip-rows">3,418 rows · family intake</div></div>
+          <div class="dv-chip"><div class="dv-chip-name">msdcr_program_completions</div><div class="dv-chip-rows">9,102 rows · reentry grounded</div></div>
+        </div>
+      </div>
     </div>
 
     <div class="home-section-title">Apps</div>
@@ -4228,6 +5765,38 @@ body.dark .rm-track { background: linear-gradient(90deg, #107c10 0%, #107c10 60%
         <div class="app-name">Agent 365</div>
         <div class="app-meta">Govern &amp; monitor agents</div>
         <div class="badge" style="background:linear-gradient(135deg,#1b4aa8,#0a1f4a);box-shadow:0 2px 4px rgba(27,74,168,0.4);">47</div>
+      </div>
+
+      <!-- Power Platform tiles — Layer 3 of the MSDCR AI stack -->
+      <div class="app-tile" data-personas="sarah patel maria cio" onclick="openApp('powerapps')">
+        <div class="app-icon" style="filter:none;">
+          <div class="tile-logo-box" style="background:linear-gradient(135deg,#742774 0%,#b14ab1 100%);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l9 5v10l-9 5-9-5V7l9-5zm0 2.3L5 8v8l7 3.7L19 16V8l-7-3.7zM8 10l4-2 4 2v4l-4 2-4-2v-4z"/></svg>
+          </div>
+        </div>
+        <div class="app-name">Power Apps</div>
+        <div class="app-meta">Case-mgmt intake forms</div>
+        <div class="badge" style="background:linear-gradient(135deg,#742774,#4a1a4a);box-shadow:0 2px 4px rgba(116,39,116,0.4);">6 apps</div>
+      </div>
+      <div class="app-tile" data-personas="sarah patel maria cio" onclick="openApp('powerautomate')">
+        <div class="app-icon" style="filter:none;">
+          <div class="tile-logo-box" style="background:linear-gradient(135deg,#0b8ba5 0%,#4bc9f0 100%);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M4 12a8 8 0 0114-5.3l-2 1.5A5.5 5.5 0 006.5 12H9l-3.5 4L2 12h2zm16 0a8 8 0 01-14 5.3l2-1.5a5.5 5.5 0 009.5-3.8H15l3.5-4L22 12h-2z"/></svg>
+          </div>
+        </div>
+        <div class="app-name">Power Automate</div>
+        <div class="app-meta">Flows &amp; SLA timers</div>
+        <div class="badge" style="background:linear-gradient(135deg,#0b8ba5,#0a6a7e);box-shadow:0 2px 4px rgba(11,139,165,0.4);">8 flows</div>
+      </div>
+      <div class="app-tile" data-personas="sarah patel maria cio" onclick="openApp('powerpages')">
+        <div class="app-icon" style="filter:none;">
+          <div class="tile-logo-box" style="background:linear-gradient(135deg,#1e7a3c 0%,#3ea558 100%);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M3 5a2 2 0 012-2h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5zm2 3v11h14V8H5zm0-2h14V5H5v1zm2 5h4v2H7v-2zm0 4h10v1.5H7V15zm6-4h4v2h-4v-2z"/></svg>
+          </div>
+        </div>
+        <div class="app-name">Power Pages</div>
+        <div class="app-meta">Family &amp; visitor portal</div>
+        <div class="badge" style="background:linear-gradient(135deg,#107c10,#0b5a0b);box-shadow:0 2px 4px rgba(16,124,16,0.4);">LIVE</div>
       </div>
 
       <!-- Maria (Visitation & Family Services Coordinator) gets Microsoft Shifts for shift coverage schedules -->
@@ -5183,11 +6752,14 @@ body.dark .rm-track { background: linear-gradient(90deg, #107c10 0%, #107c10 60%
             </div>
             <div class="dax-rec">
               <span class="dax-rec-dot"></span>
-              <span>Evaluating</span>
-              <span class="dax-timer">08:42</span>
+              <span>Eval run #2041</span>
+              <span class="dax-timer">72% complete</span>
             </div>
           </div>
-          <div class="dax-waveform" id="dax-waveform"></div>
+          <div class="dax-evalprog" id="dax-evalprog">
+            <div class="dax-evalprog-track"><div class="dax-evalprog-fill" id="dax-evalprog-fill"></div></div>
+            <div class="dax-evalprog-label">Packet 5 of 7 · 98.2% avg policy-ground match</div>
+          </div>
           <div class="dax-transcript">
             <div class="dax-turn patient">
               <div class="dax-speaker">Agent draft (Packet #4 of 7)</div>
@@ -6156,6 +7728,995 @@ body.dark .rm-track { background: linear-gradient(90deg, #107c10 0%, #107c10 60%
     </div>
   </div>
 
+  <!-- ========== POWER APPS — MSDCR Case Management ========== -->
+  <div id="app-powerapps" class="app-shell">
+    <div class="app-topbar powerapps">
+      <div class="back" onclick="goHome()">☰</div>
+      <div class="app-title">
+        <svg class="app-title-seal" viewBox="0 0 32 32"><use href="#msdcrSealMark"/></svg>
+        <svg class="app-title-logo" width="22" height="22" viewBox="0 0 24 24">
+          <rect width="24" height="24" rx="5" fill="#fff"/>
+          <path d="M12 4l7 4v8l-7 4-7-4V8l7-4zm0 2.1L7 9v6l5 2.9 5-2.9V9l-5-2.9zM9 10l3-1.5L15 10v3l-3 1.5L9 13v-3z" fill="#742774"/>
+        </svg>
+        Power Apps · MSDCR Case Management
+      </div>
+      <div style="flex:1"></div>
+      <div class="right">
+        <div class="avatar" style="background:#c8a55b;color:#003865;">AR</div>
+      </div>
+    </div>
+    <div class="pa-body">
+      <div class="pa-sidebar">
+        <div class="pa-sidebar-head">
+          <h3>Apps</h3>
+          <p>Environment: MSDCR-Prod · 6 apps</p>
+        </div>
+        <div class="pa-applist">
+          <div class="pa-approw active">
+            <div class="pa-approw-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l9 5v10l-9 5-9-5V7l9-5z"/></svg></div>
+            <div class="pa-approw-meta">
+              <div class="pa-approw-name">Visitation Application Intake</div>
+              <div class="pa-approw-sub"><span class="pa-approw-kind">Form</span> · 4 min ago</div>
+            </div>
+          </div>
+          <div class="pa-approw">
+            <div class="pa-approw-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l9 5v10l-9 5-9-5V7l9-5z"/></svg></div>
+            <div class="pa-approw-meta">
+              <div class="pa-approw-name">Resident Grievance Intake</div>
+              <div class="pa-approw-sub"><span class="pa-approw-kind">Form</span> · 2 hours ago</div>
+            </div>
+          </div>
+          <div class="pa-approw">
+            <div class="pa-approw-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l9 5v10l-9 5-9-5V7l9-5z"/></svg></div>
+            <div class="pa-approw-meta">
+              <div class="pa-approw-name">Public Records Request Intake</div>
+              <div class="pa-approw-sub"><span class="pa-approw-kind">Form</span> · Yesterday</div>
+            </div>
+          </div>
+          <div class="pa-approw">
+            <div class="pa-approw-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l9 5v10l-9 5-9-5V7l9-5z"/></svg></div>
+            <div class="pa-approw-meta">
+              <div class="pa-approw-name">Reentry Intake Assessment</div>
+              <div class="pa-approw-sub"><span class="pa-approw-kind">Canvas app</span> · 3 days ago</div>
+            </div>
+          </div>
+          <div class="pa-approw">
+            <div class="pa-approw-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l9 5v10l-9 5-9-5V7l9-5z"/></svg></div>
+            <div class="pa-approw-meta">
+              <div class="pa-approw-name">Classification Review Intake</div>
+              <div class="pa-approw-sub"><span class="pa-approw-kind">Form</span> · 5 days ago</div>
+            </div>
+          </div>
+          <div class="pa-approw">
+            <div class="pa-approw-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l9 5v10l-9 5-9-5V7l9-5z"/></svg></div>
+            <div class="pa-approw-meta">
+              <div class="pa-approw-name">Visitation Exception Approval</div>
+              <div class="pa-approw-sub"><span class="pa-approw-kind">Canvas · Warden-facing</span> · 1 week ago</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pa-main">
+        <!-- Stamp head: seal + identity + 4-step stepper + status/ADA -->
+        <div class="pa-stamp-head">
+          <div class="pa-stamp-id">
+            <svg class="pa-stamp-seal" viewBox="0 0 100 100"><use href="#msdcrSeal"/></svg>
+            <div>
+              <div class="pa-stamp-t">Visitation Application Intake</div>
+              <div class="pa-stamp-s">Power Apps &middot; MSDCR Case Management &middot; v2.3</div>
+              <div class="pa-stamp-m">Environment: MSDCR-Prod &middot; Dataverse &middot; Audit-logged</div>
+            </div>
+          </div>
+          <div class="pa-stamp-stepper">
+            <div class="pa-step done"><div class="pa-step-dot">&#10003;</div>Intake</div>
+            <div class="pa-step-bar done"></div>
+            <div class="pa-step cur"><div class="pa-step-dot">2</div>Eligibility check</div>
+            <div class="pa-step-bar"></div>
+            <div class="pa-step"><div class="pa-step-dot">3</div>Coordinator review</div>
+            <div class="pa-step-bar"></div>
+            <div class="pa-step"><div class="pa-step-dot">4</div>Scheduled</div>
+          </div>
+          <div class="pa-stamp-right">
+            <span class="pa-stamp-chip">Draft &middot; auto-saved 09:47</span>
+            <span class="pa-ada-badge">ADA &middot; WCAG 2.2 AA</span>
+          </div>
+        </div>
+
+        <!-- breadcrumb + Copilot chip row -->
+        <div class="msdcr-crumb">
+          <div class="msdcr-crumb-path">
+            <strong>MSDCR Case Management</strong><span class="sep">&rsaquo;</span>Visitation Services<span class="sep">&rsaquo;</span>New Application <span class="id">#VA-2026-04-3871</span>
+          </div>
+          <div class="msdcr-crumb-right">
+            <span class="pa-copilot-chip msdcr-upgrade">
+              <svg class="cp-sparkle" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2l1.7 5.3L19 9l-5.3 1.7L12 16l-1.7-5.3L5 9l5.3-1.7L12 2zm7 10l.9 2.6L22 15l-2.1.4L19 18l-.9-2.6L16 15l2.1-.4L19 12z"/></svg>
+              Copilot can complete this form from the applicant's email
+            </span>
+          </div>
+        </div>
+
+        <!-- Copilot suggestion callout -->
+        <div class="pa-copilot-callout">
+          <div class="pa-copilot-callout-head">Copilot suggestion</div>
+          <div class="pa-copilot-callout-body">I found Jessica Huang's prior visit on 2/14/2026. Prefill contact info and video-kiosk preference?</div>
+          <div class="pa-copilot-callout-actions">
+            <button class="acc">Accept</button>
+            <button class="dis">Dismiss</button>
+          </div>
+        </div>
+
+        <div class="pa-canvas msdcr-form" style="margin-top:14px;">
+
+          <div class="pa-layout-grid">
+            <!-- LEFT: form fields -->
+            <div>
+              <!-- Applicant -->
+              <div class="pa-section">
+                <h4>Applicant</h4>
+                <div class="pa-section-sub">Verified by Microsoft Entra External ID. ID is masked in the record view.</div>
+              </div>
+              <div class="pa-row2">
+                <div class="pa-field with-check">
+                  <label class="pa-field-label">Applicant full name<span class="req">*</span></label>
+                  <input class="pa-input msdcr filled" value="Huang, Jessica M." readonly/>
+                  <svg class="pa-field-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="5,12 10,17 19,7"/></svg>
+                </div>
+                <div class="pa-field with-check">
+                  <label class="pa-field-label">Relationship to resident<span class="req">*</span></label>
+                  <div class="pa-dropdown msdcr">Spouse / Domestic partner</div>
+                  <svg class="pa-field-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="5,12 10,17 19,7"/></svg>
+                </div>
+              </div>
+              <div class="pa-row2">
+                <div class="pa-field with-check">
+                  <label class="pa-field-label">Government-issued ID type<span class="req">*</span></label>
+                  <div class="pa-dropdown msdcr">Driver's License &middot; Meridian State</div>
+                  <svg class="pa-field-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="5,12 10,17 19,7"/></svg>
+                </div>
+                <div class="pa-field with-check">
+                  <label class="pa-field-label">ID number<span class="req">*</span></label>
+                  <input class="pa-input msdcr filled" value="D-&bull;&bull;&bull;&bull;&bull;&bull;721" readonly/>
+                  <svg class="pa-field-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="5,12 10,17 19,7"/></svg>
+                </div>
+              </div>
+              <div class="pa-row2">
+                <div class="pa-field with-check">
+                  <label class="pa-field-label">Phone<span class="req">*</span></label>
+                  <input class="pa-input msdcr filled" value="(555) 214-9032" readonly/>
+                  <svg class="pa-field-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="5,12 10,17 19,7"/></svg>
+                </div>
+                <div class="pa-field with-check">
+                  <label class="pa-field-label">Email<span class="req">*</span></label>
+                  <input class="pa-input msdcr filled" value="jessica.huang@familyadv.org" readonly/>
+                  <svg class="pa-field-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="5,12 10,17 19,7"/></svg>
+                </div>
+              </div>
+
+              <!-- Visit details -->
+              <div class="pa-section" style="margin-top:22px;">
+                <h4>Visit details</h4>
+                <div class="pa-section-sub">Resident lookup reads from Dataverse; eligibility window is enforced by policy.</div>
+              </div>
+              <div class="pa-field with-check">
+                <label class="pa-field-label">Resident ID &amp; record<span class="req">*</span></label>
+                <input class="pa-input msdcr filled" value="R-2026-041829 &middot; Patel, J. &middot; Complex 2, Unit 4B" readonly/>
+                <svg class="pa-field-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="5,12 10,17 19,7"/></svg>
+              </div>
+              <div class="pa-field">
+                <label class="pa-field-label">Preferred visit date<span class="req">*</span></label>
+                <input class="pa-input msdcr filled" value="2026-04-26" readonly/>
+                <span class="pa-advisory">Warden-approved visitation window: Fri&ndash;Sun, 9 AM&ndash;4 PM.</span>
+              </div>
+              <div class="pa-row2">
+                <div class="pa-field">
+                  <label class="pa-field-label">Visit type<span class="req">*</span></label>
+                  <div class="pa-radio-group">
+                    <span class="pa-radio"><span class="pa-dot"></span>In-person</span>
+                    <span class="pa-radio sel"><span class="pa-dot"></span>Video</span>
+                    <span class="pa-radio"><span class="pa-dot"></span>Non-contact</span>
+                  </div>
+                </div>
+                <div class="pa-field with-check">
+                  <label class="pa-field-label">Visit duration<span class="req">*</span></label>
+                  <div class="pa-dropdown msdcr">60 minutes</div>
+                  <svg class="pa-field-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="5,12 10,17 19,7"/></svg>
+                </div>
+              </div>
+
+              <!-- Accommodations -->
+              <div class="pa-section" style="margin-top:22px;">
+                <h4>Accommodations</h4>
+                <div class="pa-section-sub">Required by Meridian AB-491 and ADA Title II; captured for audit.</div>
+              </div>
+              <div class="pa-field">
+                <label class="pa-check"><span class="pa-box"></span>Transportation accommodation needed (ADA)</label>
+              </div>
+              <div class="pa-row2">
+                <div class="pa-field">
+                  <label class="pa-field-label">Language preference</label>
+                  <div class="pa-dropdown msdcr">English (Espa&ntilde;ol disponible)</div>
+                </div>
+                <div class="pa-field">
+                  <label class="pa-field-label">Minor children attending</label>
+                  <input class="pa-input msdcr filled" value="0" readonly/>
+                </div>
+              </div>
+
+              <!-- Consent & signatures -->
+              <div class="pa-section" style="margin-top:22px;">
+                <h4>Consent &amp; signatures</h4>
+                <div class="pa-section-sub">Cryptographically signed in Power Apps with the applicant's Entra identity.</div>
+              </div>
+              <div class="pa-field">
+                <label class="pa-check"><span class="pa-box" style="background:var(--msu-navy);border-color:var(--msu-navy);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:10px;">&#10003;</span>Agency background-check consent</label>
+                <div class="pa-consent-fine">I consent to a background check under MSDCR policy 5.04 (revised 2026R1). I understand the check reviews public criminal records and may result in denial or restriction of visitation privileges.</div>
+              </div>
+              <div class="pa-field">
+                <label class="pa-field-label">Applicant signature</label>
+                <div class="pa-signature-block">
+                  <div class="pa-signature-line">
+                    <span class="pa-signature-cursive">Jessica M. Huang</span>
+                    <span class="pa-signature-date">2026-04-21 &middot; 09:47 MST</span>
+                  </div>
+                  <div class="pa-signature-meta">
+                    <svg class="lock-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
+                    <span>Hash: SHA-256 e3&hellip;9a4</span>
+                    <span>&middot;</span>
+                    <span>Signed in Power Apps (Entra)</span>
+                    <span>&middot;</span>
+                    <span>IP: 172.22.&bull;.&bull;</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pa-field">
+                <label class="pa-field-label">Attached ID</label>
+                <div class="pa-filechip">driver-license-front.jpg &middot; 2.4 MB</div>
+              </div>
+            </div>
+
+            <!-- RIGHT: case context -->
+            <div class="pa-context-col">
+              <div class="pa-context-card">
+                <h5>Case context <span class="ctx-badge">Dataverse</span></h5>
+                <div class="pa-ctx-match">
+                  <span class="ctx-match-hit">Matched to R-2026-041829</span>
+                  <span class="ctx-match-sub">Jessica Huang &middot; Spouse &middot; portal since 2024</span>
+                  <span class="ctx-match-sub">Resident: <strong>J. Patel</strong> &middot; Complex 2 &middot; Medium custody</span>
+                  <span class="ctx-match-sub">Enrolled: CBT cohort + GED track</span>
+                </div>
+              </div>
+              <div class="pa-context-card">
+                <h5>Eligibility pre-check</h5>
+                <ul class="pa-ctx-list">
+                  <li class="ok"><span class="ci"></span>Background check on file &middot; last verified 3/22/2026</li>
+                  <li class="ok"><span class="ci"></span>No active no-contact order</li>
+                  <li class="warn"><span class="ci"></span>Video-visit credits: 2 remaining this month</li>
+                </ul>
+              </div>
+              <div class="pa-context-card">
+                <h5>Relevant policy <span class="ctx-badge">Cited by Policy Copilot</span></h5>
+                <div class="pa-ctx-policy-item">DOP 911 &sect;2.4 &mdash; Video-visit eligibility</div>
+                <div class="pa-ctx-policy-item">DOP 911 &sect;3.1 &mdash; Approved visitors list</div>
+                <div class="pa-ctx-policy-item">MSDCR 5.04 &mdash; Background check policy (2026R1)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pa-submit-row msdcr">
+            <button class="pa-submit-btn msdcr-secondary">Save as draft</button>
+            <button class="pa-submit-btn msdcr-primary">Submit to Visitation Coordinator</button>
+            <div class="pa-submit-note">Submits to: <strong>M. Gutierrez</strong><br/>SLA: 2 business days</div>
+          </div>
+
+          <!-- After-submission breadcrumb -->
+          <div class="pa-after-submit">
+            <strong>After submission</strong><span class="arr">&rarr;</span>Visitation Front Door agent validates eligibility<span class="arr">&rarr;</span>Power Automate routes to Visitation Coordinator queue<span class="arr">&rarr;</span>Dataverse: <code style="font-family:'Cascadia Mono',Consolas,monospace;color:#742774;">msdcr_visitor_applications</code>
+          </div>
+
+          <!-- audit/compliance footer -->
+          <div class="msdcr-audit-footer">
+            <span class="purview-ico">P</span>
+            <span class="af-seg">Field-level audit: <strong>14 changes captured</strong></span>
+            <span class="af-sep">&middot;</span>
+            <span class="af-seg">PII redaction: enabled</span>
+            <span class="af-sep">&middot;</span>
+            <span class="af-seg">Retention: 7 years (DOP 603)</span>
+            <span class="af-sep">&middot;</span>
+            <span class="af-seg">Audit sink: Microsoft Purview</span>
+            <span class="af-sep">&middot;</span>
+            <span class="af-seg">Ref: <strong>MSDCR-V-2026-0429031</strong></span>
+          </div>
+          <div class="pa-ds-chip" style="margin-top:10px;"><span class="dot"></span>Connected &middot; Dataverse: msdcr_visitor_applications &middot; Connector: Microsoft Dataverse</div>
+        </div>
+      </div>
+      <div class="pa-rail">
+        <div class="pa-rail-h">Connections</div>
+        <div class="pa-conn">
+          <div class="pa-conn-ico msdcr-dv">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5zm0 2.2L19 8v1.1l-7 3.9-7-3.9V8l7-3.8zM5 10.7l6 3.4v6.5l-6-3.4v-6.5zm8 3.4l6-3.4v6.5l-6 3.4v-6.5z"/></svg>
+          </div>
+          <div class="pa-conn-name"><strong>Dataverse</strong><span>msdcr_visitor_applications</span></div>
+          <span class="pa-conn-pill ok">Connected</span>
+        </div>
+        <div class="pa-conn">
+          <div class="pa-conn-ico msdcr-dv">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5zm0 2.2L19 8v1.1l-7 3.9-7-3.9V8l7-3.8zM5 10.7l6 3.4v6.5l-6-3.4v-6.5zm8 3.4l6-3.4v6.5l-6 3.4v-6.5z"/></svg>
+          </div>
+          <div class="pa-conn-name"><strong>Dataverse</strong><span>msdcr_residents</span></div>
+          <span class="pa-conn-pill ok">Connected</span>
+        </div>
+        <div class="pa-conn">
+          <div class="pa-conn-ico msdcr-sp">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9l-6-6z"/><polyline points="14,3 14,9 20,9"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg>
+          </div>
+          <div class="pa-conn-name"><strong>SharePoint</strong><span>Policy Manual library</span></div>
+          <span class="pa-conn-pill ok">Connected</span>
+        </div>
+        <div class="pa-conn">
+          <div class="pa-conn-ico msdcr-cs">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2L12 2zm7 12l1 3 3 1-3 1-1 3-1-3-3-1 3-1 1-3z"/></svg>
+          </div>
+          <div class="pa-conn-name"><strong>Copilot Studio</strong><span>Visitation Front Door agent</span></div>
+          <span class="pa-conn-pill studio">Studio</span>
+        </div>
+        <div class="pa-conn">
+          <div class="pa-conn-ico msdcr-pa">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12a7 7 0 0112-5"/><polyline points="16,4 17,7 14,8"/><path d="M19 12a7 7 0 01-12 5"/><polyline points="8,20 7,17 10,16"/></svg>
+          </div>
+          <div class="pa-conn-name"><strong>Power Automate</strong><span>Grievance SLA timers</span></div>
+          <span class="pa-conn-pill automate">Automate</span>
+        </div>
+        <div class="pa-conn">
+          <div class="pa-conn-ico msdcr-ms">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="8.5" height="8.5" fill="#f25022"/><rect x="12.5" y="3" width="8.5" height="8.5" fill="#7fba00"/><rect x="3" y="12.5" width="8.5" height="8.5" fill="#00a4ef"/><rect x="12.5" y="12.5" width="8.5" height="8.5" fill="#ffb900"/></svg>
+          </div>
+          <div class="pa-conn-name"><strong>M365 Graph</strong><span>Mail.Send &middot; Users.Read</span></div>
+          <span class="pa-conn-pill blue">Connected</span>
+        </div>
+
+        <div class="pa-rail-h" style="margin-top:16px;">Data preview</div>
+        <div class="pa-dv-preview">
+          <div class="pa-dv-preview-head">msdcr_visitor_applications<span class="dv-rows">3,418 rows &middot; 4 min ago</span></div>
+          <table class="pa-dv-tbl">
+            <thead><tr><th>id</th><th>applicant</th><th>status</th><th>updated</th></tr></thead>
+            <tbody>
+              <tr class="dv-row-current"><td class="dv-id">VA-&hellip;3871</td><td>Huang, J.</td><td class="dv-status dv-s-draft">Draft</td><td>09:47</td></tr>
+              <tr><td class="dv-id">VA-&hellip;3870</td><td>Okafor, M.</td><td class="dv-status dv-s-review">Review</td><td>09:22</td></tr>
+              <tr><td class="dv-id">VA-&hellip;3869</td><td>Nguyen, T.</td><td class="dv-status dv-s-ok">Scheduled</td><td>08:41</td></tr>
+              <tr><td class="dv-id">VA-&hellip;3868</td><td>Ramirez, L.</td><td class="dv-status dv-s-ok">Scheduled</td><td>08:10</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="pa-rail-h" style="margin-top:16px;">Security &amp; audit</div>
+        <div class="pa-security">
+          <h5>Governance</h5>
+          <ul>
+            <li>Azure Entra ID &middot; Conditional Access enforced</li>
+            <li>PII column masking on ID number, phone</li>
+            <li>Audit log streams to Microsoft Purview</li>
+            <li>Geography: US Gov Cloud (GCC High)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== POWER AUTOMATE — MSDCR Flows ========== -->
+  <div id="app-powerautomate" class="app-shell">
+    <div class="app-topbar powerautomate">
+      <div class="back" onclick="goHome()">☰</div>
+      <div class="app-title">
+        <svg class="app-title-seal" viewBox="0 0 32 32"><use href="#msdcrSealMark"/></svg>
+        <svg class="app-title-logo" width="22" height="22" viewBox="0 0 24 24">
+          <rect width="24" height="24" rx="5" fill="#fff"/>
+          <path d="M5 12a7 7 0 0112-4.9l-1.8 1.3A4.8 4.8 0 007.2 12H9l-3 3.5L3 12h2zm14 0a7 7 0 01-12 4.9l1.8-1.3A4.8 4.8 0 0016.8 12H15l3-3.5L21 12h-2z" fill="#0b8ba5"/>
+        </svg>
+        Power Automate · MSDCR Flows
+      </div>
+      <div style="flex:1"></div>
+      <div class="right">
+        <div class="avatar" style="background:#c8a55b;color:#003865;">AR</div>
+      </div>
+    </div>
+    <div class="fa-body">
+      <div class="fa-sidebar">
+        <div class="fa-sidebar-head">
+          <h3>My flows</h3>
+          <p>MSDCR-Prod · 8 cloud flows</p>
+        </div>
+        <div class="fa-flowlist">
+          <div class="fa-flowrow active">
+            <div class="fa-flowrow-name">Grievance SLA Escalation</div>
+            <div class="fa-flowrow-meta"><span class="fa-pill on">Enabled</span> · ran 7 min ago</div>
+          </div>
+          <div class="fa-flowrow">
+            <div class="fa-flowrow-name">PRR Intake Router</div>
+            <div class="fa-flowrow-meta"><span class="fa-pill on">Enabled</span> · ran 2 h ago</div>
+          </div>
+          <div class="fa-flowrow">
+            <div class="fa-flowrow-name">Visitation Exception Routing</div>
+            <div class="fa-flowrow-meta"><span class="fa-pill on">Enabled</span> · ran 34 min ago</div>
+          </div>
+          <div class="fa-flowrow">
+            <div class="fa-flowrow-name">Classification Packet Approval Notifier</div>
+            <div class="fa-flowrow-meta"><span class="fa-pill on">Enabled</span> · ran yesterday</div>
+          </div>
+          <div class="fa-flowrow">
+            <div class="fa-flowrow-name">Reentry Program Match Notifier</div>
+            <div class="fa-flowrow-meta"><span class="fa-pill on">Enabled</span> · ran 1 h ago</div>
+          </div>
+          <div class="fa-flowrow">
+            <div class="fa-flowrow-name">Records Request Triage</div>
+            <div class="fa-flowrow-meta"><span class="fa-pill on">Enabled</span> · ran 22 min ago</div>
+          </div>
+          <div class="fa-flowrow">
+            <div class="fa-flowrow-name">I-30 Grievance Response Timer</div>
+            <div class="fa-flowrow-meta"><span class="fa-pill off">Paused</span> · last week</div>
+          </div>
+          <div class="fa-flowrow">
+            <div class="fa-flowrow-name">Visitation Schedule Publisher</div>
+            <div class="fa-flowrow-meta"><span class="fa-pill on">Enabled</span> · Sundays 06:00</div>
+          </div>
+        </div>
+      </div>
+      <div class="fa-main">
+        <!-- MSDCR agency banner -->
+        <div class="msdcr-banner">
+          <div class="msdcr-banner-id">
+            <svg class="msdcr-banner-seal"><use href="#msdcrSeal"/></svg>
+            <div class="msdcr-banner-name">
+              Meridian State Department of<br/>Corrections &amp; Rehabilitation
+              <small>Workflow Automation</small>
+            </div>
+          </div>
+          <div class="msdcr-banner-meta">
+            <div class="msdcr-banner-meta-rule">OFFICIAL USE · AUDIT LOGGED</div>
+            <div class="msdcr-banner-meta-sub">Every run captured to Microsoft Purview · GCC</div>
+          </div>
+        </div>
+        <div class="fa-main-head">
+          <h2>Grievance SLA Escalation</h2>
+          <p>Triggered by new records in Dataverse · msdcr_grievances. Grounds routing in the Grievance &amp; PRR Router agent; escalates to Warden + Purview audit on SLA risk.</p>
+        </div>
+        <div class="fa-canvas">
+          <div class="fa-node trigger">
+            <div class="fa-node-ico">⚡</div>
+            <div class="fa-node-body">
+              <div class="fa-node-kind">Trigger</div>
+              <div class="fa-node-title">When a grievance is submitted</div>
+              <div class="fa-node-sub">Dataverse · msdcr_grievances · On create</div>
+            </div>
+          </div>
+          <div class="fa-arrow"></div>
+          <div class="fa-node action">
+            <div class="fa-node-ico">◆</div>
+            <div class="fa-node-body">
+              <div class="fa-node-kind">Action · Copilot Studio</div>
+              <div class="fa-node-title">Classify by tier</div>
+              <div class="fa-node-sub">Call Grievance &amp; PRR Router agent · policy-grounded classification</div>
+              <div class="fa-node-out">Tier: Emergency · 15-day · 30-day</div>
+            </div>
+          </div>
+          <div class="fa-arrow"></div>
+          <div class="fa-node condition">
+            <div class="fa-node-ico">?</div>
+            <div class="fa-node-body">
+              <div class="fa-node-kind">Condition</div>
+              <div class="fa-node-title">Tier equals "Emergency"?</div>
+              <div class="fa-node-sub">Branches: Yes / No</div>
+            </div>
+          </div>
+          <div class="fa-arrow"></div>
+          <div class="fa-branch">
+            <div class="fa-branch-col">
+              <span class="fa-branch-lbl yes">Yes</span>
+              <div class="fa-arrow"></div>
+              <div class="fa-node action" style="max-width:none;">
+                <div class="fa-node-ico">✉</div>
+                <div class="fa-node-body">
+                  <div class="fa-node-kind">Action</div>
+                  <div class="fa-node-title">Notify Warden + Deputy Director</div>
+                  <div class="fa-node-sub">Teams · urgent-card · Outlook · high-importance</div>
+                </div>
+              </div>
+            </div>
+            <div class="fa-branch-col">
+              <span class="fa-branch-lbl no">No</span>
+              <div class="fa-arrow"></div>
+              <div class="fa-node action" style="max-width:none;">
+                <div class="fa-node-ico">📋</div>
+                <div class="fa-node-body">
+                  <div class="fa-node-kind">Action</div>
+                  <div class="fa-node-title">Set SLA deadline + Planner task</div>
+                  <div class="fa-node-sub">Planner · MSDCR Grievance Board · due = now + tier days</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="fa-arrow"></div>
+          <div class="fa-node delay">
+            <div class="fa-node-ico">⏱</div>
+            <div class="fa-node-body">
+              <div class="fa-node-kind">Delay until</div>
+              <div class="fa-node-title">SLA deadline minus 2 days</div>
+              <div class="fa-node-sub">Resume execution 48 hours before SLA</div>
+            </div>
+          </div>
+          <div class="fa-arrow"></div>
+          <div class="fa-node action">
+            <div class="fa-node-ico">🔍</div>
+            <div class="fa-node-body">
+              <div class="fa-node-kind">Action · Dataverse</div>
+              <div class="fa-node-title">Check: is grievance resolved?</div>
+              <div class="fa-node-sub">Dataverse query · msdcr_grievances.status == "Resolved"</div>
+            </div>
+          </div>
+          <div class="fa-arrow"></div>
+          <div class="fa-node action" style="border-left-color:#c50f1f;">
+            <div class="fa-node-ico" style="background:#c50f1f;">!</div>
+            <div class="fa-node-body">
+              <div class="fa-node-kind">Action · If not resolved</div>
+              <div class="fa-node-title">Escalate to Warden + Purview audit</div>
+              <div class="fa-node-sub">Teams alert + log audit event (audit.msdcr.grievance.sla_risk) in Microsoft Purview</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fa-rail">
+        <div class="fa-rail-stats">
+          <div class="fr-t">28-day summary</div>
+          <div class="fr-v"><strong>247</strong> runs · <strong>98.4%</strong> success · avg 1.3s · 4 failures (auto-retried)</div>
+        </div>
+        <div class="fa-rail-stats" style="border-color:#c2d4e6; background:#f4f8fc;">
+          <div class="fr-t" style="color:var(--msu-navy);">Compliance</div>
+          <div class="fr-v"><strong>100%</strong> of flow runs logged to Microsoft Purview · <strong>0</strong> policy exceptions · field-level diff captured</div>
+        </div>
+        <div class="pa-rail-h">Recent runs</div>
+        <div class="fa-run-row">
+          <div class="fa-run-status ok">✓</div>
+          <div class="fa-run-body"><div class="fa-run-t">Today · 09:54</div><div class="fa-run-s">msdcr_grievances/create · Tier: 15-day</div></div>
+          <div class="fa-run-dur">1.2s</div>
+          <div class="fa-run-link">View run →</div>
+        </div>
+        <div class="fa-run-row">
+          <div class="fa-run-status ok">✓</div>
+          <div class="fa-run-body"><div class="fa-run-t">Today · 08:31</div><div class="fa-run-s">msdcr_grievances/create · Tier: 30-day</div></div>
+          <div class="fa-run-dur">1.1s</div>
+          <div class="fa-run-link">View run →</div>
+        </div>
+        <div class="fa-run-row">
+          <div class="fa-run-status run">⟳</div>
+          <div class="fa-run-body"><div class="fa-run-t">Today · 07:42</div><div class="fa-run-s">msdcr_grievances/create · delay until 04-28</div></div>
+          <div class="fa-run-dur">— running</div>
+          <div class="fa-run-link">View run →</div>
+        </div>
+        <div class="fa-run-row">
+          <div class="fa-run-status ok">✓</div>
+          <div class="fa-run-body"><div class="fa-run-t">Yesterday · 16:08</div><div class="fa-run-s">msdcr_grievances/create · Tier: Emergency</div></div>
+          <div class="fa-run-dur">1.8s</div>
+          <div class="fa-run-link">View run →</div>
+        </div>
+        <div class="fa-run-row">
+          <div class="fa-run-status fail">✗</div>
+          <div class="fa-run-body"><div class="fa-run-t">Yesterday · 11:12</div><div class="fa-run-s">Planner connector · transient · retried OK</div></div>
+          <div class="fa-run-dur">4.2s</div>
+          <div class="fa-run-link">View run →</div>
+        </div>
+        <div class="fa-run-row">
+          <div class="fa-run-status ok">✓</div>
+          <div class="fa-run-body"><div class="fa-run-t">Yesterday · 09:40</div><div class="fa-run-s">msdcr_grievances/create · Tier: 15-day</div></div>
+          <div class="fa-run-dur">1.3s</div>
+          <div class="fa-run-link">View run →</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== POWER PAGES — MSDCR Family & Visitor Portal ========== -->
+  <div id="app-powerpages" class="app-shell">
+    <div class="app-topbar powerpages">
+      <div class="back" onclick="goHome()">☰</div>
+      <div class="app-title">
+        <svg class="app-title-seal" viewBox="0 0 32 32"><use href="#msdcrSealMark"/></svg>
+        <svg class="app-title-logo" width="22" height="22" viewBox="0 0 24 24">
+          <rect width="24" height="24" rx="5" fill="#fff"/>
+          <path d="M4 6a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm2 3v9h12V9H6zm0-2h12V6H6v1z" fill="#1e7a3c"/>
+        </svg>
+        Power Pages · MSDCR Family &amp; Visitor Portal
+      </div>
+      <div style="flex:1"></div>
+      <div class="right">
+        <div class="avatar" style="background:#c8a55b;color:#003865;">AR</div>
+      </div>
+    </div>
+    <div class="pp-body">
+      <div class="pp-tabs">
+        <div class="pp-tab tab-active" data-pp-tab="preview"  onclick="ppTab(this,'preview')">Preview</div>
+        <div class="pp-tab"             data-pp-tab="pages"    onclick="ppTab(this,'pages')">Pages</div>
+        <div class="pp-tab"             data-pp-tab="roles"    onclick="ppTab(this,'roles')">Visitors &amp; roles</div>
+        <div class="pp-tab"             data-pp-tab="analytics" onclick="ppTab(this,'analytics')">Analytics</div>
+        <div class="pp-tab"             data-pp-tab="settings" onclick="ppTab(this,'settings')">Settings</div>
+      </div>
+      <div class="pp-panels">
+        <!-- Preview -->
+        <div class="pp-panel tab-active" data-pp-pane="preview">
+          <div class="pp-browser">
+            <div class="pp-browser-chrome">
+              <div class="pp-browser-dots"><span></span><span></span><span></span></div>
+              <div class="pp-url">https://family.msdcr.gov</div>
+            </div>
+            <!-- .gov official website banner -->
+            <div class="pp-govbar">
+              <span class="gov-tri">
+                <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 1l5 9H1z"/></svg>
+                An official website of the Meridian State Government
+              </span>
+              <span class="gov-sep">|</span>
+              <span class="gov-how">How you know</span>
+            </div>
+            <!-- secure-channel strip -->
+            <div class="pp-securebar">
+              <svg class="sb-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="5" y="11" width="14" height="10" rx="2"/>
+                <path d="M8 11V7a4 4 0 018 0v4"/>
+              </svg>
+              <span>Secure .gov</span>
+              <span class="sb-sep">|</span>
+              <span class="sb-url">https://family.msdcr.gov</span>
+              <span class="sb-sep">|</span>
+              <span class="sb-verified">Entra External ID verified</span>
+            </div>
+            <!-- portal top nav -->
+            <div class="pp-portal-nav">
+              <a class="active">Home</a>
+              <a>Visits</a>
+              <a>Records</a>
+              <a>Grievances</a>
+              <a>FAQ</a>
+              <a>Reentry Resources</a>
+              <a>Find a Facility</a>
+              <a>En Espa&ntilde;ol</a>
+              <span class="spacer"></span>
+              <button class="pp-signin">Sign in</button>
+            </div>
+            <!-- hero -->
+            <div class="pp-portal-hero msdcr-hero">
+              <svg class="pp-seal-svg" style="width:72px;height:72px;"><use href="#msdcrSeal"/></svg>
+              <div class="pp-hero-text">
+                <div class="pp-portal-title msdcr" style="font-size:28px;font-weight:700;font-family:'Segoe UI',sans-serif;letter-spacing:-0.4px;">Family &amp; Visitor Portal</div>
+                <div class="pp-portal-sub msdcr" style="font-size:14px;opacity:0.95;">Schedule visits, follow grievances, and request public records.</div>
+              </div>
+              <div class="pp-auth-widget">
+                <div class="pp-auth-av">JH</div>
+                <div class="pp-auth-text">
+                  <strong>Signed in as Jessica Huang</strong>
+                  <span class="role">Family member &middot; Verified</span>
+                </div>
+                <button class="pp-auth-signout" aria-label="Sign out">Sign out</button>
+              </div>
+            </div>
+            <!-- reference / audit strip -->
+            <div class="pp-ref-strip">
+              <span class="ref-meta">Portal ref <strong>family.msdcr.gov</strong> &middot; v4.2 &middot; Last publish <strong>2026-04-21 07:18 MST</strong></span>
+              <span class="ref-meta">Session <strong>a7f1&hellip;c9e2</strong> &middot; Entra External ID</span>
+            </div>
+            <!-- entry-point cards -->
+            <div class="pp-cards">
+              <div class="pp-card msdcr">
+                <div class="pp-card-inner">
+                  <div class="pp-card-ico msdcr-circle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="5" width="18" height="16" rx="2"/>
+                      <line x1="3" y1="9" x2="21" y2="9"/>
+                      <line x1="8" y1="3" x2="8" y2="7"/>
+                      <line x1="16" y1="3" x2="16" y2="7"/>
+                      <circle cx="16" cy="15" r="1.4" fill="currentColor"/>
+                    </svg>
+                  </div>
+                  <h3>Schedule a visit</h3>
+                  <p>Video, in-person, or non-contact. Check eligibility in two minutes and choose a time from the warden-approved window.</p>
+                  <div class="pp-card-actions">
+                    <button class="pp-msdcr-chat-btn">
+                      <svg class="cp-spark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l1.7 5.3L19 9l-5.3 1.7L12 16l-1.7-5.3L5 9l5.3-1.7L12 2z"/></svg>
+                      Start with our virtual assistant
+                    </button>
+                    <a class="pp-begin-pill">Begin &rarr;</a>
+                  </div>
+                </div>
+              </div>
+              <div class="pp-card msdcr">
+                <div class="pp-card-inner">
+                  <div class="pp-card-ico msdcr-circle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M6 3h9l4 4v14H6z"/>
+                      <polyline points="15,3 15,7 19,7"/>
+                      <line x1="9" y1="12" x2="16" y2="12"/>
+                      <line x1="9" y1="15" x2="16" y2="15"/>
+                      <line x1="9" y1="18" x2="13" y2="18"/>
+                    </svg>
+                  </div>
+                  <h3>Request a public record</h3>
+                  <p>File a records request and track status. Routine requests are answered within ten business days.</p>
+                  <div class="pp-card-actions">
+                    <a class="pp-begin-pill">Begin &rarr;</a>
+                  </div>
+                </div>
+              </div>
+              <div class="pp-card msdcr">
+                <div class="pp-card-inner">
+                  <div class="pp-card-ico msdcr-circle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 3l8 3v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/>
+                      <polyline points="8,12 11,15 16,9"/>
+                    </svg>
+                  </div>
+                  <h3>File or follow up on a grievance</h3>
+                  <p>Secure intake for residents and family advocates. Every grievance is tracked to resolution with an audit trail.</p>
+                  <div class="pp-card-actions">
+                    <a class="pp-begin-pill">Begin &rarr;</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Your recent activity — continues the UC2 journey -->
+            <div class="pp-activity">
+              <div class="pp-activity-head">Your recent activity</div>
+              <div class="pp-activity-row">
+                <div class="pp-activity-card">
+                  <div class="pp-activity-card-head">
+                    <span class="pp-activity-id">#MSDCR-V-2026-0429031</span>
+                    <span class="pp-activity-pill nav">Eligibility check</span>
+                  </div>
+                  <div class="pp-activity-title">Visit application &middot; Complex 2, Unit 4B</div>
+                  <div class="pp-activity-prog"><span class="done"></span><span class="cur"></span><span></span><span></span></div>
+                  <div class="pp-activity-foot">
+                    <span>Visitation Front Door agent &middot; updated 2 hours ago</span>
+                    <span style="color:var(--msu-navy);font-weight:600;">View &rsaquo;</span>
+                  </div>
+                </div>
+                <div class="pp-activity-card">
+                  <div class="pp-activity-card-head">
+                    <span class="pp-activity-id">#MSDCR-P-2026-0411007</span>
+                    <span class="pp-activity-pill">Awaiting review</span>
+                  </div>
+                  <div class="pp-activity-title">Public record request &middot; Routine</div>
+                  <div class="pp-activity-foot">
+                    <span>Records Office &middot; updated yesterday</span>
+                    <span class="days">7 of 10 days</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- quick-answers strip -->
+            <div class="pp-quick">
+              <h5>Ask Meridian · popular questions</h5>
+              <div class="pp-quick-row">
+                <span class="pp-quick-chip">Can my child visit?</span>
+                <span class="pp-quick-chip">How do video visits work?</span>
+                <span class="pp-quick-chip">What ID do I need?</span>
+                <span class="pp-quick-chip">Can I deposit money online?</span>
+                <span class="pp-quick-chip">When is my loved one eligible for reentry programs?</span>
+              </div>
+            </div>
+            <!-- FAQ tiles -->
+            <div class="pp-secondary">
+              <div class="pp-mini">
+                <h4>
+                  <svg class="pp-mini-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="4" y="3" width="16" height="18" rx="2"/>
+                    <line x1="8" y1="8" x2="16" y2="8"/>
+                    <line x1="8" y1="12" x2="16" y2="12"/>
+                    <line x1="8" y1="16" x2="13" y2="16"/>
+                  </svg>
+                  FAQ · Visits <span class="pp-mini-count">· 21 answers</span>
+                </h4>
+                <p style="clear:both;">Minor children, ID requirements, dress code, video kiosks.</p>
+              </div>
+              <div class="pp-mini">
+                <h4>
+                  <svg class="pp-mini-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="6" width="18" height="13" rx="2"/>
+                    <polyline points="3,7 12,14 21,7"/>
+                  </svg>
+                  FAQ · Money &amp; mail <span class="pp-mini-count">· 14 answers</span>
+                </h4>
+                <p style="clear:both;">Deposits, commissary, approved vendors, mail address formats.</p>
+              </div>
+              <div class="pp-mini">
+                <h4>
+                  <svg class="pp-mini-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.6a2 2 0 01-.5 2.1L8 9.6a16 16 0 006 6l1.3-1.3a2 2 0 012-.5c.9.3 1.7.5 2.6.6a2 2 0 011.7 2z"/>
+                  </svg>
+                  FAQ · Reentry resources <span class="pp-mini-count">· 19 answers</span>
+                </h4>
+                <p style="clear:both;">MCRP partners, housing, ID replacement, parole officer contact.</p>
+              </div>
+              <div class="pp-mini pp-map msdcr-map">
+                <h4 style="position:relative;z-index:1;">
+                  <svg class="pp-mini-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                  Find a facility
+                </h4>
+                <p style="position:relative;z-index:1;clear:both;">Complexes 1–4 + HQ</p>
+                <div class="pp-map-pin msdcr"    style="top:38%; left:22%;"></div>
+                <div class="pp-map-label"         style="top:38%; left:22%;">Complex 1 · Meridian City</div>
+                <div class="pp-map-pin msdcr teal" style="top:58%; left:46%;"></div>
+                <div class="pp-map-label"         style="top:58%; left:46%;">Complex 2 · Northridge</div>
+                <div class="pp-map-pin msdcr"    style="top:28%; left:66%;"></div>
+                <div class="pp-map-label"         style="top:28%; left:66%;">Complex 3 · Eastlake</div>
+                <div class="pp-map-pin msdcr gold" style="top:72%; left:78%;"></div>
+                <div class="pp-map-label"         style="top:72%; left:78%;">Complex 4 · Riverton</div>
+              </div>
+            </div>
+            <div class="pp-browse-all">
+              <a>Browse all (128 answers) &rarr;</a>
+            </div>
+            <!-- accessibility / language strip -->
+            <div class="pp-ada-strip">
+              <span class="ada-chip pri">WCAG 2.2 AA</span>
+              <span class="ada-chip">Espa&ntilde;ol</span>
+              <span class="ada-chip">Vietnamese</span>
+              <span class="ada-chip">Dari</span>
+              <span class="ada-chip">Large-print available</span>
+              <span class="ada-chip">TTY compatible</span>
+            </div>
+            <!-- upgraded enterprise footer -->
+            <div class="pp-footer msdcr v2">
+              <div class="pp-footer-mission">
+                <svg class="pp-footer-seal"><use href="#msdcrSeal"/></svg>
+                <div class="pp-footer-mission-text">
+                  <strong>Meridian State Dept. of Corrections &amp; Rehabilitation</strong>
+                  Serving communities through safety, rehabilitation, and restoration since 1912.
+                  <span class="addr">1 Capitol Plaza &middot; Meridian, MS 00000</span>
+                </div>
+              </div>
+              <div class="pp-footer-col">
+                <h6>Information</h6>
+                <a>Privacy Statement</a>
+                <a>Accessibility</a>
+                <a>FOIA</a>
+                <a>Website Feedback</a>
+                <a>Language Services</a>
+                <a>Sitemap</a>
+              </div>
+              <div class="pp-footer-col">
+                <h6>Contact us</h6>
+                <a>Main line &middot; (555) 204-0900</a>
+                <a>Visitation desk &middot; (555) 204-0911</a>
+                <a>TTY &middot; (555) 204-0977</a>
+                <a>Non-emergency tip line &middot; (555) 204-0955</a>
+                <a>contact@msdcr.gov</a>
+              </div>
+              <div class="pp-footer-bottom">
+                &copy; 2026 Meridian State Department of Corrections and Rehabilitation &middot; Powered by Microsoft Power Pages &middot; Hosted in US Gov Cloud (GCC High)
+              </div>
+            </div>
+          </div>
+          <div class="pp-conn-bar">
+            <span class="pp-conn-bar-lbl">Connections</span>
+            <span class="pp-conn-chip dv">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5zm0 2.2L19 8v1.1l-7 3.9-7-3.9V8l7-3.8zM5 10.7l6 3.4v6.5l-6-3.4v-6.5zm8 3.4l6-3.4v6.5l-6 3.4v-6.5z"/></svg>
+              Dataverse &middot; msdcr_visitor_applications
+            </span>
+            <span class="pp-conn-chip st">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2L12 2z"/></svg>
+              Copilot Studio &middot; Visitation Front Door agent
+            </span>
+            <span class="pp-conn-chip au">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12a7 7 0 0112-5"/><polyline points="16,4 17,7 14,8"/><path d="M19 12a7 7 0 01-12 5"/><polyline points="8,20 7,17 10,16"/></svg>
+              Power Automate &middot; Visitation Exception Routing
+            </span>
+            <span class="pp-conn-chip en">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
+              Microsoft Entra External ID
+            </span>
+            <span class="pp-conn-chip foundry">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="8"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg>
+              Microsoft Foundry &middot; Evaluation spine
+            </span>
+          </div>
+        </div>
+        <!-- Pages -->
+        <div class="pp-panel" data-pp-pane="pages">
+          <div class="pp-pagelist">
+            <div class="pp-plrow head"><div>Page</div><div>Template</div><div>Status</div><div>Last edited</div></div>
+            <div class="pp-plrow"><div>/ (Home)</div><div>Landing</div><div class="pub">● Published</div><div>3 days ago · S. Chen</div></div>
+            <div class="pp-plrow"><div>/schedule-visit</div><div>Form + chat</div><div class="pub">● Published</div><div>1 day ago · M. Gutierrez</div></div>
+            <div class="pp-plrow"><div>/records-request</div><div>Form</div><div class="pub">● Published</div><div>5 days ago · Records Office</div></div>
+            <div class="pp-plrow"><div>/grievance/file</div><div>Authenticated form</div><div class="pub">● Published</div><div>1 week ago · S. Chen</div></div>
+            <div class="pp-plrow"><div>/grievance/status</div><div>Lookup</div><div class="pub">● Published</div><div>1 week ago · S. Chen</div></div>
+            <div class="pp-plrow"><div>/faq</div><div>Content</div><div class="pub">● Published</div><div>2 weeks ago · Comms</div></div>
+            <div class="pp-plrow"><div>/facilities</div><div>Directory</div><div class="pub">● Published</div><div>2 weeks ago · Comms</div></div>
+            <div class="pp-plrow"><div>/reentry-resources</div><div>Content</div><div class="pub">● Published</div><div>3 weeks ago · L. Thomas</div></div>
+            <div class="pp-plrow"><div>/contact</div><div>Content</div><div class="pub">● Published</div><div>1 month ago · Comms</div></div>
+            <div class="pp-plrow"><div>/visits/video-kiosk-guide</div><div>Content</div><div class="draft">◐ Draft</div><div>Today · M. Gutierrez</div></div>
+          </div>
+        </div>
+        <!-- Visitors & roles -->
+        <div class="pp-panel" data-pp-pane="roles">
+          <div class="pp-roletable">
+            <h3 style="font-size:14px;margin-bottom:10px;">External identity roles</h3>
+            <table>
+              <thead><tr><th>Role</th><th>Authentication</th><th>Access scope</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Anonymous visitor</strong></td><td>None</td><td>Public FAQ, facility map, contact form</td></tr>
+                <tr><td><strong>Authenticated family member</strong></td><td>Entra External ID · email OTP</td><td>Schedule visits, file grievances on behalf of resident, view status</td></tr>
+                <tr><td><strong>Resident advocate</strong></td><td>Entra External ID · vouched</td><td>Grievance follow-up, PRR, caseload lookups</td></tr>
+                <tr><td><strong>Legal representative</strong></td><td>Entra External ID · bar-verified</td><td>PRR, attorney-client communications channel</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- Analytics -->
+        <div class="pp-panel" data-pp-pane="analytics">
+          <div class="pp-analytics">
+            <div class="pp-kpis">
+              <div class="pp-kpi"><div class="pp-kpi-lbl">Sessions (month)</div><div class="pp-kpi-v">12,487</div><div class="pp-kpi-s">▲ 9% vs prior month</div></div>
+              <div class="pp-kpi"><div class="pp-kpi-lbl">Avg session</div><div class="pp-kpi-v">4:22</div><div class="pp-kpi-s">Visit pages +11% dwell</div></div>
+              <div class="pp-kpi"><div class="pp-kpi-lbl">Front Door chats</div><div class="pp-kpi-v">3,284</div><div class="pp-kpi-s">Visitation Front Door · live</div></div>
+              <div class="pp-kpi"><div class="pp-kpi-lbl">Deflection rate</div><div class="pp-kpi-v">98%</div><div class="pp-kpi-s">↓ calls to Visitation desk</div></div>
+            </div>
+            <div class="pp-trend">
+              <h3>Daily sessions · last 28 days</h3>
+              <svg viewBox="0 0 560 120" preserveAspectRatio="none">
+                <g fill="#1e7a3c">
+                  <rect x="0"   y="78" width="14" height="42"/>
+                  <rect x="20"  y="64" width="14" height="56"/>
+                  <rect x="40"  y="56" width="14" height="64"/>
+                  <rect x="60"  y="70" width="14" height="50"/>
+                  <rect x="80"  y="48" width="14" height="72"/>
+                  <rect x="100" y="44" width="14" height="76"/>
+                  <rect x="120" y="58" width="14" height="62"/>
+                  <rect x="140" y="52" width="14" height="68"/>
+                  <rect x="160" y="40" width="14" height="80"/>
+                  <rect x="180" y="36" width="14" height="84"/>
+                  <rect x="200" y="50" width="14" height="70"/>
+                  <rect x="220" y="42" width="14" height="78"/>
+                  <rect x="240" y="30" width="14" height="90"/>
+                  <rect x="260" y="24" width="14" height="96"/>
+                  <rect x="280" y="38" width="14" height="82"/>
+                  <rect x="300" y="46" width="14" height="74"/>
+                  <rect x="320" y="32" width="14" height="88"/>
+                  <rect x="340" y="28" width="14" height="92"/>
+                  <rect x="360" y="44" width="14" height="76"/>
+                  <rect x="380" y="20" width="14" height="100"/>
+                  <rect x="400" y="16" width="14" height="104"/>
+                  <rect x="420" y="34" width="14" height="86"/>
+                  <rect x="440" y="26" width="14" height="94"/>
+                  <rect x="460" y="14" width="14" height="106"/>
+                  <rect x="480" y="10" width="14" height="110"/>
+                  <rect x="500" y="22" width="14" height="98"/>
+                  <rect x="520" y="18" width="14" height="102"/>
+                  <rect x="540" y="6"  width="14" height="114" fill="#3ea558"/>
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <!-- Settings -->
+        <div class="pp-panel" data-pp-pane="settings">
+          <div class="pp-roletable">
+            <h3 style="font-size:14px;margin-bottom:10px;">Site settings</h3>
+            <table>
+              <tbody>
+                <tr><td>Site URL</td><td>family.msdcr.gov</td></tr>
+                <tr><td>Environment</td><td>MSDCR-Prod (Dataverse)</td></tr>
+                <tr><td>Authentication</td><td>Microsoft Entra External ID · email OTP + vouched</td></tr>
+                <tr><td>Accessibility</td><td>WCAG 2.2 AA · scanned weekly</td></tr>
+                <tr><td>Hosting region</td><td>US Gov Cloud (Government Community Cloud)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- ========== CALENDAR EVENT DETAIL PANEL ========== -->
   <div id="event-detail" class="event-detail">
     <div class="ed-backdrop" onclick="closeEventDetail()"></div>
@@ -6813,6 +9374,17 @@ function a365Tab(key) {
   if (body) body.scrollTop = 0;
 }
 
+// Power Pages tab switcher
+function ppTab(el, key) {
+  document.querySelectorAll('#app-powerpages .pp-tab').forEach(t => t.classList.remove('tab-active'));
+  if (el) el.classList.add('tab-active');
+  document.querySelectorAll('#app-powerpages .pp-panel').forEach(p => {
+    p.classList.toggle('tab-active', p.getAttribute('data-pp-pane') === key);
+  });
+  const panels = document.querySelector('#app-powerpages .pp-panels');
+  if (panels) panels.scrollTop = 0;
+}
+
 // Agent 365 live-feed animator. Prepends a new activity row every 3–5s while the view is active.
 const A365_FEED_POOL = [
   { bad:false, a:'Shift-Swap Assistant', d:'Checked CorrectionsCore balance for new Shift-Swap request · approved 0.92 confidence' },
@@ -7462,32 +10034,23 @@ function daxAcceptSign() {
   }, 1200);
 }
 
-// DAX waveform — rendered via JS so it's animated and isn't stuck as static HTML
+// Foundry eval-progress bar — nudges the fill width so it reads as a live evaluation run, not a recording
 function renderDaxWaveform() {
-  const el = document.getElementById('dax-waveform');
+  const el = document.getElementById('dax-evalprog-fill');
   if (!el) return;
-  const bars = 60;
-  let html = '';
-  for (let i = 0; i < bars; i++) {
-    const h = 15 + Math.random() * 70;
-    html += `<span style="height:${h.toFixed(1)}%"></span>`;
-  }
-  el.innerHTML = html;
-  // Animate the waveform so it feels alive
+  let pct = 72;
   if (el._daxTimer) clearInterval(el._daxTimer);
   el._daxTimer = setInterval(() => {
-    el.querySelectorAll('span').forEach(s => {
-      s.style.height = (15 + Math.random() * 70).toFixed(1) + '%';
-      s.style.transition = 'height 0.45s ease';
-    });
-  }, 500);
+    pct = Math.min(98, pct + (Math.random() * 1.5));
+    el.style.width = pct.toFixed(1) + '%';
+  }, 900);
 }
 function goHome() {
   document.querySelectorAll('.app-shell').forEach(el => el.classList.remove('active'));
   document.getElementById('home').style.display = 'block';
   currentApp = null;
-  // Stop the DAX ambient-waveform animation when leaving
-  const wf = document.getElementById('dax-waveform');
+  // Stop the Foundry eval-progress animation when leaving
+  const wf = document.getElementById('dax-evalprog-fill');
   if (wf && wf._daxTimer) { clearInterval(wf._daxTimer); wf._daxTimer = null; }
 }
 
@@ -9957,10 +12520,12 @@ const PERSONAS = {
       { app:'word',       title:"Staffing model review — post-coverage cohort (revision 3)",    meta:'You edited · yesterday',        onclick:"openApp('word')" }
     ],
     agents: [
-      { logo:'agentLogoIntake', name:'Case File Orchestrator',      desc:'Assembles each classification-review file the night before, sorts by complexity, and flags missing records.', pill:'', pillText:'7 packets ready for Thursday',    ctx:'bedcoord',  key:'status' },
-      { logo:'agentLogoTrial',  name:'Reentry Program Match',       desc:"Recommends program placements and surfaces the ones most likely to complete on time.", pill:'good', pillText:'2 cohorts in progress',             ctx:'trial',     key:'match' },
-      { logo:'agentLogoShield', name:'Policy Copilot',              desc:'ACA + PREA + MSDCR agency policy lookup, grounded in the policies and director memos you cite.',   pill:'', pillText:'Last synced 14 min ago',            ctx:'priorauth', key:'scan' },
-      { logo:'agentLogoBed',    name:'Operations Readout Pipeline', desc:'Keeps active post-coverage studies, grievance cycle metrics, and Executive readout deadlines in one view.', pill:'warn', pillText:'Q2 ops deck due Fri',         ctx:'intake',    key:'intake' }
+      { logo:'agentLogoBed',    name:'Policy Copilot',              desc:'Answers staff questions from policy manuals, director memos, and the SOP library. Grounds every answer with a citation. <span class="stack-badge studio">Copilot Studio</span>', pill:'',         pillText:'Director-brief · 4 new memos synced',               ctx:'bedcoord',  key:'status' },
+      { logo:'agentLogoIntake', name:'Visitation Front Door',       desc:'Public/family-facing chatbot for visitation eligibility, scheduling, and fee questions. Escalates to Visitation Coordinator for exceptions. <span class="stack-badge studio">Copilot Studio</span>', pill:'warn',    pillText:'Exception queue · 2 pending Warden review',         ctx:'intake',    key:'intake' },
+      { logo:'agentLogoShield', name:'Grievance &amp; PRR Router',   desc:'Triages resident grievances + public-records requests, assigns SLA tiers, and tracks due dates. <span class="stack-badge studio">Copilot Studio</span>', pill:'good',     pillText:'Cycle time 0.9d · PRR SLA 96%',                      ctx:'priorauth', key:'scan' },
+      { logo:'agentLogoTrial',  name:'Reentry Program Match',        desc:'Recommends education, treatment, and job-readiness programs to case managers based on resident profile + program availability. <span class="stack-badge studio">Copilot Studio</span>', pill:'good', pillText:'May cohort · 12 candidates matched',                 ctx:'trial',     key:'match' },
+      { logo:'agentLogoReadmit',name:'Records Request Desk',         desc:'Non-clinical healthcare admin copilot — intakes records requests, stages appointment workflow, builds audit packets. <strong>Administrative only.</strong> <span class="stack-badge studio">Copilot Studio</span>', pill:'', pillText:'Weekly packet · 7 requests routed',                  ctx:'bedcoord',  key:'status' },
+      { logo:'agentLogoShield', name:'Classification Packet Prep',   desc:'Assembles classification-review packets, flags policy criteria, and surfaces precedent. <strong>Requires officer approval before submission.</strong> <span class="stack-badge foundry">Foundry-evaluated</span>', pill:'approval', pillText:"Thursday's docket · 7 packets staged for approval", ctx:'priorauth', key:'scan' }
     ]
   },
   maria: {
@@ -9977,10 +12542,12 @@ const PERSONAS = {
       { app:'excel',  title:"Float Pool — April Shift-Swap tracker",                meta:'Policy & Programs shared · 12h ago',   onclick:"openApp('excel')" }
     ],
     agents: [
-      { logo:'agentLogoBed',     name:'Visitation Front Door',        desc:'Public-facing inquiries + eligibility + scheduling — last-mile human handoff for exceptions.', pill:'',     pillText:'28 / 28 schedules · 2 pending close', ctx:'bedcoord',  key:'status' },
-      { logo:'agentLogoReadmit', name:'Case Manager Coverage Helper', desc:'Scans shift-swap queue, matches by cert + hours, and drafts the pickup message.',            pill:'warn', pillText:'2 open shifts · 3 candidates',        ctx:'trial',     key:'match' },
-      { logo:'agentLogoShield',  name:'Certification Watch',          desc:'Alerts before ACA / PREA Coordinator / PREA certs expire so no Case Manager works without a valid cert.', pill:'warn', pillText:'Thompson ACA-CCE expires 4/27',      ctx:'priorauth', key:'scan' },
-      { logo:'agentLogoIntake',  name:'Evening Handoff Agent',        desc:'Pulls the evening SBAR from CorrectionsCore events, visitation log, and Case Manager notes.', pill:'',     pillText:'Auto-drafts at 6:40 AM',              ctx:'intake',    key:'intake' }
+      { logo:'agentLogoBed',    name:'Policy Copilot',              desc:'Answers staff questions from policy manuals, director memos, and the SOP library. Grounds every answer with a citation. <span class="stack-badge studio">Copilot Studio</span>', pill:'',         pillText:'Visitation policy · 96.4% citation match',           ctx:'bedcoord',  key:'status' },
+      { logo:'agentLogoIntake', name:'Visitation Front Door',       desc:'Public/family-facing chatbot for visitation eligibility, scheduling, and fee questions. Escalates to Visitation Coordinator for exceptions. <span class="stack-badge studio">Copilot Studio</span>', pill:'',         pillText:'28 / 28 schedules · 4 family inquiries open',         ctx:'intake',    key:'intake' },
+      { logo:'agentLogoShield', name:'Grievance &amp; PRR Router',   desc:'Triages resident grievances + public-records requests, assigns SLA tiers, and tracks due dates. <span class="stack-badge studio">Copilot Studio</span>', pill:'warn',    pillText:'Visitation grievances · 2 open · 1 escalated',       ctx:'priorauth', key:'scan' },
+      { logo:'agentLogoTrial',  name:'Reentry Program Match',        desc:'Recommends education, treatment, and job-readiness programs to case managers based on resident profile + program availability. <span class="stack-badge studio">Copilot Studio</span>', pill:'good',     pillText:'Family-visit cohorts · 3 this week',                 ctx:'trial',     key:'match' },
+      { logo:'agentLogoReadmit',name:'Records Request Desk',         desc:'Non-clinical healthcare admin copilot — intakes records requests, stages appointment workflow, builds audit packets. <strong>Administrative only.</strong> <span class="stack-badge studio">Copilot Studio</span>', pill:'',         pillText:'5 admin requests routed this week',                  ctx:'bedcoord',  key:'status' },
+      { logo:'agentLogoShield', name:'Classification Packet Prep',   desc:'Assembles classification-review packets, flags policy criteria, and surfaces precedent. <strong>Requires officer approval before submission.</strong> <span class="stack-badge foundry">Foundry-evaluated</span>', pill:'approval', pillText:"Visitation coord · 7 Thursday packets",              ctx:'priorauth', key:'scan' }
     ]
   },
   cio: {
@@ -9997,10 +12564,12 @@ const PERSONAS = {
       { app:'admin', title:"April DLP + Foundry Incident Report",                 meta:'Purview posted · yesterday',   onclick:"openApp('admin')" }
     ],
     agents: [
-      { logo:'agentLogoShield',  name:'Copilot Governance Monitor', desc:'Watches every prompt for policy violations, resident-PII outside-tenant attempts, and DLP blocks. Foundry-evaluated.',  pill:'good', pillText:'48 DLP events · all contained',  ctx:'priorauth', key:'scan' },
-      { logo:'agentLogoTrial',   name:'License Optimizer',          desc:'Flags underused Copilot licenses and suggests reassignment to high-impact teams (Case Mgmt, Classification, Visitation, Reentry).', pill:'warn', pillText:'136 idle licenses · est. $80k',  ctx:'trial',     key:'match' },
-      { logo:'agentLogoReadmit', name:'Shadow-IT Watch',            desc:'Spots non-approved AI tools being used across the tenant before they become a risk.',       pill:'',     pillText:'7 tools flagged this month',     ctx:'bedcoord',  key:'status' },
-      { logo:'agentLogoIntake',  name:'Executive Readout Agent',    desc:'Weekly one-pager for the Executive Leadership Team: adoption, deflection, governance, Foundry evaluations.', pill:'',     pillText:'Next readout · Monday',   ctx:'intake',    key:'intake' }
+      { logo:'agentLogoBed',    name:'Policy Copilot',              desc:'Answers staff questions from policy manuals, director memos, and the SOP library. Grounds every answer with a citation. <span class="stack-badge studio">Copilot Studio</span>', pill:'good',     pillText:'Weekly grounding · 96.4% citation match',            ctx:'bedcoord',  key:'status' },
+      { logo:'agentLogoIntake', name:'Visitation Front Door',       desc:'Public/family-facing chatbot for visitation eligibility, scheduling, and fee questions. Escalates to Visitation Coordinator for exceptions. <span class="stack-badge studio">Copilot Studio</span>', pill:'',         pillText:'3,284 interactions · 98% deflection',                 ctx:'intake',    key:'intake' },
+      { logo:'agentLogoShield', name:'Grievance &amp; PRR Router',   desc:'Triages resident grievances + public-records requests, assigns SLA tiers, and tracks due dates. <span class="stack-badge studio">Copilot Studio</span>', pill:'good',     pillText:'SLA compliance 96% · Foundry-evaluated',             ctx:'priorauth', key:'scan' },
+      { logo:'agentLogoTrial',  name:'Reentry Program Match',        desc:'Recommends education, treatment, and job-readiness programs to case managers based on resident profile + program availability. <span class="stack-badge studio">Copilot Studio</span>', pill:'good',     pillText:'Foundry eval · 93% placement accuracy',              ctx:'trial',     key:'match' },
+      { logo:'agentLogoReadmit',name:'Records Request Desk',         desc:'Non-clinical healthcare admin copilot — intakes records requests, stages appointment workflow, builds audit packets. <strong>Administrative only.</strong> <span class="stack-badge studio">Copilot Studio</span>', pill:'good',     pillText:'PII scan · 0 leaks · 142 admin requests',            ctx:'bedcoord',  key:'status' },
+      { logo:'agentLogoShield', name:'Classification Packet Prep',   desc:'Assembles classification-review packets, flags policy criteria, and surfaces precedent. <strong>Requires officer approval before submission.</strong> <span class="stack-badge foundry">Foundry-evaluated</span>', pill:'approval', pillText:'Foundry eval 98.2% · 100% human-approval-gated',     ctx:'priorauth', key:'scan' }
     ]
   }
 };
